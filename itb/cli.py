@@ -261,6 +261,33 @@ async def cmd_campaign(a):
         print(f"block {b} done: {ledger().summary()}")
 
 
+def cmd_freeze(a):
+    """Write design/design.json (everything fixed before the campaign) and print memo #1."""
+    import hashlib
+    import subprocess
+    from . import analyze, design, run
+    sha = lambda path: hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
+    camp = json.loads((ROOT / "design" / "campaign.json").read_text())
+    d = {"created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+         "code_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+         "files": {f: sha(ROOT / f) for f in ("design/panels.json", "design/candidates.json",
+                                              "design/prediction_table.md", "design/campaign.json")},
+         "campaign": camp,
+         "randomisation": {"k_arms": {"K-main": 0.75, "K-null": 0.10, "K-free": 0.15}, "panel_offset_ms": [-600, -200],
+                           "train_specs": {k: {"probes": n, "spacing_ms": sp} for k, (n, sp) in design.TRAIN_SPECS.items()},
+                           "train_increasing_share": 0.8, "train_phase_ms": [30, 70], "source": "OS randomness, logged"},
+         "timing": {"lambda_ms": 60.0, "short_fuse_blocks": list(run.SHORT_FUSE), "min_gap_s": run.MIN_GAP_S},
+         "analysis": {"theta_identification": analyze.THETA_ID, "strict_lower_bound": analyze.STRICT,
+                      "alpha": analyze.ALPHA, "null_permutations": analyze.NULL_PERMS, "seed": analyze.SEED,
+                      "evaluable_panel_min_probes": 4, "evaluable_train_min": {"t4": 8, "t12": 7},
+                      "documented_keys": analyze.DOCUMENTED}}
+    out = ROOT / "design" / "design.json"
+    out.write_text(json.dumps(d, indent=1))
+    print(f"wrote {out}")
+    print("after committing PREREG.md + design/design.json, memo #1 =")
+    print(f"itb-prereg <commit> {sha(ROOT / 'PREREG.md')} {sha(out)}")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="itb")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -279,7 +306,7 @@ def main(argv=None):
     s.add_argument("--max-spend-sol", type=float)
     s.add_argument("--lambda-ms", type=float, default=60.0)
     s = sub.add_parser("campaign")
-    s.add_argument("--phase", required=True, choices=["A", "B", "C", "D"])
+    s.add_argument("--phase", required=True, choices=["A", "B", "C", "D", "pilot"])
     s.add_argument("--date", required=True, help="UTC day, e.g. 2026-10-29")
     s.add_argument("--quotas", required=True)
     s.add_argument("--blocks", type=int, default=6)
@@ -287,6 +314,7 @@ def main(argv=None):
     s.add_argument("--block-max-sol", type=float, required=True)
     s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)
+    sub.add_parser("freeze")
     s = sub.add_parser("collect")
     s.add_argument("--run-id", required=True)
     s = sub.add_parser("ops")
@@ -310,6 +338,8 @@ def main(argv=None):
         asyncio.run(cmd_plan(a))
     elif a.cmd == "run":
         asyncio.run(cmd_run(a))
+    elif a.cmd == "freeze":
+        cmd_freeze(a)
     elif a.cmd == "collect":
         asyncio.run(cmd_collect(a))
     elif a.cmd == "campaign":
