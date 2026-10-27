@@ -1,0 +1,30 @@
+[project]
+name = "itb"
+version = "0.1.0"
+description = "Measuring how Solana leaders order transactions: sort key and clock"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "solders==0.29.0",
+    "aioquic>=1.2",
+    "httpx>=0.28",
+    "websockets>=14",
+    "numpy>=2.1",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+itb = "itb.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+exclude-newer = "2026-10-13T00:00:00Z"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

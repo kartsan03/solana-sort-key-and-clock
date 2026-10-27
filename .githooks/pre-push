@@ -1,0 +1,12 @@
+#!/bin/sh
+# Refuse non-fast-forward pushes to main: history after pre-registration is never rewritten.
+zero=0000000000000000000000000000000000000000
+while read local_ref local_sha remote_ref remote_sha; do
+  [ "$remote_ref" = "refs/heads/main" ] || continue
+  [ "$remote_sha" = "$zero" ] && continue
+  if [ "$local_sha" = "$zero" ]; then echo "pre-push: deleting main is not allowed" >&2; exit 1; fi
+  if ! git merge-base --is-ancestor "$remote_sha" "$local_sha"; then
+    echo "pre-push: non-fast-forward push to main refused" >&2; exit 1
+  fi
+done
+exit 0

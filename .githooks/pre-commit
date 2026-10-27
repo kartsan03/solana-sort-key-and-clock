@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""Block commits that could carry a secret: keypair files, env files, private keys, API keys, huge files."""
+import gzip
+import json
+import pathlib
+import re
+import subprocess
+import sys
+
+MAX_BYTES = 20 * 1024 * 1024
+KEYPAIR_ARRAY = re.compile(rb"\[\s*(?:\d{1,3}\s*,\s*){63}\d{1,3}\s*\]")
+B58_64 = re.compile(rb"(?<![1-9A-HJ-NP-Za-km-z])[1-9A-HJ-NP-Za-km-z]{86,88}(?![1-9A-HJ-NP-Za-km-z])")
+MARKERS = [re.compile(p) for p in (rb"PRIVATE KEY", rb"api[-_]key=[A-Za-z0-9-]{12,}", rb"VALIDATORS_APP_TOKEN=\S+",
+                                   rb"HELIUS_RPC_URL=\S+")]
+B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+
+def b58decode(s):
+    n = 0
+    for ch in s:
+        n = n * 58 + B58.index(ch)
+    raw = n.to_bytes((n.bit_length() + 7) // 8, "big")
+    pad = len(s) - len(s.lstrip("1"))
+    return b"\0" * pad + raw
+
+
+def our_pubkeys(root):
+    p = root / "design" / "wallets.json"
+    if not p.exists():
+        return set()
+    return {b58decode(pk) for pk in json.loads(p.read_text()).get("pubkeys", [])}
+
+
+def problems(path, data, pubs):
+    name = path.name
+    if name.startswith(".env") or name.endswith(".keypair.json") or "keys" in path.parts:
+        yield "secret-looking file name"
+    if len(data) > MAX_BYTES:
+        yield f"file over {MAX_BYTES >> 20} MB"
+    if str(path) == ".githooks/pre-commit":
+        return  # this file holds the patterns themselves
+    if name.endswith(".gz"):
+        try:
+            data = gzip.decompress(data)
+        except OSError:
+            return
+    if KEYPAIR_ARRAY.search(data):
+        yield "keypair-shaped JSON array (64 bytes)"
+    for m in MARKERS:
+        if m.search(data):
+            yield f"secret marker {m.pattern.decode()!r}"
+    if pubs:
+        for m in B58_64.finditer(data):
+            raw = b58decode(m.group().decode())
+            if len(raw) == 64 and raw[32:] in pubs:
+                yield "base58 keypair of one of our wallets"
+                break
+
+
+def main():
+    root = pathlib.Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip())
+    staged = subprocess.check_output(["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"], text=True)
+    pubs = our_pubkeys(root)
+    bad = 0
+    for rel in filter(None, staged.split("\0")):
+        blob = subprocess.run(["git", "show", f":{rel}"], capture_output=True).stdout
+        for why in problems(pathlib.PurePosixPath(rel), blob, pubs):
+            print(f"pre-commit: {rel}: {why}", file=sys.stderr)
+            bad += 1
+    if bad:
+        print("pre-commit: commit blocked", file=sys.stderr)
+    return 1 if bad else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

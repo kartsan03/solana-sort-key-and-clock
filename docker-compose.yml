@@ -1,0 +1,42 @@
+# `docker compose up` recomputes every number from data/raw offline and fails on any
+# difference from the committed data/derived. Other services are opt-in profiles.
+services:
+  analyze:
+    build: .
+    network_mode: none
+    command: ["analyze"]
+
+  test:
+    profiles: ["test"]
+    build: .
+    network_mode: none
+    entrypoint: ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+    command: []
+
+  verify:
+    profiles: ["verify"]
+    build: .
+    environment:
+      - ITB_RPC_URL
+      - VERIFY_ALL
+    command: ["verify"]
+
+  dryrun:
+    profiles: ["dryrun"]
+    build: .
+    network_mode: host
+    volumes: ["./state:/app/state"]
+    command: ["run", "--plan", "${ITB_PLAN:-state/plans/dry.json}"]
+
+  live:
+    profiles: ["live"]
+    build: .
+    network_mode: host
+    environment:
+      - ITB_LIVE
+      - ITB_KEYS_DIR=/run/itb-keys
+    volumes:
+      - "${ITB_KEYS_DIR:-../keys}:/run/itb-keys:ro"
+      - "./state:/app/state"
+      - "./data/raw:/app/data/raw"
+    command: ["run", "--plan", "${ITB_PLAN:?set ITB_PLAN}", "--live", "--max-spend-sol", "${ITB_MAX_SPEND_SOL:?set ITB_MAX_SPEND_SOL}"]
