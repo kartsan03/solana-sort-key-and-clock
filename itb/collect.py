@@ -121,7 +121,8 @@ async def collect_run(rpc, windows, probes, height_now, log=print):
             else:
                 o["outcome"] = "other_leader"
         elif height_now > p["last_valid"]:
-            o["outcome"] = "send_failed" if p.get("ack") in ("closed", "error", "not_sent") else "expired"
+            ack = (p.get("ack") or "").split(":")[0]
+            o["outcome"] = "send_failed" if ack in ("closed", "error", "not_sent") else "expired"
         else:
             o["outcome"] = "pending"
         outcomes.append(o)

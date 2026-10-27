@@ -94,8 +94,11 @@ class TpuPool:
     def acked(self, addr, sid):
         """'acked' if the peer acknowledged the whole stream, 'pending' if not yet, 'closed' if the connection died."""
         proto = self.conns.get(addr)
-        if proto is None or proto._closed.is_set():
+        if proto is None:
             return "closed"
+        if proto._closed.is_set():
+            ev = getattr(proto._quic, "_close_event", None)
+            return f"closed:{ev.error_code}:{ev.reason_phrase}"[:80] if ev else "closed"
         st = proto._quic._streams.get(sid)
         if st is None:
             return "acked"  # fully acked streams are discarded by aioquic
