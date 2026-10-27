@@ -233,7 +233,7 @@ class Runner:
             return
         addr = node["tpuQuic"]
         t_fs0 = clock.predict_ms(w["slot0"]) * 1_000_000
-        await sleep_until_mono(wall_to_mono_ns(t_fs0 - 6_000_000_000))
+        await sleep_until_mono(wall_to_mono_ns(t_fs0 - 3_500_000_000))
         rec = {**w, "addr": addr, "ingress": node["ingress"], "client": node["client"], "live": self.live}
         try:
             _, hs = await self.pool.get(addr)
@@ -293,7 +293,15 @@ class Runner:
                 t = clock.predict_ms(w["slot0"] + 1) - self.lambda_ms - owl_ms + w["phase_ms"]
                 return [int((t + i * spacing) * 1e6) for i in range(len(seq))]
         first = plan_times()[0]
-        await sleep_until_mono(wall_to_mono_ns(first) - 120_000_000)
+        await sleep_until_mono(wall_to_mono_ns(first) - 400_000_000)
+        if self.live and not self.pool.alive(addr):     # evicted while idle: reconnect once
+            try:
+                _, hs2 = await asyncio.wait_for(self.pool.get(addr), 0.35)
+                rec["reconnected_ms"] = round(hs2, 2)
+            except Exception as e:
+                rec["reconnect_error"] = f"{type(e).__name__}: {e}"
+        await sleep_until_mono(wall_to_mono_ns(plan_times()[0]) - 120_000_000)
+        rec["alive_before_send"] = self.pool.alive(addr)
         planned = plan_times()
         rec.update(clock=clock.state(), owl_ms=round(owl_ms, 3), blockhash=bh, last_valid=last_valid,
                    lock=str(shared_lock), planned_ns=planned, height_at_sign=chain.height_now())
@@ -310,7 +318,7 @@ class Runner:
                 p.update(sent_ns=time.time_ns(), sent_mono=time.monotonic_ns(), dry=True)
             p["planned_ns"] = t_plan
         rec["slot_at_send"] = clock.last
-        await asyncio.sleep(1.0)
+        await asyncio.sleep(1.5)
         for p in probes:
             if self.live and "stream" in p:
                 p["ack"] = self.pool.acked(addr, p["stream"])

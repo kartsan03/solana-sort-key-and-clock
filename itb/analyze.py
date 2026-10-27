@@ -21,7 +21,8 @@ from .probe import ECONOMIC_KEYS, KEYS, Probe
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RAW, DERIVED = ROOT / "data" / "raw", ROOT / "data" / "derived"
 SEED = 20261030
-THETA0 = 0.75          # a rule must win each contrast in more than 3/4 of informative windows
+THETA_ID = 0.5         # identification: the key beats each rival in more than half of informative windows
+STRICT = 0.75          # strictness: lower 95% bound of the weakest rival's win rate at least this
 ALPHA = 0.05
 NULL_PERMS = 2000
 PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB"}
@@ -116,7 +117,7 @@ def window_contrasts(w, panel):
     return out
 
 
-def p_greater(wins, n, theta=THETA0):
+def p_greater(wins, n, theta=THETA_ID):
     """One-sided exact binomial p-value for H0: win prob <= theta."""
     return float(binom.sf(wins - 1, n, theta)) if n else 1.0
 
@@ -260,8 +261,8 @@ def holm(pvals, alpha=ALPHA):
     return out
 
 
-def calls(k_results, tiers, phase):
-    """Rule / partial / no rule per validator for one phase; Holm across the Tier-1 validators."""
+def calls(k_results, tiers, phase, family_of=None):
+    """Per validator: which key (identification, Holm across Tier 1) and how strictly it holds."""
     rows = {name: r for name, r in k_results.items() if r["phase"] == phase}
     t1 = {name: r["keys"][r["best"]]["p_iut"] for name, r in rows.items() if tiers.get(r["validator"]) == 1}
     rej = holm(t1)
@@ -269,20 +270,22 @@ def calls(k_results, tiers, phase):
     for name, r in rows.items():
         best = r["keys"][r["best"]]
         tier = tiers.get(r["validator"])
-        rule = rej.get(name, False) if tier == 1 else best["p_iut"] <= ALPHA
-        if rule:
-            verdict = "rule"
-        elif best["min_rate"] is not None and best["min_rate"] > 0.5 and (r["null_p_best"] or 1) <= ALPHA:
-            verdict = "partial"
-        elif (r["null_p_best"] or 1) > ALPHA:
-            verdict = "no rule detected"
-        else:
-            verdict = "partial"
-        if best["min_n"] < 1:
+        identified = rej.get(name, False) if tier == 1 else best["p_iut"] <= ALPHA
+        weakest = min(best["rivals"].values(), key=lambda x: (x["rate"] if x["rate"] is not None else -1))
+        strict = weakest["n"] > 0 and weakest["ci"][0] >= STRICT
+        null_p = r["null_p_best"] if r["null_p_best"] is not None else 1.0
+        if best["min_n"] < 5:
             verdict = "insufficient data"
+        elif identified:
+            verdict = "rule (strict)" if strict else "rule (loose)"
+        elif null_p <= ALPHA:
+            verdict = "order, no single key"
+        else:
+            verdict = "no rule detected"
         out[r["validator"]] = {"tier": tier, "family": r["family"], "key": r["best"], "verdict": verdict,
-                               "p_iut": best["p_iut"], "min_rate": best["min_rate"], "min_n": best["min_n"],
-                               "documented_key": DOCUMENTED.get(r["family"])}
+                               "identified": identified, "strict": strict, "p_iut": best["p_iut"],
+                               "min_rate": best["min_rate"], "min_rate_ci": weakest["ci"], "min_n": best["min_n"],
+                               "null_p": null_p, "documented_key": DOCUMENTED.get(r["family"])}
     return out
 
 

@@ -15,8 +15,8 @@ def test_recovers_each_rule_and_rejects_noise():
     truths = {"a": "agave_int", "f": "fd_exact", "b": "fee_per_cost", "p": "pf_per_cost", "r": "random", "q": "fifo"}
     calls, _ = run_k(PANELS, truths, 26, seed=11, null_perms=100)
     for v in "afbp":
-        assert calls[v]["verdict"] == "rule" and calls[v]["key"] == truths[v]
-    assert calls["r"]["verdict"] != "rule" and calls["q"]["verdict"] != "rule"
+        assert calls[v]["identified"] and calls[v]["key"] == truths[v] and calls[v]["verdict"] == "rule (strict)"
+    assert not calls["r"]["identified"] and not calls["q"]["identified"]
 
 
 def test_fingerprint_needs_exact_order():

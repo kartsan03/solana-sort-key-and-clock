@@ -109,7 +109,7 @@ def claims_md(res, evidence):
     n = 0
     for ph in ("dayA", "dayB"):
         for v, r in sorted(res["calls"].get(ph, {}).items()):
-            if r["verdict"] not in ("rule", "partial"):
+            if not r.get("identified"):
                 continue
             n += 1
             ev = evidence.get((v, ph), {})

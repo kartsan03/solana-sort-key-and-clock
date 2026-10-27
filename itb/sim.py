@@ -78,10 +78,10 @@ def power_k(panels, n_windows, reps, eps, p_land=0.85, seed=1):
             got = c.get(v, {})
             if t in correct:
                 seen[t] += 1
-                correct[t] += got.get("verdict") == "rule" and got.get("key") == t
+                correct[t] += bool(got.get("identified")) and got.get("key") == t
             else:
                 false_seen[t] += 1
-                false_rule[t] += got.get("verdict") == "rule"
+                false_rule[t] += bool(got.get("identified"))
     return {"n_windows": n_windows, "eps": eps, "p_land": p_land, "reps": reps,
             "correct_rule_rate": {k: correct[k] / seen[k] for k in correct if seen[k]},
             "false_rule_rate": {k: false_rule[k] / false_seen[k] for k in false_rule}}
@@ -134,7 +134,7 @@ def main(reps=200):
     panels = panels_from_json(json.loads((ROOT / "design" / "panels.json").read_text())["panels"])
     out = {"k": [], "m": []}
     for n in (16, 22, 28):
-        for eps in (0.0, 0.1):
+        for eps in (0.0, 0.1, 0.25):
             r = power_k(panels, n, reps, eps)
             out["k"].append(r)
             print(json.dumps(r))
