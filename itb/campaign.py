@@ -73,7 +73,7 @@ def cmd_freeze(a):
          "timing": {"lambda_ms": 60.0, "short_fuse_blocks": list(clock.SHORT_FUSE), "min_gap_s": run.MIN_GAP_S},
          "analysis": {"theta_identification": analyze.THETA_ID, "strict_lower_bound": analyze.STRICT,
                       "alpha": analyze.ALPHA, "null_permutations": analyze.NULL_PERMS, "seed": analyze.SEED,
-                      "evaluable_panel_min_probes": 4, "evaluable_train_min": {"t4": 8, "t12": 7},
+                      "evaluable_panel_min_probes": 4, "min_evaluable_panels": analyze.MIN_EVALUABLE, "evaluable_train_min": {"t4": 8, "t12": 7},
                       "documented_keys": analyze.DOCUMENTED}}
     out = ROOT / "design" / "design.json"
     out.write_text(json.dumps(d, indent=1))

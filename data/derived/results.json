@@ -6,6 +6,7 @@
     "family": "Agave",
     "identified": false,
     "key": "agave_int",
+    "matches_documented": true,
     "min_n": 1,
     "min_rate": 1.0,
     "min_rate_ci": [
@@ -23,6 +24,7 @@
     "family": "JitoLabs",
     "identified": false,
     "key": "agave_int",
+    "matches_documented": true,
     "min_n": 0,
     "min_rate": null,
     "min_rate_ci": [
@@ -40,6 +42,7 @@
     "family": "HarmonicAgave",
     "identified": false,
     "key": "pf_per_cost",
+    "matches_documented": null,
     "min_n": 1,
     "min_rate": 1.0,
     "min_rate_ci": [
@@ -57,6 +60,7 @@
     "family": "AgaveBam",
     "identified": false,
     "key": "agave_int",
+    "matches_documented": null,
     "min_n": 0,
     "min_rate": null,
     "min_rate_ci": [
@@ -74,6 +78,7 @@
     "family": "Firedancer",
     "identified": false,
     "key": "agave_int",
+    "matches_documented": false,
     "min_n": 0,
     "min_rate": null,
     "min_rate_ci": [

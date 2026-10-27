@@ -24,6 +24,7 @@ SEED = 20261030
 THETA_ID = 0.5         # identification: the key beats each rival in more than half of informative windows
 STRICT = 0.75          # strictness: lower 95% bound of the weakest rival's win rate at least this
 ALPHA = 0.05
+MIN_EVALUABLE = 15     # fewer evaluable K-main panels on a day -> "insufficient data"
 NULL_PERMS = 2000
 PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB", "C": "dayC", "D": "dayD"}
 DOCUMENTED = {"Agave": "agave_int", "JitoLabs": "agave_int", "Firedancer": "fd_exact"}
@@ -288,7 +289,7 @@ def compute():
     pred_path = ROOT / "design" / "predictions-dayB.json"
     if pred_path.exists():
         preds = json.loads(pred_path.read_text())["validators"]
-        res["holdout"] = holdout(k, tiers, preds)
+        res["holdout"] = holdout(k, res["study_m"], tiers, preds)
     return json.loads(json.dumps(res, sort_keys=True, default=str))
 
 

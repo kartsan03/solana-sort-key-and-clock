@@ -37,3 +37,13 @@ def test_overtaking_curve_fifo_vs_rounds():
     hf = trains.overtaking_curve(fifo, rng, reps=50)["horizon_ms"]
     hr = trains.overtaking_curve(rounds, rng, reps=50)["horizon_ms"]
     assert hf == 0.0 and hr >= 12.0
+
+
+def test_holdout_horizon_inside_interval():
+    k = {"V|dayB": {"phase": "dayB", "validator": "V", "best": "agave_int",
+                    "keys": {"agave_int": {"p_iut": 0.001, "min_rate": 0.9, "min_n": 20}}}}
+    m = {"V|dayB": {"increasing": {"horizon_ci": [4.0, 12.0]}}}
+    out = verdicts.holdout(k, m, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 8.0}})["dayB"]["V"]
+    assert out["accepted"] and out["horizon"]["inside"]
+    out = verdicts.holdout(k, m, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 20.0}})["dayB"]["V"]
+    assert not out["horizon"]["inside"]
