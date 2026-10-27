@@ -16,6 +16,7 @@ async def cmd_campaign(a):
     from .chain import Rpc
     from .ledger import single_process
     quotas = json.loads(pathlib.Path(a.quotas).read_text())
+    quotas = quotas["days"][a.phase] if "days" in quotas else quotas    # design/campaign.json or a plain map
     rng = secrets.SystemRandom()
     t_day = time.mktime(time.strptime(a.date + "T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")) - time.timezone
     block_h = 24 / a.blocks
@@ -33,7 +34,7 @@ async def cmd_campaign(a):
         if time.time() > start + block_h * 3600 - 900:
             print(f"block {b}: already over, skipped")
             continue
-        run_id = f"{a.phase}-{a.date[5:7]}{a.date[8:10]}-b{b}"
+        run_id = ("dry-" if a.dry else "") + f"{a.phase}-{a.date[5:7]}{a.date[8:10]}-b{b}"
         tfile = STATE / "plans" / f"{run_id}.targets.json"
         tfile.parent.mkdir(parents=True, exist_ok=True)
         tfile.write_text(json.dumps({v: dict(quotas[v], K=split[v]["K"][b], M=split[v]["M"][b]) for v in quotas}, indent=1))
@@ -43,6 +44,10 @@ async def cmd_campaign(a):
         hours = (start + block_h * 3600 - 600 - time.time()) / 3600 - lead_min / 60
         await cmd_plan(argparse.Namespace(targets=str(tfile), run_id=run_id, hours=hours, start_in_min=lead_min,
                                           start_utc=None, ms_per_slot=213.0))
+        if a.dry:
+            await cmd_run(argparse.Namespace(plan=str(STATE / "plans" / f"{run_id}.json"), live=False,
+                                             max_spend_sol=None, lambda_ms=a.lambda_ms))
+            continue
         rpc = Rpc()
         with single_process(STATE / "live.lock"):
             r, _ = await ops.reconcile(rpc, ledger(), pubkeys(), f"pre-fund {run_id}")

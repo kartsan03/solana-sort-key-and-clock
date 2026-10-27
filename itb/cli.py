@@ -251,7 +251,8 @@ def main(argv=None):
     s.add_argument("--blocks", type=int, default=6)
     s.add_argument("--first-block", type=int, default=0)
     s.add_argument("--last-block", type=int)
-    s.add_argument("--block-max-sol", type=float, required=True)
+    s.add_argument("--block-max-sol", type=float)
+    s.add_argument("--dry", action="store_true", help="plan and rehearse every block; no funding, no sends")
     s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)
     sub.add_parser("freeze")
@@ -284,8 +285,8 @@ def main(argv=None):
     elif a.cmd == "collect":
         asyncio.run(cmd_collect(a))
     elif a.cmd == "campaign":
-        if os.environ.get("ITB_LIVE") != "1":
-            sys.exit("campaign refused: set ITB_LIVE=1")
+        if not a.dry and (os.environ.get("ITB_LIVE") != "1" or not a.block_max_sol):
+            sys.exit("live campaign refused: set ITB_LIVE=1 and a positive --block-max-sol (or use --dry)")
         from .campaign import cmd_campaign
         asyncio.run(cmd_campaign(a))
     elif a.cmd == "ops":
