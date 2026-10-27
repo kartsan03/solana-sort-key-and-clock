@@ -1,0 +1,333 @@
+{
+ "gossip": {
+  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
+   "client": "Rakurai",
+   "gossip_ip": "64.130.42.87",
+   "ingress": "own",
+   "tpuQuic": "64.130.42.87:8002",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  },
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
+   "client": "AgaveBam",
+   "gossip_ip": "64.130.44.125",
+   "ingress": "bam",
+   "tpuQuic": "208.91.109.115:5010",
+   "tpu_shared": 39,
+   "version": "4.3.2"
+  },
+  "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS": {
+   "client": "Agave",
+   "gossip_ip": "185.189.44.172",
+   "ingress": "own",
+   "tpuQuic": "185.189.44.172:12002",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+   "client": "Agave",
+   "gossip_ip": "5.199.172.176",
+   "ingress": "own",
+   "tpuQuic": "5.199.172.176:12002",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+   "client": "HarmonicFiredancer",
+   "gossip_ip": "64.130.37.138",
+   "ingress": "harmonic",
+   "tpuQuic": "64.130.45.196:9007",
+   "tpu_shared": 13,
+   "version": "26.10.4"
+  },
+  "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP": {
+   "client": "FireBAM",
+   "gossip_ip": "64.130.40.243",
+   "ingress": "bam",
+   "tpuQuic": "198.13.141.173:5010",
+   "tpu_shared": 99,
+   "version": "26.10.4"
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+   "client": "HarmonicAgave",
+   "gossip_ip": "67.213.126.95",
+   "ingress": "harmonic",
+   "tpuQuic": "64.130.46.242:12315",
+   "tpu_shared": 9,
+   "version": "4.3.2"
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+   "client": "JitoLabs",
+   "gossip_ip": "185.26.10.33",
+   "ingress": "own",
+   "tpuQuic": "185.26.10.33:8022",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+   "client": "HarmonicFiredancer",
+   "gossip_ip": "64.130.47.134",
+   "ingress": "harmonic",
+   "tpuQuic": "198.13.140.105:9007",
+   "tpu_shared": 38,
+   "version": "26.10.4"
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+   "client": "Firedancer",
+   "gossip_ip": "23.109.46.35",
+   "ingress": "own",
+   "tpuQuic": "23.109.46.35:9007",
+   "tpu_shared": 1,
+   "version": "26.10.4"
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+   "client": "JitoLabs",
+   "gossip_ip": "64.130.32.153",
+   "ingress": "own",
+   "tpuQuic": "64.130.32.153:8002",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+   "client": "HarmonicAgave",
+   "gossip_ip": "67.213.127.83",
+   "ingress": "harmonic",
+   "tpuQuic": "63.254.166.232:12324",
+   "tpu_shared": 15,
+   "version": "4.3.2"
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+   "client": "AgaveBam",
+   "gossip_ip": "8.222.146.60",
+   "ingress": "bam",
+   "tpuQuic": "198.13.130.9:5010",
+   "tpu_shared": 39,
+   "version": "4.3.2"
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+   "client": "Firedancer",
+   "gossip_ip": "86.54.153.246",
+   "ingress": "own",
+   "tpuQuic": "86.54.153.246:9007",
+   "tpu_shared": 1,
+   "version": "26.10.4"
+  },
+  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc": {
+   "client": "FireBAM",
+   "gossip_ip": "64.130.42.120",
+   "ingress": "bam",
+   "tpuQuic": "63.254.167.199:5010",
+   "tpu_shared": 65,
+   "version": "26.10.4"
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+   "client": "Rakurai",
+   "gossip_ip": "45.32.145.112",
+   "ingress": "own",
+   "tpuQuic": "45.32.145.112:8002",
+   "tpu_shared": 1,
+   "version": "4.3.2"
+  }
+ },
+ "kobe": {
+  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
+   "active_stake": 292979831750053,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
+   "active_stake": 3598007067995900,
+   "bam_connection_rate": 1.0,
+   "running_bam": true,
+   "running_jito": true
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+   "active_stake": 3827852828883914,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP": {
+   "active_stake": 4477329987787841,
+   "bam_connection_rate": 1.0,
+   "running_bam": true,
+   "running_jito": true
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+   "active_stake": 4064330850888023,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+   "active_stake": 9206551544672294,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+   "active_stake": 2132861248272082,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+   "active_stake": 1921012296017696,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+   "active_stake": 10812576742026506,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+   "active_stake": 4114359410835593,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+   "active_stake": 4420797449651854,
+   "bam_connection_rate": 0.9722222222222222,
+   "running_bam": true,
+   "running_jito": true
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+   "active_stake": 5949329755219456,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  },
+  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc": {
+   "active_stake": 418255140776961,
+   "bam_connection_rate": 1.0,
+   "running_bam": true,
+   "running_jito": true
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+   "active_stake": 2265857484197439,
+   "bam_connection_rate": 0.0,
+   "running_bam": false,
+   "running_jito": true
+  }
+ },
+ "t_ns": 1793125199017405979,
+ "validators": {
+  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
+   "jito": true,
+   "name": "Astraeus",
+   "software_client": "Rakurai",
+   "software_client_id": 8,
+   "software_version": "4.3.2"
+  },
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
+   "jito": true,
+   "name": null,
+   "software_client": "AgaveBam",
+   "software_client_id": 6,
+   "software_version": "4.3.2"
+  },
+  "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS": {
+   "jito": false,
+   "name": null,
+   "software_client": "Agave",
+   "software_client_id": 3,
+   "software_version": "4.3.2"
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+   "jito": false,
+   "name": null,
+   "software_client": "Agave",
+   "software_client_id": 3,
+   "software_version": "4.3.2"
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+   "jito": true,
+   "name": null,
+   "software_client": "HarmonicFiredancer",
+   "software_client_id": 9,
+   "software_version": "26.10.4"
+  },
+  "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP": {
+   "jito": true,
+   "name": null,
+   "software_client": "FireBAM",
+   "software_client_id": 12,
+   "software_version": "26.10.4"
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+   "jito": true,
+   "name": null,
+   "software_client": "HarmonicAgave",
+   "software_client_id": 10,
+   "software_version": "4.3.2"
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+   "jito": true,
+   "name": "Ledger by Figment",
+   "software_client": "JitoLabs",
+   "software_client_id": 1,
+   "software_version": "4.3.2"
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+   "jito": true,
+   "name": null,
+   "software_client": "HarmonicFiredancer",
+   "software_client_id": 9,
+   "software_version": "26.10.4"
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+   "jito": true,
+   "name": "Firedancer Development",
+   "software_client": "Firedancer",
+   "software_client_id": 5,
+   "software_version": "26.10.4"
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+   "jito": true,
+   "name": "Bitwise Onchain Solutions",
+   "software_client": "JitoLabs",
+   "software_client_id": 1,
+   "software_version": "4.3.2"
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+   "jito": true,
+   "name": null,
+   "software_client": "HarmonicAgave",
+   "software_client_id": 10,
+   "software_version": "4.3.2"
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+   "jito": true,
+   "name": "OKX Earn",
+   "software_client": "AgaveBam",
+   "software_client_id": 6,
+   "software_version": "4.3.2"
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+   "jito": true,
+   "name": "Forward Industries",
+   "software_client": "Firedancer",
+   "software_client_id": 5,
+   "software_version": "26.10.4"
+  },
+  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc": {
+   "jito": true,
+   "name": "Laine \u2764\ufe0f  by SOL Strategies",
+   "software_client": "FireBAM",
+   "software_client_id": 12,
+   "software_version": "26.10.4"
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+   "jito": true,
+   "name": "Anagram Staking",
+   "software_client": "Rakurai",
+   "software_client_id": 8,
+   "software_version": "4.3.2"
+  }
+ }
+}

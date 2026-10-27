@@ -191,6 +191,19 @@ async def cmd_ops(a):
     elif a.op == "reconcile":
         r, _ = await ops.reconcile(rpc, led, pks, a.arg or "manual")
         print(json.dumps(r))
+    elif a.op == "labels":
+        from . import cluster
+        tok = cluster.validators_app_token()
+        if not tok:
+            sys.exit("no validators.app token")
+        ids = list(json.loads((ROOT / "design" / "candidates.json").read_text()))
+        snap = await cluster.validators_app_snapshot(tok, ids)
+        snap["gossip"] = (await cluster.nodes_snapshot(rpc, set(ids)))["nodes"]
+        snap["kobe"] = {k: v for k, v in (await cluster.kobe_snapshot())["validators"].items() if k in ids}
+        out = RAW / "labels" / time.strftime("%Y%m%dT%H%M%SZ.json", time.gmtime())
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(snap, indent=1, sort_keys=True))
+        print(f"wrote {out}: {len(snap['validators'])} validators.app labels")
     elif a.op == "unhalt":
         led.unhalt(a.arg or "")
         print("unhalted")
@@ -319,7 +332,7 @@ def main(argv=None):
     s = sub.add_parser("collect")
     s.add_argument("--run-id", required=True)
     s = sub.add_parser("ops")
-    s.add_argument("op", choices=["keyinfo", "status", "init", "reconcile", "fund", "memo", "inflow", "sweep", "unhalt"])
+    s.add_argument("op", choices=["keyinfo", "status", "init", "reconcile", "fund", "memo", "inflow", "sweep", "unhalt", "labels"])
     s.add_argument("arg", nargs="?")
     s.add_argument("--note")
     s = sub.add_parser("analyze")
