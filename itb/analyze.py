@@ -53,12 +53,15 @@ def load(raw=RAW):
             p.update(outs.get(p["sig"], {"outcome": "missing"}))
             probes[p["window_id"]].append(p)
         snaps = [s for s in jl(d / "snapshots.jsonl.gz") if s.get("kind") == "gossip"]
+        loads = {b["slot"]: b.get("n_tx") for b in jl(d / "blocks.jsonl.gz") if not b.get("skipped")}
         for w in jl(d / "windows.jsonl.gz"):
             if "planned_ns" not in w:
                 continue
             w["phase"] = phase_of(w["run_id"])
             w["probes"] = sorted(probes.get(w["window_id"], []), key=lambda p: p["label"])
             w["status"] = bracket(w, snaps)
+            slots = Counter(p["slot"] for p in w["probes"] if p.get("outcome") == "target_block")
+            w["block_load"] = loads.get(slots.most_common(1)[0][0]) if slots else None
             windows.append(w)
     return windows
 
@@ -203,8 +206,19 @@ def evaluable(w, need=4):
     return any(len(seq) >= need for seq in block_orders(w).values())
 
 
+def load_terciles(windows):
+    """Cut points (transactions per block) splitting each phase's K-main windows into thirds."""
+    cuts = {}
+    for ph in {w["phase"] for w in windows}:
+        xs = sorted(w["block_load"] for w in windows if w["phase"] == ph and w["study"] == "K"
+                    and w.get("block_load") is not None)
+        cuts[ph] = [xs[len(xs) // 3], xs[2 * len(xs) // 3]] if len(xs) >= 3 else None
+    return cuts
+
+
 def study_k(windows, panels, rng):
     out = {}
+    cuts = load_terciles(windows)
     by_v = defaultdict(list)
     for w in windows:
         if w["study"] == "K" and w["status"] != "transition":
@@ -227,6 +241,12 @@ def study_k(windows, panels, rng):
                 a, t = a + x, t + y
             desc[k] = a / t if t else None
         arms = {arm: fifo_stats([w for w in ws if w["arm"] == arm]) for arm in ("K-main", "K-null", "K-free")}
+        by_load = {}
+        c = cuts.get(ph)
+        if c:
+            for name, lo, hi in (("low", -1, c[0]), ("mid", c[0], c[1]), ("high", c[1], 10**9)):
+                sub = [w for w in main if w.get("block_load") is not None and lo < w["block_load"] <= hi]
+                by_load[name] = {"windows": len(sub), "best_key_agreement": _agree_rate(sub, panels, best)}
         free = [w for w in ws if w["arm"] == "K-free"]
         free_agree = {k: _agree_rate(free, panels, k) for k in (best,)}
         out[f"{v}|{ph}"] = {
@@ -236,6 +256,7 @@ def study_k(windows, panels, rng):
             "named": {c: {"n": n_inf[kp], "k1_wins": res[kp]} for c, kp in NAMED.items()},
             "keys": table, "best": best, "agreement": desc, "send_order": arms, "k_free_best_agreement": free_agree,
             "null_p_best": randomisation_null(main, panels, best, rng) if main else None,
+            "by_block_load": by_load, "load_cuts": c,
         }
     return out
 

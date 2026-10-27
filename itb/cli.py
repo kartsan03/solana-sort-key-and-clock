@@ -234,7 +234,7 @@ async def cmd_campaign(a):
             base, extra = divmod(n, a.blocks)
             bonus = set(rng.sample(range(a.blocks), extra))
             split[v][st] = [base + (b in bonus) for b in range(a.blocks)]
-    for b in range(a.first_block, a.blocks):
+    for b in range(a.first_block, min(a.blocks, (a.last_block if a.last_block is not None else a.blocks - 1) + 1)):
         start = t_day + b * block_h * 3600
         if time.time() > start + block_h * 3600 - 900:
             print(f"block {b}: already over, skipped")
@@ -311,6 +311,7 @@ def main(argv=None):
     s.add_argument("--quotas", required=True)
     s.add_argument("--blocks", type=int, default=6)
     s.add_argument("--first-block", type=int, default=0)
+    s.add_argument("--last-block", type=int)
     s.add_argument("--block-max-sol", type=float, required=True)
     s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)

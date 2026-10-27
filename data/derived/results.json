@@ -246,6 +246,20 @@
     "total_fee": 0.6666666666666666
    },
    "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 1
+    },
+    "mid": {
+     "best_key_agreement": null,
+     "windows": 0
+    }
+   },
    "evaluable": 1,
    "family": "Agave",
    "informative": {
@@ -901,6 +915,10 @@
      }
     }
    },
+   "load_cuts": [
+    411,
+    545
+   ],
    "named": {
     "C-base0": {
      "k1_wins": 1,
@@ -965,6 +983,20 @@
     "total_fee": null
    },
    "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "low": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "mid": {
+     "best_key_agreement": null,
+     "windows": 0
+    }
+   },
    "evaluable": 0,
    "family": "JitoLabs",
    "informative": {
@@ -1620,6 +1652,10 @@
      }
     }
    },
+   "load_cuts": [
+    411,
+    545
+   ],
    "named": {
     "C-base0": {
      "k1_wins": 0,
@@ -1684,6 +1720,20 @@
     "total_fee": 0.8
    },
    "best": "pf_per_cost",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "low": {
+     "best_key_agreement": 0.9333333333333333,
+     "windows": 1
+    },
+    "mid": {
+     "best_key_agreement": null,
+     "windows": 0
+    }
+   },
    "evaluable": 1,
    "family": "HarmonicAgave",
    "informative": {
@@ -2339,6 +2389,10 @@
      }
     }
    },
+   "load_cuts": [
+    411,
+    545
+   ],
    "named": {
     "C-base0": {
      "k1_wins": 0,
@@ -2403,6 +2457,20 @@
     "total_fee": null
    },
    "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "low": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "mid": {
+     "best_key_agreement": null,
+     "windows": 0
+    }
+   },
    "evaluable": 0,
    "family": "AgaveBam",
    "informative": {
@@ -3058,6 +3126,10 @@
      }
     }
    },
+   "load_cuts": [
+    411,
+    545
+   ],
    "named": {
     "C-base0": {
      "k1_wins": 0,
@@ -3122,6 +3194,20 @@
     "total_fee": null
    },
    "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "low": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "mid": {
+     "best_key_agreement": null,
+     "windows": 0
+    }
+   },
    "evaluable": 0,
    "family": "Firedancer",
    "informative": {
@@ -3777,6 +3863,10 @@
      }
     }
    },
+   "load_cuts": [
+    411,
+    545
+   ],
    "named": {
     "C-base0": {
      "k1_wins": 0,

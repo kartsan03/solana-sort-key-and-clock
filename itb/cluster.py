@@ -124,6 +124,21 @@ async def kobe_snapshot():
             "validators": {v["identity_account"]: {k: v.get(k) for k in keep} for v in r.json()["validators"]}}
 
 
+def validators_app_token():
+    """Token from the environment or ../.env.rpc (outside the repo); never logged."""
+    import os
+    import pathlib
+    name = "VALIDATORS_APP_TOKEN"
+    tok = os.environ.get(name)
+    env = pathlib.Path(__file__).resolve().parents[2] / ".env.rpc"
+    if not tok and env.exists():
+        for line in env.read_text().splitlines():
+            k, _, v = line.strip().partition("=")
+            if k == name:
+                tok = v.strip().strip('"')
+    return tok or None
+
+
 async def validators_app_snapshot(token, identities):
     """Client labels from validators.app (needs a free API token)."""
     async with httpx.AsyncClient(timeout=60, headers={"User-Agent": UA, "Token": token}) as http:

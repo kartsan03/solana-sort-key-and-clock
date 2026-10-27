@@ -216,13 +216,20 @@ class Runner:
                 self.note(f"snapshot failed: {e}")
             await asyncio.sleep(every)
 
-    async def kobe_loop(self, stop):
+    async def kobe_loop(self, stop, keep=()):
+        token = cluster.validators_app_token()
         while not stop.is_set():
             try:
                 k = await cluster.kobe_snapshot()
                 self.write("snapshots", {"kind": "kobe", **k})
             except Exception as e:
                 self.note(f"kobe failed: {e}")
+            if token:
+                try:
+                    v = await cluster.validators_app_snapshot(token, keep)
+                    self.write("snapshots", {"kind": "validators_app", **v})
+                except Exception as e:
+                    self.note(f"validators.app failed: {type(e).__name__}")   # never echo the request
             await asyncio.sleep(3600)
 
     async def window(self, w, panels, clock, chain):
@@ -254,6 +261,11 @@ class Runner:
         # build and sign
         qs = [(lab, Probe(L, p, D)) for lab, L, p, D in w["probes"]]
         payer_idx = w["payers"]
+        stale_clock = time.time() * 1000 - clock.fs.get(clock.last, 0) > 2000
+        stale_chain = chain.height_t is None or time.monotonic() - chain.height_t > 10
+        if stale_clock or stale_chain:
+            self.note(f"{wid}: skipped, {'slot clock' if stale_clock else 'blockhash poller'} stale")
+            return
         if any(chain.height_now() <= self.payer_free_at.get(i, -1) for i in payer_idx):
             self.note(f"{wid}: payers still busy, skipped")
             return
@@ -340,7 +352,7 @@ class Runner:
         bg = [asyncio.create_task(slot_updates(ws_url_for(self.rpc.url), clock, stop)),
               asyncio.create_task(chain.poll(stop)),
               asyncio.create_task(self.snapshot_loop(keep, stop)),
-              asyncio.create_task(self.kobe_loop(stop))]
+              asyncio.create_task(self.kobe_loop(stop, keep))]
         for _ in range(100):
             if clock.last and chain.hashes and self.nodes and len(clock.fs) > 40:
                 break
