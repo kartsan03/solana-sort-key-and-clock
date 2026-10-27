@@ -86,3 +86,10 @@ def test_reconcile_halts_on_unlogged_inflow_and_accepts_logged(tmp_path):
     led.record_flow("in", "topup", 10_000_000, "owner top-up")
     r = led.reconcile({"burner": 60_000_000, "p1": 0}, height=10, slot=3)
     assert not r["halted"] and r["spent"] == 0
+
+
+def test_sweep_refuses_unpinned_destination(monkeypatch):
+    from itb import ops
+    monkeypatch.setenv("ITB_SWEEP_TO", "11111111111111111111111111111111")
+    with pytest.raises(SystemExit):
+        ops.sweep_target()

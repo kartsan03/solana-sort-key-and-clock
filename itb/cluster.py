@@ -124,19 +124,22 @@ async def kobe_snapshot():
             "validators": {v["identity_account"]: {k: v.get(k) for k in keep} for v in r.json()["validators"]}}
 
 
-def validators_app_token():
-    """Token from the environment or ../.env.rpc (outside the repo); never logged."""
+def local_setting(name):
+    """A private setting from the environment or ../.env.rpc (outside the repo); never logged."""
     import os
     import pathlib
-    name = "VALIDATORS_APP_TOKEN"
-    tok = os.environ.get(name)
+    val = os.environ.get(name)
     env = pathlib.Path(__file__).resolve().parents[2] / ".env.rpc"
-    if not tok and env.exists():
+    if not val and env.exists():
         for line in env.read_text().splitlines():
             k, _, v = line.strip().partition("=")
             if k == name:
-                tok = v.strip().strip('"')
-    return tok or None
+                val = v.strip().strip('"')
+    return val or None
+
+
+def validators_app_token():
+    return local_setting("VALIDATORS_APP_TOKEN")
 
 
 async def validators_app_snapshot(token, identities):

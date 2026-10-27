@@ -5,15 +5,19 @@ reserved in the ledger like every probe.
 """
 import asyncio
 import base64
+import hashlib
 import time
 
 from solders.hash import Hash
 from solders.pubkey import Pubkey
 
+from .cluster import local_setting
 from .probe import LAMPORTS_PER_SIGNATURE, memo_ix, plain_tx, transfer_ix
 
-SWEEP_TARGET = "kept-out-of-the-repo"     # owner's main wallet
-NEVER_SEND_TO = {"kept-out-of-the-repo"}   # exchange deposit that funded the burner
+# The sweep destination (the owner's wallet) is kept out of the repo: it comes from ITB_SWEEP_TO and must
+# match the SHA-256 pinned here; addresses we must never pay are pinned the same way.
+SWEEP_TARGET_SHA256 = "fc9df4d73104f1113cb6dc720e5b226eecfe6eec955c5ba56bdad7279cbdb404"
+NEVER_SEND_SHA256 = {"764de3c7b86218e55781a548f2a2c0a3c7a96578fddec37abfbbb2b837989345"}
 RENT_0 = 650_240
 
 
@@ -97,10 +101,17 @@ async def inflow(rpc, ledger, sig, pubkeys, note):
     return amount
 
 
-async def sweep(rpc, ledger, payers, run_id, dest=SWEEP_TARGET, log=print):
+def sweep_target():
+    dest = local_setting("ITB_SWEEP_TO") or ""
+    h = hashlib.sha256(dest.encode()).hexdigest()
+    if h in NEVER_SEND_SHA256 or h != SWEEP_TARGET_SHA256:
+        raise SystemExit("sweep refused: ITB_SWEEP_TO is missing or not the pinned destination")
+    return dest
+
+
+async def sweep(rpc, ledger, payers, run_id, log=print):
     """Move everything to the owner's main wallet: each payer pays its own fee and ends at 0."""
-    if dest in NEVER_SEND_TO or dest != SWEEP_TARGET:
-        raise SystemExit(f"refusing to sweep to {dest}")
+    dest = sweep_target()
     to = Pubkey.from_string(dest)
     pks = [str(k.pubkey()) for k in payers]
     order = payers[1:] + payers[:1]        # burner last
