@@ -12,3 +12,4 @@ keys/
 .env.*
 state/
 data/scratch/
+data/raw/*/*.jsonl
