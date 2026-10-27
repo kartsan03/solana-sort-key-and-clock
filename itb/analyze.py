@@ -25,7 +25,7 @@ THETA_ID = 0.5         # identification: the key beats each rival in more than h
 STRICT = 0.75          # strictness: lower 95% bound of the weakest rival's win rate at least this
 ALPHA = 0.05
 NULL_PERMS = 2000
-PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB"}
+PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB", "C": "dayC", "D": "dayD"}
 DOCUMENTED = {"Agave": "agave_int", "JitoLabs": "agave_int", "Firedancer": "fd_exact"}
 
 
@@ -289,6 +289,26 @@ def calls(k_results, tiers, phase, family_of=None):
     return out
 
 
+
+def holdout(k_results, tiers, predictions):
+    """Days B and C: does each validator's pre-registered key (from day A) pass the identification test?"""
+    out = {}
+    for ph in ("dayB", "dayC", "dayD"):
+        rows = {r["validator"]: r for r in k_results.values() if r["phase"] == ph and r["validator"] in predictions}
+        pv = {v: r["keys"][predictions[v]["key"]]["p_iut"] for v, r in rows.items()}
+        rej_t1 = holm({v: p for v, p in pv.items() if tiers.get(v) == 1})
+        res = {}
+        for v, r in rows.items():
+            k = predictions[v]["key"]
+            kt = r["keys"][k]
+            res[v] = {"predicted": k, "p_iut": kt["p_iut"], "min_rate": kt["min_rate"], "min_n": kt["min_n"],
+                      "best_this_day": r["best"],
+                      "accepted": rej_t1.get(v, False) if tiers.get(v) == 1 else kt["p_iut"] <= ALPHA}
+        if res:
+            out[ph] = res
+    return out
+
+
 # ---------------- Study M ----------------
 
 def train_pairs(w):
@@ -453,9 +473,13 @@ def compute():
     rng = np.random.default_rng(SEED)
     k = study_k(windows, panels, rng)
     res = {"n_windows": len(windows), "phases": dict(Counter(w["phase"] for w in windows)),
-           "study_k": k, "calls": {ph: calls(k, tiers, ph) for ph in ("calibration", "dayA", "dayB")},
+           "study_k": k, "calls": {ph: calls(k, tiers, ph) for ph in ("calibration", "dayA", "dayB", "dayC", "dayD")},
            "study_m": study_m(windows, rng), "inclusion": inclusion(windows), "fees": fee_check(windows),
            "gates": gates(windows, panels)}
+    pred_path = ROOT / "design" / "predictions-dayB.json"
+    if pred_path.exists():
+        preds = json.loads(pred_path.read_text())["validators"]
+        res["holdout"] = holdout(k, tiers, preds)
     return json.loads(json.dumps(res, sort_keys=True, default=str))
 
 

@@ -57,16 +57,29 @@ async def nodes_snapshot(rpc, keep=None):
     return snap
 
 
-async def epoch_schedule(rpc):
-    """Full leader schedule of the current epoch as {absolute_slot: leader}."""
+SLOTS_PER_EPOCH = 432_000   # mainnet: no warmup, epoch e starts at e * 432,000
+
+
+async def epoch_schedule(rpc, first_slot=None, last_slot=None):
+    """Leader schedule as {absolute_slot: leader} for every epoch overlapping [first_slot, last_slot]."""
     ei = await rpc.epoch_info()
-    start = ei["absoluteSlot"] - ei["slotIndex"]
-    sched = await rpc.call("getLeaderSchedule", start)
-    by_slot = {}
-    for leader, idxs in sched.items():
-        for i in idxs:
-            by_slot[start + i] = leader
-    return {"epoch": ei["epoch"], "start": start, "slots": ei["slotsInEpoch"], "by_slot": by_slot}
+    cur_start = ei["absoluteSlot"] - ei["slotIndex"]
+    assert cur_start == ei["epoch"] * SLOTS_PER_EPOCH, "unexpected epoch layout"
+    first_slot = first_slot or ei["absoluteSlot"]
+    last_slot = last_slot or first_slot
+    by_slot, epochs = {}, []
+    for e in range(first_slot // SLOTS_PER_EPOCH, last_slot // SLOTS_PER_EPOCH + 1):
+        start = e * SLOTS_PER_EPOCH
+        sched = await rpc.call("getLeaderSchedule", start)
+        if not sched:
+            raise RuntimeError(f"leader schedule for epoch {e} not available yet")
+        for leader, idxs in sched.items():
+            for i in idxs:
+                by_slot[start + i] = leader
+        epochs.append(e)
+    start = epochs[0] * SLOTS_PER_EPOCH
+    return {"epoch": epochs[0], "epochs": epochs, "start": start, "slots": SLOTS_PER_EPOCH * len(epochs),
+            "by_slot": by_slot}
 
 
 def windows(schedule, identity, after_slot=0):

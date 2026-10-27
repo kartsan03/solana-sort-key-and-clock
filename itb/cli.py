@@ -42,11 +42,15 @@ async def cmd_plan(a):
     rpc = Rpc()
     targets = json.loads(pathlib.Path(a.targets).read_text())
     panels = panels_from_json(json.loads((ROOT / "design" / "panels.json").read_text())["panels"])
-    sched = await cluster.epoch_schedule(rpc)
     nodes = cluster.compact_nodes(await rpc.cluster_nodes())
     cur = await rpc.slot("confirmed")
-    start = cur + int(a.start_in_min * 60 / a.ms_per_slot * 1000)
-    end = min(start + int(a.hours * 3600 / a.ms_per_slot * 1000), sched["start"] + sched["slots"] - 1)
+    if a.start_utc:
+        t0 = time.mktime(time.strptime(a.start_utc, "%Y-%m-%dT%H:%M:%SZ")) - time.timezone
+        start = cur + int((t0 - time.time()) * 1000 / a.ms_per_slot)
+    else:
+        start = cur + int(a.start_in_min * 60 / a.ms_per_slot * 1000)
+    end = start + int(a.hours * 3600 / a.ms_per_slot * 1000)
+    sched = await cluster.epoch_schedule(rpc, start, end)
     quotas = {k: {"K": v.get("K", 0), "M": v.get("M", 0)} for k, v in targets.items()}
     plan = run.sample_windows(sched, nodes, quotas, start, end, a.ms_per_slot, cur)
     k_index = 0
@@ -211,6 +215,52 @@ async def cmd_ops(a):
     await rpc.close()
 
 
+async def cmd_campaign(a):
+    """One collection day as N blocks of equal length: plan -> top up payers -> live run -> collect, per block."""
+    import secrets
+    from . import ops
+    from .chain import Rpc
+    from .ledger import single_process
+    quotas = json.loads(pathlib.Path(a.quotas).read_text())
+    rng = secrets.SystemRandom()
+    t_day = time.mktime(time.strptime(a.date + "T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ")) - time.timezone
+    block_h = 24 / a.blocks
+    # split each daily quota over the blocks; remainders go to random blocks (logged in each plan)
+    split = {}
+    for v, q in quotas.items():
+        split[v] = {}
+        for st in ("K", "M"):
+            n = q.get(st, 0)
+            base, extra = divmod(n, a.blocks)
+            bonus = set(rng.sample(range(a.blocks), extra))
+            split[v][st] = [base + (b in bonus) for b in range(a.blocks)]
+    for b in range(a.first_block, a.blocks):
+        start = t_day + b * block_h * 3600
+        if time.time() > start + block_h * 3600 - 900:
+            print(f"block {b}: already over, skipped")
+            continue
+        run_id = f"{a.phase}-{a.date[5:7]}{a.date[8:10]}-b{b}"
+        tfile = STATE / "plans" / f"{run_id}.targets.json"
+        tfile.parent.mkdir(parents=True, exist_ok=True)
+        tfile.write_text(json.dumps({v: dict(quotas[v], K=split[v]["K"][b], M=split[v]["M"][b]) for v in quotas}, indent=1))
+        while time.time() < start - 150:
+            await asyncio.sleep(10)
+        lead_min = max(1.0, (start - time.time()) / 60)
+        hours = (start + block_h * 3600 - 600 - time.time()) / 3600 - lead_min / 60
+        await cmd_plan(argparse.Namespace(targets=str(tfile), run_id=run_id, hours=hours, start_in_min=lead_min,
+                                          start_utc=None, ms_per_slot=213.0))
+        rpc = Rpc()
+        with single_process(STATE / "live.lock"):
+            r, _ = await ops.reconcile(rpc, ledger(), pubkeys(), f"pre-fund {run_id}")
+            if r["halted"]:
+                sys.exit(f"campaign stopped: {ledger().get('halt')}")
+            await ops.fund_payers(rpc, ledger(), payers(), a.float_lamports, f"ops-{run_id}")
+        await rpc.close()
+        await cmd_run(argparse.Namespace(plan=str(STATE / "plans" / f"{run_id}.json"), live=True,
+                                         max_spend_sol=a.block_max_sol, lambda_ms=a.lambda_ms))
+        print(f"block {b} done: {ledger().summary()}")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="itb")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -221,11 +271,21 @@ def main(argv=None):
     s.add_argument("--run-id", required=True)
     s.add_argument("--hours", type=float, default=1.0)
     s.add_argument("--start-in-min", type=float, default=2.0)
+    s.add_argument("--start-utc", help="e.g. 2026-10-29T00:00:00Z (overrides --start-in-min)")
     s.add_argument("--ms-per-slot", type=float, default=213.0)
     s = sub.add_parser("run")
     s.add_argument("--plan", required=True)
     s.add_argument("--live", action="store_true")
     s.add_argument("--max-spend-sol", type=float)
+    s.add_argument("--lambda-ms", type=float, default=60.0)
+    s = sub.add_parser("campaign")
+    s.add_argument("--phase", required=True, choices=["A", "B", "C", "D"])
+    s.add_argument("--date", required=True, help="UTC day, e.g. 2026-10-29")
+    s.add_argument("--quotas", required=True)
+    s.add_argument("--blocks", type=int, default=6)
+    s.add_argument("--first-block", type=int, default=0)
+    s.add_argument("--block-max-sol", type=float, required=True)
+    s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)
     s = sub.add_parser("collect")
     s.add_argument("--run-id", required=True)
@@ -252,6 +312,10 @@ def main(argv=None):
         asyncio.run(cmd_run(a))
     elif a.cmd == "collect":
         asyncio.run(cmd_collect(a))
+    elif a.cmd == "campaign":
+        if os.environ.get("ITB_LIVE") != "1":
+            sys.exit("campaign refused: set ITB_LIVE=1")
+        asyncio.run(cmd_campaign(a))
     elif a.cmd == "ops":
         asyncio.run(cmd_ops(a))
     elif a.cmd == "analyze":
