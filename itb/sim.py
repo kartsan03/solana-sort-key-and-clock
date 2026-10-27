@@ -13,7 +13,8 @@ import pathlib
 
 import numpy as np
 
-from . import analyze
+from . import analyze, verdicts
+from . import trains as trains_mod
 from .design import LABELS, TRAIN_SPECS, panels_from_json, train
 from .probe import ECONOMIC_KEYS, KEYS
 
@@ -60,7 +61,7 @@ def run_k(panels, truths, n_windows, eps=0.0, p_land=0.85, p_split=0.1, jitter_m
         k = analyze.study_k(windows, panels, np.random.default_rng(seed + 1))
     finally:
         analyze.NULL_PERMS = old
-    return analyze.calls(k, {v: 1 for v in truths}, "dayA"), k
+    return verdicts.calls(k, {v: 1 for v in truths}, "dayA"), k
 
 
 def power_k(panels, n_windows, reps, eps, p_land=0.85, seed=1):
@@ -122,8 +123,8 @@ def horizon_m(mode, n_trains, reps, T=20.0, seed=2):
     hs = []
     for _ in range(reps):
         trains = [sim_train(rng, spec, mode, T=T) for spec in ("t4", "t12") for _ in range(n_trains // 2)]
-        trains = [w for w in trains if analyze.evaluable_train(dict(w, probes=w["probes"] + [{}] * 0))]
-        hs.append(analyze.overtaking_curve(trains, rng, reps=100)["horizon_ms"])
+        trains = [w for w in trains if trains_mod.evaluable_train(dict(w, probes=w["probes"] + [{}] * 0))]
+        hs.append(trains_mod.overtaking_curve(trains, rng, reps=100)["horizon_ms"])
     hs = [h for h in hs if h is not None]
     return {"mode": mode, "T": T if mode == "rounds" else None, "n_trains": n_trains, "reps": reps,
             "horizon_median": float(np.median(hs)) if hs else None,

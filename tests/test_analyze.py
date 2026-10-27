@@ -4,7 +4,7 @@ import pathlib
 
 import numpy as np
 
-from itb import analyze
+from itb import trains, verdicts
 from itb.design import panels_from_json
 from itb.sim import run_k, sim_train
 
@@ -26,14 +26,14 @@ def test_fingerprint_needs_exact_order():
 
 
 def test_holm():
-    assert analyze.holm({"x": 0.001, "y": 0.02, "z": 0.04}) == {"x": True, "y": True, "z": True}
-    assert analyze.holm({"x": 0.001, "y": 0.03, "z": 0.04}) == {"x": True, "y": False, "z": False}
+    assert verdicts.holm({"x": 0.001, "y": 0.02, "z": 0.04}) == {"x": True, "y": True, "z": True}
+    assert verdicts.holm({"x": 0.001, "y": 0.03, "z": 0.04}) == {"x": True, "y": False, "z": False}
 
 
 def test_overtaking_curve_fifo_vs_rounds():
     rng = np.random.default_rng(0)
     fifo = [sim_train(rng, s, "fifo", jitter_ms=0.2) for s in ("t4", "t12") for _ in range(8)]
     rounds = [sim_train(rng, s, "rounds", T=50.0, jitter_ms=0.2) for s in ("t4", "t12") for _ in range(8)]
-    hf = analyze.overtaking_curve(fifo, rng, reps=50)["horizon_ms"]
-    hr = analyze.overtaking_curve(rounds, rng, reps=50)["horizon_ms"]
+    hf = trains.overtaking_curve(fifo, rng, reps=50)["horizon_ms"]
+    hr = trains.overtaking_curve(rounds, rng, reps=50)["horizon_ms"]
     assert hf == 0.0 and hr >= 12.0

@@ -16,7 +16,7 @@ import numpy as np
 from scipy.stats import binom
 
 from .design import KEY_PAIRS, NAMED, decisive_pairs, panels_from_json
-from .probe import ECONOMIC_KEYS, KEYS, Probe
+from .probe import ECONOMIC_KEYS, KEYS
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RAW, DERIVED = ROOT / "data" / "raw", ROOT / "data" / "derived"
@@ -269,221 +269,6 @@ def _agree_rate(ws, panels, k):
     return a / t if t else None
 
 
-def holm(pvals, alpha=ALPHA):
-    """{name: rejected?} under Holm's step-down procedure."""
-    items = sorted(pvals.items(), key=lambda kv: kv[1])
-    out, m, stop = {}, len(items), False
-    for i, (name, p) in enumerate(items):
-        if stop or p > alpha / (m - i):
-            stop = True
-            out[name] = False
-        else:
-            out[name] = True
-    return out
-
-
-def calls(k_results, tiers, phase, family_of=None):
-    """Per validator: which key (identification, Holm across Tier 1) and how strictly it holds."""
-    rows = {name: r for name, r in k_results.items() if r["phase"] == phase}
-    t1 = {name: r["keys"][r["best"]]["p_iut"] for name, r in rows.items() if tiers.get(r["validator"]) == 1}
-    rej = holm(t1)
-    out = {}
-    for name, r in rows.items():
-        best = r["keys"][r["best"]]
-        tier = tiers.get(r["validator"])
-        identified = rej.get(name, False) if tier == 1 else best["p_iut"] <= ALPHA
-        weakest = min(best["rivals"].values(), key=lambda x: (x["rate"] if x["rate"] is not None else -1))
-        strict = weakest["n"] > 0 and weakest["ci"][0] >= STRICT
-        null_p = r["null_p_best"] if r["null_p_best"] is not None else 1.0
-        if best["min_n"] < 5:
-            verdict = "insufficient data"
-        elif identified:
-            verdict = "rule (strict)" if strict else "rule (loose)"
-        elif null_p <= ALPHA:
-            verdict = "order, no single key"
-        else:
-            verdict = "no rule detected"
-        out[r["validator"]] = {"tier": tier, "family": r["family"], "key": r["best"], "verdict": verdict,
-                               "identified": identified, "strict": strict, "p_iut": best["p_iut"],
-                               "min_rate": best["min_rate"], "min_rate_ci": weakest["ci"], "min_n": best["min_n"],
-                               "null_p": null_p, "documented_key": DOCUMENTED.get(r["family"])}
-    return out
-
-
-
-def holdout(k_results, tiers, predictions):
-    """Days B and C: does each validator's pre-registered key (from day A) pass the identification test?"""
-    out = {}
-    for ph in ("dayB", "dayC", "dayD"):
-        rows = {r["validator"]: r for r in k_results.values() if r["phase"] == ph and r["validator"] in predictions}
-        pv = {v: r["keys"][predictions[v]["key"]]["p_iut"] for v, r in rows.items()}
-        rej_t1 = holm({v: p for v, p in pv.items() if tiers.get(v) == 1})
-        res = {}
-        for v, r in rows.items():
-            k = predictions[v]["key"]
-            kt = r["keys"][k]
-            res[v] = {"predicted": k, "p_iut": kt["p_iut"], "min_rate": kt["min_rate"], "min_n": kt["min_n"],
-                      "best_this_day": r["best"],
-                      "accepted": rej_t1.get(v, False) if tiers.get(v) == 1 else kt["p_iut"] <= ALPHA}
-        if res:
-            out[ph] = res
-    return out
-
-
-# ---------------- Study M ----------------
-
-def train_pairs(w):
-    """(gap_ms, overtook) for every pair of train probes that landed in the same target block."""
-    spacing = 4.0 if w["train"] == "t4" else 12.0
-    by_label = {p["label"]: p for p in w["probes"] if p.get("outcome") == "target_block" and p.get("index") is not None}
-    out = []
-    labels = sorted(by_label)
-    for i, j in itertools.combinations(range(len(labels)), 2):
-        a, b = by_label[labels[i]], by_label[labels[j]]       # a was sent before b
-        if a["slot"] != b["slot"]:
-            continue
-        gap = (int(labels[j][1:]) - int(labels[i][1:])) * spacing
-        out.append((gap, b["index"] < a["index"]))
-    return out
-
-
-def overtaking_curve(trains, rng, reps=1000):
-    gaps = sorted({g for w in trains for g, _ in train_pairs(w)})
-    if not trains or not gaps:
-        return {"gaps": [], "rate": [], "ci": [], "horizon_ms": None, "horizon_ci": None, "trains": len(trains)}
-    per = [train_pairs(w) for w in trains]
-
-    def curve(sample):
-        rate = []
-        for g in gaps:
-            v = [o for prs in sample for gg, o in prs if gg == g]
-            rate.append(sum(v) / len(v) if v else float("nan"))
-        return rate
-
-    def horizon(rate):
-        h = None
-        for g, r in zip(gaps, rate):
-            if not math.isnan(r) and r >= 0.5:
-                h = g
-        return h if h is not None else 0.0
-
-    rate = curve(per)
-    boots, hs = [], []
-    for _ in range(reps):
-        idx = rng.integers(0, len(per), len(per))
-        r = curve([per[i] for i in idx])
-        boots.append(r)
-        hs.append(horizon(r))
-    arr = np.array(boots, dtype=float)
-    ci = [[float(np.nanpercentile(arr[:, i], 2.5)), float(np.nanpercentile(arr[:, i], 97.5))]
-          if not np.all(np.isnan(arr[:, i])) else [None, None] for i in range(len(gaps))]
-    return {"gaps": gaps, "rate": rate, "ci": ci, "horizon_ms": horizon(rate),
-            "horizon_ci": [float(np.percentile(hs, 2.5)), float(np.percentile(hs, 97.5))], "trains": len(trains)}
-
-
-def evaluable_train(w):
-    n = len(w["probes"])
-    need = 8 if n == 12 else 7
-    by = Counter(p["slot"] for p in w["probes"] if p.get("outcome") == "target_block")
-    return bool(by) and max(by.values()) >= need
-
-
-def study_m(windows, rng):
-    out = {}
-    by_v = defaultdict(list)
-    for w in windows:
-        if w["study"] == "M" and w["status"] != "transition":
-            by_v[(w["target"], w["phase"])].append(w)
-    for (v, ph), ws in sorted(by_v.items()):
-        inc = [w for w in ws if w["arm"] == "M-inc"]
-        dec = [w for w in ws if w["arm"] == "M-dec"]
-        out[f"{v}|{ph}"] = {"validator": v, "phase": ph, "family": family(ws[0]), "trains": len(ws),
-                            "evaluable": sum(evaluable_train(w) for w in ws),
-                            "increasing": overtaking_curve([w for w in inc if evaluable_train(w)], rng),
-                            "decreasing": overtaking_curve([w for w in dec if evaluable_train(w)], rng)}
-    return out
-
-
-# ---------------- inclusion ----------------
-
-def inclusion(windows):
-    out = defaultdict(Counter)
-    for w in windows:
-        for p in w["probes"]:
-            out[f"{w['target']}|{w['phase']}"][p.get("outcome", "missing")] += 1
-    return {k: dict(v) for k, v in sorted(out.items())}
-
-
-def fee_check(windows):
-    """Every landed probe was charged exactly 5000 + ceil(L*p/1e6)."""
-    bad, n = [], 0
-    for w in windows:
-        for p in w["probes"]:
-            if p.get("outcome") in ("target_block", "other_leader", "later_window_same_leader") and "fee_charged" in p:
-                n += 1
-                if p["fee_charged"] != p["fee"]:
-                    bad.append(p["sig"])
-    return {"checked": n, "mismatches": bad}
-
-
-
-# ---------------- pilot gates (calibration runs only) ----------------
-
-EXEC_COST = 720 + 600 + 7 + 600 + 8      # executed cost of any landed probe (meta.costUnits)
-
-
-def gates(windows, panels):
-    """Engineering hard stops (F3-eng, F4, F5) and calibration gates (F1, F2, anchor) per validator."""
-    cal = [w for w in windows if w["phase"] == "calibration"]
-    out, fee_bad, cost_bad = {}, [], []
-    spacing_err = []
-    for w in cal:
-        for p in w["probes"]:
-            if "fee_charged" in p and p["fee_charged"] != p["fee"]:
-                fee_bad.append(p["sig"])
-            if p.get("cost_units") is not None and (p["cost_units"] != EXEC_COST or p.get("cu_consumed") != 600):
-                cost_bad.append(p["sig"])
-        if w["study"] == "M":
-            sent = [p["sent_ns"] for p in sorted(w["probes"], key=lambda p: p["label"]) if "sent_ns" in p]
-            plan = sorted(w["planned_ns"])
-            spacing_err += [abs((b - a) - (d - c)) / 1e6 for a, b, c, d in zip(sent, sent[1:], plan, plan[1:])]
-    by_v = defaultdict(list)
-    for w in cal:
-        by_v[w["target"]].append(w)
-    for v, ws in sorted(by_v.items()):
-        probes = [p for w in ws for p in w["probes"]]
-        landed = [p for p in probes if p.get("outcome") in ("target_block", "other_leader", "later_window_same_leader")]
-        target = [p for p in probes if p.get("outcome") == "target_block"]
-        main = [w for w in ws if w["study"] == "K" and w["arm"] == "K-main"]
-        inf = sum(len(window_contrasts(w, panels[w["panel"]])) > 0 for w in main)
-        charged = sum(p.get("fee_charged") or 0 for p in probes)
-        fam = family(ws[0])
-        doc = DOCUMENTED.get(fam)
-        agree = None
-        if doc and main:
-            wins = n = 0
-            for w in main:
-                for kp, sgn in window_contrasts(w, panels[w["panel"]]).items():
-                    if doc in kp:
-                        n += 1
-                        wins += (sgn > 0) == (kp[0] == doc)
-            agree = wins / n if n else None
-        slots = Counter((p["slot"] - w["slot0"]) for w in ws for p in w["probes"] if p.get("outcome") == "target_block")
-        out[v] = {"family": fam, "ingress": ws[0].get("ingress"), "windows": len(ws), "probes": len(probes),
-                  "landed": len(landed), "target_rate": len(target) / len(probes) if probes else None,
-                  "outcomes": dict(Counter(p.get("outcome") for p in probes)),
-                  "k_main": len(main), "k_main_informative": inf,
-                  "evaluable_rate": sum(evaluable(w) for w in main) / len(main) if main else None,
-                  "lamports_per_informative": charged / inf if inf else None,
-                  "documented_key": doc, "documented_agreement": agree,
-                  "landing_slot_in_window": {str(k): v for k, v in sorted(slots.items())},
-                  "anchor_outside_rate": 1 - len(target) / len(landed) if landed else None}
-    return {"per_validator": out, "F5_fee_mismatch": fee_bad, "exec_cost_mismatch": cost_bad,
-            "F4_spacing_err_ms": {"median": float(np.median(spacing_err)) if spacing_err else None,
-                                  "p90": float(np.percentile(spacing_err, 90)) if spacing_err else None,
-                                  "n": len(spacing_err)}}
-
-
 # ---------------- driver ----------------
 
 def compute():
@@ -492,6 +277,9 @@ def compute():
     tiers = {k: v["tier"] for k, v in cands.items()}
     windows = load()
     rng = np.random.default_rng(SEED)
+    from .checks import fee_check, gates, inclusion
+    from .trains import study_m
+    from .verdicts import calls, holdout
     k = study_k(windows, panels, rng)
     res = {"n_windows": len(windows), "phases": dict(Counter(w["phase"] for w in windows)),
            "study_k": k, "calls": {ph: calls(k, tiers, ph) for ph in ("calibration", "dayA", "dayB", "dayC", "dayD")},

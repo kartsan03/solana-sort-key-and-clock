@@ -172,27 +172,6 @@ class Rpc:
         return {"genesis": gh, "ag_genesis_cert": cert}
 
 
-async def slot_stream(ws_url, on_slot, stop):
-    """Call on_slot(slot, t_ns_wall, t_ns_mono) for each slotSubscribe update; reconnect on drop."""
-    import websockets
-    sub = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "slotSubscribe"})
-    while not stop.is_set():
-        try:
-            async with websockets.connect(ws_url, user_agent_header=UA, ping_interval=15,
-                                          open_timeout=10, max_size=2**20) as ws:
-                await ws.send(sub)
-                async for raw in ws:
-                    t_wall, t_mono = time.time_ns(), time.monotonic_ns()
-                    msg = json.loads(raw)
-                    res = msg.get("params", {}).get("result")
-                    if res and "slot" in res:
-                        on_slot(res["slot"], t_wall, t_mono)
-                    if stop.is_set():
-                        return
-        except Exception:
-            await asyncio.sleep(0.5)
-
-
 def ws_url_for(http_url):
     if http_url.startswith(PUBLIC_RPC):
         return "wss://api.mainnet-beta.solana.com"

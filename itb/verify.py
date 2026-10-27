@@ -5,7 +5,6 @@ the recorded index, with the recorded fee payer, fee, leader and decoded L/p/D. 
 checked window: every slot of the leader window is re-fetched and no other probe of
 ours appears in it unrecorded.
 """
-import asyncio
 import json
 import os
 import random
