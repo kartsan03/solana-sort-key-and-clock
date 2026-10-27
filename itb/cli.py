@@ -48,13 +48,20 @@ async def cmd_plan(a):
     start = cur + int(a.start_in_min * 60 / a.ms_per_slot * 1000)
     end = min(start + int(a.hours * 3600 / a.ms_per_slot * 1000), sched["start"] + sched["slots"] - 1)
     quotas = {k: {"K": v.get("K", 0), "M": v.get("M", 0)} for k, v in targets.items()}
-    plan = run.sample_windows(sched, nodes, quotas, start, end, a.ms_per_slot)
+    plan = run.sample_windows(sched, nodes, quotas, start, end, a.ms_per_slot, cur)
     k_index = 0
+    specs_used = {}
     for i, w in enumerate(plan):
         w["run_id"] = a.run_id
         w["window_id"] = f"{a.run_id}-{i:04d}"
         w["epoch_start"] = sched["start"]
-        run.plan_probes(w, panels, k_index)
+        t = targets[w["target"]]
+        spec = None
+        if w["study"] == "M" and t.get("train_specs"):
+            used = specs_used.setdefault(w["target"], [])
+            spec = t["train_specs"][len(used) % len(t["train_specs"])]
+            used.append(spec)
+        run.plan_probes(w, panels, k_index, force_arm=t.get("force_arm"), train_spec=spec)
         k_index += w["study"] == "K"
     out = {"run_id": a.run_id, "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
            "epoch": sched["epoch"], "epoch_start": sched["start"], "slot_range": [start, end],
@@ -93,8 +100,8 @@ async def cmd_run(a):
     if a.live:
         if os.environ.get("ITB_LIVE") != "1":
             sys.exit("live run refused: set ITB_LIVE=1 as well as --live")
-        if a.max_spend_sol is None:
-            sys.exit("live run refused: --max-spend-sol is required")
+        if not a.max_spend_sol or a.max_spend_sol <= 0:
+            sys.exit("live run refused: a positive --max-spend-sol is required")
         max_l = int(round(a.max_spend_sol * LAMPORTS_PER_SOL))
         if max_l > led.remaining():
             sys.exit(f"live run refused: max spend {max_l} > remaining cap {led.remaining()}")
@@ -119,7 +126,7 @@ async def cmd_run(a):
             "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "max_spend_lamports": run_limit and max_l}
     (run_dir / "run.json").write_text(json.dumps(meta, indent=1))
     keep = {w["target"] for w in windows} | {w["prev_leader"] for w in windows if w["prev_leader"]}
-    with single_process(STATE / "live.lock"):
+    with single_process(STATE / ("live.lock" if a.live else "dry.lock")):
         runner = run.Runner(rpc, led, ps, run_dir, a.live, run_limit, a.lambda_ms)
         last_valid = await runner.execute(windows, None, plan["epoch_start"], keep)
         if a.live:
@@ -214,7 +221,7 @@ def main(argv=None):
     s.add_argument("--run-id", required=True)
     s.add_argument("--hours", type=float, default=1.0)
     s.add_argument("--start-in-min", type=float, default=2.0)
-    s.add_argument("--ms-per-slot", type=float, default=214.0)
+    s.add_argument("--ms-per-slot", type=float, default=213.0)
     s = sub.add_parser("run")
     s.add_argument("--plan", required=True)
     s.add_argument("--live", action="store_true")

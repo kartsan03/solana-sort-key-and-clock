@@ -129,11 +129,11 @@ def wall_to_mono_ns(wall_ns):
 
 # ---------------- planning ----------------
 
-def sample_windows(schedule, nodes, targets, start_slot, end_slot, ms_per_slot):
+def sample_windows(schedule, nodes, targets, start_slot, end_slot, ms_per_slot, cur_slot=None):
     """Stratified random windows: each target's quota spread evenly over the time range."""
     rng = secrets.SystemRandom()
     t0 = time.time()
-    cur = start_slot
+    cur = cur_slot or start_slot
     picks = []
     for ident, quota in targets.items():
         ws = [s for s in cluster.windows(schedule, ident, start_slot) if s + 4 <= end_slot]
@@ -159,17 +159,24 @@ def sample_windows(schedule, nodes, targets, start_slot, end_slot, ms_per_slot):
     return plan
 
 
-def plan_probes(w, panels, k_index):
-    """Draw this window's randomisation (OS randomness, logged) and fix its probes and payers."""
+def plan_probes(w, panels, k_index, force_arm=None, train_spec=None):
+    """Draw this window's randomisation (OS randomness, logged) and fix its probes and payers.
+
+    force_arm / train_spec are used only for calibration runs (pilot), never in the campaign."""
     from . import design
     rng = secrets.SystemRandom()
     if w["study"] == "K":
         r = design.draw_panel_window(sorted(panels))
+        if force_arm:
+            r["arm"] = force_arm
         qs = [(lab, make(*NULL_PROBE)) for lab in LABELS] if r["arm"] == "K-null" else sorted(panels[r["panel"]].items())
         group = 6 * (k_index % 2)                     # alternate payer groups 0-5 / 6-11
         payers = [group + r["payer_slots"][i] for i in range(6)]
     else:
         r = design.draw_train_window()
+        if train_spec:
+            r.update(train=train_spec, arm="M-inc")
+            r["payer_slots"] = rng.sample(range(TRAIN_SPECS[train_spec][0]), TRAIN_SPECS[train_spec][0])
         qs = [(f"T{i:02d}", q) for i, q in enumerate(train(r["train"], r["arm"] == "M-inc"))]
         payers = rng.sample(range(12), len(qs))
     w.update(r)

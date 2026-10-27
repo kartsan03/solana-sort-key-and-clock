@@ -1,0 +1,26 @@
+name: reproduce
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  analyze:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux/amd64
+            runner: ubuntu-24.04
+          - platform: linux/arm64
+            runner: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
+    env:
+      DOCKER_DEFAULT_PLATFORM: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+        if: matrix.platform == 'linux/arm64'
+      - uses: docker/setup-buildx-action@v3
+      - name: docker compose up (offline recompute must match committed numbers)
+        run: docker compose up --build --abort-on-container-exit --exit-code-from analyze
+      - name: tests
+        run: docker compose --profile test run --rm test

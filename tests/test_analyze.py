@@ -1,0 +1,39 @@
+"""The analysis recovers known rules from synthetic campaigns and stays quiet on noise."""
+import json
+import pathlib
+
+import numpy as np
+
+from itb import analyze
+from itb.design import panels_from_json
+from itb.sim import run_k, sim_train
+
+PANELS = panels_from_json(json.loads((pathlib.Path(__file__).parents[1] / "design" / "panels.json").read_text())["panels"])
+
+
+def test_recovers_each_rule_and_rejects_noise():
+    truths = {"a": "agave_int", "f": "fd_exact", "b": "fee_per_cost", "p": "pf_per_cost", "r": "random", "q": "fifo"}
+    calls, _ = run_k(PANELS, truths, 26, seed=11, null_perms=100)
+    for v in "afbp":
+        assert calls[v]["verdict"] == "rule" and calls[v]["key"] == truths[v]
+    assert calls["r"]["verdict"] != "rule" and calls["q"]["verdict"] != "rule"
+
+
+def test_fingerprint_needs_exact_order():
+    # fd_exact data must not be called agave_int: they differ only on the fingerprint pairs
+    calls, _ = run_k(PANELS, {"f": "fd_exact"}, 26, seed=3, null_perms=50)
+    assert calls["f"]["key"] == "fd_exact"
+
+
+def test_holm():
+    assert analyze.holm({"x": 0.001, "y": 0.02, "z": 0.04}) == {"x": True, "y": True, "z": True}
+    assert analyze.holm({"x": 0.001, "y": 0.03, "z": 0.04}) == {"x": True, "y": False, "z": False}
+
+
+def test_overtaking_curve_fifo_vs_rounds():
+    rng = np.random.default_rng(0)
+    fifo = [sim_train(rng, s, "fifo", jitter_ms=0.2) for s in ("t4", "t12") for _ in range(8)]
+    rounds = [sim_train(rng, s, "rounds", T=50.0, jitter_ms=0.2) for s in ("t4", "t12") for _ in range(8)]
+    hf = analyze.overtaking_curve(fifo, rng, reps=50)["horizon_ms"]
+    hr = analyze.overtaking_curve(rounds, rng, reps=50)["horizon_ms"]
+    assert hf == 0.0 and hr >= 12.0

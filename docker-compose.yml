@@ -39,4 +39,4 @@ services:
       - "${ITB_KEYS_DIR:-../keys}:/run/itb-keys:ro"
       - "./state:/app/state"
       - "./data/raw:/app/data/raw"
-    command: ["run", "--plan", "${ITB_PLAN:?set ITB_PLAN}", "--live", "--max-spend-sol", "${ITB_MAX_SPEND_SOL:?set ITB_MAX_SPEND_SOL}"]
+    command: ["run", "--plan", "${ITB_PLAN:-missing-plan}", "--live", "--max-spend-sol", "${ITB_MAX_SPEND_SOL:-0}"]
