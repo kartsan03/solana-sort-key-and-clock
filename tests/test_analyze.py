@@ -47,3 +47,26 @@ def test_holdout_horizon_inside_interval():
     assert out["accepted"] and out["horizon"]["inside"]
     out = verdicts.holdout(k, m, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 20.0}})["dayB"]["V"]
     assert not out["horizon"]["inside"]
+
+
+def test_predict_follows_the_registered_rule(tmp_path, monkeypatch):
+    import argparse
+    import json
+    from itb import campaign
+    (tmp_path / "data" / "derived").mkdir(parents=True)
+    (tmp_path / "design").mkdir()
+    cands = {"A1": {"family": "Agave", "tier": 1}, "H1": {"family": "HarmonicAgave", "tier": 1},
+             "H2": {"family": "HarmonicAgave", "tier": 2}, "X": {"family": "Rakurai", "tier": None}}
+    res = {"calls": {"dayA": {"A1": {"key": "fd_exact", "verdict": "partial"},
+                              "H1": {"key": "pf_per_cost", "verdict": "rule"},
+                              "X": {"key": "cu_price", "verdict": "rule"}}},
+           "study_m": {"H1|dayA": {"increasing": {"horizon_ms": 16.0}}}}
+    (tmp_path / "design" / "candidates.json").write_text(json.dumps(cands))
+    (tmp_path / "data" / "derived" / "results.json").write_text(json.dumps(res))
+    monkeypatch.setattr(campaign, "ROOT", tmp_path)
+    campaign.cmd_predict(argparse.Namespace())
+    p = json.loads((tmp_path / "design" / "predictions-dayB.json").read_text())["validators"]
+    assert p["A1"]["key"] == "agave_int" and p["A1"]["dayA_best"] == "fd_exact"   # source key wins
+    assert p["H1"]["key"] == "pf_per_cost" and p["H1"]["horizon_ms"] == 16.0
+    assert p["H2"]["key"] == "pf_per_cost" and p["H2"]["tier"] == 2
+    assert "X" not in p                                                           # calibration-only

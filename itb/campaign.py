@@ -1,4 +1,4 @@
-"""Collection-day driver (six 4-hour blocks) and the design freeze."""
+"""Collection-day driver (six 4-hour blocks), the design freeze and the day-B predictions."""
 import argparse
 import asyncio
 import json
@@ -86,3 +86,41 @@ def cmd_freeze(a):
     print("after committing PREREG.md + design/design.json, memo #1 =")
     print(f"itb-prereg <commit> {sha(ROOT / 'PREREG.md')} {sha(out)}")
 
+
+
+def cmd_predict(a):
+    """Write design/predictions-dayB.json from day A by the pre-registered rule and print memo #2.
+
+    Agave, JitoLabs and Firedancer keep their source-code key; every other Tier-1 validator gets its
+    day-A best key, plus its day-A overtaking horizon where it had trains. Tier 2 (replication, day C)
+    gets the Tier-1 pick for the same client. Reads data/derived/results.json (run `itb analyze --no-check` first).
+    """
+    import hashlib
+    from .analyze import DOCUMENTED
+    res = json.loads((ROOT / "data" / "derived" / "results.json").read_text())
+    cands = json.loads((ROOT / "design" / "candidates.json").read_text())
+    day_a, m = res["calls"]["dayA"], res["study_m"]
+    if not day_a:
+        sys.exit("no day-A results in data/derived/results.json")
+    picks = {}
+    for v, c in cands.items():
+        r = day_a.get(v) or {}
+        doc = DOCUMENTED.get(c["family"])
+        if c.get("tier") != 1 or not (doc or r.get("key")):
+            continue
+        picks[v] = {"family": c["family"], "tier": 1, "key": doc or r["key"],
+                    "basis": "source code" if doc else "day A best key",
+                    "horizon_ms": m.get(f"{v}|dayA", {}).get("increasing", {}).get("horizon_ms"),
+                    "dayA_best": r.get("key"), "dayA_verdict": r.get("verdict")}
+    by_family = {p["family"]: p["key"] for p in picks.values()}
+    for v, c in cands.items():
+        if c.get("tier") == 2 and c["family"] in by_family:
+            picks[v] = {"family": c["family"], "tier": 2, "key": by_family[c["family"]],
+                        "basis": "Tier-1 pick for the same client", "horizon_ms": None}
+    sha = lambda b: hashlib.sha256(b).hexdigest()
+    out = ROOT / "design" / "predictions-dayB.json"
+    out.write_text(json.dumps({"created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                               "results_sha256": sha((ROOT / "data" / "derived" / "results.json").read_bytes()),
+                               "validators": picks}, indent=1, sort_keys=True))
+    print(f"wrote {out} ({len(picks)} validators)")
+    print(f"after committing it, memo #2 = itb-predictions <commit> {sha(out.read_bytes())}")

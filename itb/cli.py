@@ -256,6 +256,7 @@ def main(argv=None):
     s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)
     sub.add_parser("freeze")
+    sub.add_parser("predict")
     s = sub.add_parser("collect")
     s.add_argument("--run-id", required=True)
     s = sub.add_parser("ops")
@@ -282,6 +283,9 @@ def main(argv=None):
     elif a.cmd == "freeze":
         from .campaign import cmd_freeze
         cmd_freeze(a)
+    elif a.cmd == "predict":
+        from .campaign import cmd_predict
+        cmd_predict(a)
     elif a.cmd == "collect":
         asyncio.run(cmd_collect(a))
     elif a.cmd == "campaign":
