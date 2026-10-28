@@ -1,0 +1,38 @@
+{
+ "utc": "2026-10-28T11:32:44Z",
+ "slot": 462460662,
+ "ledger_spent": 3893727,
+ "ledger_reserved": 0,
+ "fees_on_chain": 3893727,
+ "balance_spent": 3893727,
+ "balance_total": 56115647,
+ "unknown_transactions": [],
+ "runs": {
+  "ops-1793112361": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-1793150336": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "pilot-1027a": {
+   "txs": 556,
+   "landed": 468,
+   "fees": 2929109
+  },
+  "pilot-1027b": {
+   "txs": 144,
+   "landed": 114,
+   "fees": 743425
+  },
+  "smoke-1027a": {
+   "txs": 52,
+   "landed": 34,
+   "fees": 211193
+  }
+ },
+ "consistent": true
+}

@@ -203,6 +203,11 @@ async def cmd_ops(a):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(snap, indent=1, sort_keys=True))
         print(f"wrote {out}: {len(snap['validators'])} validators.app labels")
+    elif a.op == "audit":
+        from .audit import audit
+        out, path = await audit(rpc, led)
+        print(json.dumps({k: v for k, v in out.items() if k != "runs"}, indent=1))
+        print(f"wrote {path}")
     elif a.op == "unhalt":
         led.unhalt(a.arg or "")
         print("unhalted")
@@ -260,7 +265,7 @@ def main(argv=None):
     s = sub.add_parser("collect")
     s.add_argument("--run-id", required=True)
     s = sub.add_parser("ops")
-    s.add_argument("op", choices=["keyinfo", "status", "init", "reconcile", "fund", "memo", "inflow", "sweep", "unhalt", "labels"])
+    s.add_argument("op", choices=["keyinfo", "status", "init", "reconcile", "fund", "memo", "inflow", "sweep", "unhalt", "labels", "audit"])
     s.add_argument("arg", nargs="?")
     s.add_argument("--note")
     s = sub.add_parser("analyze")
