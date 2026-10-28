@@ -37,6 +37,14 @@ Send times are corrected by half the QUIC round trip to the target.
 offset, arm (K-main / K-null / K-free) or train spacing and direction. Analysis randomness uses a fixed
 seed so `docker compose up` is exact.
 
+**How much data is enough.** `itb sim` runs the whole decision procedure on simulated schedulers
+([design/power.json](design/power.json), 100 repetitions per cell, 85% of probes landing). With 22
+informative windows per validator-day, the true key is called in at least 99% of runs when 10% of windows
+are scrambled at random, and in 73% when 25% are; with 28 windows, in at least 93% even at 25%. A random or
+FIFO scheduler was called a key rule in at most 1% of runs. The day quotas aim at 28 informative windows on
+day A and 22 on days B and C. For trains, simulated rounds of 20 ms and 50 ms give horizons of about 8 ms
+and 24 ms (roughly half the round), and FIFO gives 0, which is why I report the horizon and not a round length.
+
 ## 2. Design decisions
 
 - **My own probes over mining other people's transactions.** Only my probes have known L, p, D, send
