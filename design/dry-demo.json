@@ -1,0 +1,82 @@
+{
+ "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+  "family": "Agave",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+  "family": "JitoLabs",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+  "family": "AgaveBam",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+  "family": "HarmonicAgave",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+  "family": "HarmonicFiredancer",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+  "family": "Firedancer",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+  "family": "Rakurai",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+  "family": "FireBAM",
+  "tier": 1,
+  "K": 2,
+  "M": 1,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ }
+}

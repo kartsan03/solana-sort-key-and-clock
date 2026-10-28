@@ -26,7 +26,9 @@ services:
     build: .
     network_mode: host
     volumes: ["./state:/app/state"]
-    command: ["run", "--plan", "${ITB_PLAN:-state/plans/dry.json}"]
+    # plan the next 15 minutes of the eight Tier-1 leaders' windows (design/dry-demo.json), then run it dry
+    entrypoint: ["sh", "-c"]
+    command: ["python -m itb.cli plan --targets design/dry-demo.json --run-id dry-demo --hours 0.25 --start-in-min 2 && python -m itb.cli run --plan state/plans/dry-demo.json"]
 
   live:
     profiles: ["live"]
