@@ -1,0 +1,361 @@
+{
+ "dates_utc": {
+  "A": "2026-10-29",
+  "B": "2026-10-30",
+  "C": "2026-10-31",
+  "D": "2026-11-01 (conditional)"
+ },
+ "blocks_per_day": 6,
+ "block_hours": 4,
+ "quota_rule": "K windows per validator-day = ceil(target / (0.75 * r)), r = share of pilot K-main windows that were informative (floor 0.67); targets: Tier 1 28 informative K-main windows on day A, 22 on days B and C; Tier 2 12 on day C only. Trains: 8 (day A) / 4 (B, C) for Tier-1 builder, Firedancer and Rakurai validators whose endpoint accepted pilot trains; 4 / 2 exploratory for SSmBEooM; 4 on day A for the Agave and Jito controls. Each day's quota is split evenly over the six blocks, remainders to random blocks.",
+ "fee_budget_lamports": {
+  "cap_total": 50000000,
+  "spent_before_campaign": 3879353,
+  "estimate": {
+   "A": 15179470,
+   "B": 10774389,
+   "C": 15781038
+  },
+  "ops_reserve": 200000
+ },
+ "block_max_sol": {
+  "A": 0.0035,
+  "B": 0.0025,
+  "C": 0.0035
+ },
+ "day_D_rule": "Run only if, after day C, a Tier-1 validator has fewer than 22 informative K-main windows on day B or on day C because of low supply, refusals or transitions, and the remaining cap covers the shortfall (same quota rule, that validator only). Predictions and analysis as for days B and C.",
+ "pilot_changes": {
+  "FireBAM_T1": "SSmBEooM replaces LA1NEzry (40% landing) after 9jxgosAf also failed (30%)",
+  "FireBAM_T2": "PRGNnb8D",
+  "Rakurai_T2": "E3mDbFMr replaces 2dfgsiSa (no leader slots in epoch 1070)",
+  "trains_at_BAM": "only Fc6NNdS2 (endpoint accepted 22/22 pilot train probes) and exploratory SSmBEooM"
+ },
+ "days": {
+  "A": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "family": "Agave",
+    "tier": 1,
+    "K": 45,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "family": "JitoLabs",
+    "tier": 1,
+    "K": 38,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "family": "AgaveBam",
+    "tier": 1,
+    "K": 38,
+    "M": 8,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "family": "HarmonicAgave",
+    "tier": 1,
+    "K": 38,
+    "M": 8,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "family": "HarmonicFiredancer",
+    "tier": 1,
+    "K": 38,
+    "M": 8,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "family": "Firedancer",
+    "tier": 1,
+    "K": 38,
+    "M": 8,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "family": "Rakurai",
+    "tier": 1,
+    "K": 56,
+    "M": 8,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "family": "FireBAM",
+    "tier": 1,
+    "K": 38,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   }
+  },
+  "B": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "family": "Agave",
+    "tier": 1,
+    "K": 36,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "family": "JitoLabs",
+    "tier": 1,
+    "K": 30,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "family": "AgaveBam",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "family": "HarmonicAgave",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "family": "HarmonicFiredancer",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "family": "Firedancer",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "family": "Rakurai",
+    "tier": 1,
+    "K": 44,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "family": "FireBAM",
+    "tier": 1,
+    "K": 30,
+    "M": 2,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   }
+  },
+  "C": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "family": "Agave",
+    "tier": 1,
+    "K": 36,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS": {
+    "family": "Agave",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "family": "JitoLabs",
+    "tier": 1,
+    "K": 30,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+    "family": "JitoLabs",
+    "tier": 2,
+    "K": 24,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "family": "AgaveBam",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
+    "family": "AgaveBam",
+    "tier": 2,
+    "K": 24,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "family": "HarmonicAgave",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+    "family": "HarmonicAgave",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "family": "HarmonicFiredancer",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+    "family": "HarmonicFiredancer",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "family": "Firedancer",
+    "tier": 1,
+    "K": 30,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+    "family": "Firedancer",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "family": "Rakurai",
+    "tier": 1,
+    "K": 44,
+    "M": 4,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "family": "FireBAM",
+    "tier": 1,
+    "K": 30,
+    "M": 2,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
+    "family": "FireBAM",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F": {
+    "family": "Rakurai",
+    "tier": 2,
+    "K": 16,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   }
+  }
+ }
+}

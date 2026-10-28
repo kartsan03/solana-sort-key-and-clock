@@ -16,7 +16,7 @@
     "null_p": 0.0004997501249375312,
     "p_iut": 0.125,
     "strict": false,
-    "tier": 2,
+    "tier": null,
     "verdict": "insufficient data"
    },
    "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
@@ -142,7 +142,7 @@
     "null_p": 0.0004997501249375312,
     "p_iut": 0.25,
     "strict": false,
-    "tier": 2,
+    "tier": null,
     "verdict": "insufficient data"
    },
    "A4hyMd3FyvUJSRafDUSwtLLaQcxRP4r1BRC9w2AJ1to2": {
@@ -268,7 +268,7 @@
     "null_p": 0.0004997501249375312,
     "p_iut": 0.125,
     "strict": false,
-    "tier": null,
+    "tier": 2,
     "verdict": "insufficient data"
    },
    "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
@@ -340,7 +340,7 @@
     "null_p": 0.001999000499750125,
     "p_iut": 0.5,
     "strict": false,
-    "tier": 1,
+    "tier": null,
     "verdict": "insufficient data"
    },
    "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
@@ -358,7 +358,7 @@
     "null_p": 0.0004997501249375312,
     "p_iut": 0.125,
     "strict": false,
-    "tier": null,
+    "tier": 2,
     "verdict": "insufficient data"
    },
    "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
@@ -376,7 +376,7 @@
     "null_p": 0.0004997501249375312,
     "p_iut": 0.0625,
     "strict": false,
-    "tier": null,
+    "tier": 1,
     "verdict": "insufficient data"
    },
    "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {

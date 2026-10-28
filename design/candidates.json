@@ -49,11 +49,13 @@
  },
  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc": {
   "family": "FireBAM",
-  "tier": 1
+  "tier": null,
+  "note": "calibration only (pilot): BAM node dropped 60% of probes"
  },
  "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP": {
   "family": "FireBAM",
-  "tier": 2
+  "tier": null,
+  "note": "calibration only (pilot): BAM node dropped 71% of probes"
  },
  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
   "family": "Rakurai",
@@ -61,6 +63,34 @@
  },
  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
   "family": "Rakurai",
+  "tier": null,
+  "note": "calibration only (pilot): no leader slots in epoch 1070"
+ },
+ "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+  "family": "FireBAM",
+  "tier": 1
+ },
+ "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
+  "family": "FireBAM",
   "tier": 2
+ },
+ "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F": {
+  "family": "Rakurai",
+  "tier": 2
+ },
+ "A4hyMd3FyvUJSRafDUSwtLLaQcxRP4r1BRC9w2AJ1to2": {
+  "family": "FireBAM",
+  "tier": null,
+  "note": "calibration only (follow-up pilot alternate)"
+ },
+ "74Xkp2iLXm315h69sFRiCFjmKnaWkMV8W2LgJwPRSgN5": {
+  "family": "FireBAM",
+  "tier": null,
+  "note": "calibration only (follow-up pilot alternate)"
+ },
+ "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf": {
+  "family": "Rakurai",
+  "tier": null,
+  "note": "calibration only (follow-up pilot alternate)"
  }
 }
