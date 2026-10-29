@@ -70,3 +70,6 @@ def test_predict_follows_the_registered_rule(tmp_path, monkeypatch):
     assert p["H1"]["key"] == "pf_per_cost" and p["H1"]["horizon_ms"] == 16.0
     assert p["H2"]["key"] == "pf_per_cost" and p["H2"]["tier"] == 2
     assert "X" not in p                                                           # calibration-only
+    (tmp_path / "design" / "exploratory-dayB.json").write_text(json.dumps({"H": {"P1": "CABEDF"}}))
+    campaign.cmd_predict(argparse.Namespace())
+    assert json.loads((tmp_path / "design" / "predictions-dayB.json").read_text())["exploratory"] == {"H": {"P1": "CABEDF"}}

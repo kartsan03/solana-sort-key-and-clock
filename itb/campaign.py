@@ -119,8 +119,11 @@ def cmd_predict(a):
                         "basis": "Tier-1 pick for the same client", "horizon_ms": None}
     sha = lambda b: hashlib.sha256(b).hexdigest()
     out = ROOT / "design" / "predictions-dayB.json"
+    ex = ROOT / "design" / "exploratory-dayB.json"   # hypotheses formed on day A, outside the registered rule
     out.write_text(json.dumps({"created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                                "results_sha256": sha((ROOT / "data" / "derived" / "results.json").read_bytes()),
-                               "validators": picks}, indent=1, sort_keys=True))
+                               "validators": picks,
+                               **({"exploratory": json.loads(ex.read_text())} if ex.exists() else {})},
+                              indent=1, sort_keys=True))
     print(f"wrote {out} ({len(picks)} validators)")
     print(f"after committing it, memo #2 = itb-predictions <commit> {sha(out.read_bytes())}")

@@ -1,0 +1,20 @@
+{
+ "formed_utc": "2026-10-29T04:40:00Z",
+ "source": "day A block 0 (A-1029-b0): all 7 fully landed K-main panels on EkvdKhUL and 87CcUxpy came out in the same order per panel, whatever the send order",
+ "hypothesis": "Harmonic validators order queued probes by Agave integer priority floor((pf+2500)*1e6/(cost+1)), except that the compute-unit limit counts toward cost only up to a cap X, with 1660 <= X <= 4098 (the range that reproduces both observed orders). This key is not one of the eight registered keys; it is tested as exploratory only and does not change any registered call.",
+ "predicted_order": {
+  "P1": "CABEDF",
+  "P2": "DCFAEB"
+ },
+ "registered_agave_int_order": {
+  "P1": "ABCEDF",
+  "P2": "DCFAEB"
+ },
+ "validators": [
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH",
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f"
+ ],
+ "test": "For each validator and panel, the share of fully landed K-main windows on days B and C whose block order equals predicted_order (P1 is the panel where the two keys differ)."
+}
