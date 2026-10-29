@@ -1,0 +1,154 @@
+{
+ "created_utc": "2026-10-29T23:57:15Z",
+ "exploratory": {
+  "formed_utc": "2026-10-29T04:40:00Z",
+  "hypothesis": "Harmonic validators order queued probes by Agave integer priority floor((pf+2500)*1e6/(cost+1)), except that the compute-unit limit counts toward cost only up to a cap X, with 1660 <= X <= 4098 (the range that reproduces both observed orders). This key is not one of the eight registered keys; it is tested as exploratory only and does not change any registered call.",
+  "predicted_order": {
+   "P1": "CABEDF",
+   "P2": "DCFAEB"
+  },
+  "registered_agave_int_order": {
+   "P1": "ABCEDF",
+   "P2": "DCFAEB"
+  },
+  "source": "day A block 0 (A-1029-b0): all 7 fully landed K-main panels on EkvdKhUL and 87CcUxpy came out in the same order per panel, whatever the send order",
+  "test": "For each validator and panel, the share of fully landed K-main windows on days B and C whose block order equals predicted_order (P1 is the panel where the two keys differ).",
+  "validators": [
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+   "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH",
+   "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12",
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f"
+  ]
+ },
+ "results_sha256": "8539e4c67411bd04db98b2427f60e8aca0741c7031646b386e0fb7055d30e758",
+ "validators": {
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "AgaveBam",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "Agave",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+   "basis": "source code",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "rule (strict)",
+   "family": "Agave",
+   "horizon_ms": 0.0,
+   "key": "agave_int",
+   "tier": 1
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+   "basis": "day A best key",
+   "dayA_best": "pf_per_cost",
+   "dayA_verdict": "order, no single key",
+   "family": "HarmonicFiredancer",
+   "horizon_ms": 20.0,
+   "key": "pf_per_cost",
+   "tier": 1
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "HarmonicAgave",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "JitoLabs",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "HarmonicFiredancer",
+   "horizon_ms": null,
+   "key": "pf_per_cost",
+   "tier": 2
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "Firedancer",
+   "horizon_ms": null,
+   "key": "fd_exact",
+   "tier": 2
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+   "basis": "source code",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "rule (strict)",
+   "family": "JitoLabs",
+   "horizon_ms": 0.0,
+   "key": "agave_int",
+   "tier": 1
+  },
+  "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "Rakurai",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+   "basis": "day A best key",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "order, no single key",
+   "family": "HarmonicAgave",
+   "horizon_ms": 16.0,
+   "key": "agave_int",
+   "tier": 1
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+   "basis": "day A best key",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "rule (strict)",
+   "family": "AgaveBam",
+   "horizon_ms": 16.0,
+   "key": "agave_int",
+   "tier": 1
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+   "basis": "source code",
+   "dayA_best": "fd_exact",
+   "dayA_verdict": "rule (strict)",
+   "family": "Firedancer",
+   "horizon_ms": 0.0,
+   "key": "fd_exact",
+   "tier": 1
+  },
+  "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
+   "basis": "Tier-1 pick for the same client",
+   "family": "FireBAM",
+   "horizon_ms": null,
+   "key": "agave_int",
+   "tier": 2
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+   "basis": "day A best key",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "rule (strict)",
+   "family": "FireBAM",
+   "horizon_ms": 44.0,
+   "key": "agave_int",
+   "tier": 1
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+   "basis": "day A best key",
+   "dayA_best": "agave_int",
+   "dayA_verdict": "rule (strict)",
+   "family": "Rakurai",
+   "horizon_ms": 0.0,
+   "key": "agave_int",
+   "tier": 1
+  }
+ }
+}
