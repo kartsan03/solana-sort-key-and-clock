@@ -157,7 +157,7 @@
      0.025000000000000022,
      1.0
     ],
-    "null_p": 0.0004997501249375312,
+    "null_p": 0.0014992503748125937,
     "p_iut": 0.5,
     "strict": false,
     "tier": null,
@@ -337,7 +337,7 @@
      0.025000000000000022,
      1.0
     ],
-    "null_p": 0.0029985007496251873,
+    "null_p": 0.0009995002498750624,
     "p_iut": 0.5,
     "strict": false,
     "tier": null,
@@ -544,12 +544,157 @@
     "verdict": "rule (strict)"
    }
   },
-  "dayB": {},
+  "dayB": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "documented_key": "agave_int",
+    "family": "Agave",
+    "identified": true,
+    "key": "agave_int",
+    "matches_documented": true,
+    "min_n": 25,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.8628148284692875,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 2.9802322387695312e-08,
+    "strict": true,
+    "tier": 1,
+    "verdict": "rule (strict)"
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "documented_key": null,
+    "family": "HarmonicFiredancer",
+    "identified": false,
+    "key": "pf_per_cost",
+    "matches_documented": null,
+    "min_n": 16,
+    "min_rate": 0.5625,
+    "min_rate_ci": [
+     0.29877689908317784,
+     0.8024658594673321
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 0.4018096923828125,
+    "strict": false,
+    "tier": 1,
+    "verdict": "order, no single key"
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "documented_key": "agave_int",
+    "family": "JitoLabs",
+    "identified": true,
+    "key": "agave_int",
+    "matches_documented": true,
+    "min_n": 16,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.7940927857921773,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 1.52587890625e-05,
+    "strict": true,
+    "tier": 1,
+    "verdict": "rule (strict)"
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "documented_key": null,
+    "family": "HarmonicAgave",
+    "identified": false,
+    "key": "agave_int",
+    "matches_documented": null,
+    "min_n": 13,
+    "min_rate": 0.5909090909090909,
+    "min_rate_ci": [
+     0.36354696172973133,
+     0.7929068770028508
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 0.2617335319519043,
+    "strict": false,
+    "tier": 1,
+    "verdict": "order, no single key"
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "documented_key": null,
+    "family": "AgaveBam",
+    "identified": true,
+    "key": "agave_int",
+    "matches_documented": null,
+    "min_n": 9,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.6637328831200572,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 0.001953125,
+    "strict": false,
+    "tier": 1,
+    "verdict": "insufficient data"
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "documented_key": "fd_exact",
+    "family": "Firedancer",
+    "identified": true,
+    "key": "fd_exact",
+    "matches_documented": true,
+    "min_n": 23,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.8575264022774743,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 1.1920928955078125e-07,
+    "strict": true,
+    "tier": 1,
+    "verdict": "rule (strict)"
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "documented_key": null,
+    "family": "FireBAM",
+    "identified": true,
+    "key": "agave_int",
+    "matches_documented": null,
+    "min_n": 16,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.7940927857921773,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 1.52587890625e-05,
+    "strict": true,
+    "tier": 1,
+    "verdict": "rule (strict)"
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "documented_key": null,
+    "family": "Rakurai",
+    "identified": true,
+    "key": "agave_int",
+    "matches_documented": null,
+    "min_n": 33,
+    "min_rate": 1.0,
+    "min_rate_ci": [
+     0.8942371899254207,
+     1.0
+    ],
+    "null_p": 0.0004997501249375312,
+    "p_iut": 1.1641532182693481e-10,
+    "strict": true,
+    "tier": 1,
+    "verdict": "rule (strict)"
+   }
+  },
   "dayC": {},
   "dayD": {}
  },
  "fees": {
-  "checked": 2694,
+  "checked": 4218,
   "mismatches": []
  },
  "gates": {
@@ -1047,7 +1192,114 @@
    }
   }
  },
- "holdout": {},
+ "holdout": {
+  "dayB": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "accepted": true,
+    "best_this_day": "agave_int",
+    "min_n": 25,
+    "min_rate": 1.0,
+    "p_iut": 2.9802322387695312e-08,
+    "predicted": "agave_int"
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "accepted": false,
+    "best_this_day": "pf_per_cost",
+    "horizon": {
+     "ci": [
+      16.0,
+      24.0
+     ],
+     "inside": true,
+     "predicted_ms": 20.0
+    },
+    "min_n": 16,
+    "min_rate": 0.5625,
+    "p_iut": 0.4018096923828125,
+    "predicted": "pf_per_cost"
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "accepted": true,
+    "best_this_day": "agave_int",
+    "min_n": 16,
+    "min_rate": 1.0,
+    "p_iut": 1.52587890625e-05,
+    "predicted": "agave_int"
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "accepted": false,
+    "best_this_day": "agave_int",
+    "horizon": {
+     "ci": [
+      8.0,
+      20.0
+     ],
+     "inside": true,
+     "predicted_ms": 16.0
+    },
+    "min_n": 13,
+    "min_rate": 0.5909090909090909,
+    "p_iut": 0.2617335319519043,
+    "predicted": "agave_int"
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "accepted": true,
+    "best_this_day": "agave_int",
+    "min_n": 9,
+    "min_rate": 1.0,
+    "p_iut": 0.001953125,
+    "predicted": "agave_int"
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "accepted": true,
+    "best_this_day": "fd_exact",
+    "horizon": {
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "inside": true,
+     "predicted_ms": 0.0
+    },
+    "min_n": 23,
+    "min_rate": 1.0,
+    "p_iut": 1.1920928955078125e-07,
+    "predicted": "fd_exact"
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "accepted": true,
+    "best_this_day": "agave_int",
+    "horizon": {
+     "ci": [
+      24.0,
+      24.0
+     ],
+     "inside": false,
+     "predicted_ms": 44.0
+    },
+    "min_n": 16,
+    "min_rate": 1.0,
+    "p_iut": 1.52587890625e-05,
+    "predicted": "agave_int"
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "accepted": true,
+    "best_this_day": "agave_int",
+    "horizon": {
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "inside": true,
+     "predicted_ms": 0.0
+    },
+    "min_n": 33,
+    "min_rate": 1.0,
+    "p_iut": 1.1641532182693481e-10,
+    "predicted": "agave_int"
+   }
+  }
+ },
  "inclusion": {
   "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC|calibration": {
    "target_block": 40
@@ -1073,11 +1325,19 @@
    "send_failed": 42,
    "target_block": 252
   },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|dayB": {
+   "expired": 6,
+   "send_failed": 12,
+   "target_block": 192
+  },
   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|calibration": {
    "target_block": 40
   },
   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayA": {
    "target_block": 284
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayB": {
+   "target_block": 216
   },
   "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP|calibration": {
    "send_failed": 52,
@@ -1110,6 +1370,11 @@
    "send_failed": 18,
    "target_block": 204
   },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayB": {
+   "expired": 6,
+   "send_failed": 18,
+   "target_block": 138
+  },
   "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F|calibration": {
    "target_block": 18
   },
@@ -1118,6 +1383,9 @@
   },
   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayA": {
    "target_block": 278
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayB": {
+   "target_block": 216
   },
   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|calibration": {
    "expired": 6,
@@ -1128,12 +1396,20 @@
    "send_failed": 76,
    "target_block": 207
   },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayB": {
+   "expired": 12,
+   "send_failed": 78,
+   "target_block": 108
+  },
   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|calibration": {
    "target_block": 62
   },
   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayA": {
    "expired": 3,
    "target_block": 275
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayB": {
+   "target_block": 228
   },
   "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc|calibration": {
    "send_failed": 24,
@@ -1149,6 +1425,10 @@
    "send_failed": 66,
    "target_block": 186
   },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayB": {
+   "send_failed": 18,
+   "target_block": 144
+  },
   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|calibration": {
    "send_failed": 6,
    "target_block": 34
@@ -1156,12 +1436,17 @@
   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayA": {
    "expired": 14,
    "target_block": 386
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayB": {
+   "send_failed": 24,
+   "target_block": 282
   }
  },
- "n_windows": 446,
+ "n_windows": 709,
  "phases": {
   "calibration": 106,
-  "dayA": 340
+  "dayA": 340,
+  "dayB": 263
  },
  "study_k": {
   "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC|calibration": {
@@ -6323,6 +6608,743 @@
    "validator": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
    "windows": 41
   },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|dayB": {
+   "agreement": {
+    "agave_int": 1.0,
+    "cheapest": 0.5333333333333333,
+    "cu_price": 0.7333333333333333,
+    "fd_exact": 0.832,
+    "fee_per_cost": 0.6986666666666667,
+    "fee_per_cu": 0.6026666666666667,
+    "pf_per_cost": 0.8346666666666667,
+    "total_fee": 0.7013333333333334
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 1.0,
+     "windows": 9
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 10
+    },
+    "mid": {
+     "best_key_agreement": 1.0,
+     "windows": 6
+    }
+   },
+   "evaluable": 25,
+   "family": "Agave",
+   "informative": {
+    "agave_int|cheapest": 25,
+    "agave_int|cu_price": 25,
+    "agave_int|fd_exact": 25,
+    "agave_int|fee_per_cost": 25,
+    "agave_int|fee_per_cu": 25,
+    "agave_int|pf_per_cost": 25,
+    "agave_int|total_fee": 25,
+    "cu_price|cheapest": 25,
+    "cu_price|fee_per_cu": 12,
+    "cu_price|total_fee": 12,
+    "fd_exact|cheapest": 25,
+    "fd_exact|cu_price": 25,
+    "fd_exact|fee_per_cost": 25,
+    "fd_exact|fee_per_cu": 25,
+    "fd_exact|pf_per_cost": 25,
+    "fd_exact|total_fee": 25,
+    "fee_per_cost|cheapest": 25,
+    "fee_per_cost|cu_price": 13,
+    "fee_per_cost|fee_per_cu": 25,
+    "fee_per_cost|total_fee": 25,
+    "fee_per_cu|cheapest": 13,
+    "fee_per_cu|total_fee": 12,
+    "pf_per_cost|cheapest": 25,
+    "pf_per_cost|cu_price": 25,
+    "pf_per_cost|fee_per_cost": 25,
+    "pf_per_cost|fee_per_cu": 25,
+    "pf_per_cost|total_fee": 25,
+    "total_fee|cheapest": 25
+   },
+   "ingress": "own",
+   "k_free_best_agreement": {
+    "agave_int": 0.8533333333333334
+   },
+   "k_main": 28,
+   "keys": {
+    "agave_int": {
+     "min_n": 25,
+     "min_rate": 1.0,
+     "p_iut": 2.9802322387695312e-08,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "cu_price": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fd_exact": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "total_fee": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 13,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 12,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7353515306029488,
+        1.0
+       ],
+       "n": 12,
+       "p": 0.000244140625,
+       "rate": 1.0,
+       "wins": 12
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.7353515306029488,
+        1.0
+       ],
+       "n": 12,
+       "p": 0.000244140625,
+       "rate": 1.0,
+       "wins": 12
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 25,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "cu_price": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "total_fee": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 13,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.2779680096699466,
+        0.6869429555429676
+       ],
+       "n": 25,
+       "p": 0.6549810171127319,
+       "rate": 0.48,
+       "wins": 12
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.2779680096699466,
+        0.6869429555429676
+       ],
+       "n": 25,
+       "p": 0.6549810171127319,
+       "rate": 0.48,
+       "wins": 12
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 12,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2646484693970512
+       ],
+       "n": 12,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.31305704445703236,
+        0.7220319903300534
+       ],
+       "n": 25,
+       "p": 0.5,
+       "rate": 0.52,
+       "wins": 13
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.2646484693970512
+       ],
+       "n": 12,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 25,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "cu_price": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "total_fee": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 12,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8628148284692875,
+        1.0
+       ],
+       "n": 25,
+       "p": 2.9802322387695312e-08,
+       "rate": 1.0,
+       "wins": 25
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2646484693970512
+       ],
+       "n": 12,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.31305704445703236,
+        0.7220319903300534
+       ],
+       "n": 25,
+       "p": 0.5,
+       "rate": 0.52,
+       "wins": 13
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7353515306029488,
+        1.0
+       ],
+       "n": 12,
+       "p": 0.000244140625,
+       "rate": 1.0,
+       "wins": 12
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.1371851715307125
+       ],
+       "n": 25,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-base5": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-cheap": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-div": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-fee": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-fp": {
+     "k1_wins": 25,
+     "n": 25
+    },
+    "C-price": {
+     "k1_wins": 25,
+     "n": 25
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 34,
+     "pairs": 75,
+     "rate": 0.4533333333333333
+    },
+    "K-main": {
+     "agree": 202,
+     "pairs": 375,
+     "rate": 0.5386666666666666
+    },
+    "K-null": {
+     "agree": 11,
+     "pairs": 30,
+     "rate": 0.36666666666666664
+    }
+   },
+   "validator": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+   "windows": 35
+  },
   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|calibration": {
    "agreement": {
     "agave_int": 0.9111111111111111,
@@ -7797,6 +8819,743 @@
    "validator": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
    "windows": 34
   },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayB": {
+   "agreement": {
+    "agave_int": 0.925,
+    "cheapest": 0.4583333333333333,
+    "cu_price": 0.8083333333333333,
+    "fd_exact": 0.7625,
+    "fee_per_cost": 0.6291666666666667,
+    "fee_per_cu": 0.5166666666666667,
+    "pf_per_cost": 0.9041666666666667,
+    "total_fee": 0.7708333333333334
+   },
+   "best": "pf_per_cost",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 0.9,
+     "windows": 6
+    },
+    "low": {
+     "best_key_agreement": 0.8833333333333333,
+     "windows": 4
+    },
+    "mid": {
+     "best_key_agreement": 0.9222222222222223,
+     "windows": 6
+    }
+   },
+   "evaluable": 16,
+   "family": "HarmonicFiredancer",
+   "informative": {
+    "agave_int|cheapest": 16,
+    "agave_int|cu_price": 7,
+    "agave_int|fd_exact": 16,
+    "agave_int|fee_per_cost": 16,
+    "agave_int|fee_per_cu": 16,
+    "agave_int|pf_per_cost": 16,
+    "agave_int|total_fee": 16,
+    "cu_price|cheapest": 16,
+    "cu_price|fee_per_cu": 9,
+    "cu_price|total_fee": 9,
+    "fd_exact|cheapest": 16,
+    "fd_exact|cu_price": 7,
+    "fd_exact|fee_per_cost": 16,
+    "fd_exact|fee_per_cu": 16,
+    "fd_exact|pf_per_cost": 16,
+    "fd_exact|total_fee": 16,
+    "fee_per_cost|cheapest": 16,
+    "fee_per_cost|cu_price": 16,
+    "fee_per_cost|fee_per_cu": 16,
+    "fee_per_cost|total_fee": 16,
+    "fee_per_cu|cheapest": 7,
+    "fee_per_cu|total_fee": 9,
+    "pf_per_cost|cheapest": 16,
+    "pf_per_cost|cu_price": 16,
+    "pf_per_cost|fee_per_cost": 16,
+    "pf_per_cost|fee_per_cu": 16,
+    "pf_per_cost|total_fee": 16,
+    "total_fee|cheapest": 16
+   },
+   "ingress": "harmonic",
+   "k_free_best_agreement": {
+    "pf_per_cost": 0.9111111111111111
+   },
+   "k_main": 16,
+   "keys": {
+    "agave_int": {
+     "min_n": 7,
+     "min_rate": 0.4375,
+     "p_iut": 0.7727508544921875,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.5903836027749967,
+        1.0
+       ],
+       "n": 7,
+       "p": 0.0078125,
+       "rate": 1.0,
+       "wins": 7
+      },
+      "fd_exact": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.1975341405326679,
+        0.7012231009168222
+       ],
+       "n": 16,
+       "p": 0.7727508544921875,
+       "rate": 0.4375,
+       "wins": 7
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 7,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.40961639722500337
+       ],
+       "n": 7,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 7,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.40961639722500337
+       ],
+       "n": 7,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.40961639722500337
+       ],
+       "n": 7,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 7,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.5903836027749967,
+        1.0
+       ],
+       "n": 7,
+       "p": 0.0078125,
+       "rate": 1.0,
+       "wins": 7
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.1975341405326679,
+        0.7012231009168222
+       ],
+       "n": 16,
+       "p": 0.7727508544921875,
+       "rate": 0.4375,
+       "wins": 7
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.29877689908317784,
+        0.8024658594673321
+       ],
+       "n": 16,
+       "p": 0.4018096923828125,
+       "rate": 0.5625,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 7,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.5903836027749967,
+        1.0
+       ],
+       "n": 7,
+       "p": 0.0078125,
+       "rate": 1.0,
+       "wins": 7
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.1975341405326679,
+        0.7012231009168222
+       ],
+       "n": 16,
+       "p": 0.7727508544921875,
+       "rate": 0.4375,
+       "wins": 7
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 16,
+     "min_rate": 0.5625,
+     "p_iut": 0.4018096923828125,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.29877689908317784,
+        0.8024658594673321
+       ],
+       "n": 16,
+       "p": 0.4018096923828125,
+       "rate": 0.5625,
+       "wins": 9
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.29877689908317784,
+        0.8024658594673321
+       ],
+       "n": 16,
+       "p": 0.4018096923828125,
+       "rate": 0.5625,
+       "wins": 9
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 7,
+     "n": 16
+    },
+    "C-base5": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-cheap": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-div": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fee": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fp": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-price": {
+     "k1_wins": 7,
+     "n": 7
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 48,
+     "pairs": 90,
+     "rate": 0.5333333333333333
+    },
+    "K-main": {
+     "agree": 121,
+     "pairs": 240,
+     "rate": 0.5041666666666667
+    },
+    "K-null": {
+     "agree": 45,
+     "pairs": 90,
+     "rate": 0.5
+    }
+   },
+   "validator": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+   "windows": 28
+  },
   "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP|calibration": {
    "agreement": {
     "agave_int": 1.0,
@@ -9249,7 +11008,7 @@
      "n": 1
     }
    },
-   "null_p_best": 0.0004997501249375312,
+   "null_p_best": 0.0014992503748125937,
    "phase": "calibration",
    "send_order": {
     "K-free": {
@@ -13693,6 +15452,743 @@
    "validator": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
    "windows": 32
   },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayB": {
+   "agreement": {
+    "agave_int": 1.0,
+    "cheapest": 0.5333333333333333,
+    "cu_price": 0.7333333333333333,
+    "fd_exact": 0.8208333333333333,
+    "fee_per_cost": 0.6875,
+    "fee_per_cu": 0.625,
+    "pf_per_cost": 0.8458333333333333,
+    "total_fee": 0.7125
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 1.0,
+     "windows": 4
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 10
+    },
+    "mid": {
+     "best_key_agreement": 1.0,
+     "windows": 2
+    }
+   },
+   "evaluable": 16,
+   "family": "JitoLabs",
+   "informative": {
+    "agave_int|cheapest": 16,
+    "agave_int|cu_price": 16,
+    "agave_int|fd_exact": 16,
+    "agave_int|fee_per_cost": 16,
+    "agave_int|fee_per_cu": 16,
+    "agave_int|pf_per_cost": 16,
+    "agave_int|total_fee": 16,
+    "cu_price|cheapest": 16,
+    "cu_price|fee_per_cu": 5,
+    "cu_price|total_fee": 5,
+    "fd_exact|cheapest": 16,
+    "fd_exact|cu_price": 16,
+    "fd_exact|fee_per_cost": 16,
+    "fd_exact|fee_per_cu": 16,
+    "fd_exact|pf_per_cost": 16,
+    "fd_exact|total_fee": 16,
+    "fee_per_cost|cheapest": 16,
+    "fee_per_cost|cu_price": 11,
+    "fee_per_cost|fee_per_cu": 16,
+    "fee_per_cost|total_fee": 16,
+    "fee_per_cu|cheapest": 11,
+    "fee_per_cu|total_fee": 5,
+    "pf_per_cost|cheapest": 16,
+    "pf_per_cost|cu_price": 16,
+    "pf_per_cost|fee_per_cost": 16,
+    "pf_per_cost|fee_per_cu": 16,
+    "pf_per_cost|total_fee": 16,
+    "total_fee|cheapest": 16
+   },
+   "ingress": "own",
+   "k_free_best_agreement": {
+    "agave_int": 0.7
+   },
+   "k_main": 19,
+   "keys": {
+    "agave_int": {
+     "min_n": 16,
+     "min_rate": 1.0,
+     "p_iut": 1.52587890625e-05,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 11,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.28491415291815436
+       ],
+       "n": 11,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7150858470818456,
+        1.0
+       ],
+       "n": 11,
+       "p": 0.00048828125,
+       "rate": 1.0,
+       "wins": 11
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 11,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.28491415291815436
+       ],
+       "n": 11,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.1101699547171176,
+        0.5866206364513586
+       ],
+       "n": 16,
+       "p": 0.9615936279296875,
+       "rate": 0.3125,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.1101699547171176,
+        0.5866206364513586
+       ],
+       "n": 16,
+       "p": 0.9615936279296875,
+       "rate": 0.3125,
+       "wins": 5
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7150858470818456,
+        1.0
+       ],
+       "n": 11,
+       "p": 0.00048828125,
+       "rate": 1.0,
+       "wins": 11
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.4133793635486414,
+        0.8898300452828825
+       ],
+       "n": 16,
+       "p": 0.1050567626953125,
+       "rate": 0.6875,
+       "wins": 11
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.4133793635486414,
+        0.8898300452828825
+       ],
+       "n": 16,
+       "p": 0.1050567626953125,
+       "rate": 0.6875,
+       "wins": 11
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-base5": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-cheap": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-div": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fee": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fp": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-price": {
+     "k1_wins": 16,
+     "n": 16
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 15,
+     "pairs": 30,
+     "rate": 0.5
+    },
+    "K-main": {
+     "agree": 129,
+     "pairs": 240,
+     "rate": 0.5375
+    },
+    "K-null": {
+     "agree": 45,
+     "pairs": 75,
+     "rate": 0.6
+    }
+   },
+   "validator": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+   "windows": 27
+  },
   "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F|calibration": {
    "agreement": {
     "agave_int": 1.0,
@@ -15904,6 +18400,743 @@
    "validator": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
    "windows": 33
   },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayB": {
+   "agreement": {
+    "agave_int": 0.9454545454545454,
+    "cheapest": 0.47878787878787876,
+    "cu_price": 0.7878787878787878,
+    "fd_exact": 0.7727272727272727,
+    "fee_per_cost": 0.6393939393939394,
+    "fee_per_cu": 0.5575757575757576,
+    "pf_per_cost": 0.8939393939393939,
+    "total_fee": 0.7606060606060606
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 0.9777777777777777,
+     "windows": 6
+    },
+    "low": {
+     "best_key_agreement": 0.95,
+     "windows": 8
+    },
+    "mid": {
+     "best_key_agreement": 0.9166666666666666,
+     "windows": 8
+    }
+   },
+   "evaluable": 22,
+   "family": "HarmonicAgave",
+   "informative": {
+    "agave_int|cheapest": 22,
+    "agave_int|cu_price": 13,
+    "agave_int|fd_exact": 22,
+    "agave_int|fee_per_cost": 22,
+    "agave_int|fee_per_cu": 22,
+    "agave_int|pf_per_cost": 22,
+    "agave_int|total_fee": 22,
+    "cu_price|cheapest": 22,
+    "cu_price|fee_per_cu": 9,
+    "cu_price|total_fee": 9,
+    "fd_exact|cheapest": 22,
+    "fd_exact|cu_price": 13,
+    "fd_exact|fee_per_cost": 22,
+    "fd_exact|fee_per_cu": 22,
+    "fd_exact|pf_per_cost": 22,
+    "fd_exact|total_fee": 22,
+    "fee_per_cost|cheapest": 22,
+    "fee_per_cost|cu_price": 22,
+    "fee_per_cost|fee_per_cu": 22,
+    "fee_per_cost|total_fee": 22,
+    "fee_per_cu|cheapest": 13,
+    "fee_per_cu|total_fee": 9,
+    "pf_per_cost|cheapest": 22,
+    "pf_per_cost|cu_price": 22,
+    "pf_per_cost|fee_per_cost": 22,
+    "pf_per_cost|fee_per_cu": 22,
+    "pf_per_cost|total_fee": 22,
+    "total_fee|cheapest": 22
+   },
+   "ingress": "harmonic",
+   "k_free_best_agreement": {
+    "agave_int": 0.6
+   },
+   "k_main": 22,
+   "keys": {
+    "agave_int": {
+     "min_n": 13,
+     "min_rate": 0.5909090909090909,
+     "p_iut": 0.2617335319519043,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "cu_price": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      },
+      "fd_exact": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.36354696172973133,
+        0.7929068770028508
+       ],
+       "n": 22,
+       "p": 0.2617335319519043,
+       "rate": 0.5909090909090909,
+       "wins": 13
+      },
+      "total_fee": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 13,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 13,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "cu_price": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.36354696172973133,
+        0.7929068770028508
+       ],
+       "n": 22,
+       "p": 0.2617335319519043,
+       "rate": 0.5909090909090909,
+       "wins": 13
+      },
+      "total_fee": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 22,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.2070931229971492,
+        0.6364530382702687
+       ],
+       "n": 22,
+       "p": 0.8568606376647949,
+       "rate": 0.4090909090909091,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.36354696172973133,
+        0.7929068770028508
+       ],
+       "n": 22,
+       "p": 0.2617335319519043,
+       "rate": 0.5909090909090909,
+       "wins": 13
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 22,
+     "min_rate": 0.4090909090909091,
+     "p_iut": 0.8568606376647949,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.2070931229971492,
+        0.6364530382702687
+       ],
+       "n": 22,
+       "p": 0.8568606376647949,
+       "rate": 0.4090909090909091,
+       "wins": 9
+      },
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "cu_price": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fd_exact": {
+       "ci": [
+        0.2070931229971492,
+        0.6364530382702687
+       ],
+       "n": 22,
+       "p": 0.8568606376647949,
+       "rate": 0.4090909090909091,
+       "wins": 9
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "total_fee": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 13,
+     "n": 22
+    },
+    "C-base5": {
+     "k1_wins": 22,
+     "n": 22
+    },
+    "C-cheap": {
+     "k1_wins": 22,
+     "n": 22
+    },
+    "C-div": {
+     "k1_wins": 22,
+     "n": 22
+    },
+    "C-fee": {
+     "k1_wins": 22,
+     "n": 22
+    },
+    "C-fp": {
+     "k1_wins": 22,
+     "n": 22
+    },
+    "C-price": {
+     "k1_wins": 13,
+     "n": 13
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 29,
+     "pairs": 75,
+     "rate": 0.38666666666666666
+    },
+    "K-main": {
+     "agree": 174,
+     "pairs": 330,
+     "rate": 0.5272727272727272
+    },
+    "K-null": {
+     "agree": 4,
+     "pairs": 15,
+     "rate": 0.26666666666666666
+    }
+   },
+   "validator": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+   "windows": 28
+  },
   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|calibration": {
    "agreement": {
     "agave_int": 1.0,
@@ -17377,6 +20610,743 @@
    },
    "validator": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
    "windows": 34
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayB": {
+   "agreement": {
+    "agave_int": 1.0,
+    "cheapest": 0.5333333333333333,
+    "cu_price": 0.7333333333333333,
+    "fd_exact": 0.837037037037037,
+    "fee_per_cost": 0.7037037037037037,
+    "fee_per_cu": 0.5925925925925926,
+    "pf_per_cost": 0.8296296296296296,
+    "total_fee": 0.6962962962962963
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 1.0,
+     "windows": 4
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 2
+    },
+    "mid": {
+     "best_key_agreement": 1.0,
+     "windows": 3
+    }
+   },
+   "evaluable": 9,
+   "family": "AgaveBam",
+   "informative": {
+    "agave_int|cheapest": 9,
+    "agave_int|cu_price": 9,
+    "agave_int|fd_exact": 9,
+    "agave_int|fee_per_cost": 9,
+    "agave_int|fee_per_cu": 9,
+    "agave_int|pf_per_cost": 9,
+    "agave_int|total_fee": 9,
+    "cu_price|cheapest": 9,
+    "cu_price|fee_per_cu": 5,
+    "cu_price|total_fee": 5,
+    "fd_exact|cheapest": 9,
+    "fd_exact|cu_price": 9,
+    "fd_exact|fee_per_cost": 9,
+    "fd_exact|fee_per_cu": 9,
+    "fd_exact|pf_per_cost": 9,
+    "fd_exact|total_fee": 9,
+    "fee_per_cost|cheapest": 9,
+    "fee_per_cost|cu_price": 4,
+    "fee_per_cost|fee_per_cu": 9,
+    "fee_per_cost|total_fee": 9,
+    "fee_per_cu|cheapest": 4,
+    "fee_per_cu|total_fee": 5,
+    "pf_per_cost|cheapest": 9,
+    "pf_per_cost|cu_price": 9,
+    "pf_per_cost|fee_per_cost": 9,
+    "pf_per_cost|fee_per_cu": 9,
+    "pf_per_cost|total_fee": 9,
+    "total_fee|cheapest": 9
+   },
+   "ingress": "bam",
+   "k_free_best_agreement": {
+    "agave_int": 0.9166666666666666
+   },
+   "k_main": 17,
+   "keys": {
+    "agave_int": {
+     "min_n": 9,
+     "min_rate": 1.0,
+     "p_iut": 0.001953125,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "cu_price": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fd_exact": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "total_fee": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 4,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.6023646356164746
+       ],
+       "n": 4,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 4,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.3976353643835254,
+        1.0
+       ],
+       "n": 4,
+       "p": 0.0625,
+       "rate": 1.0,
+       "wins": 4
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "cu_price": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "total_fee": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 4,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.6023646356164746
+       ],
+       "n": 4,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.212008506778868,
+        0.8630043377348335
+       ],
+       "n": 9,
+       "p": 0.5,
+       "rate": 0.5555555555555556,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.212008506778868,
+        0.8630043377348335
+       ],
+       "n": 9,
+       "p": 0.5,
+       "rate": 0.5555555555555556,
+       "wins": 5
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 4,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.3976353643835254,
+        1.0
+       ],
+       "n": 4,
+       "p": 0.0625,
+       "rate": 1.0,
+       "wins": 4
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.13699566226516652,
+        0.787991493221132
+       ],
+       "n": 9,
+       "p": 0.74609375,
+       "rate": 0.4444444444444444,
+       "wins": 4
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "cu_price": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "total_fee": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.13699566226516652,
+        0.787991493221132
+       ],
+       "n": 9,
+       "p": 0.74609375,
+       "rate": 0.4444444444444444,
+       "wins": 4
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-base5": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-cheap": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-div": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-fee": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-fp": {
+     "k1_wins": 9,
+     "n": 9
+    },
+    "C-price": {
+     "k1_wins": 9,
+     "n": 9
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 24,
+     "pairs": 60,
+     "rate": 0.4
+    },
+    "K-main": {
+     "agree": 58,
+     "pairs": 135,
+     "rate": 0.42962962962962964
+    },
+    "K-null": {
+     "agree": 24,
+     "pairs": 45,
+     "rate": 0.5333333333333333
+    }
+   },
+   "validator": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+   "windows": 27
   },
   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|calibration": {
    "agreement": {
@@ -18852,6 +22822,743 @@
    "validator": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
    "windows": 33
   },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayB": {
+   "agreement": {
+    "agave_int": 0.825,
+    "cheapest": 0.675,
+    "cu_price": 0.5638888888888889,
+    "fd_exact": 0.9805555555555555,
+    "fee_per_cost": 0.8472222222222222,
+    "fee_per_cu": 0.5861111111111111,
+    "pf_per_cost": 0.6527777777777778,
+    "total_fee": 0.5361111111111111
+   },
+   "best": "fd_exact",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 0.9714285714285714,
+     "windows": 14
+    },
+    "low": {
+     "best_key_agreement": null,
+     "windows": 0
+    },
+    "mid": {
+     "best_key_agreement": 0.9933333333333333,
+     "windows": 10
+    }
+   },
+   "evaluable": 24,
+   "family": "Firedancer",
+   "informative": {
+    "agave_int|cheapest": 24,
+    "agave_int|cu_price": 24,
+    "agave_int|fd_exact": 24,
+    "agave_int|fee_per_cost": 24,
+    "agave_int|fee_per_cu": 24,
+    "agave_int|pf_per_cost": 23,
+    "agave_int|total_fee": 24,
+    "cu_price|cheapest": 24,
+    "cu_price|fee_per_cu": 16,
+    "cu_price|total_fee": 16,
+    "fd_exact|cheapest": 24,
+    "fd_exact|cu_price": 24,
+    "fd_exact|fee_per_cost": 24,
+    "fd_exact|fee_per_cu": 24,
+    "fd_exact|pf_per_cost": 23,
+    "fd_exact|total_fee": 24,
+    "fee_per_cost|cheapest": 23,
+    "fee_per_cost|cu_price": 24,
+    "fee_per_cost|fee_per_cu": 24,
+    "fee_per_cost|total_fee": 24,
+    "fee_per_cu|cheapest": 9,
+    "fee_per_cu|total_fee": 13,
+    "pf_per_cost|cheapest": 9,
+    "pf_per_cost|cu_price": 24,
+    "pf_per_cost|fee_per_cost": 24,
+    "pf_per_cost|fee_per_cu": 8,
+    "pf_per_cost|total_fee": 21,
+    "total_fee|cheapest": 22
+   },
+   "ingress": "own",
+   "k_free_best_agreement": {
+    "fd_exact": 1.0
+   },
+   "k_main": 24,
+   "keys": {
+    "agave_int": {
+     "min_n": 23,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "cu_price": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8518148710847756,
+        1.0
+       ],
+       "n": 23,
+       "p": 1.1920928955078125e-07,
+       "rate": 1.0,
+       "wins": 23
+      },
+      "total_fee": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 9,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.14818512891522437
+       ],
+       "n": 23,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6637328831200572,
+        1.0
+       ],
+       "n": 9,
+       "p": 0.001953125,
+       "rate": 1.0,
+       "wins": 9
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.517503485082663,
+        0.9971908632534008
+       ],
+       "n": 9,
+       "p": 0.01953125,
+       "rate": 0.8888888888888888,
+       "wins": 8
+      },
+      "total_fee": {
+       "ci": [
+        0.8456274871844255,
+        1.0
+       ],
+       "n": 22,
+       "p": 2.384185791015625e-07,
+       "rate": 1.0,
+       "wins": 22
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.5435434537683883,
+        0.9595262660940541
+       ],
+       "n": 16,
+       "p": 0.0106353759765625,
+       "rate": 0.8125,
+       "wins": 13
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 23,
+     "min_rate": 1.0,
+     "p_iut": 1.1920928955078125e-07,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "cheapest": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "cu_price": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8518148710847756,
+        1.0
+       ],
+       "n": 23,
+       "p": 1.1920928955078125e-07,
+       "rate": 1.0,
+       "wins": 23
+      },
+      "total_fee": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 23,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8518148710847756,
+        1.0
+       ],
+       "n": 23,
+       "p": 1.1920928955078125e-07,
+       "rate": 1.0,
+       "wins": 23
+      },
+      "cu_price": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "total_fee": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 8,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.0,
+        0.3362671168799428
+       ],
+       "n": 9,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.3694166475528192
+       ],
+       "n": 8,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.752947361999529,
+        1.0
+       ],
+       "n": 13,
+       "p": 0.0001220703125,
+       "rate": 1.0,
+       "wins": 13
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 8,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14818512891522437
+       ],
+       "n": 23,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.0028091367465992163,
+        0.48249651491733697
+       ],
+       "n": 9,
+       "p": 0.998046875,
+       "rate": 0.1111111111111111,
+       "wins": 1
+      },
+      "cu_price": {
+       "ci": [
+        0.8575264022774743,
+        1.0
+       ],
+       "n": 24,
+       "p": 5.960464477539063e-08,
+       "rate": 1.0,
+       "wins": 24
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14818512891522437
+       ],
+       "n": 23,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.6305833524471808,
+        1.0
+       ],
+       "n": 8,
+       "p": 0.00390625,
+       "rate": 1.0,
+       "wins": 8
+      },
+      "total_fee": {
+       "ci": [
+        0.8389023847809204,
+        1.0
+       ],
+       "n": 21,
+       "p": 4.76837158203125e-07,
+       "rate": 1.0,
+       "wins": 21
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 13,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.0,
+        0.15437251281557457
+       ],
+       "n": 22,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0404737339059459,
+        0.4564565462316117
+       ],
+       "n": 16,
+       "p": 0.9979095458984375,
+       "rate": 0.1875,
+       "wins": 3
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.14247359772252563
+       ],
+       "n": 24,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.24705263800047092
+       ],
+       "n": 13,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.16109761521907956
+       ],
+       "n": 21,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 23,
+     "n": 23
+    },
+    "C-base5": {
+     "k1_wins": 24,
+     "n": 24
+    },
+    "C-cheap": {
+     "k1_wins": 24,
+     "n": 24
+    },
+    "C-div": {
+     "k1_wins": 24,
+     "n": 24
+    },
+    "C-fee": {
+     "k1_wins": 24,
+     "n": 24
+    },
+    "C-fp": {
+     "k1_wins": 0,
+     "n": 24
+    },
+    "C-price": {
+     "k1_wins": 24,
+     "n": 24
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 25,
+     "pairs": 45,
+     "rate": 0.5555555555555556
+    },
+    "K-main": {
+     "agree": 181,
+     "pairs": 360,
+     "rate": 0.5027777777777778
+    },
+    "K-null": {
+     "agree": 3,
+     "pairs": 45,
+     "rate": 0.06666666666666667
+    }
+   },
+   "validator": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+   "windows": 30
+  },
   "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc|calibration": {
    "agreement": {
     "agave_int": 1.0,
@@ -19567,7 +24274,7 @@
      "n": 1
     }
    },
-   "null_p_best": 0.0029985007496251873,
+   "null_p_best": 0.0009995002498750624,
    "phase": "calibration",
    "send_order": {
     "K-free": {
@@ -21800,6 +26507,743 @@
    "validator": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
    "windows": 34
   },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayB": {
+   "agreement": {
+    "agave_int": 1.0,
+    "cheapest": 0.5333333333333333,
+    "cu_price": 0.7333333333333333,
+    "fd_exact": 0.8208333333333333,
+    "fee_per_cost": 0.6875,
+    "fee_per_cu": 0.625,
+    "pf_per_cost": 0.8458333333333333,
+    "total_fee": 0.7125
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 1.0,
+     "windows": 4
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 4
+    },
+    "mid": {
+     "best_key_agreement": 1.0,
+     "windows": 8
+    }
+   },
+   "evaluable": 16,
+   "family": "FireBAM",
+   "informative": {
+    "agave_int|cheapest": 16,
+    "agave_int|cu_price": 16,
+    "agave_int|fd_exact": 16,
+    "agave_int|fee_per_cost": 16,
+    "agave_int|fee_per_cu": 16,
+    "agave_int|pf_per_cost": 16,
+    "agave_int|total_fee": 16,
+    "cu_price|cheapest": 16,
+    "cu_price|fee_per_cu": 5,
+    "cu_price|total_fee": 5,
+    "fd_exact|cheapest": 16,
+    "fd_exact|cu_price": 16,
+    "fd_exact|fee_per_cost": 16,
+    "fd_exact|fee_per_cu": 16,
+    "fd_exact|pf_per_cost": 16,
+    "fd_exact|total_fee": 16,
+    "fee_per_cost|cheapest": 16,
+    "fee_per_cost|cu_price": 11,
+    "fee_per_cost|fee_per_cu": 16,
+    "fee_per_cost|total_fee": 16,
+    "fee_per_cu|cheapest": 11,
+    "fee_per_cu|total_fee": 5,
+    "pf_per_cost|cheapest": 16,
+    "pf_per_cost|cu_price": 16,
+    "pf_per_cost|fee_per_cost": 16,
+    "pf_per_cost|fee_per_cu": 16,
+    "pf_per_cost|total_fee": 16,
+    "total_fee|cheapest": 16
+   },
+   "ingress": "bam",
+   "k_free_best_agreement": {
+    "agave_int": 0.9555555555555556
+   },
+   "k_main": 19,
+   "keys": {
+    "agave_int": {
+     "min_n": 16,
+     "min_rate": 1.0,
+     "p_iut": 1.52587890625e-05,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 11,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.28491415291815436
+       ],
+       "n": 11,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7150858470818456,
+        1.0
+       ],
+       "n": 11,
+       "p": 0.00048828125,
+       "rate": 1.0,
+       "wins": 11
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 11,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.28491415291815436
+       ],
+       "n": 11,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.1101699547171176,
+        0.5866206364513586
+       ],
+       "n": 16,
+       "p": 0.9615936279296875,
+       "rate": 0.3125,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.1101699547171176,
+        0.5866206364513586
+       ],
+       "n": 16,
+       "p": 0.9615936279296875,
+       "rate": 0.3125,
+       "wins": 5
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7150858470818456,
+        1.0
+       ],
+       "n": 11,
+       "p": 0.00048828125,
+       "rate": 1.0,
+       "wins": 11
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.4133793635486414,
+        0.8898300452828825
+       ],
+       "n": 16,
+       "p": 0.1050567626953125,
+       "rate": 0.6875,
+       "wins": 11
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 16,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "total_fee": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 5,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7940927857921773,
+        1.0
+       ],
+       "n": 16,
+       "p": 1.52587890625e-05,
+       "rate": 1.0,
+       "wins": 16
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.5218237501049814
+       ],
+       "n": 5,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.4133793635486414,
+        0.8898300452828825
+       ],
+       "n": 16,
+       "p": 0.1050567626953125,
+       "rate": 0.6875,
+       "wins": 11
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.47817624989501856,
+        1.0
+       ],
+       "n": 5,
+       "p": 0.03125,
+       "rate": 1.0,
+       "wins": 5
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.2059072142078227
+       ],
+       "n": 16,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-base5": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-cheap": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-div": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fee": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-fp": {
+     "k1_wins": 16,
+     "n": 16
+    },
+    "C-price": {
+     "k1_wins": 16,
+     "n": 16
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 27,
+     "pairs": 45,
+     "rate": 0.6
+    },
+    "K-main": {
+     "agree": 118,
+     "pairs": 240,
+     "rate": 0.49166666666666664
+    },
+    "K-null": {
+     "agree": 18,
+     "pairs": 45,
+     "rate": 0.4
+    }
+   },
+   "validator": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+   "windows": 25
+  },
   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|calibration": {
    "agreement": {
     "agave_int": 1.0,
@@ -23273,6 +28717,743 @@
    },
    "validator": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
    "windows": 53
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayB": {
+   "agreement": {
+    "agave_int": 1.0,
+    "cheapest": 0.5333333333333333,
+    "cu_price": 0.7333333333333333,
+    "fd_exact": 0.8383838383838383,
+    "fee_per_cost": 0.705050505050505,
+    "fee_per_cu": 0.5898989898989899,
+    "pf_per_cost": 0.8282828282828283,
+    "total_fee": 0.694949494949495
+   },
+   "best": "agave_int",
+   "by_block_load": {
+    "high": {
+     "best_key_agreement": 1.0,
+     "windows": 10
+    },
+    "low": {
+     "best_key_agreement": 1.0,
+     "windows": 11
+    },
+    "mid": {
+     "best_key_agreement": 1.0,
+     "windows": 12
+    }
+   },
+   "evaluable": 33,
+   "family": "Rakurai",
+   "informative": {
+    "agave_int|cheapest": 33,
+    "agave_int|cu_price": 33,
+    "agave_int|fd_exact": 33,
+    "agave_int|fee_per_cost": 33,
+    "agave_int|fee_per_cu": 33,
+    "agave_int|pf_per_cost": 33,
+    "agave_int|total_fee": 33,
+    "cu_price|cheapest": 33,
+    "cu_price|fee_per_cu": 19,
+    "cu_price|total_fee": 19,
+    "fd_exact|cheapest": 33,
+    "fd_exact|cu_price": 33,
+    "fd_exact|fee_per_cost": 33,
+    "fd_exact|fee_per_cu": 33,
+    "fd_exact|pf_per_cost": 33,
+    "fd_exact|total_fee": 33,
+    "fee_per_cost|cheapest": 33,
+    "fee_per_cost|cu_price": 14,
+    "fee_per_cost|fee_per_cu": 33,
+    "fee_per_cost|total_fee": 33,
+    "fee_per_cu|cheapest": 14,
+    "fee_per_cu|total_fee": 19,
+    "pf_per_cost|cheapest": 33,
+    "pf_per_cost|cu_price": 33,
+    "pf_per_cost|fee_per_cost": 33,
+    "pf_per_cost|fee_per_cu": 33,
+    "pf_per_cost|total_fee": 33,
+    "total_fee|cheapest": 33
+   },
+   "ingress": "own",
+   "k_free_best_agreement": {
+    "agave_int": 0.8222222222222222
+   },
+   "k_main": 35,
+   "keys": {
+    "agave_int": {
+     "min_n": 33,
+     "min_rate": 1.0,
+     "p_iut": 1.1641532182693481e-10,
+     "rivals": {
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "cu_price": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fd_exact": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "total_fee": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      }
+     }
+    },
+    "cheapest": {
+     "min_n": 14,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.0,
+        0.23163576165011646
+       ],
+       "n": 14,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "cu_price": {
+     "min_n": 14,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.7683642383498835,
+        1.0
+       ],
+       "n": 14,
+       "p": 6.103515625e-05,
+       "rate": 1.0,
+       "wins": 14
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8235330881930346,
+        1.0
+       ],
+       "n": 19,
+       "p": 1.9073486328125e-06,
+       "rate": 1.0,
+       "wins": 19
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.8235330881930346,
+        1.0
+       ],
+       "n": 19,
+       "p": 1.9073486328125e-06,
+       "rate": 1.0,
+       "wins": 19
+      }
+     }
+    },
+    "fd_exact": {
+     "min_n": 33,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "cu_price": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "total_fee": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      }
+     }
+    },
+    "fee_per_cost": {
+     "min_n": 14,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.23163576165011646
+       ],
+       "n": 14,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.39215301618788523,
+        0.7452381772653041
+       ],
+       "n": 33,
+       "p": 0.24342512083239853,
+       "rate": 0.5757575757575758,
+       "wins": 19
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.39215301618788523,
+        0.7452381772653041
+       ],
+       "n": 33,
+       "p": 0.24342512083239853,
+       "rate": 0.5757575757575758,
+       "wins": 19
+      }
+     }
+    },
+    "fee_per_cu": {
+     "min_n": 14,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.7683642383498835,
+        1.0
+       ],
+       "n": 14,
+       "p": 6.103515625e-05,
+       "rate": 1.0,
+       "wins": 14
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.17646691180696536
+       ],
+       "n": 19,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.2547618227346959,
+        0.6078469838121148
+       ],
+       "n": 33,
+       "p": 0.8518968157004565,
+       "rate": 0.42424242424242425,
+       "wins": 14
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "total_fee": {
+       "ci": [
+        0.0,
+        0.17646691180696536
+       ],
+       "n": 19,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    },
+    "pf_per_cost": {
+     "min_n": 33,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "cu_price": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "total_fee": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      }
+     }
+    },
+    "total_fee": {
+     "min_n": 19,
+     "min_rate": 0.0,
+     "p_iut": 1.0,
+     "rivals": {
+      "agave_int": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "cheapest": {
+       "ci": [
+        0.8942371899254207,
+        1.0
+       ],
+       "n": 33,
+       "p": 1.1641532182693481e-10,
+       "rate": 1.0,
+       "wins": 33
+      },
+      "cu_price": {
+       "ci": [
+        0.0,
+        0.17646691180696536
+       ],
+       "n": 19,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fd_exact": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      },
+      "fee_per_cost": {
+       "ci": [
+        0.2547618227346959,
+        0.6078469838121148
+       ],
+       "n": 33,
+       "p": 0.8518968157004565,
+       "rate": 0.42424242424242425,
+       "wins": 14
+      },
+      "fee_per_cu": {
+       "ci": [
+        0.8235330881930346,
+        1.0
+       ],
+       "n": 19,
+       "p": 1.9073486328125e-06,
+       "rate": 1.0,
+       "wins": 19
+      },
+      "pf_per_cost": {
+       "ci": [
+        0.0,
+        0.10576281007457927
+       ],
+       "n": 33,
+       "p": 1.0,
+       "rate": 0.0,
+       "wins": 0
+      }
+     }
+    }
+   },
+   "load_cuts": [
+    316,
+    457
+   ],
+   "named": {
+    "C-base0": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-base5": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-cheap": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-div": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-fee": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-fp": {
+     "k1_wins": 33,
+     "n": 33
+    },
+    "C-price": {
+     "k1_wins": 33,
+     "n": 33
+    }
+   },
+   "null_p_best": 0.0004997501249375312,
+   "phase": "dayB",
+   "send_order": {
+    "K-free": {
+     "agree": 22,
+     "pairs": 45,
+     "rate": 0.4888888888888889
+    },
+    "K-main": {
+     "agree": 236,
+     "pairs": 495,
+     "rate": 0.4767676767676768
+    },
+    "K-null": {
+     "agree": 21,
+     "pairs": 45,
+     "rate": 0.4666666666666667
+    }
+   },
+   "validator": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+   "windows": 43
   }
  },
  "study_m": {
@@ -23658,11 +29839,11 @@
    "increasing": {
     "ci": [
      [
-      0.8517819706498951,
+      0.8518518518518519,
       0.9090909090909091
      ],
      [
-      0.7346598639455783,
+      0.7346938775510204,
       0.8
      ],
      [
@@ -23671,23 +29852,23 @@
      ],
      [
       0.55,
-      0.6756756756756757
+      0.6818181818181818
      ],
      [
       0.4857142857142857,
-      0.625
+      0.631578947368421
      ],
      [
-      0.35988888888888887,
-      0.5003048780487802
+      0.3616595744680851,
+      0.5121951219512195
      ],
      [
-      0.27989655172413797,
-      0.45454545454545453
+      0.27586206896551724,
+      0.46153846153846156
      ],
      [
-      0.0908102766798419,
-      0.29411764705882354
+      0.08695652173913043,
+      0.3
      ],
      [
       0.0,
@@ -23773,6 +29954,101 @@
    },
    "phase": "dayA",
    "trains": 7,
+   "validator": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5"
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 4,
+   "family": "HarmonicFiredancer",
+   "increasing": {
+    "ci": [
+     [
+      0.9090909090909091,
+      0.975609756097561
+     ],
+     [
+      0.8,
+      0.9411764705882353
+     ],
+     [
+      0.6666666666666666,
+      0.8888888888888888
+     ],
+     [
+      0.5,
+      0.8
+     ],
+     [
+      0.2857142857142857,
+      0.6875
+     ],
+     [
+      0.08333333333333333,
+      0.5833333333333334
+     ],
+     [
+      0.0,
+      0.375
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ],
+    "gaps": [
+     4.0,
+     8.0,
+     12.0,
+     16.0,
+     20.0,
+     24.0,
+     28.0,
+     32.0,
+     36.0,
+     40.0,
+     44.0
+    ],
+    "horizon_ci": [
+     16.0,
+     24.0
+    ],
+    "horizon_ms": 16.0,
+    "rate": [
+     0.9302325581395349,
+     0.8421052631578947,
+     0.7272727272727273,
+     0.5714285714285714,
+     0.4166666666666667,
+     0.25,
+     0.125,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "trains": 4
+   },
+   "phase": "dayB",
+   "trains": 4,
    "validator": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5"
   },
   "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP|calibration": {
@@ -24285,16 +30561,16 @@
       0.575
      ],
      [
-      0.34285714285714286,
-      0.5142857142857142
+      0.34683673469387755,
+      0.5
      ],
      [
       0.25,
       0.38636363636363635
      ],
      [
-      0.08,
-      0.32
+      0.08557142857142858,
+      0.3
      ],
      [
       0.0,
@@ -24384,6 +30660,101 @@
    },
    "phase": "dayA",
    "trains": 7,
+   "validator": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f"
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 4,
+   "family": "HarmonicAgave",
+   "increasing": {
+    "ci": [
+     [
+      0.8048780487804879,
+      0.8181818181818182
+     ],
+     [
+      0.5675675675675675,
+      0.7
+     ],
+     [
+      0.3333333333333333,
+      0.6388888888888888
+     ],
+     [
+      0.13793103448275862,
+      0.59375
+     ],
+     [
+      0.12,
+      0.5357142857142857
+     ],
+     [
+      0.09523809523809523,
+      0.4583333333333333
+     ],
+     [
+      0.058823529411764705,
+      0.35
+     ],
+     [
+      0.0,
+      0.1875
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ],
+    "gaps": [
+     4.0,
+     8.0,
+     12.0,
+     16.0,
+     20.0,
+     24.0,
+     28.0,
+     32.0,
+     36.0,
+     40.0,
+     44.0
+    ],
+    "horizon_ci": [
+     8.0,
+     20.0
+    ],
+    "horizon_ms": 12.0,
+    "rate": [
+     0.813953488372093,
+     0.6410256410256411,
+     0.5142857142857142,
+     0.41935483870967744,
+     0.37037037037037035,
+     0.30434782608695654,
+     0.21052631578947367,
+     0.06666666666666667,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "trains": 4
+   },
+   "phase": "dayB",
+   "trains": 4,
    "validator": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f"
   },
   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|calibration": {
@@ -24538,6 +30909,29 @@
    },
    "phase": "dayA",
    "trains": 7,
+   "validator": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD"
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 0,
+   "family": "AgaveBam",
+   "increasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "phase": "dayB",
+   "trains": 3,
    "validator": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD"
   },
   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|calibration": {
@@ -24790,6 +31184,101 @@
    "trains": 7,
    "validator": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB"
   },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 4,
+   "family": "Firedancer",
+   "increasing": {
+    "ci": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ],
+    "gaps": [
+     4.0,
+     8.0,
+     12.0,
+     16.0,
+     20.0,
+     24.0,
+     28.0,
+     32.0,
+     36.0,
+     40.0,
+     44.0
+    ],
+    "horizon_ci": [
+     0.0,
+     0.0
+    ],
+    "horizon_ms": 0.0,
+    "rate": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "trains": 4
+   },
+   "phase": "dayB",
+   "trains": 4,
+   "validator": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB"
+  },
   "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc|calibration": {
    "decreasing": {
     "ci": [],
@@ -24968,6 +31457,101 @@
    "trains": 4,
    "validator": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY"
   },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 1,
+   "family": "FireBAM",
+   "increasing": {
+    "ci": [
+     [
+      0.9090909090909091,
+      0.9090909090909091
+     ],
+     [
+      0.8,
+      0.8
+     ],
+     [
+      0.6666666666666666,
+      0.6666666666666666
+     ],
+     [
+      0.625,
+      0.625
+     ],
+     [
+      0.5714285714285714,
+      0.5714285714285714
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.4,
+      0.4
+     ],
+     [
+      0.25,
+      0.25
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ],
+    "gaps": [
+     4.0,
+     8.0,
+     12.0,
+     16.0,
+     20.0,
+     24.0,
+     28.0,
+     32.0,
+     36.0,
+     40.0,
+     44.0
+    ],
+    "horizon_ci": [
+     24.0,
+     24.0
+    ],
+    "horizon_ms": 24.0,
+    "rate": [
+     0.9090909090909091,
+     0.8,
+     0.6666666666666666,
+     0.625,
+     0.5714285714285714,
+     0.5,
+     0.4,
+     0.25,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "trains": 1
+   },
+   "phase": "dayB",
+   "trains": 1,
+   "validator": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY"
+  },
   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|calibration": {
    "decreasing": {
     "ci": [],
@@ -25078,7 +31662,7 @@
     "ci": [
      [
       0.0,
-      0.0732164634146341
+      0.07147212543554003
      ],
      [
       0.0,
@@ -25192,6 +31776,101 @@
    },
    "phase": "dayA",
    "trains": 7,
+   "validator": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY"
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayB": {
+   "decreasing": {
+    "ci": [],
+    "gaps": [],
+    "horizon_ci": null,
+    "horizon_ms": null,
+    "rate": [],
+    "trains": 0
+   },
+   "evaluable": 3,
+   "family": "Rakurai",
+   "increasing": {
+    "ci": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0
+     ]
+    ],
+    "gaps": [
+     4.0,
+     8.0,
+     12.0,
+     16.0,
+     20.0,
+     24.0,
+     28.0,
+     32.0,
+     36.0,
+     40.0,
+     44.0
+    ],
+    "horizon_ci": [
+     0.0,
+     0.0
+    ],
+    "horizon_ms": 0.0,
+    "rate": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "trains": 3
+   },
+   "phase": "dayB",
+   "trains": 4,
    "validator": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY"
   }
  }

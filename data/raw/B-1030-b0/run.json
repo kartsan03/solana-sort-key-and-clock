@@ -1,0 +1,3664 @@
+{
+ "run_id": "B-1030-b0",
+ "live": true,
+ "plan": {
+  "run_id": "B-1030-b0",
+  "created_utc": "2026-10-29T23:57:53Z",
+  "epoch": 1071,
+  "epoch_start": 462672000,
+  "slot_range": [
+   463074843,
+   463139631
+  ],
+  "targets": {
+   "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
+    "family": "Agave",
+    "tier": 1,
+    "K": 6,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+    "family": "JitoLabs",
+    "tier": 1,
+    "K": 5,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+    "family": "AgaveBam",
+    "tier": 1,
+    "K": 5,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "family": "HarmonicAgave",
+    "tier": 1,
+    "K": 5,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "family": "HarmonicFiredancer",
+    "tier": 1,
+    "K": 5,
+    "M": 1,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
+    "family": "Firedancer",
+    "tier": 1,
+    "K": 5,
+    "M": 1,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
+    "family": "Rakurai",
+    "tier": 1,
+    "K": 7,
+    "M": 1,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   },
+   "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+    "family": "FireBAM",
+    "tier": 1,
+    "K": 5,
+    "M": 0,
+    "train_specs": [
+     "t4",
+     "t12"
+    ]
+   }
+  },
+  "windows": [
+   {
+    "slot0": 463075104,
+    "target": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+    "study": "K",
+    "prev_leader": "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH",
+    "eta_utc": "00:00:56",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0000",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "B",
+     "A",
+     "F",
+     "C",
+     "E",
+     "D"
+    ],
+    "payer_slots": [
+     3,
+     2,
+     5,
+     1,
+     0,
+     4
+    ],
+    "offset_ms": -411.631,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     3,
+     2,
+     5,
+     1,
+     0,
+     4
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463075424,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "K",
+    "prev_leader": "2m1A2WM1vte7RWz5xTTw4i1SiXmngVtXhqFERaUjoAAb",
+    "eta_utc": "00:02:05",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0001",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "E",
+     "A",
+     "C",
+     "D",
+     "B"
+    ],
+    "payer_slots": [
+     5,
+     3,
+     4,
+     0,
+     2,
+     1
+    ],
+    "offset_ms": -271.207,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     11,
+     9,
+     10,
+     6,
+     8,
+     7
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463075948,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU",
+    "eta_utc": "00:03:56",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0002",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "B",
+     "A",
+     "D",
+     "F",
+     "E",
+     "C"
+    ],
+    "payer_slots": [
+     3,
+     5,
+     0,
+     4,
+     1,
+     2
+    ],
+    "offset_ms": -442.501,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     3,
+     5,
+     0,
+     4,
+     1,
+     2
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463080716,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "6Rk694kh1QTyQkirdb1uDZmS5xqG9bNaYtxx8d311Mr7",
+    "eta_utc": "00:20:52",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0003",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "A",
+     "C",
+     "D",
+     "B",
+     "E",
+     "F"
+    ],
+    "payer_slots": [
+     0,
+     1,
+     3,
+     4,
+     2,
+     5
+    ],
+    "offset_ms": -587.779,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     6,
+     7,
+     9,
+     10,
+     8,
+     11
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463082524,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "5Cchr1XGEg7dbBXByV5NY2ad8jfxAM7HA3x8D56rq9Ux",
+    "eta_utc": "00:27:17",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0004",
+    "epoch_start": 462672000,
+    "arm": "K-free",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "E",
+     "A",
+     "C",
+     "B",
+     "D"
+    ],
+    "payer_slots": [
+     3,
+     4,
+     5,
+     2,
+     0,
+     1
+    ],
+    "offset_ms": -394.091,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     3,
+     4,
+     5,
+     2,
+     0,
+     1
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463084372,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "K",
+    "prev_leader": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+    "eta_utc": "00:33:50",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0005",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "B",
+     "A",
+     "F",
+     "D",
+     "C",
+     "E"
+    ],
+    "payer_slots": [
+     5,
+     3,
+     0,
+     2,
+     4,
+     1
+    ],
+    "offset_ms": -258.995,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     11,
+     9,
+     6,
+     8,
+     10,
+     7
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463086828,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "K",
+    "prev_leader": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+    "eta_utc": "00:42:34",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0006",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "C",
+     "F",
+     "B",
+     "D",
+     "A",
+     "E"
+    ],
+    "payer_slots": [
+     2,
+     3,
+     4,
+     1,
+     5,
+     0
+    ],
+    "offset_ms": -404.025,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     3,
+     4,
+     1,
+     5,
+     0
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463087124,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "K",
+    "prev_leader": "GQzMeEMwAR44ugoNCifTb5NdRKos1GduDUPeNh6AgV46",
+    "eta_utc": "00:43:37",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0007",
+    "epoch_start": 462672000,
+    "arm": "K-null",
+    "panel": "P1",
+    "send_order": [
+     "C",
+     "E",
+     "F",
+     "B",
+     "D",
+     "A"
+    ],
+    "payer_slots": [
+     0,
+     4,
+     2,
+     5,
+     3,
+     1
+    ],
+    "offset_ms": -521.773,
+    "probes": [
+     [
+      "A",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "B",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "C",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "D",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "E",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "F",
+      1000,
+      999001,
+      32768
+     ]
+    ],
+    "payers": [
+     6,
+     10,
+     8,
+     11,
+     9,
+     7
+    ],
+    "max_spend": 36000
+   },
+   {
+    "slot0": 463087628,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "JUPiTERrZqgf1jUyR7dSkhMx4Kn2qJyekWsg3LT1h4b",
+    "eta_utc": "00:45:24",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0008",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "B",
+     "A",
+     "D",
+     "E",
+     "F",
+     "C"
+    ],
+    "payer_slots": [
+     3,
+     4,
+     2,
+     1,
+     0,
+     5
+    ],
+    "offset_ms": -389.433,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     3,
+     4,
+     2,
+     1,
+     0,
+     5
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463089672,
+    "target": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+    "study": "K",
+    "prev_leader": "2X7WoaXX9KPqNrNfvguhnwo3rjFPNsfw2t75fGjWRthz",
+    "eta_utc": "00:52:39",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0009",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "C",
+     "A",
+     "E",
+     "D",
+     "F",
+     "B"
+    ],
+    "payer_slots": [
+     0,
+     4,
+     1,
+     3,
+     2,
+     5
+    ],
+    "offset_ms": -351.277,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     6,
+     10,
+     7,
+     9,
+     8,
+     11
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463092332,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "GYx8kpp7SsRwtQEEsGQjAxb4hFMMmT91kFJuDeky3YGQ",
+    "eta_utc": "01:02:06",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0010",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "C",
+     "D",
+     "B",
+     "A",
+     "F",
+     "E"
+    ],
+    "payer_slots": [
+     5,
+     3,
+     2,
+     0,
+     1,
+     4
+    ],
+    "offset_ms": -318.77,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     5,
+     3,
+     2,
+     0,
+     1,
+     4
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463093176,
+    "target": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+    "study": "K",
+    "prev_leader": "DUND26mEDfFeaPsVof3YvbXDRvpuQX7HMUJrLgEWzYw4",
+    "eta_utc": "01:05:06",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0011",
+    "epoch_start": 462672000,
+    "arm": "K-free",
+    "panel": "P1",
+    "send_order": [
+     "E",
+     "B",
+     "A",
+     "C",
+     "F",
+     "D"
+    ],
+    "payer_slots": [
+     0,
+     1,
+     5,
+     3,
+     4,
+     2
+    ],
+    "offset_ms": -510.384,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     6,
+     7,
+     11,
+     9,
+     10,
+     8
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463093692,
+    "target": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+    "study": "K",
+    "prev_leader": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+    "eta_utc": "01:06:56",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0012",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "E",
+     "B",
+     "D",
+     "C",
+     "A"
+    ],
+    "payer_slots": [
+     2,
+     5,
+     3,
+     4,
+     0,
+     1
+    ],
+    "offset_ms": -394.035,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     5,
+     3,
+     4,
+     0,
+     1
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463096292,
+    "target": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+    "study": "K",
+    "prev_leader": "99rG5AhkVagxJ7y8NpMAmy1h1u9GhT3h1Cimu2X3cwaJ",
+    "eta_utc": "01:16:09",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0013",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "B",
+     "E",
+     "A",
+     "C",
+     "F",
+     "D"
+    ],
+    "payer_slots": [
+     0,
+     1,
+     5,
+     2,
+     3,
+     4
+    ],
+    "offset_ms": -437.529,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     6,
+     7,
+     11,
+     8,
+     9,
+     10
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463097312,
+    "target": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+    "study": "K",
+    "prev_leader": "DcTPJqPNrTLv3te1c9ctA9H194x6DsaPA4ChuSEv7KPZ",
+    "eta_utc": "01:19:47",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0014",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "E",
+     "D",
+     "C",
+     "B",
+     "A"
+    ],
+    "payer_slots": [
+     3,
+     0,
+     4,
+     2,
+     1,
+     5
+    ],
+    "offset_ms": -376.308,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     3,
+     0,
+     4,
+     2,
+     1,
+     5
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463097544,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "4b1onMDEasBh4BuPekQWijx3BYR64hAE1z2jJyeZUkck",
+    "eta_utc": "01:20:36",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0015",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "E",
+     "C",
+     "D",
+     "F",
+     "B",
+     "A"
+    ],
+    "payer_slots": [
+     2,
+     1,
+     4,
+     5,
+     3,
+     0
+    ],
+    "offset_ms": -388.445,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     8,
+     7,
+     10,
+     11,
+     9,
+     6
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463103760,
+    "target": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+    "study": "K",
+    "prev_leader": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "eta_utc": "01:42:40",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0016",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "E",
+     "D",
+     "A",
+     "F",
+     "B",
+     "C"
+    ],
+    "payer_slots": [
+     1,
+     2,
+     4,
+     5,
+     0,
+     3
+    ],
+    "offset_ms": -348.508,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     1,
+     2,
+     4,
+     5,
+     0,
+     3
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463104332,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4",
+    "eta_utc": "01:44:42",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0017",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "A",
+     "D",
+     "E",
+     "B",
+     "C",
+     "F"
+    ],
+    "payer_slots": [
+     3,
+     1,
+     2,
+     0,
+     5,
+     4
+    ],
+    "offset_ms": -337.342,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     9,
+     7,
+     8,
+     6,
+     11,
+     10
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463105512,
+    "target": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+    "study": "K",
+    "prev_leader": "9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ",
+    "eta_utc": "01:48:53",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0018",
+    "epoch_start": 462672000,
+    "arm": "K-null",
+    "panel": "P2",
+    "send_order": [
+     "B",
+     "D",
+     "E",
+     "C",
+     "A",
+     "F"
+    ],
+    "payer_slots": [
+     0,
+     3,
+     2,
+     4,
+     1,
+     5
+    ],
+    "offset_ms": -296.004,
+    "probes": [
+     [
+      "A",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "B",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "C",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "D",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "E",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "F",
+      1000,
+      999001,
+      32768
+     ]
+    ],
+    "payers": [
+     0,
+     3,
+     2,
+     4,
+     1,
+     5
+    ],
+    "max_spend": 36000
+   },
+   {
+    "slot0": 463106076,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "M",
+    "prev_leader": "EvnRmnMrd69kFdbLMxWkTn1icZ7DCceRhvmb2SJXqDo4",
+    "eta_utc": "01:50:53",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0019",
+    "epoch_start": 462672000,
+    "arm": "M-inc",
+    "train": "t4",
+    "payer_slots": [
+     1,
+     9,
+     0,
+     3,
+     6,
+     10,
+     8,
+     11,
+     4,
+     2,
+     5,
+     7
+    ],
+    "phase_ms": 63.333,
+    "probes": [
+     [
+      "T00",
+      1000,
+      159001,
+      32768
+     ],
+     [
+      "T01",
+      1000,
+      299001,
+      32768
+     ],
+     [
+      "T02",
+      1000,
+      439001,
+      32768
+     ],
+     [
+      "T03",
+      1000,
+      579001,
+      32768
+     ],
+     [
+      "T04",
+      1000,
+      719001,
+      32768
+     ],
+     [
+      "T05",
+      1000,
+      859001,
+      32768
+     ],
+     [
+      "T06",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "T07",
+      1000,
+      1139001,
+      32768
+     ],
+     [
+      "T08",
+      1000,
+      1279001,
+      32768
+     ],
+     [
+      "T09",
+      1000,
+      1419001,
+      32768
+     ],
+     [
+      "T10",
+      1000,
+      1559001,
+      32768
+     ],
+     [
+      "T11",
+      1000,
+      1699001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     0,
+     5,
+     1,
+     10,
+     4,
+     8,
+     6,
+     9,
+     7,
+     11,
+     3
+    ],
+    "max_spend": 71160
+   },
+   {
+    "slot0": 463106520,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "M",
+    "prev_leader": "3JotfSFPaod4KVK7nj7ULvcq5PjUBdZNVGracNkJNhrt",
+    "eta_utc": "01:52:28",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0020",
+    "epoch_start": 462672000,
+    "arm": "M-inc",
+    "train": "t4",
+    "payer_slots": [
+     3,
+     2,
+     1,
+     7,
+     8,
+     4,
+     6,
+     9,
+     11,
+     0,
+     10,
+     5
+    ],
+    "phase_ms": 49.477,
+    "probes": [
+     [
+      "T00",
+      1000,
+      159001,
+      32768
+     ],
+     [
+      "T01",
+      1000,
+      299001,
+      32768
+     ],
+     [
+      "T02",
+      1000,
+      439001,
+      32768
+     ],
+     [
+      "T03",
+      1000,
+      579001,
+      32768
+     ],
+     [
+      "T04",
+      1000,
+      719001,
+      32768
+     ],
+     [
+      "T05",
+      1000,
+      859001,
+      32768
+     ],
+     [
+      "T06",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "T07",
+      1000,
+      1139001,
+      32768
+     ],
+     [
+      "T08",
+      1000,
+      1279001,
+      32768
+     ],
+     [
+      "T09",
+      1000,
+      1419001,
+      32768
+     ],
+     [
+      "T10",
+      1000,
+      1559001,
+      32768
+     ],
+     [
+      "T11",
+      1000,
+      1699001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     0,
+     11,
+     3,
+     8,
+     9,
+     6,
+     1,
+     5,
+     4,
+     7,
+     10
+    ],
+    "max_spend": 71160
+   },
+   {
+    "slot0": 463107228,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "K",
+    "prev_leader": "5pPRHniefFjkiaArbGX3Y8NUysJmQ9tMZg3FrFGwHzSm",
+    "eta_utc": "01:54:59",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0021",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "B",
+     "A",
+     "D",
+     "C",
+     "E",
+     "F"
+    ],
+    "payer_slots": [
+     4,
+     5,
+     3,
+     2,
+     1,
+     0
+    ],
+    "offset_ms": -311.811,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     10,
+     11,
+     9,
+     8,
+     7,
+     6
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463110956,
+    "target": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+    "study": "K",
+    "prev_leader": "AWcCdYG7Dy6GX45c6QMPbgGwgRZPKcBDT4bXGb3QrVRV",
+    "eta_utc": "02:08:13",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0022",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "B",
+     "A",
+     "D",
+     "F",
+     "C",
+     "E"
+    ],
+    "payer_slots": [
+     0,
+     4,
+     1,
+     3,
+     5,
+     2
+    ],
+    "offset_ms": -514.059,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     0,
+     4,
+     1,
+     3,
+     5,
+     2
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463111344,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "GFXVa19rX6iwfs3sLS5UvX9Exu2usRsG4V5MRMDRo23V",
+    "eta_utc": "02:09:35",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0023",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "B",
+     "E",
+     "F",
+     "D",
+     "A",
+     "C"
+    ],
+    "payer_slots": [
+     0,
+     4,
+     1,
+     5,
+     3,
+     2
+    ],
+    "offset_ms": -272.877,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     6,
+     10,
+     7,
+     11,
+     9,
+     8
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463115380,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "22rU5yUmdVThrkoPieVNphqEyAtMQKmZxjwcD8v4bJDU",
+    "eta_utc": "02:23:55",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0024",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "A",
+     "C",
+     "B",
+     "D",
+     "E"
+    ],
+    "payer_slots": [
+     1,
+     5,
+     2,
+     4,
+     0,
+     3
+    ],
+    "offset_ms": -230.621,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     1,
+     5,
+     2,
+     4,
+     0,
+     3
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463116236,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+    "eta_utc": "02:26:57",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0025",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "E",
+     "F",
+     "C",
+     "A",
+     "B",
+     "D"
+    ],
+    "payer_slots": [
+     4,
+     2,
+     1,
+     3,
+     5,
+     0
+    ],
+    "offset_ms": -492.173,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     10,
+     8,
+     7,
+     9,
+     11,
+     6
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463120388,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "K",
+    "prev_leader": "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf",
+    "eta_utc": "02:41:42",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0026",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "F"
+    ],
+    "payer_slots": [
+     2,
+     0,
+     3,
+     4,
+     5,
+     1
+    ],
+    "offset_ms": -243.323,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     0,
+     3,
+     4,
+     5,
+     1
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463121288,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "M",
+    "prev_leader": "7RtC1QgiNVLANGRTEKxASz4bRiMYyf2hUVLs1XGuJ6Gr",
+    "eta_utc": "02:44:54",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0027",
+    "epoch_start": 462672000,
+    "arm": "M-inc",
+    "train": "t4",
+    "payer_slots": [
+     2,
+     8,
+     1,
+     9,
+     6,
+     3,
+     10,
+     7,
+     4,
+     0,
+     5,
+     11
+    ],
+    "phase_ms": 55.114,
+    "probes": [
+     [
+      "T00",
+      1000,
+      159001,
+      32768
+     ],
+     [
+      "T01",
+      1000,
+      299001,
+      32768
+     ],
+     [
+      "T02",
+      1000,
+      439001,
+      32768
+     ],
+     [
+      "T03",
+      1000,
+      579001,
+      32768
+     ],
+     [
+      "T04",
+      1000,
+      719001,
+      32768
+     ],
+     [
+      "T05",
+      1000,
+      859001,
+      32768
+     ],
+     [
+      "T06",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "T07",
+      1000,
+      1139001,
+      32768
+     ],
+     [
+      "T08",
+      1000,
+      1279001,
+      32768
+     ],
+     [
+      "T09",
+      1000,
+      1419001,
+      32768
+     ],
+     [
+      "T10",
+      1000,
+      1559001,
+      32768
+     ],
+     [
+      "T11",
+      1000,
+      1699001,
+      32768
+     ]
+    ],
+    "payers": [
+     7,
+     4,
+     9,
+     1,
+     0,
+     8,
+     5,
+     2,
+     3,
+     11,
+     6,
+     10
+    ],
+    "max_spend": 71160
+   },
+   {
+    "slot0": 463121572,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "K",
+    "prev_leader": "HEL1USMZKAL2odpNBj2oCjffnFGaYwmbGmyewGv1e2TU",
+    "eta_utc": "02:45:54",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0028",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "F",
+     "A",
+     "E",
+     "C",
+     "B",
+     "D"
+    ],
+    "payer_slots": [
+     0,
+     3,
+     1,
+     2,
+     5,
+     4
+    ],
+    "offset_ms": -485.359,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     6,
+     9,
+     7,
+     8,
+     11,
+     10
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463123984,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "9eGrDohdNTAo61DRHyfMuqKWXqYnA3i254Wiszxe8FoY",
+    "eta_utc": "02:54:28",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0029",
+    "epoch_start": 462672000,
+    "arm": "K-null",
+    "panel": "P1",
+    "send_order": [
+     "A",
+     "E",
+     "D",
+     "F",
+     "B",
+     "C"
+    ],
+    "payer_slots": [
+     2,
+     4,
+     5,
+     1,
+     0,
+     3
+    ],
+    "offset_ms": -224.01,
+    "probes": [
+     [
+      "A",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "B",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "C",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "D",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "E",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "F",
+      1000,
+      999001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     4,
+     5,
+     1,
+     0,
+     3
+    ],
+    "max_spend": 36000
+   },
+   {
+    "slot0": 463125492,
+    "target": "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD",
+    "study": "K",
+    "prev_leader": "6TkKqq15wXjqEjNg9zqTKADwuVATR9dW3rkNnsYme1ea",
+    "eta_utc": "02:59:49",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0030",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "D",
+     "C",
+     "B",
+     "E",
+     "A",
+     "F"
+    ],
+    "payer_slots": [
+     5,
+     4,
+     2,
+     1,
+     0,
+     3
+    ],
+    "offset_ms": -414.827,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     11,
+     10,
+     8,
+     7,
+     6,
+     9
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463125836,
+    "target": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+    "study": "K",
+    "prev_leader": "FBKFWadXZJahGtFitAsBvbqh5968gLY7dMBBJUoUjeNi",
+    "eta_utc": "03:01:02",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0031",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "D",
+     "A",
+     "C",
+     "E",
+     "F",
+     "B"
+    ],
+    "payer_slots": [
+     1,
+     0,
+     2,
+     5,
+     3,
+     4
+    ],
+    "offset_ms": -310.491,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     1,
+     0,
+     2,
+     5,
+     3,
+     4
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463126684,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "K",
+    "prev_leader": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+    "eta_utc": "03:04:03",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0032",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "C",
+     "A",
+     "D",
+     "E",
+     "B",
+     "F"
+    ],
+    "payer_slots": [
+     1,
+     5,
+     3,
+     4,
+     0,
+     2
+    ],
+    "offset_ms": -211.737,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     7,
+     11,
+     9,
+     10,
+     6,
+     8
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463129104,
+    "target": "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY",
+    "study": "K",
+    "prev_leader": "shftkxnsXmqAkmLgz9Mn7bNB5Fr6mKgFc58kFHfVikj",
+    "eta_utc": "03:12:38",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0033",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "E",
+     "B",
+     "A",
+     "D",
+     "F",
+     "C"
+    ],
+    "payer_slots": [
+     4,
+     3,
+     0,
+     2,
+     1,
+     5
+    ],
+    "offset_ms": -410.037,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     4,
+     3,
+     0,
+     2,
+     1,
+     5
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463129480,
+    "target": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+    "study": "K",
+    "prev_leader": "DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC86PZ8okm21hy",
+    "eta_utc": "03:13:58",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0034",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P2",
+    "send_order": [
+     "C",
+     "F",
+     "B",
+     "A",
+     "D",
+     "E"
+    ],
+    "payer_slots": [
+     0,
+     5,
+     2,
+     4,
+     3,
+     1
+    ],
+    "offset_ms": -354.659,
+    "probes": [
+     [
+      "A",
+      1500,
+      226667,
+      32768
+     ],
+     [
+      "B",
+      3100,
+      758065,
+      33554432
+     ],
+     [
+      "C",
+      1500,
+      1589334,
+      8388608
+     ],
+     [
+      "D",
+      3400,
+      821177,
+      262144
+     ],
+     [
+      "E",
+      2700,
+      171112,
+      65536
+     ],
+     [
+      "F",
+      1500,
+      563334,
+      2097152
+     ]
+    ],
+    "payers": [
+     6,
+     11,
+     8,
+     10,
+     9,
+     7
+    ],
+    "max_spend": 39179
+   },
+   {
+    "slot0": 463131232,
+    "target": "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB",
+    "study": "K",
+    "prev_leader": "AEHqTB2RtJjegsR2ePjvoJSm6AA5pnYKWVbcsn6kqTBD",
+    "eta_utc": "03:20:12",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0035",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "F",
+     "D",
+     "E",
+     "A",
+     "C",
+     "B"
+    ],
+    "payer_slots": [
+     2,
+     1,
+     3,
+     4,
+     5,
+     0
+    ],
+    "offset_ms": -378.021,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     2,
+     1,
+     3,
+     4,
+     5,
+     0
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463131736,
+    "target": "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE",
+    "study": "K",
+    "prev_leader": "2UBhtRuyr9nvWsUnrbWrvJiYWEU8TVBD4PLYQJKiRa9H",
+    "eta_utc": "03:21:59",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0036",
+    "epoch_start": 462672000,
+    "arm": "K-null",
+    "panel": "P1",
+    "send_order": [
+     "A",
+     "D",
+     "B",
+     "C",
+     "F",
+     "E"
+    ],
+    "payer_slots": [
+     4,
+     1,
+     3,
+     2,
+     0,
+     5
+    ],
+    "offset_ms": -356.614,
+    "probes": [
+     [
+      "A",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "B",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "C",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "D",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "E",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "F",
+      1000,
+      999001,
+      32768
+     ]
+    ],
+    "payers": [
+     10,
+     7,
+     9,
+     8,
+     6,
+     11
+    ],
+    "max_spend": 36000
+   },
+   {
+    "slot0": 463133152,
+    "target": "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL",
+    "study": "K",
+    "prev_leader": "siidBVew9gpXxjM1y5spQiAyx1dyFrg9m6YjoxrYWbi",
+    "eta_utc": "03:27:01",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0037",
+    "epoch_start": 462672000,
+    "arm": "K-null",
+    "panel": "P2",
+    "send_order": [
+     "A",
+     "F",
+     "D",
+     "E",
+     "B",
+     "C"
+    ],
+    "payer_slots": [
+     5,
+     4,
+     1,
+     0,
+     2,
+     3
+    ],
+    "offset_ms": -202.834,
+    "probes": [
+     [
+      "A",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "B",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "C",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "D",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "E",
+      1000,
+      999001,
+      32768
+     ],
+     [
+      "F",
+      1000,
+      999001,
+      32768
+     ]
+    ],
+    "payers": [
+     5,
+     4,
+     1,
+     0,
+     2,
+     3
+    ],
+    "max_spend": 36000
+   },
+   {
+    "slot0": 463135024,
+    "target": "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f",
+    "study": "K",
+    "prev_leader": "CAo1dCGYrB6NhHh5xb1cGjUiu86iyCfMTENxgHumSve4",
+    "eta_utc": "03:33:39",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0038",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "A",
+     "F",
+     "E",
+     "C",
+     "B",
+     "D"
+    ],
+    "payer_slots": [
+     1,
+     3,
+     4,
+     5,
+     0,
+     2
+    ],
+    "offset_ms": -497.375,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     7,
+     9,
+     10,
+     11,
+     6,
+     8
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463139136,
+    "target": "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY",
+    "study": "K",
+    "prev_leader": "76rcGHdPvgs8G1XrzCXUTWtwgT59AFDvpB4VbTS2TBBJ",
+    "eta_utc": "03:48:15",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0039",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "B",
+     "C",
+     "F",
+     "E",
+     "D",
+     "A"
+    ],
+    "payer_slots": [
+     5,
+     2,
+     4,
+     3,
+     1,
+     0
+    ],
+    "offset_ms": -582.103,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     5,
+     2,
+     4,
+     3,
+     1,
+     0
+    ],
+    "max_spend": 39057
+   },
+   {
+    "slot0": 463139380,
+    "target": "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5",
+    "study": "K",
+    "prev_leader": "9rkJMARqK6VBkcxGfKBAwnA44gPAfGxPbPsfsggFNDSQ",
+    "eta_utc": "03:49:07",
+    "run_id": "B-1030-b0",
+    "window_id": "B-1030-b0-0040",
+    "epoch_start": 462672000,
+    "arm": "K-main",
+    "panel": "P1",
+    "send_order": [
+     "D",
+     "B",
+     "A",
+     "C",
+     "E",
+     "F"
+    ],
+    "payer_slots": [
+     5,
+     2,
+     3,
+     1,
+     0,
+     4
+    ],
+    "offset_ms": -538.379,
+    "probes": [
+     [
+      "A",
+      1800,
+      807223,
+      65536
+     ],
+     [
+      "B",
+      1300,
+      633847,
+      65536
+     ],
+     [
+      "C",
+      4300,
+      1007907,
+      32768
+     ],
+     [
+      "D",
+      900,
+      673334,
+      2097152
+     ],
+     [
+      "E",
+      1500,
+      625334,
+      32768
+     ],
+     [
+      "F",
+      2800,
+      320001,
+      32768
+     ]
+    ],
+    "payers": [
+     11,
+     8,
+     9,
+     7,
+     6,
+     10
+    ],
+    "max_spend": 39057
+   }
+  ]
+ },
+ "chain": {
+  "genesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+  "ag_genesis_cert": {
+   "block": {
+    "blockId": [
+     56,
+     223,
+     112,
+     94,
+     154,
+     159,
+     56,
+     136,
+     152,
+     223,
+     195,
+     91,
+     135,
+     52,
+     137,
+     63,
+     40,
+     11,
+     228,
+     89,
+     180,
+     134,
+     36,
+     69,
+     106,
+     222,
+     207,
+     124,
+     111,
+     146,
+     211,
+     125
+    ],
+    "slot": 459652999
+   },
+   "signature": {
+    "bitmap": [
+     0,
+     160,
+     2,
+     255,
+     175,
+     254,
+     246,
+     239,
+     249,
+     252,
+     251,
+     255,
+     235,
+     245,
+     127,
+     223,
+     247,
+     118,
+     239,
+     237,
+     59,
+     215,
+     125,
+     253,
+     119,
+     145,
+     223,
+     118,
+     159,
+     223,
+     126,
+     254,
+     90,
+     255,
+     123,
+     255,
+     188,
+     250,
+     155,
+     159,
+     87,
+     63,
+     246,
+     219,
+     55,
+     215,
+     239,
+     125,
+     85,
+     61,
+     141,
+     163,
+     211,
+     58,
+     190,
+     113,
+     174,
+     218,
+     205,
+     38,
+     181,
+     183,
+     183,
+     11,
+     240,
+     62,
+     6,
+     223,
+     84,
+     137,
+     100,
+     236,
+     236,
+     167,
+     67,
+     223,
+     193,
+     16,
+     226,
+     0,
+     222,
+     133,
+     253,
+     239,
+     186,
+     6,
+     172
+    ],
+    "signature": [
+     3,
+     162,
+     203,
+     72,
+     17,
+     195,
+     212,
+     150,
+     149,
+     239,
+     210,
+     114,
+     16,
+     230,
+     30,
+     249,
+     239,
+     83,
+     252,
+     246,
+     161,
+     44,
+     181,
+     227,
+     132,
+     70,
+     198,
+     224,
+     77,
+     114,
+     27,
+     145,
+     81,
+     162,
+     136,
+     61,
+     183,
+     98,
+     221,
+     59,
+     30,
+     45,
+     59,
+     92,
+     113,
+     46,
+     105,
+     110,
+     2,
+     245,
+     57,
+     243,
+     64,
+     97,
+     83,
+     243,
+     98,
+     19,
+     165,
+     219,
+     226,
+     37,
+     38,
+     84,
+     93,
+     85,
+     58,
+     64,
+     249,
+     203,
+     203,
+     150,
+     145,
+     111,
+     148,
+     168,
+     29,
+     250,
+     7,
+     192,
+     231,
+     48,
+     15,
+     136,
+     175,
+     181,
+     51,
+     49,
+     24,
+     77,
+     51,
+     44,
+     177,
+     74,
+     73,
+     96,
+     5,
+     242,
+     193,
+     100,
+     24,
+     137,
+     223,
+     3,
+     42,
+     55,
+     227,
+     147,
+     112,
+     69,
+     164,
+     202,
+     173,
+     175,
+     139,
+     182,
+     60,
+     36,
+     83,
+     155,
+     105,
+     54,
+     217,
+     124,
+     251,
+     207,
+     120,
+     196,
+     99,
+     29,
+     68,
+     205,
+     39,
+     173,
+     240,
+     66,
+     191,
+     115,
+     21,
+     150,
+     66,
+     254,
+     220,
+     115,
+     24,
+     194,
+     229,
+     222,
+     178,
+     230,
+     38,
+     167,
+     197,
+     70,
+     204,
+     103,
+     175,
+     111,
+     70,
+     24,
+     51,
+     183,
+     171,
+     29,
+     33,
+     248,
+     33,
+     16,
+     82,
+     68,
+     219,
+     171,
+     95,
+     124,
+     76,
+     160,
+     8,
+     35,
+     94,
+     103,
+     117,
+     19,
+     23,
+     54,
+     105,
+     142,
+     43,
+     151,
+     170,
+     5,
+     49,
+     81
+    ]
+   }
+  }
+ },
+ "lambda_ms": 60.0,
+ "started_utc": "2026-10-29T23:57:57Z",
+ "max_spend_lamports": 2500000
+}
