@@ -1,0 +1,42 @@
+{
+ "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
+  "family": "AgaveBam",
+  "tier": 1,
+  "K": 30,
+  "M": 4,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
+  "family": "JitoLabs",
+  "tier": 1,
+  "K": 30,
+  "M": 0,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
+  "family": "FireBAM",
+  "tier": 1,
+  "K": 30,
+  "M": 2,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ },
+ "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+  "family": "HarmonicFiredancer",
+  "tier": 1,
+  "K": 30,
+  "M": 4,
+  "train_specs": [
+   "t4",
+   "t12"
+  ]
+ }
+}
