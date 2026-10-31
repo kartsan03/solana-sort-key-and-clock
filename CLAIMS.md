@@ -17,3 +17,15 @@ Each row: what we claim, for which validator, on which windows, and how to re-ch
 | 10 | `JD549Hsb` orders queued probes by `fd_exact` (rule (strict); min win rate 1.00) | `JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB` | dayB | 24 (23+) | 463084372:85 `bpYXYVcN5ZFdGvi4…` | none |
 | 11 | `SSmBEooM` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY` | dayB | 19 (16+) | 463097312:61 `erCpv2EjLXvEX9vm…` | none |
 | 12 | `ana2y2Yv` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY` | dayB | 35 (33+) | 463075948:25 `2SkvbmBmKMCzqxkb…` | none |
+| 13 | `5EhGYUyQ` orders queued probes by `agave_int` (insufficient data; min win rate 1.00) | `5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC` | dayC | 16 (12+) | 463483852:49 `2PfcmbCZsuw8FCXL…` | none |
+| 14 | `5Us18hLZ` orders queued probes by `agave_int` (insufficient data; min win rate 1.00) | `5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS` | dayC | 12 (11+) | 463494300:19 `3YSyq7DtHubSmSdM…` | none |
+| 15 | `7QQGNm3p` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE` | dayC | 30 (26+) | 463488040:21 `2CJrnWGEr8p2kcV7…` | none |
+| 16 | `C8Bey3LK` orders queued probes by `total_fee` (rule (strict); min win rate 1.00) | `C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k` | dayC | 16 (14+) | 463518028:31 `5iRzs9gfoWMtTPAu…` | none |
+| 17 | `DNVZMSqe` orders queued probes by `fd_exact` (insufficient data; min win rate 1.00) | `DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf` | dayC | 13 (13+) | 463497128:50 `PXmDwYSJzWcMVXh6…` | none |
+| 18 | `E1r4Psq8` orders queued probes by `agave_int` (insufficient data; min win rate 1.00) | `E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL` | dayC | 14 (10+) | 463484484:16 `2HCUaVyk6GfRsNNv…` | none |
+| 19 | `E3mDbFMr` orders queued probes by `agave_int` (insufficient data; min win rate 1.00) | `E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F` | dayC | 12 (12+) | 463519520:25 `icXr8ogaLFPPa96z…` | none |
+| 20 | `Fc6NNdS2` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD` | dayC | 21 (18+) | 463481264:28 `4TNcoLX27XmeEi4N…` | none |
+| 21 | `JD549Hsb` orders queued probes by `fd_exact` (rule (strict); min win rate 1.00) | `JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB` | dayC | 19 (18+) | 463494772:32 `2fj7UbsfuvrvZW12…` | none |
+| 22 | `PRGNnb8D` orders queued probes by `agave_int` (insufficient data; min win rate 1.00) | `PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN` | dayC | 10 (10+) | 463489760:23 `2AK5LPM7AHH5sRHR…` | none |
+| 23 | `SSmBEooM` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY` | dayC | 17 (15+) | 463491140:32 `3sREe6U483HRND8y…` | none |
+| 24 | `ana2y2Yv` orders queued probes by `agave_int` (rule (strict); min win rate 1.00) | `ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY` | dayC | 23 (23+) | 463503932:24 `3faDUPqPMv9wnvMK…` | none |
