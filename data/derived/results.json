@@ -1055,6 +1055,1177 @@
    }
   }
  },
+ "capsweep": {
+  "arms": {},
+  "fees": {
+   "checked": 0,
+   "mismatches": []
+  },
+  "full_windows": 0,
+  "models": {
+   "capped (best X, beta)": {
+    "X": [
+     1500,
+     4400
+    ],
+    "beta": [
+     0.0,
+     1.0
+    ],
+    "extra_cu_40000_vs_4400": [
+     0,
+     35600
+    ],
+    "matches": 0
+   },
+   "hard_cap": {
+    "X": [
+     1500,
+     4400
+    ],
+    "matches": 0
+   },
+   "no_cap (agave_int)": 0
+  },
+  "panels": {
+   "S1": {
+    "X": null,
+    "best_matches": 0,
+    "beta": null,
+    "full_windows": 0,
+    "orders": {}
+   },
+   "S2": {
+    "X": null,
+    "best_matches": 0,
+    "beta": null,
+    "full_windows": 0,
+    "orders": {}
+   },
+   "S3": {
+    "X": null,
+    "best_matches": 0,
+    "beta": null,
+    "full_windows": 0,
+    "orders": {}
+   }
+  },
+  "per_validator": {},
+  "transition": 0,
+  "verdict": "too few fully landed windows (S1, S2, S3)",
+  "windows": 0
+ },
+ "exact_orders": {
+  "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC|calibration": {
+   "full": 3,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 3,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 2
+   }
+  },
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC|calibration": {
+   "full": 2,
+   "harmonic_capped": 1,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC|dayC": {
+   "full": 11,
+   "harmonic_capped": 6,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 11,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 5,
+    "P2:DCFAEB": 6
+   }
+  },
+  "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS|calibration": {
+   "full": 6,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 6,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 4,
+    "P2:DCFAEB": 2
+   }
+  },
+  "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS|dayC": {
+   "full": 11,
+   "harmonic_capped": 3,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 11,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 8,
+    "P2:DCFAEB": 3
+   }
+  },
+  "74Xkp2iLXm315h69sFRiCFjmKnaWkMV8W2LgJwPRSgN5|calibration": {
+   "full": 2,
+   "harmonic_capped": 1,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "7PdKhpKz7T39vZHFL1UfcYNDsLvay6hp4KPQq1aUckFf|calibration": {
+   "full": 4,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 4,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 2,
+    "P2:DCFAEB": 2
+   }
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|calibration": {
+   "full": 6,
+   "harmonic_capped": 4,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 6,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 2,
+    "P2:DCFAEB": 4
+   }
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|dayA": {
+   "full": 27,
+   "harmonic_capped": 10,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 27,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 17,
+    "P2:DCFAEB": 10
+   }
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|dayB": {
+   "full": 25,
+   "harmonic_capped": 13,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 25,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 12,
+    "P2:DCFAEB": 13
+   }
+  },
+  "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE|dayC": {
+   "full": 26,
+   "harmonic_capped": 14,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 26,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 12,
+    "P2:DCFAEB": 14
+   }
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|calibration": {
+   "full": 3,
+   "harmonic_capped": 3,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 1,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 2,
+    "P2:DCFAEB": 1
+   }
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayA": {
+   "full": 26,
+   "harmonic_capped": 26,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 12,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 14,
+    "P2:DCFAEB": 12
+   }
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayB": {
+   "full": 15,
+   "harmonic_capped": 15,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 7,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 8,
+    "P2:DCFAEB": 7
+   }
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayC": {
+   "full": 18,
+   "harmonic_capped": 18,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 12,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 6,
+    "P2:DCFAEB": 12
+   }
+  },
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5|dayD": {
+   "full": 18,
+   "harmonic_capped": 18,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 9,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 9,
+    "P2:DCFAEB": 9
+   }
+  },
+  "9jxgosAfHgHzwnxsHw4RAZYaLVokMbnYtmiZBreynGFP|calibration": {
+   "full": 2,
+   "harmonic_capped": 1,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "A4hyMd3FyvUJSRafDUSwtLLaQcxRP4r1BRC9w2AJ1to2|calibration": {
+   "full": 1,
+   "harmonic_capped": 1,
+   "incomplete": 2,
+   "keys": {
+    "agave_int": 1,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P2:DCFAEB": 1
+   }
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH|calibration": {
+   "full": 3,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P1:CABEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH|dayC": {
+   "full": 11,
+   "harmonic_capped": 11,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 4,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 7,
+    "P2:DCFAEB": 4
+   }
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k|calibration": {
+   "full": 2,
+   "harmonic_capped": 0,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 2
+   },
+   "orders": {
+    "P1:CAEFBD": 1,
+    "P2:DCBFEA": 1
+   }
+  },
+  "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k|dayC": {
+   "full": 15,
+   "harmonic_capped": 0,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 14
+   },
+   "orders": {
+    "P1:CAEBFD": 1,
+    "P1:CAEFBD": 7,
+    "P2:DCBFEA": 7
+   }
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12|calibration": {
+   "full": 2,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 1,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12|dayC": {
+   "full": 6,
+   "harmonic_capped": 6,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 4,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 2,
+    "P2:DCFAEB": 4
+   }
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf|calibration": {
+   "full": 5,
+   "harmonic_capped": 0,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 5,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 2,
+    "P2:DAFCEB": 3
+   }
+  },
+  "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf|dayC": {
+   "full": 13,
+   "harmonic_capped": 0,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 13,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 5,
+    "P2:DAFCEB": 8
+   }
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|calibration": {
+   "full": 2,
+   "harmonic_capped": 1,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayA": {
+   "full": 21,
+   "harmonic_capped": 11,
+   "incomplete": 2,
+   "keys": {
+    "agave_int": 21,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 10,
+    "P2:DCFAEB": 11
+   }
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayB": {
+   "full": 16,
+   "harmonic_capped": 11,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 16,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 5,
+    "P2:DCFAEB": 11
+   }
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayC": {
+   "full": 10,
+   "harmonic_capped": 5,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 10,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 5,
+    "P2:DCFAEB": 5
+   }
+  },
+  "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL|dayD": {
+   "full": 22,
+   "harmonic_capped": 13,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 22,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 9,
+    "P2:DCFAEB": 13
+   }
+  },
+  "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F|calibration": {
+   "full": 3,
+   "harmonic_capped": 2,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 3,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 2
+   }
+  },
+  "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F|dayC": {
+   "full": 12,
+   "harmonic_capped": 4,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 12,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 8,
+    "P2:DCFAEB": 4
+   }
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|calibration": {
+   "full": 4,
+   "harmonic_capped": 4,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 3,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 1,
+    "P2:DCFAEB": 3
+   }
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayA": {
+   "full": 25,
+   "harmonic_capped": 23,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 12,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BCDEFA": 1,
+    "P1:CABEDF": 11,
+    "P2:DCFAEB": 12,
+    "P2:DFCAEB": 1
+   }
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayB": {
+   "full": 22,
+   "harmonic_capped": 22,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 13,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 9,
+    "P2:DCFAEB": 13
+   }
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f|dayC": {
+   "full": 18,
+   "harmonic_capped": 18,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 11,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:CABEDF": 7,
+    "P2:DCFAEB": 11
+   }
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|calibration": {
+   "full": 2,
+   "harmonic_capped": 2,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P2:DCFAEB": 2
+   }
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayA": {
+   "full": 20,
+   "harmonic_capped": 14,
+   "incomplete": 5,
+   "keys": {
+    "agave_int": 20,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 6,
+    "P2:DCFAEB": 14
+   }
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayB": {
+   "full": 9,
+   "harmonic_capped": 4,
+   "incomplete": 7,
+   "keys": {
+    "agave_int": 9,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 5,
+    "P2:DCFAEB": 4
+   }
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayC": {
+   "full": 18,
+   "harmonic_capped": 9,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 18,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 9,
+    "P2:DCFAEB": 9
+   }
+  },
+  "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD|dayD": {
+   "full": 17,
+   "harmonic_capped": 8,
+   "incomplete": 4,
+   "keys": {
+    "agave_int": 17,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 9,
+    "P2:DCFAEB": 8
+   }
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|calibration": {
+   "full": 4,
+   "harmonic_capped": 0,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 2,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 2,
+    "P1:BAEFDC": 1,
+    "P2:DAFCBE": 1
+   }
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayA": {
+   "full": 21,
+   "harmonic_capped": 0,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 20,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 9,
+    "P2:DAFCBE": 1,
+    "P2:DAFCEB": 11
+   }
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayB": {
+   "full": 24,
+   "harmonic_capped": 0,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 20,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 13,
+    "P1:BAECFD": 2,
+    "P1:BAFECD": 1,
+    "P2:DAFBCE": 1,
+    "P2:DAFCEB": 7
+   }
+  },
+  "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB|dayC": {
+   "full": 19,
+   "harmonic_capped": 0,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 0,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 18,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:BAECDF": 9,
+    "P2:DAFCBE": 1,
+    "P2:DAFCEB": 9
+   }
+  },
+  "LA1NEzryoih6CQW3gwQqJQffK2mKgnXcjSQZSRpM3wc|calibration": {
+   "full": 1,
+   "harmonic_capped": 0,
+   "incomplete": 2,
+   "keys": {
+    "agave_int": 1,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1
+   }
+  },
+  "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN|calibration": {
+   "full": 3,
+   "harmonic_capped": 1,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 3,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 2,
+    "P2:DCFAEB": 1
+   }
+  },
+  "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN|dayC": {
+   "full": 10,
+   "harmonic_capped": 3,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 10,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 7,
+    "P2:DCFAEB": 3
+   }
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|calibration": {
+   "full": 4,
+   "harmonic_capped": 3,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 4,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 3
+   }
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayA": {
+   "full": 20,
+   "harmonic_capped": 9,
+   "incomplete": 6,
+   "keys": {
+    "agave_int": 20,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 11,
+    "P2:DCFAEB": 9
+   }
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayB": {
+   "full": 16,
+   "harmonic_capped": 11,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 16,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 5,
+    "P2:DCFAEB": 11
+   }
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayC": {
+   "full": 15,
+   "harmonic_capped": 9,
+   "incomplete": 2,
+   "keys": {
+    "agave_int": 15,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 6,
+    "P2:DCFAEB": 9
+   }
+  },
+  "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY|dayD": {
+   "full": 19,
+   "harmonic_capped": 9,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 19,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 10,
+    "P2:DCFAEB": 9
+   }
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|calibration": {
+   "full": 2,
+   "harmonic_capped": 1,
+   "incomplete": 1,
+   "keys": {
+    "agave_int": 2,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 1,
+    "P2:DCFAEB": 1
+   }
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayA": {
+   "full": 34,
+   "harmonic_capped": 16,
+   "incomplete": 3,
+   "keys": {
+    "agave_int": 34,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 18,
+    "P2:DCFAEB": 16
+   }
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayB": {
+   "full": 31,
+   "harmonic_capped": 14,
+   "incomplete": 2,
+   "keys": {
+    "agave_int": 31,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 17,
+    "P2:DCFAEB": 14
+   }
+  },
+  "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY|dayC": {
+   "full": 23,
+   "harmonic_capped": 13,
+   "incomplete": 0,
+   "keys": {
+    "agave_int": 23,
+    "cheapest": 0,
+    "cu_price": 0,
+    "fd_exact": 0,
+    "fee_per_cost": 0,
+    "fee_per_cu": 0,
+    "pf_per_cost": 0,
+    "total_fee": 0
+   },
+   "orders": {
+    "P1:ABCEDF": 10,
+    "P2:DCFAEB": 13
+   }
+  }
+ },
  "fees": {
   "checked": 7134,
   "mismatches": []

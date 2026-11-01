@@ -26,7 +26,7 @@ STRICT = 0.75          # strictness: lower 95% bound of the weakest rival's win 
 ALPHA = 0.05
 MIN_EVALUABLE = 15     # fewer evaluable K-main panels on a day -> "insufficient data"
 NULL_PERMS = 2000
-PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB", "C": "dayC", "D": "dayD"}
+PHASES = {"smoke": "calibration", "pilot": "calibration", "A": "dayA", "B": "dayB", "C": "dayC", "D": "dayD", "S": "capsweep"}
 DOCUMENTED = {"Agave": "agave_int", "JitoLabs": "agave_int", "Firedancer": "fd_exact"}
 
 
@@ -276,7 +276,8 @@ def compute():
     panels = panels_from_json(json.loads((ROOT / "design" / "panels.json").read_text())["panels"])
     cands = json.loads((ROOT / "design" / "candidates.json").read_text())
     tiers = {k: v["tier"] for k, v in cands.items()}
-    windows = load()
+    windows_all = load()
+    windows = [w for w in windows_all if w["phase"] != "capsweep"]   # exploratory sweep: reported apart
     rng = np.random.default_rng(SEED)
     from .checks import fee_check, gates, inclusion
     from .trains import study_m
@@ -290,6 +291,10 @@ def compute():
     if pred_path.exists():
         preds = json.loads(pred_path.read_text())["validators"]
         res["holdout"] = holdout(k, res["study_m"], tiers, preds)
+    from .orders import exact_orders
+    res["exact_orders"] = exact_orders(windows, ROOT)
+    from .capsweep import analyze as capsweep
+    res["capsweep"] = capsweep(windows_all)
     return json.loads(json.dumps(res, sort_keys=True, default=str))
 
 

@@ -41,7 +41,7 @@ async def cmd_plan(a):
     from .design import panels_from_json
     rpc = Rpc()
     targets = json.loads(pathlib.Path(a.targets).read_text())
-    panels = panels_from_json(json.loads((ROOT / "design" / "panels.json").read_text())["panels"])
+    panels = panels_from_json(json.loads(pathlib.Path(a.panels or ROOT / "design" / "panels.json").read_text())["panels"])
     nodes = cluster.compact_nodes(await rpc.cluster_nodes())
     cur = await rpc.slot("confirmed")
     if a.start_utc:
@@ -244,6 +244,8 @@ def main(argv=None):
     s.add_argument("--start-in-min", type=float, default=2.0)
     s.add_argument("--start-utc", help="e.g. 2026-10-29T00:00:00Z (overrides --start-in-min)")
     s.add_argument("--ms-per-slot", type=float, default=213.0)
+    s.add_argument("--panels", help="panel file (default design/panels.json)")
+    sub.add_parser("capsweep", help="write design/capsweep.json")
     s = sub.add_parser("run")
     s.add_argument("--plan", required=True)
     s.add_argument("--live", action="store_true")
@@ -281,6 +283,12 @@ def main(argv=None):
         panels = write_design(a.seed, ROOT / "design")
         for n, pnl in panels.items():
             print(n, panel_report(pnl))
+    elif a.cmd == "capsweep":
+        from .capsweep import design as capsweep_design
+        path, d = capsweep_design(ROOT)
+        print(f"wrote {path}; max fee per window {d['max_fee']}")
+        for n, cl in d["classes"].items():
+            print(n, [(lo, hi, o) for lo, hi, o in cl if lo <= 6000])
     elif a.cmd == "plan":
         asyncio.run(cmd_plan(a))
     elif a.cmd == "run":

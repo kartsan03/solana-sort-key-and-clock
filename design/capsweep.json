@@ -1,0 +1,296 @@
+{
+ "label": "exploratory follow-up (not registered); designed after days A-C, locked by memo #3 before any probe",
+ "model": "Day A showed that Harmonic validators order queued probes by Agave's integer priority, except that the compute-unit limit seems to count toward cost only up to some cap X (1660 <= X <= 4098, locked in memo #2 as exploratory). This sweep measures X and asks whether the limit above X counts at all:",
+ "panels": {
+  "S1": {
+   "A": {
+    "L": 700,
+    "p": 2000000,
+    "D": 32768
+   },
+   "B": {
+    "L": 700,
+    "p": 2341000,
+    "D": 32768
+   },
+   "C": {
+    "L": 700,
+    "p": 2703000,
+    "D": 32768
+   },
+   "D": {
+    "L": 4400,
+    "p": 1188000,
+    "D": 32768
+   },
+   "E": {
+    "L": 4400,
+    "p": 1532000,
+    "D": 32768
+   },
+   "F": {
+    "L": 4400,
+    "p": 1942000,
+    "D": 32768
+   }
+  },
+  "S2": {
+   "A": {
+    "L": 4400,
+    "p": 944545,
+    "D": 32768
+   },
+   "B": {
+    "L": 4400,
+    "p": 983181,
+    "D": 32768
+   },
+   "C": {
+    "L": 4400,
+    "p": 1022727,
+    "D": 32768
+   },
+   "D": {
+    "L": 40000,
+    "p": 113500,
+    "D": 32768
+   },
+   "E": {
+    "L": 40000,
+    "p": 127325,
+    "D": 32768
+   },
+   "F": {
+    "L": 40000,
+    "p": 142250,
+    "D": 32768
+   }
+  },
+  "S3": {
+   "A": {
+    "L": 4400,
+    "p": 767500,
+    "D": 32768
+   },
+   "B": {
+    "L": 4400,
+    "p": 889545,
+    "D": 32768
+   },
+   "C": {
+    "L": 4400,
+    "p": 1022727,
+    "D": 32768
+   },
+   "D": {
+    "L": 40000,
+    "p": 124600,
+    "D": 32768
+   },
+   "E": {
+    "L": 40000,
+    "p": 180725,
+    "D": 32768
+   },
+   "F": {
+    "L": 40000,
+    "p": 253675,
+    "D": 32768
+   }
+  }
+ },
+ "max_fee": {
+  "S1": 55446,
+  "S2": 58305,
+  "S3": 64151
+ },
+ "classes": {
+  "S1 over X, beta = 0": [
+   [
+    1500,
+    2245,
+    "FEDCBA"
+   ],
+   [
+    2246,
+    2465,
+    "FECDBA"
+   ],
+   [
+    2466,
+    2698,
+    "FECBDA"
+   ],
+   [
+    2699,
+    2946,
+    "FECBAD"
+   ],
+   [
+    2947,
+    3209,
+    "FCEBAD"
+   ],
+   [
+    3210,
+    3488,
+    "FCBEAD"
+   ],
+   [
+    3489,
+    3782,
+    "FCBAED"
+   ],
+   [
+    3783,
+    4097,
+    "CFBAED"
+   ],
+   [
+    4098,
+    4400,
+    "CBFAED"
+   ]
+  ],
+  "S2 over beta, X = 3000": [
+   [
+    0.0,
+    0.0006,
+    "FEDCBA"
+   ],
+   [
+    0.0008,
+    0.0038,
+    "FECDBA"
+   ],
+   [
+    0.004,
+    0.007,
+    "FECBDA"
+   ],
+   [
+    0.0072,
+    0.0102,
+    "FECBAD"
+   ],
+   [
+    0.0104,
+    0.0136,
+    "FCEBAD"
+   ],
+   [
+    0.0138,
+    0.0172,
+    "FCBEAD"
+   ],
+   [
+    0.0174,
+    0.0208,
+    "FCBAED"
+   ],
+   [
+    0.021,
+    0.0244,
+    "CFBAED"
+   ],
+   [
+    0.0246,
+    0.0282,
+    "CBFAED"
+   ],
+   [
+    0.0284,
+    1.0,
+    "CBAFED"
+   ]
+  ],
+  "S3 over beta, X = 3000": [
+   [
+    0.0,
+    0.0084,
+    "FEDCBA"
+   ],
+   [
+    0.0086,
+    0.0204,
+    "FECDBA"
+   ],
+   [
+    0.0206,
+    0.033,
+    "FECBDA"
+   ],
+   [
+    0.034,
+    0.048,
+    "FECBAD"
+   ],
+   [
+    0.049,
+    0.064,
+    "FCEBAD"
+   ],
+   [
+    0.065,
+    0.081,
+    "FCBEAD"
+   ],
+   [
+    0.082,
+    0.101,
+    "FCBAED"
+   ],
+   [
+    0.102,
+    0.123,
+    "CFBAED"
+   ],
+   [
+    0.124,
+    0.146,
+    "CBFAED"
+   ],
+   [
+    0.147,
+    1.0,
+    "CBAFED"
+   ]
+  ]
+ },
+ "grid": {
+  "X": [
+   1500,
+   4400
+  ],
+  "beta": "0..0.03 step 0.0002, 0.031..0.15 step 0.001, 0.16..1 step 0.01"
+ },
+ "targets": {
+  "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+   "family": "HarmonicFiredancer",
+   "K": 12,
+   "M": 0,
+   "force_arm": "K-main"
+  },
+  "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+   "family": "HarmonicAgave",
+   "K": 12,
+   "M": 0,
+   "force_arm": "K-main"
+  },
+  "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+   "family": "HarmonicFiredancer",
+   "K": 12,
+   "M": 0,
+   "force_arm": "K-main"
+  },
+  "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+   "family": "HarmonicAgave",
+   "K": 12,
+   "M": 0,
+   "force_arm": "K-main"
+  }
+ },
+ "plan": "itb plan --targets design/capsweep-targets.json --panels design/capsweep.json --run-id S-1102 --hours 6, started after the day D data commit. K-main arm only (shared lock); panel drawn at random per window; send order, payer slots and send offset drawn as in the campaign. If the cap left after day D is below the plan's maximum + 300,000 lamports, K drops by one per validator until it fits.",
+ "readout": "Full window = stable K-main window with all six probes in one target block. For each (X, beta) on the grid, count full windows whose block order equals the predicted order, over all three panels. Report the maximisers' X and beta ranges, the best hard cap (beta = 0) and no cap (agave_int). Verdict: 'too few' if a panel has < 4 full windows; 'does not fit' if the best model matches < 80% of them; else 'hard cap not excluded' if beta = 0 is a maximiser, 'soft cap' if every maximiser has 0 < beta < 1, 'no cap' otherwise. Orders are also reported per validator and per panel.",
+ "prediction": "X in 1660..4098 (S1 inside those classes) and beta = 0 is not a maximiser (soft cap)."
+}
