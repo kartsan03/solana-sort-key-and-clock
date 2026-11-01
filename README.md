@@ -11,7 +11,39 @@ after the Alpenglow switch, and read back where they landed in each block. Two q
 
 ## Findings
 
-FINDINGS_PLACEHOLDER
+Measured 2026-10-29 to 10-31 (UTC), all hours, on 16 validators. "Full windows" counts panels whose six
+probes all landed in one block; the number is how many came out in the exact order of the key.
+
+| Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon |
+|---|---|---|---|
+| Agave | Agave's integer priority `agave_int` | 89 / 89 | 0 ms |
+| Jito, `E1r4Psq8` | `agave_int` | 47 / 47 | 0 ms |
+| Jito, `C8Bey3LK` | total fee (5,000 + priority fee) | 14 / 15 | not measured |
+| AgaveBam | `agave_int` | 58 / 58 | 16 ms |
+| FireBAM | `agave_int`, not Firedancer's rule | 61 / 61 | 24–44 ms |
+| Rakurai | `agave_int` | 100 / 100 | 0 ms on two days of three |
+| Firedancer | Firedancer's exact ratio `fd_exact` | 71 / 77 | 0 ms |
+| Harmonic (Agave and Firedancer) | none of my eight keys; one capped formula fits (exploratory) | 90 / 90 on days B–C (day A, where it was found: 49 / 51) | 12–24 ms |
+
+1. **Two exact rules, told apart.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority
+   fee + 2,500, C = scheduling cost). Firedancer sorts by the exact R/C. The two differ by as little as
+   0.003%, and every fingerprint pair went the predicted way in every full window of both groups.
+2. **The builder decides, not the client.** FireBAM validators run Firedancer, yet sort by Agave's key: the
+   BAM node orders their transactions before the validator sees them.
+3. **Jito is not one rule.** One Jito validator follows Agave's key; another sorts by total fee.
+4. **Harmonic follows a formula outside the usual list:** Agave's key with the compute-unit limit counted
+   only up to a cap of 1,660–4,098 CU. I found it on day A and fixed it on chain before day B; on days B
+   and C it matched 90 of 90 full windows on all four Harmonic validators, two of which had no day-A data.
+   It stays labelled exploratory. CAPSWEEP_README_PLACEHOLDER
+5. **Waiting and arriving are different regimes.** Transactions already waiting when the leader's window
+   opens are sorted everywhere. Arriving ones keep send order on Agave, Jito and Firedancer (a richer
+   transaction 4 ms behind does not pass); through BAM and Harmonic it can still pass one sent 12–44 ms
+   earlier.
+6. **Held out.** Day A's picks were hashed on chain before day B. Outside Harmonic, 17 of 18 key
+   predictions held on days B and C; the miss is the total-fee Jito validator above.
+
+Labels: *registered* = a pre-registered test; *exploratory* = a pattern found in the data and checked on
+later days, not confirmed; *descriptive* = a count with no test behind it (the exact-order column).
 
 Every row is traced to slots and signatures in [CLAIMS.md](CLAIMS.md); [REPORT.md](REPORT.md) has the full
 results, dates, deviations and what went wrong.
@@ -38,12 +70,14 @@ results, dates, deviations and what went wrong.
 - **Schedule.** Calibration on 2026-10-27. Then three collection days in six 4-hour blocks across all UTC
   hours: day A (10-29) picks the key and horizon of each undocumented builder, days B and C (10-30, 10-31)
   test those picks on data they never saw. Agave, Jito and Firedancer are tested against their source code
-  from day A.
+  from day A. Day D (11-01) topped up four validators that were short of their target, as the
+  pre-registration allows, and on 11-02 a separate exploratory sweep measured the Harmonic cap.
 - **Pre-registered.** Questions, candidate keys, decision rules and quotas were committed in
   [PREREG.md](PREREG.md) and [design/design.json](design/design.json) before the first campaign probe, and
   their hashes written on chain:
   memo #1 [`TywPFLUz…`](https://explorer.solana.com/tx/TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd)
-  (commit `0bb3ee5`), memo #2 MEMO2_PLACEHOLDER (the day-A picks, before day B).
+  (commit `0bb3ee5`), memo #2 [`mbp3zEGq…`](https://explorer.solana.com/tx/mbp3zEGqTFnkJuLZkRndhWu4yFRkdxvwHJNMKZimE4QzbAeBMrT2RhE2N7ve8Z6F9BWkTV4ECBG1LoqwaCWJaNF)
+  (commit `f3f1c52`, the day-A picks, before day B), memo #3 MEMO3_PLACEHOLDER (the Harmonic cap sweep).
 
 ## Why this design
 

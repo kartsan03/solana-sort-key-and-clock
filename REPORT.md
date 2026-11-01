@@ -66,7 +66,89 @@ and 24 ms (roughly half the round), and FIFO gives 0, which is why I report the 
 
 ## 3. Results
 
-RESULTS_PLACEHOLDER
+Dates are UTC. "Full window" = a K-main panel whose six probes all landed in one block of the target's window.
+Windows where gossip did not show the target on both sides of the send within 60 s are left out of client
+claims (7 full windows on days A–C). Tables: [data/derived/tables.md](data/derived/tables.md).
+
+### 3.1 Which key orders queued probes
+
+| Client | Validators | Key | Full windows in exact key order, days A–C | Held out (days B, C) |
+|---|---|---|---|---|
+| Agave | `7QQGNm3p`, `5Us18hLZ` | `agave_int` | 89 / 89 | passed (source-code key) |
+| JitoLabs | `E1r4Psq8` | `agave_int` | 47 / 47 | passed (source-code key) |
+| JitoLabs | `C8Bey3LK` | `total_fee` | 14 / 15 (day C only) | failed: predicted `agave_int` from source |
+| AgaveBam | `Fc6NNdS2`, `5EhGYUyQ` | `agave_int` | 58 / 58 | passed |
+| FireBAM | `SSmBEooM`, `PRGNnb8D` | `agave_int` | 61 / 61 | passed |
+| Rakurai | `ana2y2Yv`, `E3mDbFMr` | `agave_int` | 100 / 100 | passed |
+| Firedancer | `JD549Hsb`, `DNVZMSqe` | `fd_exact` | 71 / 77 | passed (source-code key) |
+| HarmonicAgave | `EkvdKhUL`, `BtsmiEEv` | none of the eight | no single key fits | failed (both picks) |
+| HarmonicFiredancer | `87CcUxpy`, `CQdLgwkm` | none of the eight | no single key fits | failed (both picks) |
+
+What the table says:
+
+- **Agave's integer key, exactly, on five client types.** 355 of 355 full windows on Agave, Jito
+  (`E1r4Psq8`), AgaveBam, FireBAM and Rakurai came out in the exact `agave_int` order, including every
+  fingerprint pair (two in P1, three in P2), where Firedancer's exact ratio predicts the opposite.
+- **Firedancer uses its own exact ratio.** All five fingerprint pairs went Firedancer's way in every full
+  Firedancer window. The 6 of 77 windows that broke the full order were swaps among the cheapest probes at
+  the end of the block order (for example `BAECFD` instead of `BAECDF`), not fingerprint flips.
+- **The BAM node decides, not the client.** FireBAM runs Firedancer, yet both FireBAM validators sort by
+  Agave's key: their transactions come pre-ordered from the BAM node, as BAM's documentation says.
+- **Jito is not one rule.** `E1r4Psq8` follows Agave's key; `C8Bey3LK` sorts by total fee (5,000 + priority
+  fee): 14 of 15 full windows in exact `total_fee` order (and both of its calibration windows), against 0
+  for `agave_int`.
+- **Harmonic fits none of the eight registered keys.** Day A's picks (`agave_int` for HarmonicAgave,
+  `pf_per_cost` for HarmonicFiredancer) failed on days B and C. Yet the Harmonic orders are not noise:
+  on days B and C every full window repeated one order per panel, whatever the send order (3.2).
+
+### 3.2 Harmonic: an explanation that fits and replicates
+
+In the first block of day A, all seven full Harmonic panels fit one formula outside my list: Agave's integer priority, with
+the compute-unit limit counted toward cost only up to a cap X. Any X from 1,660 to 4,098 gives the observed
+orders. I wrote this down with its predicted orders in `design/predictions-dayB.json` before day B, hashed
+in memo #2, as exploratory. After the memo, on days B and C, 90 of 90 full windows on all four Harmonic
+validators matched it exactly (day B 37 / 37, day C 53 / 53), including 17 of 17 on `BtsmiEEv` and
+`CQdLgwkm`, which had no windows on day A. Day A itself, where the formula was found, is 49 of 51 and is
+not a test of it. The formula fits and replicates; it is not a confirmed rule, because it was formed from
+the data and the fixed panels cannot pin X down.
+
+CAPSWEEP_PLACEHOLDER
+
+### 3.3 Held-out test (registered)
+
+| Day | Keys accepted | Horizons inside the day's interval | Misses |
+|---|---|---|---|
+| B (10-30) | 6 of 8 | 4 of 5 | keys: both Harmonic picks; horizon: `SSmBEooM` predicted 44 ms, day B 24 ms |
+| C (10-31) | 11 of 16 | 5 of 6 | keys: the four Harmonic validators and `C8Bey3LK`; horizon: `87CcUxpy` predicted 20 ms, day C 24 ms |
+
+Outside Harmonic, 17 of 18 key predictions held. The one miss, `C8Bey3LK`, was a Tier-2 Jito validator
+predicted from Jito's source code; it is the total-fee result above.
+
+### 3.4 How strictly in time
+
+Overtaking horizon (largest send gap at which a later, richer probe still lands first in at least half of
+pairs), with 95% intervals:
+
+| Client | Validator | Day A | Day B | Day C |
+|---|---|---|---|---|
+| Agave | `7QQGNm3p` | 0 [0, 0] | — | — |
+| JitoLabs | `E1r4Psq8` | 0 [0, 0] | — | — |
+| Firedancer | `JD549Hsb` | 0 [0, 0] | 0 [0, 0] | 0 [0, 0] |
+| Rakurai | `ana2y2Yv` | 0 [0, 0] | 0 [0, 0] | 44 [0, 44] |
+| AgaveBam | `Fc6NNdS2` | 16 [12, 28] | too few trains | 16 [12, 28] |
+| FireBAM | `SSmBEooM` | 44 [28, 44] | 24 [24, 24] | 44 [44, 44] |
+| HarmonicAgave | `EkvdKhUL` | 16 [16, 20] | 12 [8, 20] | 16 [16, 24] |
+| HarmonicFiredancer | `87CcUxpy` | 20 [16, 24] | 16 [16, 24] | 24 [24, 24] |
+
+Two regimes. Probes already waiting when the window opens are sorted by the key on every client. Probes
+arriving during the window are served in arrival order by Agave, Jito, Firedancer and (on two days of
+three) Rakurai: a richer probe sent 4 ms later does not pass a cheaper one. Through a BAM node or Harmonic
+endpoint a richer probe can still pass a cheaper one sent 12–44 ms earlier, which fits short batching
+before ordering. The FireBAM horizon moved between days (44, 24, 44 ms) on one or two evaluable trains per
+day, so I do not read it more precisely than "tens of milliseconds". This Firedancer validator's horizon
+is 0; it is one operator, and other Firedancer operators may pace differently.
+
+DAYD_PLACEHOLDER
 
 ## 4. What went wrong
 
@@ -90,9 +172,32 @@ RESULTS_PLACEHOLDER
   balances caught it the next day. I logged the deposit as an inflow, which raised the counted spend to the
   true figure; the final reconciliation lists every incoming transfer to all twelve wallets.
 
+- **BAM nodes drop unstaked connections.** Through BAM endpoints, part of the windows were never
+  acknowledged: the endpoint closed the connection with code 1 ("dropped") as the probes arrived (day B 16 of
+  56 BAM windows, day C 13 of 91). Those probes never landed and cost nothing, but `Fc6NNdS2` lost 13 of 30
+  windows on day B and is "insufficient data" for that day.
+- **Five windows could not connect.** `C-1031-b0-0045` to `C-1031-b0-0048` and `D-1101-b4-0000` could not
+  open a QUIC connection, so nothing was sent or spent; 5 of more than 1,000 campaign windows.
+- **Stale slot clock.** Five windows (three on day A, two on day B) were skipped because the slot stream had
+  fallen behind; the sender does not time a send from a stale clock.
+- **Snapshots that do not bracket a window.** Seven full windows on days A–C had no gossip snapshot of the
+  target within 60 s on one side of the send, so they are left out of client claims (the rule in
+  PREREG.md). Counting them would add 3 to Agave's key and 4 to the Harmonic formula, all in agreement.
+
 ## 5. Deviations from the pre-registration
 
-DEVIATIONS_PLACEHOLDER
+- **Day D eligibility count.** PREREG lets day D run for a Tier-1 validator that is short of its target
+  "because of low supply or transitions", if the budget allows. I counted fully landed K-main windows
+  against the 22-window target of days B and C (stricter than counting per contrast) and fixed that reading
+  on 10-31 before day C ended. Six validators were short, all with fewer windows planned than their quota
+  (low supply); the remaining budget covered four, so day D took the four largest shortfalls
+  (`Fc6NNdS2`, `E1r4Psq8`, `SSmBEooM`, `87CcUxpy`) with their day-C quotas
+  ([design/campaign-dayD.json](design/campaign-dayD.json), committed before its first probe).
+- **Harmonic cap sweep (addition).** Not in PREREG. Designed after days A–C to measure the cap in the
+  exploratory Harmonic formula, locked on chain by memo #3 before its first probe
+  ([design/capsweep.json](design/capsweep.json)), and reported apart: it changes no registered call.
+- **Exact-order counts (addition).** The "full windows in exact key order" columns are descriptive, added
+  after the campaign as a plain-language check; the calls rest on the registered tests.
 
 ## 6. Cost
 
