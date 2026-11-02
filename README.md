@@ -1,18 +1,17 @@
 # Solana: which sort key each validator uses, and how strictly in time
 
 I sent my own small transactions straight to the leaders of 16 Solana mainnet validators (8 client types)
-after the Alpenglow switch, and read back where they landed in each block. Two questions per validator:
-
-1. **Which key orders its block?** Not just "higher fee goes first": I separate eight concrete fee rules,
-   including Agave's integer priority ⌊R·10⁶/(C+1)⌋ from Firedancer's exact R/C, and a builder that counts
-   the base fee from one that ignores it.
-2. **How strictly, in time?** If a richer transaction arrives a few milliseconds after a cheaper one, can it
-   still go first? The largest send gap at which it does is the validator's *overtaking horizon*.
+after the Alpenglow switch and read where they landed in each block. For each validator I ask which *key*
+(sorting rule) orders its block, and how strictly that holds in time. In short: Agave and Firedancer use two
+different exact rules, FireBAM follows Agave's, one Jito validator sorts by total fee, and Harmonic fits a
+formula outside the usual list.
 
 ## Findings
 
-Measured 2026-10-29 to 11-01 (UTC), all hours, on 16 validators, plus an exploratory Harmonic test on 11-02. "Full windows" counts panels whose six
-probes all landed in one block; the number is how many came out in the exact order of the key.
+Measured 2026-10-29 to 11-01 (UTC), across all hours, plus an exploratory Harmonic test on 11-02.
+A *panel* is six probes sent together. A *full window* means all six landed in one block of the target's
+4-slot leader window. The exact-order column counts matches / full windows. The *overtaking horizon* is
+the largest send gap at which a later, richer probe lands first in at least half of pairs.
 
 | Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon |
 |---|---|---|---|
@@ -23,32 +22,30 @@ probes all landed in one block; the number is how many came out in the exact ord
 | FireBAM | `agave_int`, not Firedancer's rule | 80 / 80 | 24–44 ms |
 | Rakurai | `agave_int` | 100 / 100 | 0 ms on two days of three |
 | Firedancer | Firedancer's exact ratio `fd_exact` | 71 / 77 | 0 ms |
-| Harmonic (Agave and Firedancer) | none of my eight keys; one soft-capped formula fits (exploratory) | 108 / 108 on days B–D (day A, where it was found: 49 / 51) | 12–24 ms |
+| Harmonic (Agave and Firedancer) | none of my eight keys; soft-capped formula fits (exploratory) | 108 / 108 days B–D; 49 / 51 on discovery day A | 12–24 ms |
 
-1. **Two exact rules, told apart.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority
-   fee + 2,500, C = scheduling cost). Firedancer sorts by the exact R/C. The two differ by as little as
-   0.003%, and every fingerprint pair went the predicted way in every full window of both groups.
-2. **The builder decides, not the client.** FireBAM validators run Firedancer, yet sort by Agave's key: the
-   BAM node orders their transactions before the validator sees them.
-3. **Jito is not one rule.** One Jito validator follows Agave's key; another sorts by total fee.
-4. **Harmonic follows a formula outside the usual list:** Agave's key, with the compute-unit limit counted
-   in full only up to a cap. A hard cap, found on day A and fixed on chain before day B, predicted 108 of
-   108 full windows on days B–D on all four Harmonic validators, two of which had no day-A data. A follow-up
-   on 11-02, locked on chain before it ran, predicted that the limit above the cap still counts a little,
-   and it does: a hard cap explains only 8 of its 27 full windows, Agave's plain key 19. Fitted to all the
-   data, the limit counts in full up to about 1,500–1,960 CU and 10–25% above that; that range is a fit,
-   not a prediction. It stays labelled exploratory.
-5. **Waiting and arriving are different regimes.** Transactions already waiting when the leader's window
-   opens are sorted everywhere. Arriving ones keep send order on Agave, Jito and Firedancer (a richer
-   transaction 4 ms behind does not pass); through BAM and Harmonic it can still pass one sent 12–44 ms
-   earlier.
-6. **Held out.** Day A's picks were hashed on chain before day B. Outside Harmonic, on days B–D, 13 key
-   predictions passed, 1 failed (the total-fee Jito validator above) and 7 are "insufficient data": fewer
-   than 15 usable panels that day, the registered minimum. Those seven still had all 76 of their full
-   windows in the predicted order, but that is a count, not a pass.
+1. **Two exact rules.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority fee +
+   2,500; C = scheduling cost). Firedancer uses exact R/C. *Fingerprint pairs* are probe pairs these rules
+   rank oppositely, even when priorities differ by only 0.003%. Every pair went the predicted way in every
+   full window.
+2. **Builder and client can differ.** FireBAM runs Firedancer but sorts by Agave's key: BAM orders the
+   transactions upstream. The Jito validators also differ: one follows Agave, another total fee.
+3. **Harmonic: Agave's key with the compute-unit (CU) limit capped.** None of my eight keys fits. Day A's
+   orders fit Agave's key with the CU limit counted only up to a cap. Memo #2 fixed that hard-cap formula on
+   chain before day B, and it matched 108 / 108 full windows on days B–D on all four Harmonic validators,
+   two without day-A data. Memo #3 predicted, before an 11-02 follow-up, that the limit above the cap still
+   counts a little (a soft cap), and it does: a hard cap matches only 8 of the follow-up's 27 full windows,
+   plain Agave 19. Fitted to all the data, the cap is 1,500–1,963 CU with 10–25% of the limit above it
+   counted; that range is a fit, not a prediction. Exploratory throughout.
+4. **Waiting versus arriving.** Queued probes sort everywhere. During the window, a richer probe sent
+   4 ms later does not pass on Agave, Jito or Firedancer; through BAM and Harmonic it can pass one sent
+   12–44 ms earlier.
+5. **Held out.** Outside Harmonic, days B–D yielded 13 passed key predictions, 1 failed (total-fee Jito)
+   and 7 "insufficient data": fewer than the registered minimum of 15 usable panels that day. All 76 full
+   windows from those seven matched, a descriptive count rather than a pass.
 
-Labels: *registered* = a pre-registered test; *exploratory* = a pattern found in the data and checked on
-later days, not confirmed; *descriptive* = a count with no test behind it (the exact-order column).
+Labels: *registered* = a test fixed before the campaign; *exploratory* = a pattern found in data and
+checked later, not confirmed; *descriptive* = a count without a test (including the exact-order column).
 
 Every row is traced to slots and signatures in [CLAIMS.md](CLAIMS.md); [REPORT.md](REPORT.md) has the full
 results, dates, deviations and what went wrong.
@@ -57,31 +54,26 @@ results, dates, deviations and what went wrong.
 
 ## How it works
 
-- **Probe.** One legacy transaction shape everywhere: fee payer, a never-funded "lock" account, three
-  compute-budget instructions (CU limit L, CU price p, loaded-data limit D) and a 0-lamport transfer to
-  the lock. Only L, p and D change. They move the fee and the scheduling cost in different directions, so
-  each candidate key ranks the same six probes differently.
-- **Panels.** Six probes from six payers, all writing the same lock, sent together just before the
-  leader's 4-slot window. They wait in the queue, the shared lock forces them to run one by one, and their
-  order in the block is the scheduler's order. Two fixed panels make every pair of candidate keys disagree
-  on at least two probe pairs. Control arms: six identical probes (tie-breaking), and six probes that
-  each write their own lock (no contention).
-- **Trains.** 10–12 equal probes sent one by one 4 ms or 12 ms apart inside the window, with the fee
-  rising (or, as a control, falling) along the send order. FIFO keeps send order; a sorting scheduler
-  lets later, richer probes overtake.
+- **Probe.** One legacy transaction shape: fee payer, never-funded "lock" account, three compute-budget
+  instructions (CU limit L, CU price p, loaded-data limit D), and a 0-lamport transfer to the lock. Only
+  L, p and D change, moving fee and scheduling cost in different directions.
+- **Panels.** Six payers share a lock, forcing serial execution so block order reveals scheduler order.
+  I send just before the leader window. Two fixed panels make every candidate-key pair disagree on at
+  least two probe pairs. Controls use six identical probes for tie-breaking, or separate locks for no
+  contention.
+- **Trains.** 10–12 probes with equal limits, sent 4 ms or 12 ms apart during the window, with fees rising
+  or, as a control, falling. First-in, first-out (FIFO) keeps send order; sorting allows overtaking.
 - **Route.** Unstaked QUIC directly to the TPU address each leader advertises, one transaction per
   stream, with every send time logged. For BAM and Harmonic validators that address is the
   block builder, so those results describe the validator *as reached through its advertised ingress*.
-  BAM endpoints closed my unstaked connection in 21% of windows (own-IP validators 6%, Harmonic 0%); those
-  probes never landed and cost nothing.
-- **Schedule.** Calibration on 2026-10-27. Then three collection days in six 4-hour blocks across all UTC
-  hours: day A (10-29) picks the key and horizon of each undocumented builder, days B and C (10-30, 10-31)
-  test those picks on data they never saw. Agave, Jito and Firedancer are tested against their source code
-  from day A. Day D (11-01) topped up four validators that were short of their target, as the
-  pre-registration allows, and on 11-02 a separate exploratory sweep measured the Harmonic cap.
-- **Pre-registered.** Questions, candidate keys, decision rules and quotas were committed in
-  [PREREG.md](PREREG.md) and [design/design.json](design/design.json) before the first campaign probe, and
-  their hashes written on chain:
+  BAM closed connections in 21% of windows (own-IP 6%, Harmonic 0%); those probes never landed and cost nothing.
+- **Schedule.** Calibration: 2026-10-27 to 10-28. Collection: six 4-hour blocks across all UTC hours on
+  days A–C. Day A (10-29) picks undocumented builders' keys and horizons; B and C (10-30, 10-31) test those
+  picks. Agave, Jito and Firedancer are tested against their source-code key from day A on. Tier 1 is the eight main
+  validators; Tier 2 adds a second per client on day C. Day D (11-01) tops up four shortfalls; 11-02 is the
+  exploratory Harmonic sweep.
+- **Pre-registration.** [PREREG.md](PREREG.md) and [design/design.json](design/design.json) fix questions,
+  keys, decision rules and quotas before campaign probes. On-chain hashes:
   memo #1 [`TywPFLUz…`](https://explorer.solana.com/tx/TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd)
   (commit `0bb3ee5`), memo #2 [`mbp3zEGq…`](https://explorer.solana.com/tx/mbp3zEGqTFnkJuLZkRndhWu4yFRkdxvwHJNMKZimE4QzbAeBMrT2RhE2N7ve8Z6F9BWkTV4ECBG1LoqwaCWJaNF)
   (commit `f3f1c52`, the day-A picks, before day B), memo #3 [`4zMGqri3…`](https://explorer.solana.com/tx/4zMGqri3f4ufA5sAFoZsr5VXQM6V4q1YxVpiqHQLgCFwjAtbVLkSTS1yWBK3vRCdXQmgMPP4TynR67CGf41E7HUf)
@@ -89,20 +81,17 @@ results, dates, deviations and what went wrong.
 
 ## Why this design
 
-- **My own probes over other people's transactions.** Only my probes have known limits, fees, send times,
-  send order and target, and only a shared lock makes their block order the scheduler's order.
-- **Designed disagreements over fee ladders.** On an ordinary ladder of fees, every sensible key agrees,
-  so "higher fee lands first" cannot tell the rules apart. The panels put the rules at odds on purpose,
-  down to a 0.003% difference between Agave's and Firedancer's priority.
-- **Window-level statistics.** Pairs inside one block are not independent. The window is the unit; a key
-  is identified when it beats every rival in a majority of windows (exact binomial tests, Holm across the
-  eight main validators), and its strictness is reported next to it. "No rule detected" is a valid answer.
-- **A held-out day.** A key picked from day A has to pass on days B and C, with the picks fixed on chain
-  before day B.
-- **Horizon over a round length.** A layered order can come from batching rounds or from a queue that
-  stalls; the horizon measures how strictly the key holds in time without claiming a mechanism.
-- **Direct QUIC over RPC `sendTransaction`.** RPC hides the send time and the target, retries for you,
-  and forwards to more than one leader.
+- **Known inputs.** My probes give known limits, fees, send times, order and target; the shared lock
+  makes block order interpretable.
+- **Designed disagreements.** Ordinary fee ladders let candidate keys agree. These panels separate
+  concrete rules, including base-fee treatment and the 0.003% Agave/Firedancer difference.
+- **Window-level tests.** Within-block pairs are dependent. A key must beat every rival in a majority of
+  windows (exact binomial tests, Holm across eight main validators). I report strictness separately;
+  "no rule detected" is valid.
+- **Held-out checks.** Day-A picks are fixed on chain before day B and tested on days B–D.
+- **Horizon.** Batching and stalled queues can look alike; the measurement avoids claiming a mechanism.
+- **Direct QUIC.** RPC `sendTransaction` obscures send time and target, retries and forwards to multiple
+  leaders.
 
 ## What this design does NOT separate
 
@@ -129,15 +118,13 @@ docker compose run --rm test                             # unit tests
 docker compose run --rm dryrun                           # plan the next 15 min of real leader windows, send nothing
 ```
 
-`docker compose up` fails on any difference from the committed numbers. `verify` checks each re-fetched
-probe against the chain: its signature at the recorded index, payer, fee, decoded limits and leader (the
-block's fee-reward recipient), plus the leader schedule (`getSlotLeaders`) for all four window slots. Send
-times, intended targets and client labels rest on my logs and snapshots, not on the chain.
+`docker compose up` fails if recomputed numbers differ. `verify` checks signatures at recorded indices,
+payers, fees, decoded limits, the leader (block fee-reward recipient), and `getSlotLeaders` for all four
+window slots. Send times, intended targets and client labels depend on logs and snapshots.
 
-Live sending needs `--live`, `ITB_LIVE=1`, a `--max-spend-sol` limit and the key directory mounted
-read-only as a volume; the funding, memo and sweep commands need `ITB_LIVE=1` too. Every send
-reserves its worst-case fee in a ledger first, and the code refuses to pass 0.05 SOL in total; spend is
-reconciled against on-chain balances after every block.
+Live sending requires `--live`, `ITB_LIVE=1`, `--max-spend-sol` and a read-only key-directory volume.
+Funding, memo and sweep commands also require `ITB_LIVE=1`. Each send reserves its worst-case fee;
+code caps total spend at 0.05 SOL and reconciles on-chain balances after every block.
 
 ## Listing requirements → where
 
@@ -156,8 +143,8 @@ reconciled against on-chain balances after every block.
 
 0.048063 SOL in fees out of the 0.05 SOL cap, operations included: 0.047973 SOL for probes (calibration
 0.0039, day A 0.0132, day B 0.0097, day C 0.0140, day D 0.0047, Harmonic follow-up 0.0025) and 0.00009 SOL
-for memos and fee-payer funding. After every run the wallet balances, the spend ledger and the summed block
-fees agreed, with nothing unexplained ([REPORT.md](REPORT.md) §6).
+for memos and fee-payer funding. Balances, ledger and block fees agreed after every run, with nothing
+unexplained ([REPORT.md](REPORT.md) §6).
 
 ## Repo map
 
