@@ -168,6 +168,8 @@ async def cmd_collect(a):
 
 
 async def cmd_ops(a):
+    if a.op in ("fund", "memo", "sweep") and os.environ.get("ITB_LIVE") != "1":
+        sys.exit(f"{a.op} refused: it sends transactions; set ITB_LIVE=1")
     from . import ops
     from .chain import Rpc
     from .wallet import public_info
@@ -225,8 +227,6 @@ async def cmd_ops(a):
                 amt = await ops.inflow(rpc, led, a.arg, set(pks), a.note or "")
                 print(f"recorded inflow {amt}")
             elif a.op == "sweep":
-                if os.environ.get("ITB_LIVE") != "1":
-                    sys.exit("sweep refused: set ITB_LIVE=1")
                 bal, _ = await ops.sweep(rpc, led, payers(), f"ops-sweep-{int(time.time())}")
                 print("after sweep:", bal)
     await rpc.close()

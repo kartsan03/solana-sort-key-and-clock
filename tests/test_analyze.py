@@ -40,13 +40,23 @@ def test_overtaking_curve_fifo_vs_rounds():
 
 
 def test_holdout_horizon_inside_interval():
-    k = {"V|dayB": {"phase": "dayB", "validator": "V", "best": "agave_int",
+    k = {"V|dayB": {"phase": "dayB", "validator": "V", "best": "agave_int", "evaluable": 20,
                     "keys": {"agave_int": {"p_iut": 0.001, "min_rate": 0.9, "min_n": 20}}}}
     m = {"V|dayB": {"increasing": {"horizon_ci": [4.0, 12.0]}}}
     out = verdicts.holdout(k, m, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 8.0}})["dayB"]["V"]
     assert out["accepted"] and out["horizon"]["inside"]
     out = verdicts.holdout(k, m, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 20.0}})["dayB"]["V"]
     assert not out["horizon"]["inside"]
+
+
+def test_holdout_applies_the_registered_data_gate():
+    k = {"V|dayB": {"phase": "dayB", "validator": "V", "best": "agave_int", "evaluable": 12,
+                    "keys": {"agave_int": {"p_iut": 0.001, "min_rate": 1.0, "min_n": 12}}}}
+    out = verdicts.holdout(k, {}, {"V": 2}, {"V": {"key": "agave_int"}})["dayB"]["V"]
+    assert out["status"] == "insufficient data" and not out["accepted"]
+    k["V|dayB"]["evaluable"] = 15
+    out = verdicts.holdout(k, {}, {"V": 2}, {"V": {"key": "agave_int"}})["dayB"]["V"]
+    assert out["status"] == "passed" and out["accepted"]
 
 
 def test_predict_follows_the_registered_rule(tmp_path, monkeypatch):
@@ -73,3 +83,12 @@ def test_predict_follows_the_registered_rule(tmp_path, monkeypatch):
     (tmp_path / "design" / "exploratory-dayB.json").write_text(json.dumps({"H": {"P1": "CABEDF"}}))
     campaign.cmd_predict(argparse.Namespace())
     assert json.loads((tmp_path / "design" / "predictions-dayB.json").read_text())["exploratory"] == {"H": {"P1": "CABEDF"}}
+
+
+def test_sending_ops_need_the_live_env(monkeypatch):
+    import pytest
+    from itb import cli
+    monkeypatch.delenv("ITB_LIVE", raising=False)
+    for op in (["fund", "1000"], ["memo", "x"], ["sweep"]):
+        with pytest.raises(SystemExit, match="refused"):
+            cli.main(["ops", *op])

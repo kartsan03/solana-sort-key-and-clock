@@ -16,7 +16,7 @@ from .probe import decode_budget
 
 
 async def main(sample=40):
-    windows = [w for w in analyze.load() if w["phase"] in ("dayA", "dayB", "calibration")]
+    windows = analyze.load()                       # every phase: calibration, days A-D, the cap sweep
     if os.environ.get("VERIFY_ALL") == "1":
         sample = None
     rng = random.Random(7)

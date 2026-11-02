@@ -47,7 +47,9 @@ def calls(k_results, tiers, phase, family_of=None):
 
 def holdout(k_results, m_results, tiers, predictions):
     """Days B-D: does each validator's pre-registered key (from day A) pass the identification test,
-    and does its predicted horizon fall inside that day's interval?"""
+    and does its predicted horizon fall inside that day's interval? A day with fewer than MIN_EVALUABLE
+    evaluable K-main panels, or fewer than 5 informative windows against some rival, is "insufficient data"
+    (PREREG), whatever the test says. Holm still runs over every Tier-1 validator of the day."""
     out = {}
     for ph in ("dayB", "dayC", "dayD"):
         rows = {r["validator"]: r for r in k_results.values() if r["phase"] == ph and r["validator"] in predictions}
@@ -57,9 +59,11 @@ def holdout(k_results, m_results, tiers, predictions):
         for v, r in rows.items():
             k = predictions[v]["key"]
             kt = r["keys"][k]
+            accepted = rej_t1.get(v, False) if tiers.get(v) == 1 else kt["p_iut"] <= ALPHA
+            enough = r["evaluable"] >= MIN_EVALUABLE and kt["min_n"] >= 5      # the registered data gate
             res[v] = {"predicted": k, "p_iut": kt["p_iut"], "min_rate": kt["min_rate"], "min_n": kt["min_n"],
-                      "best_this_day": r["best"],
-                      "accepted": rej_t1.get(v, False) if tiers.get(v) == 1 else kt["p_iut"] <= ALPHA}
+                      "evaluable": r["evaluable"], "best_this_day": r["best"], "accepted": accepted and enough,
+                      "status": ("passed" if accepted else "failed") if enough else "insufficient data"}
         for v, p in predictions.items():
             m = m_results.get(f"{v}|{ph}", {}).get("increasing", {})
             if p.get("horizon_ms") is not None and m.get("horizon_ci"):
