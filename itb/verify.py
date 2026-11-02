@@ -1,9 +1,10 @@
 """Online re-check of the raw data against the chain (any RPC; public by default).
 
 For each checked probe that landed: the block at its slot still holds our signature at
-the recorded index, with the recorded fee payer, fee, leader and decoded L/p/D. For each
-checked window: every slot of the leader window is re-fetched and no other probe of
-ours appears in it unrecorded.
+the recorded index, with the recorded fee payer, fee, leader (the block's fee-reward recipient)
+and decoded L/p/D. For each checked window: the leader schedule (getSlotLeaders) assigns all
+four slots to the target, every slot of the window is re-fetched, and no other probe of ours
+appears in it unrecorded.
 """
 import json
 import os
@@ -57,6 +58,9 @@ async def main(sample=40):
                 probs.append("leader")
             if probs:
                 bad.append((p["sig"], ", ".join(probs)))
+        sched = await rpc.call("getSlotLeaders", w["slot0"], 4)
+        if set(sched) != {w["target"]}:
+            bad.append((w["window_id"], f"leader schedule gives {sorted(set(sched))}, not the target"))
         for s in range(w["slot0"], w["slot0"] + 4):
             b = await block(s)
             slots_checked += 1
