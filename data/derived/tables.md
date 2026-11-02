@@ -368,6 +368,24 @@ Verdict: **soft cap: the limit above X still counts, at a reduced slope**. Fully
 | S2 | 7 | CBAFED ×7 |
 | S3 | 12 | CBAFED ×12 |
 
+Consistency check added after the sweep: one (X, beta) for all fully landed Harmonic K-main windows, every phase. Best: 195 of 198 at X 1500–1963, beta 0.103–0.25 (hard cap 176, no cap 110); after memo #2: 135 of 135.
+
+| Phase, panel | Full windows | Matching at the best (X, beta) |
+|---|---|---|
+| calibration|P1 | 6 | 5 |
+| calibration|P2 | 6 | 6 |
+| capsweep|S1 | 8 | 8 |
+| capsweep|S2 | 7 | 7 |
+| capsweep|S3 | 12 | 12 |
+| dayA|P1 | 26 | 25 |
+| dayA|P2 | 25 | 24 |
+| dayB|P1 | 17 | 17 |
+| dayB|P2 | 20 | 20 |
+| dayC|P1 | 22 | 22 |
+| dayC|P2 | 31 | 31 |
+| dayD|P1 | 9 | 9 |
+| dayD|P2 | 9 | 9 |
+
 ### Where every probe ended up
 
 | Validator / phase | target block | later window | other leader | expired | send failed |
@@ -430,6 +448,14 @@ Verdict: **soft cap: the limit above X still counts, at a reduced slope**. Fully
 | `ana2y2Yv` dayA | 386 | 0 | 0 | 14 | 0 |
 | `ana2y2Yv` dayB | 282 | 0 | 0 | 0 | 24 |
 | `ana2y2Yv` dayC | 276 | 0 | 0 | 0 | 0 |
+
+### Delivery by route, days A-D (windows)
+
+| Ingress | Windows | All probes acknowledged | Endpoint closed the connection | Other send problem | At least one probe in the target block |
+|---|---|---|---|---|---|
+| bam | 288 | 217 | 61 | 10 | 223 |
+| harmonic | 263 | 263 | 0 | 0 | 263 |
+| own | 550 | 515 | 33 | 2 | 516 |
 
 ### Runs (UTC)
 

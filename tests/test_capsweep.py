@@ -53,3 +53,16 @@ def test_report_table_renders():
     text = "\n".join(capsweep_table({"capsweep": cs.analyze(windows(3000, 0.012))}))
     assert "soft cap" in text and "S3 | 6 |" in text
     assert capsweep_table({"capsweep": cs.analyze([])}) == []
+
+
+def test_joint_check_fits_one_model_across_phases():
+    import json
+    from itb.analyze import ROOT
+    target = next(iter(json.loads((ROOT / "design" / "capsweep-targets.json").read_text())))
+    ws = [dict(w, target=target, study="K") for w in windows(1800, 0.15)]
+    saved = dict(cs.PANELS)
+    j = cs.joint(ws, ROOT)
+    assert cs.PANELS == saved                                        # P1/P2 are added only inside the check
+    assert j["full_windows"] == j["best_matches"] == 18
+    assert j["X"][0] <= 1800 <= j["X"][1] and j["beta"][0] <= 0.15 <= j["beta"][1]
+    assert j["after_memo2"]["matches_at_best"] == [18, 18]

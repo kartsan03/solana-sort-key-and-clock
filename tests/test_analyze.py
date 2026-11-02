@@ -92,3 +92,14 @@ def test_sending_ops_need_the_live_env(monkeypatch):
     for op in (["fund", "1000"], ["memo", "x"], ["sweep"]):
         with pytest.raises(SystemExit, match="refused"):
             cli.main(["ops", *op])
+
+
+def test_by_route_counts_closed_connections():
+    from itb.orders import by_route
+    def w(ing, acks, landed):
+        return {"phase": "dayB", "ingress": ing, "probes": [{"ack": a, "outcome": "target_block" if landed else "expired"}
+                                                          for a in acks]}
+    r = by_route([w("bam", ["closed:1:dropped", "acked"], False), w("bam", ["acked", "acked"], True),
+                  w("own", ["pending", "acked"], True), {"phase": "calibration", "ingress": "own", "probes": []}])
+    assert r["bam"] == {"windows": 2, "closed_by_endpoint": 1, "all_acked": 1, "any_probe_landed": 1}
+    assert r["own"] == {"windows": 1, "other_send_problem": 1, "any_probe_landed": 1}

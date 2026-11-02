@@ -144,6 +144,41 @@ def analyze(windows):
             "fees": fee_check(sw)}
 
 
+def joint(windows, root):
+    """Consistency check added after the sweep (not in memo #3): one (X, beta) for every fully landed, stable K-main
+    window on the four Harmonic validators, all phases (calibration, days A-D, sweep), campaign panels P1/P2 included."""
+    from .orders import full_order
+    targets = set(json.loads((root / "design" / "capsweep-targets.json").read_text()))
+    pan = json.loads((root / "design" / "panels.json").read_text())["panels"]
+    panels = {**PANELS, **{n: {k: Probe(v["L"], v["p"], v["D"]) for k, v in pan[n].items()} for n in ("P1", "P2")}}
+    obs = {}
+    for w in windows:
+        if w["target"] in targets and w.get("study") == "K" and w.get("arm") == "K-main" and w.get("status") == "stable":
+            ps = full_order(w)
+            if ps is not None:
+                c = obs.setdefault((w["phase"], w["panel"]), Counter())
+                c["".join(p["label"] for p in ps)] += 1
+    xs = np.arange(1300, 4401)
+    X, B = np.repeat(xs, len(BETA_GRID)), np.tile(BETA_GRID, len(xs))
+    saved = dict(PANELS)
+    PANELS.update(panels)
+    try:
+        hits = {k: sum(n * (codes(k[1], X, B) == code_of(o)) for o, n in c.items()) for k, c in obs.items()}
+    finally:
+        PANELS.clear()
+        PANELS.update(saved)
+    total = sum(hits.values()) if hits else np.zeros(len(X), dtype=np.int64)
+    top = total == total.max()
+    after = [k for k in hits if k[0] not in ("calibration", "dayA")]          # after memo #2 fixed the formula
+    return {"full_windows": sum(sum(c.values()) for c in obs.values()), "best_matches": int(total.max()),
+            "X": span(X[top]), "beta": span(B[top]), "hard_cap": int(total[B == 0].max()),
+            "no_cap (agave_int)": int(total[B == 1].max()),
+            "after_memo2": {"full_windows": sum(sum(obs[k].values()) for k in after),
+                            "matches_at_best": span(sum(hits[k] for k in after)[top]) if after else None},
+            "groups": {f"{ph}|{pa}": {"full_windows": sum(obs[(ph, pa)].values()),
+                                     "matches_at_best": span(hits[(ph, pa)][top])} for ph, pa in sorted(obs)}}
+
+
 def design(root):
     """design/capsweep.json: panels, the order each (X, beta) predicts, the readout and the prediction."""
     targets = json.loads((root / "design" / "capsweep-targets.json").read_text())

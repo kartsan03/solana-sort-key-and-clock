@@ -291,10 +291,12 @@ def compute():
     if pred_path.exists():
         preds = json.loads(pred_path.read_text())["validators"]
         res["holdout"] = holdout(k, res["study_m"], tiers, preds)
-    from .orders import exact_orders
+    from .orders import by_route, exact_orders
     res["exact_orders"] = exact_orders(windows, ROOT)
-    from .capsweep import analyze as capsweep
+    res["by_route"] = by_route(windows)
+    from .capsweep import analyze as capsweep, joint
     res["capsweep"] = capsweep(windows_all)
+    res["capsweep"]["joint"] = joint(windows_all, ROOT)
     return json.loads(json.dumps(res, sort_keys=True, default=str))
 
 

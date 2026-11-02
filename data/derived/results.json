@@ -1,4 +1,25 @@
 {
+ "by_route": {
+  "bam": {
+   "all_acked": 217,
+   "any_probe_landed": 223,
+   "closed_by_endpoint": 61,
+   "other_send_problem": 10,
+   "windows": 288
+  },
+  "harmonic": {
+   "all_acked": 263,
+   "any_probe_landed": 263,
+   "windows": 263
+  },
+  "own": {
+   "all_acked": 515,
+   "any_probe_landed": 516,
+   "closed_by_endpoint": 33,
+   "other_send_problem": 2,
+   "windows": 550
+  }
+ },
  "calls": {
   "calibration": {
    "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC": {
@@ -1064,6 +1085,120 @@
    "mismatches": []
   },
   "full_windows": 27,
+  "joint": {
+   "X": [
+    1500,
+    1963
+   ],
+   "after_memo2": {
+    "full_windows": 135,
+    "matches_at_best": [
+     135,
+     135
+    ]
+   },
+   "best_matches": 195,
+   "beta": [
+    0.103,
+    0.25
+   ],
+   "full_windows": 198,
+   "groups": {
+    "calibration|P1": {
+     "full_windows": 6,
+     "matches_at_best": [
+      5,
+      5
+     ]
+    },
+    "calibration|P2": {
+     "full_windows": 6,
+     "matches_at_best": [
+      6,
+      6
+     ]
+    },
+    "capsweep|S1": {
+     "full_windows": 8,
+     "matches_at_best": [
+      8,
+      8
+     ]
+    },
+    "capsweep|S2": {
+     "full_windows": 7,
+     "matches_at_best": [
+      7,
+      7
+     ]
+    },
+    "capsweep|S3": {
+     "full_windows": 12,
+     "matches_at_best": [
+      12,
+      12
+     ]
+    },
+    "dayA|P1": {
+     "full_windows": 26,
+     "matches_at_best": [
+      25,
+      25
+     ]
+    },
+    "dayA|P2": {
+     "full_windows": 25,
+     "matches_at_best": [
+      24,
+      24
+     ]
+    },
+    "dayB|P1": {
+     "full_windows": 17,
+     "matches_at_best": [
+      17,
+      17
+     ]
+    },
+    "dayB|P2": {
+     "full_windows": 20,
+     "matches_at_best": [
+      20,
+      20
+     ]
+    },
+    "dayC|P1": {
+     "full_windows": 22,
+     "matches_at_best": [
+      22,
+      22
+     ]
+    },
+    "dayC|P2": {
+     "full_windows": 31,
+     "matches_at_best": [
+      31,
+      31
+     ]
+    },
+    "dayD|P1": {
+     "full_windows": 9,
+     "matches_at_best": [
+      9,
+      9
+     ]
+    },
+    "dayD|P2": {
+     "full_windows": 9,
+     "matches_at_best": [
+      9,
+      9
+     ]
+    }
+   },
+   "hard_cap": 176,
+   "no_cap (agave_int)": 110
+  },
   "models": {
    "capped (best X, beta)": {
     "X": [
@@ -2798,14 +2933,17 @@
    "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 25,
     "min_n": 25,
     "min_rate": 1.0,
     "p_iut": 2.9802322387695312e-08,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
     "accepted": false,
     "best_this_day": "pf_per_cost",
+    "evaluable": 16,
     "horizon": {
      "ci": [
       16.0,
@@ -2817,19 +2955,23 @@
     "min_n": 16,
     "min_rate": 0.5625,
     "p_iut": 0.4018096923828125,
-    "predicted": "pf_per_cost"
+    "predicted": "pf_per_cost",
+    "status": "failed"
    },
    "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 16,
     "min_n": 16,
     "min_rate": 1.0,
     "p_iut": 1.52587890625e-05,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
     "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 22,
     "horizon": {
      "ci": [
       8.0,
@@ -2841,19 +2983,23 @@
     "min_n": 13,
     "min_rate": 0.5909090909090909,
     "p_iut": 0.2617335319519043,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "failed"
    },
    "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 9,
     "min_n": 9,
     "min_rate": 1.0,
     "p_iut": 0.001953125,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
     "accepted": true,
     "best_this_day": "fd_exact",
+    "evaluable": 24,
     "horizon": {
      "ci": [
       0.0,
@@ -2865,11 +3011,13 @@
     "min_n": 23,
     "min_rate": 1.0,
     "p_iut": 1.1920928955078125e-07,
-    "predicted": "fd_exact"
+    "predicted": "fd_exact",
+    "status": "passed"
    },
    "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 16,
     "horizon": {
      "ci": [
       24.0,
@@ -2881,11 +3029,13 @@
     "min_n": 16,
     "min_rate": 1.0,
     "p_iut": 1.52587890625e-05,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 33,
     "horizon": {
      "ci": [
       0.0,
@@ -2897,37 +3047,45 @@
     "min_n": 33,
     "min_rate": 1.0,
     "p_iut": 1.1641532182693481e-10,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    }
   },
   "dayC": {
    "5EhGYUyQNrxgUbuYF4vbL2SZDT6RMfhq3yjeyevvULeC": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 12,
     "min_n": 12,
     "min_rate": 1.0,
     "p_iut": 0.000244140625,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "5Us18hLZPXJTS4QVuGSsUw137Dyd2tgBaem24Xsf5nBS": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 11,
     "min_n": 11,
     "min_rate": 1.0,
     "p_iut": 0.00048828125,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "7QQGNm3ptwinipDCyaCF7jY5katgmFUu1ieP2f7nwLpE": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 26,
     "min_n": 26,
     "min_rate": 1.0,
     "p_iut": 1.4901161193847656e-08,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
     "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 19,
     "horizon": {
      "ci": [
       24.0,
@@ -2939,59 +3097,73 @@
     "min_n": 19,
     "min_rate": 0.3684210526315789,
     "p_iut": 0.9164657592773438,
-    "predicted": "pf_per_cost"
+    "predicted": "pf_per_cost",
+    "status": "failed"
    },
    "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
     "accepted": false,
     "best_this_day": "pf_per_cost",
+    "evaluable": 12,
     "min_n": 5,
     "min_rate": 0.4166666666666667,
     "p_iut": 0.80615234375,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "C8Bey3LKVJHVqN6xPTeW8WJfUgFQAeGNBpT4Rp99JP1k": {
     "accepted": false,
     "best_this_day": "total_fee",
+    "evaluable": 15,
     "min_n": 7,
     "min_rate": 0.0,
     "p_iut": 1.0,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "failed"
    },
    "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
     "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 6,
     "min_n": 6,
     "min_rate": 0.3333333333333333,
     "p_iut": 0.890625,
-    "predicted": "pf_per_cost"
+    "predicted": "pf_per_cost",
+    "status": "insufficient data"
    },
    "DNVZMSqeRH18Xa4MCTrb1MndNf3Npg4MEwqswo23eWkf": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "fd_exact",
+    "evaluable": 13,
     "min_n": 13,
     "min_rate": 1.0,
     "p_iut": 0.0001220703125,
-    "predicted": "fd_exact"
+    "predicted": "fd_exact",
+    "status": "insufficient data"
    },
    "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 10,
     "min_n": 10,
     "min_rate": 1.0,
     "p_iut": 0.0009765625,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "E3mDbFMr8yZcCAZx5wPUFCRmLX31u8Nnj4jPoPc54h3F": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 12,
     "min_n": 12,
     "min_rate": 1.0,
     "p_iut": 0.000244140625,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
     "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 18,
     "horizon": {
      "ci": [
       16.0,
@@ -3003,11 +3175,13 @@
     "min_n": 11,
     "min_rate": 0.6111111111111112,
     "p_iut": 0.2403411865234375,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "failed"
    },
    "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 18,
     "horizon": {
      "ci": [
       12.0,
@@ -3019,11 +3193,13 @@
     "min_n": 18,
     "min_rate": 1.0,
     "p_iut": 3.814697265625e-06,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "JD549HsbJHeEKKUrKgg4Fj2iyv2RGjsV7NTZjZUrHybB": {
     "accepted": true,
     "best_this_day": "fd_exact",
+    "evaluable": 19,
     "horizon": {
      "ci": [
       0.0,
@@ -3035,19 +3211,23 @@
     "min_n": 18,
     "min_rate": 1.0,
     "p_iut": 3.814697265625e-06,
-    "predicted": "fd_exact"
+    "predicted": "fd_exact",
+    "status": "passed"
    },
    "PRGNnb8DxVcP2WjSHfVRGgc8SkA5u6dbMwoTVV1BGKN": {
-    "accepted": true,
+    "accepted": false,
     "best_this_day": "agave_int",
+    "evaluable": 10,
     "min_n": 10,
     "min_rate": 1.0,
     "p_iut": 0.0009765625,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "insufficient data"
    },
    "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 15,
     "horizon": {
      "ci": [
       44.0,
@@ -3059,11 +3239,13 @@
     "min_n": 15,
     "min_rate": 1.0,
     "p_iut": 3.0517578125e-05,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "ana2y2YvQ3ZPMwm6qhnN3nJoUSiT3qx5Pvetkq9xcfY": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 23,
     "horizon": {
      "ci": [
       0.0,
@@ -3075,13 +3257,15 @@
     "min_n": 23,
     "min_rate": 1.0,
     "p_iut": 1.1920928955078125e-07,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    }
   },
   "dayD": {
    "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
     "accepted": false,
     "best_this_day": "pf_per_cost",
+    "evaluable": 19,
     "horizon": {
      "ci": [
       16.0,
@@ -3093,19 +3277,23 @@
     "min_n": 19,
     "min_rate": 0.5263157894736842,
     "p_iut": 0.5,
-    "predicted": "pf_per_cost"
+    "predicted": "pf_per_cost",
+    "status": "failed"
    },
    "E1r4Psq84tHfQ6aPTvvDka4U3u8zPVD7gEUrH25RdxHL": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 23,
     "min_n": 23,
     "min_rate": 1.0,
     "p_iut": 1.1920928955078125e-07,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "Fc6NNdS2j3EmrWbU6Uqt6wsKB5ef72NjaWfNxKYbULGD": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 17,
     "horizon": {
      "ci": [
       8.0,
@@ -3117,11 +3305,13 @@
     "min_n": 17,
     "min_rate": 1.0,
     "p_iut": 7.62939453125e-06,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    },
    "SSmBEooM7RkmyuXxuKgAhTvhQZ36Z3G2WsmLGJKoQLY": {
     "accepted": true,
     "best_this_day": "agave_int",
+    "evaluable": 20,
     "horizon": {
      "ci": [
       36.0,
@@ -3133,7 +3323,8 @@
     "min_n": 20,
     "min_rate": 1.0,
     "p_iut": 9.5367431640625e-07,
-    "predicted": "agave_int"
+    "predicted": "agave_int",
+    "status": "passed"
    }
   }
  },
