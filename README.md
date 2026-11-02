@@ -11,19 +11,19 @@ after the Alpenglow switch, and read back where they landed in each block. Two q
 
 ## Findings
 
-Measured 2026-10-29 to 10-31 (UTC), all hours, on 16 validators. "Full windows" counts panels whose six
+Measured 2026-10-29 to 11-01 (UTC), all hours, on 16 validators, plus an exploratory Harmonic test on 11-02. "Full windows" counts panels whose six
 probes all landed in one block; the number is how many came out in the exact order of the key.
 
 | Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon |
 |---|---|---|---|
 | Agave | Agave's integer priority `agave_int` | 89 / 89 | 0 ms |
-| Jito, `E1r4Psq8` | `agave_int` | 47 / 47 | 0 ms |
+| Jito, `E1r4Psq8` | `agave_int` | 69 / 69 | 0 ms |
 | Jito, `C8Bey3LK` | total fee (5,000 + priority fee) | 14 / 15 | not measured |
-| AgaveBam | `agave_int` | 58 / 58 | 16 ms |
-| FireBAM | `agave_int`, not Firedancer's rule | 61 / 61 | 24–44 ms |
+| AgaveBam | `agave_int` | 75 / 75 | 16 ms |
+| FireBAM | `agave_int`, not Firedancer's rule | 80 / 80 | 24–44 ms |
 | Rakurai | `agave_int` | 100 / 100 | 0 ms on two days of three |
 | Firedancer | Firedancer's exact ratio `fd_exact` | 71 / 77 | 0 ms |
-| Harmonic (Agave and Firedancer) | none of my eight keys; one capped formula fits (exploratory) | 90 / 90 on days B–C (day A, where it was found: 49 / 51) | 12–24 ms |
+| Harmonic (Agave and Firedancer) | none of my eight keys; one soft-capped formula fits (exploratory) | 108 / 108 on days B–D (day A, where it was found: 49 / 51) | 12–24 ms |
 
 1. **Two exact rules, told apart.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority
    fee + 2,500, C = scheduling cost). Firedancer sorts by the exact R/C. The two differ by as little as
@@ -31,10 +31,13 @@ probes all landed in one block; the number is how many came out in the exact ord
 2. **The builder decides, not the client.** FireBAM validators run Firedancer, yet sort by Agave's key: the
    BAM node orders their transactions before the validator sees them.
 3. **Jito is not one rule.** One Jito validator follows Agave's key; another sorts by total fee.
-4. **Harmonic follows a formula outside the usual list:** Agave's key with the compute-unit limit counted
-   only up to a cap of 1,660–4,098 CU. I found it on day A and fixed it on chain before day B; on days B
-   and C it matched 90 of 90 full windows on all four Harmonic validators, two of which had no day-A data.
-   It stays labelled exploratory. CAPSWEEP_README_PLACEHOLDER
+4. **Harmonic follows a formula outside the usual list:** Agave's key, but the compute-unit limit counts
+   in full only up to about 1,500–1,960 CU, and only 10–25% of it counts above that. I found a cap on day A
+   and fixed it on chain before day B; on days B–D it matched 108 of 108 full windows on all four Harmonic
+   validators, two of which had no day-A data. A follow-up test on 11-02, locked on chain before it ran,
+   showed the limit above the cap still counts a little: 27 of 27 full windows, against 8 for a hard cap
+   and 19 for Agave's plain key. One setting fits 195 of 198 full Harmonic windows over all days. It stays
+   labelled exploratory.
 5. **Waiting and arriving are different regimes.** Transactions already waiting when the leader's window
    opens are sorted everywhere. Arriving ones keep send order on Agave, Jito and Firedancer (a richer
    transaction 4 ms behind does not pass); through BAM and Harmonic it can still pass one sent 12–44 ms
@@ -69,6 +72,8 @@ results, dates, deviations and what went wrong.
 - **Route.** Unstaked QUIC directly to the TPU address each leader advertises, one transaction per
   stream, with every send time logged. For BAM and Harmonic validators that address is the
   block builder, so those results describe the validator *as reached through its advertised ingress*.
+  BAM endpoints closed my unstaked connection in 21% of windows (own-IP validators 6%, Harmonic 0%); those
+  probes never landed and cost nothing.
 - **Schedule.** Calibration on 2026-10-27. Then three collection days in six 4-hour blocks across all UTC
   hours: day A (10-29) picks the key and horizon of each undocumented builder, days B and C (10-30, 10-31)
   test those picks on data they never saw. Agave, Jito and Firedancer are tested against their source code
@@ -79,7 +84,8 @@ results, dates, deviations and what went wrong.
   their hashes written on chain:
   memo #1 [`TywPFLUz…`](https://explorer.solana.com/tx/TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd)
   (commit `0bb3ee5`), memo #2 [`mbp3zEGq…`](https://explorer.solana.com/tx/mbp3zEGqTFnkJuLZkRndhWu4yFRkdxvwHJNMKZimE4QzbAeBMrT2RhE2N7ve8Z6F9BWkTV4ECBG1LoqwaCWJaNF)
-  (commit `f3f1c52`, the day-A picks, before day B), memo #3 MEMO3_PLACEHOLDER (the Harmonic cap sweep).
+  (commit `f3f1c52`, the day-A picks, before day B), memo #3 [`4zMGqri3…`](https://explorer.solana.com/tx/4zMGqri3f4ufA5sAFoZsr5VXQM6V4q1YxVpiqHQLgCFwjAtbVLkSTS1yWBK3vRCdXQmgMPP4TynR67CGf41E7HUf)
+  (commit `f705581`, the Harmonic follow-up, before its first probe).
 
 ## Why this design
 
@@ -123,8 +129,13 @@ docker compose run --rm test                             # unit tests
 docker compose run --rm dryrun                           # plan the next 15 min of real leader windows, send nothing
 ```
 
-`docker compose up` fails on any difference from the committed numbers. Live sending needs `--live`,
-`ITB_LIVE=1`, a `--max-spend-sol` limit and the key directory mounted read-only as a volume. Every send
+`docker compose up` fails on any difference from the committed numbers. `verify` checks each re-fetched
+probe against the chain: its signature at the recorded index, payer, fee, decoded limits and leader (the
+block's fee-reward recipient), plus the leader schedule (`getSlotLeaders`) for all four window slots. Send
+times, intended targets and client labels rest on my logs and snapshots, not on the chain.
+
+Live sending needs `--live`, `ITB_LIVE=1`, a `--max-spend-sol` limit and the key directory mounted
+read-only as a volume; the funding, memo and sweep commands need `ITB_LIVE=1` too. Every send
 reserves its worst-case fee in a ledger first, and the code refuses to pass 0.05 SOL in total; spend is
 reconciled against on-chain balances after every block.
 
@@ -143,7 +154,10 @@ reconciled against on-chain balances after every block.
 
 ## Cost
 
-COST_PLACEHOLDER
+0.048063 SOL in fees out of the 0.05 SOL cap, operations included: 0.047973 SOL for probes (calibration
+0.0039, day A 0.0132, day B 0.0097, day C 0.0140, day D 0.0047, Harmonic follow-up 0.0025) and 0.00009 SOL
+for memos and fee-payer funding. After every run the wallet balances, the spend ledger and the summed block
+fees agreed, with nothing unexplained ([REPORT.md](REPORT.md) §6).
 
 ## Repo map
 

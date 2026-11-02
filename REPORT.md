@@ -72,13 +72,13 @@ claims (7 full windows on days A–C). Tables: [data/derived/tables.md](data/der
 
 ### 3.1 Which key orders queued probes
 
-| Client | Validators | Key | Full windows in exact key order, days A–C | Held out (days B–D) |
+| Client | Validators | Key | Full windows in exact key order, days A–D | Held out (days B–D) |
 |---|---|---|---|---|
 | Agave | `7QQGNm3p`, `5Us18hLZ` | `agave_int` | 89 / 89 | 2 passed, 1 too few panels (source-code key) |
-| JitoLabs | `E1r4Psq8` | `agave_int` | 47 / 47 | 2 passed, 1 too few panels (source-code key) |
+| JitoLabs | `E1r4Psq8` | `agave_int` | 69 / 69 | 2 passed, 1 too few panels (source-code key) |
 | JitoLabs | `C8Bey3LK` | `total_fee` | 14 / 15 (day C only) | failed: predicted `agave_int` from source |
-| AgaveBam | `Fc6NNdS2`, `5EhGYUyQ` | `agave_int` | 58 / 58 | 2 passed, 2 too few panels |
-| FireBAM | `SSmBEooM`, `PRGNnb8D` | `agave_int` | 61 / 61 | 3 passed, 1 too few panels |
+| AgaveBam | `Fc6NNdS2`, `5EhGYUyQ` | `agave_int` | 75 / 75 | 2 passed, 2 too few panels |
+| FireBAM | `SSmBEooM`, `PRGNnb8D` | `agave_int` | 80 / 80 | 3 passed, 1 too few panels |
 | Rakurai | `ana2y2Yv`, `E3mDbFMr` | `agave_int` | 100 / 100 | 2 passed, 1 too few panels |
 | Firedancer | `JD549Hsb`, `DNVZMSqe` | `fd_exact` | 71 / 77 | 2 passed, 1 too few panels (source-code key) |
 | HarmonicAgave | `EkvdKhUL`, `BtsmiEEv` | none of the eight | no single key fits | 2 failed, 1 too few panels |
@@ -86,7 +86,7 @@ claims (7 full windows on days A–C). Tables: [data/derived/tables.md](data/der
 
 What the table says:
 
-- **Agave's integer key, exactly, on five client types.** 355 of 355 full windows on Agave, Jito
+- **Agave's integer key, exactly, on five client types.** 413 of 413 full windows on Agave, Jito
   (`E1r4Psq8`), AgaveBam, FireBAM and Rakurai came out in the exact `agave_int` order, including every
   fingerprint pair (two in P1, three in P2), where Firedancer's exact ratio predicts the opposite.
 - **Firedancer uses its own exact ratio.** All five fingerprint pairs went Firedancer's way in every full
@@ -98,21 +98,40 @@ What the table says:
   fee): 14 of 15 full windows in exact `total_fee` order (and both of its calibration windows), against 0
   for `agave_int`.
 - **Harmonic fits none of the eight registered keys.** Day A's picks (`agave_int` for HarmonicAgave,
-  `pf_per_cost` for HarmonicFiredancer) failed on days B and C. Yet the Harmonic orders are not noise:
-  on days B and C every full window repeated one order per panel, whatever the send order (3.2).
+  `pf_per_cost` for HarmonicFiredancer) failed on days B–D. Yet the Harmonic orders are not noise:
+  on days B–D every full window repeated one order per panel, whatever the send order (3.2).
 
 ### 3.2 Harmonic: an explanation that fits and holds on later days
 
 In the first block of day A, all seven full Harmonic panels fit one formula outside my list: Agave's integer priority, with
 the compute-unit limit counted toward cost only up to a cap X. Any X from 1,660 to 4,098 gives the observed
 orders. I wrote this down with its predicted orders in `design/predictions-dayB.json` before day B, hashed
-in memo #2, as exploratory. After the memo, on days B and C, 90 of 90 full windows on all four Harmonic
-validators matched it exactly (day B 37 / 37, day C 53 / 53), including 17 of 17 on `BtsmiEEv` and
+in memo #2, as exploratory. After the memo, on days B–D, 108 of 108 full windows on all four Harmonic
+validators matched it exactly (day B 37 / 37, day C 53 / 53, day D 18 / 18), including 17 of 17 on `BtsmiEEv` and
 `CQdLgwkm`, which had no windows on day A. Day A itself, where the formula was found, is 49 of 51 and is
 not a test of it. The formula fits and holds on later days; it is not a confirmed rule, because it was formed from
 the data and the fixed panels cannot pin X down.
 
-CAPSWEEP_PLACEHOLDER
+**Follow-up: the cap is soft (exploratory, 11-02).** Memo #3 [`4zMGqri3…`](https://explorer.solana.com/tx/4zMGqri3f4ufA5sAFoZsr5VXQM6V4q1YxVpiqHQLgCFwjAtbVLkSTS1yWBK3vRCdXQmgMPP4TynR67CGf41E7HUf) locked a follow-up before its
+first probe ([design/capsweep.json](design/capsweep.json)): 45 windows on the four Harmonic validators, three
+panels. S1 puts three 700-CU probes against three 4,400-CU probes to locate X. S2 and S3 put 4,400-CU probes
+against 40,000-CU probes that pay slightly more: under a hard cap the 40,000-CU probes go first, and every
+extra CU counted above X pushes them back. The model is cost' = cost − L + min(L, X) + ⌊β·max(L − X, 0)⌋
+(β = 0 a hard cap, β = 1 plain `agave_int`). The memo predicted a soft cap (0 < β < 1) with X in 1,660–4,098.
+
+27 windows landed fully, and every one came out in the same order per panel on all four validators: S1
+`FEDCBA` 8 / 8, S2 `CBAFED` 7 / 7, S3 `CBAFED` 12 / 12. The capped formula matches all 27 at X = 1,500–1,963
+CU and β = 0.10–0.25; the best hard cap matches 8, plain `agave_int` 19. The locked readout's verdict: soft
+cap. The soft cap held; X sits at the low end of the predicted range or just below it (S1 alone puts X at
+or under 2,245; the sweep's grid starts at 1,500). For a 40,000-CU limit this means about 3,600–8,900 of
+the 35,600 CU above a 4,400-CU limit still count.
+
+A consistency check I added after the sweep (not in memo #3) asks whether one (X, β) fits every fully
+landed Harmonic window on every day. It does for 195 of 198, at the same X = 1,500–1,963 and β = 0.10–0.25,
+including 135 of 135 after memo #2 (days B–D and the sweep). The three misses are the calibration and day-A
+windows counted above; a hard cap fits 176, plain `agave_int` 110. Here P1's data set the lower bound of
+1,500 CU. What this does not show: the mechanism (a builder-side cost estimate is one reading), and whether
+X and β stay fixed under other load. Tables: [data/derived/tables.md](data/derived/tables.md).
 
 ### 3.3 Held-out test (registered)
 
@@ -134,26 +153,31 @@ validator-days had 76 full windows between them, all in the predicted order: con
 Overtaking horizon (largest send gap at which a later, richer probe still lands first in at least half of
 pairs), with 95% intervals:
 
-| Client | Validator | Day A | Day B | Day C |
-|---|---|---|---|---|
-| Agave | `7QQGNm3p` | 0 [0, 0] | — | — |
-| JitoLabs | `E1r4Psq8` | 0 [0, 0] | — | — |
-| Firedancer | `JD549Hsb` | 0 [0, 0] | 0 [0, 0] | 0 [0, 0] |
-| Rakurai | `ana2y2Yv` | 0 [0, 0] | 0 [0, 0] | 44 [0, 44] |
-| AgaveBam | `Fc6NNdS2` | 16 [12, 28] | too few trains | 16 [12, 28] |
-| FireBAM | `SSmBEooM` | 44 [28, 44] | 24 [24, 24] | 44 [44, 44] |
-| HarmonicAgave | `EkvdKhUL` | 16 [16, 20] | 12 [8, 20] | 16 [16, 24] |
-| HarmonicFiredancer | `87CcUxpy` | 20 [16, 24] | 16 [16, 24] | 24 [24, 24] |
+| Client | Validator | Day A | Day B | Day C | Day D |
+|---|---|---|---|---|---|
+| Agave | `7QQGNm3p` | 0 [0, 0] | — | — | — |
+| JitoLabs | `E1r4Psq8` | 0 [0, 0] | — | — | — |
+| Firedancer | `JD549Hsb` | 0 [0, 0] | 0 [0, 0] | 0 [0, 0] | — |
+| Rakurai | `ana2y2Yv` | 0 [0, 0] | 0 [0, 0] | 44 [0, 44] | — |
+| AgaveBam | `Fc6NNdS2` | 16 [12, 28] | too few trains | 16 [12, 28] | 16 [8, 28] |
+| FireBAM | `SSmBEooM` | 44 [28, 44] | 24 [24, 24] | 44 [44, 44] | 36 [36, 36] |
+| HarmonicAgave | `EkvdKhUL` | 16 [16, 20] | 12 [8, 20] | 16 [16, 24] | — |
+| HarmonicFiredancer | `87CcUxpy` | 20 [16, 24] | 16 [16, 24] | 24 [24, 24] | 16 [16, 16] |
 
 Two regimes. Probes already waiting when the window opens are sorted by the key on every client. Probes
 arriving during the window are served in arrival order by Agave, Jito, Firedancer and (on two days of
 three) Rakurai: a richer probe sent 4 ms later does not pass a cheaper one. Through a BAM node or Harmonic
 endpoint a richer probe can still pass a cheaper one sent 12–44 ms earlier, which fits short batching
-before ordering. The FireBAM horizon moved between days (44, 24, 44 ms) on one or two evaluable trains per
+before ordering. The FireBAM horizon moved between days (44, 24, 44, 36 ms) on one or two evaluable trains per
 day, so I do not read it more precisely than "tens of milliseconds". This Firedancer validator's horizon
 is 0; it is one operator, and other Firedancer operators may pace differently.
 
-DAYD_PLACEHOLDER
+### 3.5 Day D
+
+Day D (11-01) topped up the four Tier-1 validators furthest short of their target (§5). All four repeated
+their earlier result: `Fc6NNdS2` 17 / 17, `SSmBEooM` 19 / 19 and `E1r4Psq8` 22 / 22 full windows in exact
+`agave_int` order, and `87CcUxpy` 18 / 18 in the Harmonic formula's order. The horizons kept their size but
+not their exact value: AgaveBam 16 ms again, FireBAM 36 ms (a fourth value), Harmonic 16 ms.
 
 ## 4. What went wrong
 
@@ -178,9 +202,10 @@ DAYD_PLACEHOLDER
   true figure; the final reconciliation lists every incoming transfer to all twelve wallets.
 
 - **BAM nodes drop unstaked connections.** Through BAM endpoints, part of the windows were never
-  acknowledged: the endpoint closed the connection with code 1 ("dropped") as the probes arrived (day B 16 of
-  56 BAM windows, day C 13 of 91). Those probes never landed and cost nothing, but `Fc6NNdS2` lost 13 of 30
-  windows on day B and is "insufficient data" for that day.
+  acknowledged: the endpoint closed the connection with code 1 ("dropped") as the probes arrived. Over days
+  A–D that happened in 61 of 288 BAM windows (21%), against 33 of 550 own-IP windows (6%) and 0 of 263
+  Harmonic windows ([tables](data/derived/tables.md), "Delivery by route"). Those probes never landed and
+  cost nothing, but `Fc6NNdS2` lost 13 of 30 windows on day B and is "insufficient data" for that day.
 - **Tier-2 quotas below the data minimum.** I sized the day-C Tier-2 quotas (16–24 windows) for 12
   informative windows, under the 15 evaluable panels PREREG requires for a call. Seven of the eight Tier-2
   validators came out "insufficient data" on their only held-out day. Outside Harmonic their full windows
@@ -205,6 +230,11 @@ DAYD_PLACEHOLDER
 - **Harmonic cap sweep (addition).** Not in PREREG. Designed after days A–C to measure the cap in the
   exploratory Harmonic formula, locked on chain by memo #3 before its first probe
   ([design/capsweep.json](design/capsweep.json)), and reported apart: it changes no registered call.
+- **Harmonic follow-up plan drawn twice.** The first random draw of the follow-up plan gave panels S3 29,
+  S2 9 and S1 9 of 47 windows (about a 1-in-3,000 split; the generator checked out uniform). S1 and S2 each
+  need at least four fully landed windows, so I drew once more, on panel counts only, before any probe of
+  the follow-up was sent: S3 18, S2 14, S1 13 of 45. The unused first draw is
+  [design/capsweep-plan-draw1-unused.json](design/capsweep-plan-draw1-unused.json).
 - **Held-out data gate (correction, 11-02).** My first held-out tables counted validator-days with fewer
   than 15 evaluable panels as passes (`holdout()` skipped the registered minimum), and the README said "17
   of 18 held". The code now applies the gate; the tables above are the corrected ones.
@@ -213,4 +243,22 @@ DAYD_PLACEHOLDER
 
 ## 6. Cost
 
-COST_PLACEHOLDER
+Fees charged, from the block `meta.fee` of every transaction my wallets signed (per run in
+[data/derived/tables.md](data/derived/tables.md), "Runs"):
+
+| Phase | Dates (UTC) | Fees, lamports |
+|---|---|---|
+| Smoke test and pilots | 10-27 to 10-28 | 3,883,727 |
+| Day A | 10-29 | 13,183,839 |
+| Day B | 10-30 | 9,727,658 |
+| Day C | 10-31 | 13,988,910 |
+| Day D | 11-01 | 4,677,654 |
+| Harmonic follow-up | 11-02 | 2,510,921 |
+| Memos and fee-payer funding transfers | 10-27 to 11-02 | 90,299 |
+| **Total** | | **48,063,008 (0.048063 SOL)** |
+
+The cap in code is 50,000,000 lamports for everything, operations included. The spend ledger reserves each
+transaction's maximum fee before it is sent and releases reservations only after a balance check of all
+twelve wallets; after every run, the wallet balances, the ledger and the summed block fees agreed, with
+nothing unexplained. The one external deposit (§4) is logged as an inflow. The fee payers' rent and unspent
+float go back to the funding wallet at the end.
