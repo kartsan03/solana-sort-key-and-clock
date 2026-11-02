@@ -101,7 +101,7 @@ What the table says:
   `pf_per_cost` for HarmonicFiredancer) failed on days B and C. Yet the Harmonic orders are not noise:
   on days B and C every full window repeated one order per panel, whatever the send order (3.2).
 
-### 3.2 Harmonic: an explanation that fits and replicates
+### 3.2 Harmonic: an explanation that fits and holds on later days
 
 In the first block of day A, all seven full Harmonic panels fit one formula outside my list: Agave's integer priority, with
 the compute-unit limit counted toward cost only up to a cap X. Any X from 1,660 to 4,098 gives the observed
@@ -109,7 +109,7 @@ orders. I wrote this down with its predicted orders in `design/predictions-dayB.
 in memo #2, as exploratory. After the memo, on days B and C, 90 of 90 full windows on all four Harmonic
 validators matched it exactly (day B 37 / 37, day C 53 / 53), including 17 of 17 on `BtsmiEEv` and
 `CQdLgwkm`, which had no windows on day A. Day A itself, where the formula was found, is 49 of 51 and is
-not a test of it. The formula fits and replicates; it is not a confirmed rule, because it was formed from
+not a test of it. The formula fits and holds on later days; it is not a confirmed rule, because it was formed from
 the data and the fixed panels cannot pin X down.
 
 CAPSWEEP_PLACEHOLDER
