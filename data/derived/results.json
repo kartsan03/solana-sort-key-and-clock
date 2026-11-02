@@ -1056,64 +1056,132 @@
   }
  },
  "capsweep": {
-  "arms": {},
+  "arms": {
+   "K-main": 45
+  },
   "fees": {
-   "checked": 0,
+   "checked": 251,
    "mismatches": []
   },
-  "full_windows": 0,
+  "full_windows": 27,
   "models": {
    "capped (best X, beta)": {
     "X": [
      1500,
-     4400
+     1963
     ],
     "beta": [
-     0.0,
-     1.0
+     0.102,
+     0.25
     ],
     "extra_cu_40000_vs_4400": [
-     0,
-     35600
+     3631,
+     8900
     ],
-    "matches": 0
+    "matches": 27
    },
    "hard_cap": {
     "X": [
      1500,
-     4400
+     2245
     ],
-    "matches": 0
+    "matches": 8
    },
-   "no_cap (agave_int)": 0
+   "no_cap (agave_int)": 19
   },
   "panels": {
    "S1": {
-    "X": null,
-    "best_matches": 0,
-    "beta": null,
-    "full_windows": 0,
-    "orders": {}
+    "X": [
+     1500,
+     2245
+    ],
+    "best_matches": 8,
+    "beta": [
+     0.0,
+     0.25
+    ],
+    "full_windows": 8,
+    "orders": {
+     "FEDCBA": 8
+    }
    },
    "S2": {
-    "X": null,
-    "best_matches": 0,
-    "beta": null,
-    "full_windows": 0,
-    "orders": {}
+    "X": [
+     1500,
+     4400
+    ],
+    "best_matches": 7,
+    "beta": [
+     0.0188,
+     1.0
+    ],
+    "full_windows": 7,
+    "orders": {
+     "CBAFED": 7
+    }
    },
    "S3": {
-    "X": null,
-    "best_matches": 0,
-    "beta": null,
-    "full_windows": 0,
-    "orders": {}
+    "X": [
+     1500,
+     4400
+    ],
+    "best_matches": 12,
+    "beta": [
+     0.102,
+     1.0
+    ],
+    "full_windows": 12,
+    "orders": {
+     "CBAFED": 12
+    }
    }
   },
-  "per_validator": {},
-  "transition": 0,
-  "verdict": "too few fully landed windows (S1, S2, S3)",
-  "windows": 0
+  "per_validator": {
+   "87CcUxpyR72ZyfaZirj86mqkbk5uuU2EfnwTegVMLJL5": {
+    "S1": {
+     "FEDCBA": 3
+    },
+    "S2": {
+     "CBAFED": 3
+    },
+    "S3": {
+     "CBAFED": 3
+    }
+   },
+   "BtsmiEEvnSuUnKxqXj2PZRYpPJAc7C34mGz8gtJ1DAaH": {
+    "S1": {
+     "FEDCBA": 3
+    },
+    "S2": {
+     "CBAFED": 3
+    },
+    "S3": {
+     "CBAFED": 1
+    }
+   },
+   "CQdLgwkmmHF8DE6t4sguXMTXWDxq3oLh3xfekDTmow12": {
+    "S1": {
+     "FEDCBA": 1
+    },
+    "S2": {
+     "CBAFED": 1
+    },
+    "S3": {
+     "CBAFED": 4
+    }
+   },
+   "EkvdKhULbMFqjKBKotAzGi3kwMvMpYNDKJXXQQmi6C1f": {
+    "S1": {
+     "FEDCBA": 1
+    },
+    "S3": {
+     "CBAFED": 4
+    }
+   }
+  },
+  "transition": 1,
+  "verdict": "soft cap: the limit above X still counts, at a reduced slope",
+  "windows": 45
  },
  "exact_orders": {
   "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC|calibration": {
