@@ -129,13 +129,14 @@ def probe_tx(payer: Keypair, lock: Pubkey, q: Probe, blockhash: Hash) -> Transac
     return Transaction([payer], probe_message(payer.pubkey(), lock, q, blockhash), blockhash)
 
 
-def plain_tx(payer: Keypair, ixs: list, blockhash: Hash, L: int = 1_000, p: int = 0) -> Transaction:
-    """Ops transaction (funding transfer, memo, sweep) with a small fixed budget."""
+def plain_tx(payer: Keypair, ixs: list, blockhash: Hash, L: int = 1_000, p: int = 0, signers: tuple = ()) -> Transaction:
+    """Ops transaction (funding transfer, memo, sweep) with a small fixed budget. `payer` pays the fee;
+    `signers` are any other accounts that must sign (e.g. a wallet being emptied by someone else's fee)."""
     pre = [Instruction(COMPUTE_BUDGET, bytes([2]) + struct.pack("<I", L), [])]
     if p:
         pre.append(Instruction(COMPUTE_BUDGET, bytes([3]) + struct.pack("<Q", p), []))
     msg = Message.new_with_blockhash(pre + ixs, payer.pubkey(), blockhash)
-    return Transaction([payer], msg, blockhash)
+    return Transaction([payer, *signers], msg, blockhash)
 
 
 def decode_budget(account_keys: list, instructions: list) -> dict:

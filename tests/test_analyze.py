@@ -110,3 +110,12 @@ def test_by_route_counts_closed_connections():
     assert r["bam"] == {"windows": 2, "closed_by_endpoint": 1, "all_acked": 1, "any_probe_landed": 1,
                         "probes_on_closed_connection": 1, "of_which_landed": 0, "fees_of_those_landed": 0}
     assert r["own"] == {"windows": 1, "other_send_problem": 1, "any_probe_landed": 1}
+
+
+def test_sweep_plan_keeps_fee_payers_rent_exempt():
+    from itb.ops import sweep_steps
+    rent, fee = 650_240, 5_000
+    steps = sweep_steps({"burner": 654_597, "a": 1_000_000, "b": 0}, ["burner", "a", "b"], fee, rent)
+    assert steps == [("burner", "a", 654_597), ("a", "a", 1_000_000 - 2 * fee - fee)]   # a pays the burner's fee
+    assert sweep_steps({"burner": 654_597}, ["burner"], fee, rent) == [("burner", None, 643)]
+    assert sweep_steps({"x": 700_000}, ["x"], fee, rent) == [("x", "x", 695_000)]

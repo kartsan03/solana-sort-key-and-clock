@@ -109,22 +109,46 @@ def sweep_target():
     return dest
 
 
+def sweep_steps(bal, wallets, fee=LAMPORTS_PER_SIGNATURE, rent=RENT_0):
+    """Plan the sweep: [(wallet, fee_wallet, amount)], smallest balance first. A fee payer must stay
+    rent-exempt after paying the fee (or end at exactly 0 lamports), so a wallet holding less than
+    rent + fee cannot pay its own way out: a richer wallet that is swept later pays its fee instead.
+    Wallets that cannot be emptied either way come back as (wallet, None, shortfall)."""
+    bal = dict(bal)
+    todo = sorted((w for w in wallets if bal[w] > 0), key=lambda w: bal[w])
+    out = []
+    while todo:
+        w = todo.pop(0)
+        helpers = [h for h in todo if bal[h] >= rent + 2 * fee]
+        if bal[w] - fee >= rent:
+            out.append((w, w, bal[w] - fee))
+        elif helpers:
+            h = max(helpers, key=lambda x: bal[x])
+            bal[h] -= 2 * fee
+            out.append((w, h, bal[w]))
+        else:
+            out.append((w, None, rent + fee - bal[w]))
+    return out
+
+
 async def sweep(rpc, ledger, payers, run_id, log=print):
-    """Move everything to the owner's main wallet: each payer pays its own fee and ends at 0."""
+    """Move everything to the owner's main wallet (see sweep_steps for the order and who pays each fee)."""
     dest = sweep_target()
     to = Pubkey.from_string(dest)
-    pks = [str(k.pubkey()) for k in payers]
-    order = payers[1:] + payers[:1]        # burner last
-    for kp in order:
-        bal, _ = await balances(rpc, [str(kp.pubkey())], "confirmed")
-        amount = bal[str(kp.pubkey())] - LAMPORTS_PER_SIGNATURE
-        if amount <= 0:
+    kp = {str(k.pubkey()): k for k in payers}
+    pks = list(kp)
+    bal, _ = await balances(rpc, pks, "confirmed")
+    for w, f, amount in sweep_steps(bal, pks):
+        if f is None:
+            log(f"sweep {w[:8]}: holds {bal[w]} lamports, under rent + fee; send it at least {amount} lamports, "
+                f"record that with `itb ops inflow <sig>`, then sweep again")
             continue
         bh, lv = await fresh_blockhash(rpc)
-        tx = plain_tx(kp, [transfer_ix(kp.pubkey(), to, amount)], bh, L=450)
+        tx = plain_tx(kp[f], [transfer_ix(kp[w].pubkey(), to, amount)], bh, L=450,
+                      signers=() if f == w else (kp[w],))
         sig, ok = await submit(rpc, ledger, tx, "sweep", run_id, {"amount": amount, "to": dest, "_last_valid": lv},
                                log=log)
         if ok:
-            ledger.record_flow("out", sig, amount, f"sweep {kp.pubkey()} -> {dest}")
-        log(f"sweep {str(kp.pubkey())[:8]} -> {dest[:8]} {amount} lamports: {sig} ok={ok}")
+            ledger.record_flow("out", sig, amount, f"sweep {w} -> {dest}")
+        log(f"sweep {w[:8]} -> {dest[:8]} {amount} lamports (fee paid by {f[:8]}): {sig} ok={ok}")
     return await balances(rpc, pks, "finalized")
