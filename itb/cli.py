@@ -168,8 +168,8 @@ async def cmd_collect(a):
 
 
 async def cmd_ops(a):
-    if a.op in ("fund", "memo", "sweep") and os.environ.get("ITB_LIVE") != "1":
-        sys.exit(f"{a.op} refused: it sends transactions; set ITB_LIVE=1")
+    if a.op in ("fund", "memo", "sweep") and (not a.live or os.environ.get("ITB_LIVE") != "1"):
+        sys.exit(f"{a.op} refused: it sends transactions; use --live with ITB_LIVE=1")
     from . import ops
     from .chain import Rpc
     from .wallet import public_info
@@ -259,7 +259,7 @@ def main(argv=None):
     s.add_argument("--first-block", type=int, default=0)
     s.add_argument("--last-block", type=int)
     s.add_argument("--block-max-sol", type=float)
-    s.add_argument("--dry", action="store_true", help="plan and rehearse every block; no funding, no sends")
+    s.add_argument("--live", action="store_true", help="fund payers and send; without it every block is planned and run dry")
     s.add_argument("--float-lamports", type=int, default=600_000)
     s.add_argument("--lambda-ms", type=float, default=60.0)
     sub.add_parser("freeze")
@@ -270,6 +270,7 @@ def main(argv=None):
     s.add_argument("op", choices=["keyinfo", "status", "init", "reconcile", "fund", "memo", "inflow", "sweep", "unhalt", "labels", "audit"])
     s.add_argument("arg", nargs="?")
     s.add_argument("--note")
+    s.add_argument("--live", action="store_true", help="required (with ITB_LIVE=1) for fund, memo and sweep")
     s = sub.add_parser("analyze")
     s.add_argument("--no-check", action="store_true")
     s = sub.add_parser("verify")
@@ -302,8 +303,9 @@ def main(argv=None):
     elif a.cmd == "collect":
         asyncio.run(cmd_collect(a))
     elif a.cmd == "campaign":
-        if not a.dry and (os.environ.get("ITB_LIVE") != "1" or not a.block_max_sol):
-            sys.exit("live campaign refused: set ITB_LIVE=1 and a positive --block-max-sol (or use --dry)")
+        a.dry = not a.live                       # dry unless --live, like every other sending command
+        if a.live and (os.environ.get("ITB_LIVE") != "1" or not a.block_max_sol):
+            sys.exit("live campaign refused: --live needs ITB_LIVE=1 and a positive --block-max-sol")
         from .campaign import cmd_campaign
         asyncio.run(cmd_campaign(a))
     elif a.cmd == "ops":

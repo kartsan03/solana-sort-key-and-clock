@@ -60,4 +60,9 @@ def by_route(windows):
         else:
             r["other_send_problem"] += 1
         r["any_probe_landed"] += any(p.get("outcome") == "target_block" for p in w["probes"])
+        for p, a in zip(w["probes"], acks):
+            if a.startswith("closed"):                      # a closed stream can still have delivered the probe
+                r["probes_on_closed_connection"] += 1
+                r["of_which_landed"] += p.get("outcome") == "target_block"
+                r["fees_of_those_landed"] += p.get("fee_charged") or 0
     return {k: dict(v) for k, v in sorted(out.items())}

@@ -97,10 +97,13 @@ def route_table(res):
         return []
     out = ["### Delivery by route, days A-D (windows)", "",
            "| Ingress | Windows | All probes acknowledged | Endpoint closed the connection | Other send problem | "
-           "At least one probe in the target block |", "|---|---|---|---|---|---|"]
+           "At least one probe in the target block | Probes on a closed connection: landed / all (fees) |",
+           "|---|---|---|---|---|---|---|"]
     for k, c in r.items():
         out.append(f"| {k} | {c['windows']} | {c.get('all_acked', 0)} | {c.get('closed_by_endpoint', 0)} | "
-                   f"{c.get('other_send_problem', 0)} | {c.get('any_probe_landed', 0)} |")
+                   f"{c.get('other_send_problem', 0)} | {c.get('any_probe_landed', 0)} | "
+                   f"{c.get('of_which_landed', 0)} / {c.get('probes_on_closed_connection', 0)} "
+                   f"({c.get('fees_of_those_landed', 0):,}) |")
     return out + [""]
 
 

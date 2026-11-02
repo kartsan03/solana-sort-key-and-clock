@@ -92,6 +92,12 @@ def test_sending_ops_need_the_live_env(monkeypatch):
     for op in (["fund", "1000"], ["memo", "x"], ["sweep"]):
         with pytest.raises(SystemExit, match="refused"):
             cli.main(["ops", *op])
+    monkeypatch.setenv("ITB_LIVE", "1")
+    for op in (["fund", "1000"], ["memo", "x"], ["sweep"]):            # the env alone is not enough
+        with pytest.raises(SystemExit, match="refused"):
+            cli.main(["ops", *op])
+    with pytest.raises(SystemExit, match="refused"):                   # a live campaign needs a cap too
+        cli.main(["campaign", "--live", "--phase", "A", "--date", "2026-10-29", "--quotas", "q.json"])
 
 
 def test_by_route_counts_closed_connections():
@@ -101,5 +107,6 @@ def test_by_route_counts_closed_connections():
                                                           for a in acks]}
     r = by_route([w("bam", ["closed:1:dropped", "acked"], False), w("bam", ["acked", "acked"], True),
                   w("own", ["pending", "acked"], True), {"phase": "calibration", "ingress": "own", "probes": []}])
-    assert r["bam"] == {"windows": 2, "closed_by_endpoint": 1, "all_acked": 1, "any_probe_landed": 1}
+    assert r["bam"] == {"windows": 2, "closed_by_endpoint": 1, "all_acked": 1, "any_probe_landed": 1,
+                        "probes_on_closed_connection": 1, "of_which_landed": 0, "fees_of_those_landed": 0}
     assert r["own"] == {"windows": 1, "other_send_problem": 1, "any_probe_landed": 1}

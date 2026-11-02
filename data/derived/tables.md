@@ -451,11 +451,11 @@ Consistency check added after the sweep (a fit, not a test: X and beta are chose
 
 ### Delivery by route, days A-D (windows)
 
-| Ingress | Windows | All probes acknowledged | Endpoint closed the connection | Other send problem | At least one probe in the target block |
-|---|---|---|---|---|---|
-| bam | 288 | 217 | 61 | 10 | 223 |
-| harmonic | 263 | 263 | 0 | 0 | 263 |
-| own | 550 | 515 | 33 | 2 | 516 |
+| Ingress | Windows | All probes acknowledged | Endpoint closed the connection | Other send problem | At least one probe in the target block | Probes on a closed connection: landed / all (fees) |
+|---|---|---|---|---|---|---|
+| bam | 288 | 217 | 61 | 10 | 223 | 36 / 430 (234,952) |
+| harmonic | 263 | 263 | 0 | 0 | 263 | 0 / 0 (0) |
+| own | 550 | 515 | 33 | 2 | 516 | 48 / 198 (309,521) |
 
 ### Runs (UTC)
 

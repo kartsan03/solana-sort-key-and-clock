@@ -169,7 +169,9 @@ Queued probes sort on every client. During the window, probes keep send order on
 and (on two days of three) Rakurai: a richer probe sent 4 ms later does not pass a cheaper one. Through a
 BAM node or Harmonic endpoint a richer probe can still pass a cheaper one sent 12–44 ms earlier, which
 fits short batching before ordering. The FireBAM horizon moved between days (44, 24, 44, 36 ms) on one or
-two evaluable trains per day, so I do not read it more precisely than "tens of milliseconds". This Firedancer validator's horizon
+two evaluable trains per day, so I do not read it more precisely than "tens of milliseconds". Where a
+validator-day has only one or two evaluable trains (counts in [tables](data/derived/tables.md)), the
+interval collapses to the point estimate and says little about precision. This Firedancer validator's horizon
 is 0; it is one operator, and other Firedancer operators may pace differently.
 
 ### 3.5 Day D
@@ -199,9 +201,12 @@ not their exact value: AgaveBam 16 ms again, FireBAM 36 ms (a fourth value), Har
   The deposit arrived while fee reservations were open, understating balance-based spend by 9,374
   lamports. Comparing block fees with balances caught it the next day. I logged the inflow to correct
   spend; final reconciliation lists incoming transfers to all twelve wallets.
-- **Unstaked connection closures.** Days A–D: 61 of 288 BAM windows (21%), 33 of 550 own-IP windows (6%)
-  and 0 of 263 Harmonic windows ([tables](data/derived/tables.md), "Delivery by route"). Unacknowledged
-  probes never landed or cost fees; `Fc6NNdS2` lost 13 of 30 day-B windows and is "insufficient data" that day.
+- **Unstaked connection closures.** Days A–D: the endpoint closed the connection in 61 of 288 BAM windows
+  (21%), 33 of 550 own-IP windows (6%) and 0 of 263 Harmonic windows ([tables](data/derived/tables.md),
+  "Delivery by route"). A closed stream does not prove the probe was lost: 84 of the 628 probes on a closed
+  connection still landed (36 through BAM, 48 own-IP) and their 544,473 lamports are in the fee totals; the
+  other 544 never landed and cost nothing. `Fc6NNdS2` lost 13 of 30 day-B windows and is "insufficient data"
+  that day.
 - **Tier-2 quotas below the data minimum.** I sized the day-C Tier-2 quotas (16–24 windows) for 12
   informative windows, under the 15 evaluable panels PREREG requires for a call. Seven of the eight Tier-2
   validators came out "insufficient data" on their only held-out day. Outside Harmonic, their full

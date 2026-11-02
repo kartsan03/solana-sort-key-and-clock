@@ -66,7 +66,8 @@ results, dates, deviations and what went wrong.
 - **Route.** Unstaked QUIC directly to the TPU address each leader advertises, one transaction per
   stream, with every send time logged. For BAM and Harmonic validators that address is the
   block builder, so those results describe the validator *as reached through its advertised ingress*.
-  BAM closed connections in 21% of windows (own-IP 6%, Harmonic 0%); those probes never landed and cost nothing.
+  BAM endpoints closed my connection in 21% of windows (own-IP 6%, Harmonic 0%). Most probes on a closed
+  connection never landed; 84 of 628 still did, and their fees are counted.
 - **Schedule.** Calibration: 2026-10-27 to 10-28. Collection: six 4-hour blocks across all UTC hours on
   days A–C. Day A (10-29) picks undocumented builders' keys and horizons; B and C (10-30, 10-31) test those
   picks. Agave, Jito and Firedancer are tested against their source-code key from day A on. Tier 1 is the eight main

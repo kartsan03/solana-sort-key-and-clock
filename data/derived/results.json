@@ -4,7 +4,10 @@
    "all_acked": 217,
    "any_probe_landed": 223,
    "closed_by_endpoint": 61,
+   "fees_of_those_landed": 234952,
+   "of_which_landed": 36,
    "other_send_problem": 10,
+   "probes_on_closed_connection": 430,
    "windows": 288
   },
   "harmonic": {
@@ -16,7 +19,10 @@
    "all_acked": 515,
    "any_probe_landed": 516,
    "closed_by_endpoint": 33,
+   "fees_of_those_landed": 309521,
+   "of_which_landed": 48,
    "other_send_problem": 2,
+   "probes_on_closed_connection": 198,
    "windows": 550
   }
  },
