@@ -32,6 +32,7 @@ async def main(sample=40):
         return cache[slot]
 
     for w in pick:
+        cache.clear()                                    # full blocks are large: keep only this window's
         ours = {p["sig"]: p for p in w["probes"]}
         for p in w["probes"]:
             if p.get("index") is None:
