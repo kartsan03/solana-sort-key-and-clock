@@ -65,4 +65,3 @@ def test_joint_check_fits_one_model_across_phases():
     assert cs.PANELS == saved                                        # P1/P2 are added only inside the check
     assert j["full_windows"] == j["best_matches"] == 18
     assert j["X"][0] <= 1800 <= j["X"][1] and j["beta"][0] <= 0.15 <= j["beta"][1]
-    assert j["after_memo2"]["matches_at_best"] == [18, 18]

@@ -31,13 +31,13 @@ probes all landed in one block; the number is how many came out in the exact ord
 2. **The builder decides, not the client.** FireBAM validators run Firedancer, yet sort by Agave's key: the
    BAM node orders their transactions before the validator sees them.
 3. **Jito is not one rule.** One Jito validator follows Agave's key; another sorts by total fee.
-4. **Harmonic follows a formula outside the usual list:** Agave's key, but the compute-unit limit counts
-   in full only up to about 1,500–1,960 CU, and only 10–25% of it counts above that. I found a cap on day A
-   and fixed it on chain before day B; on days B–D it matched 108 of 108 full windows on all four Harmonic
-   validators, two of which had no day-A data. A follow-up test on 11-02, locked on chain before it ran,
-   showed the limit above the cap still counts a little: 27 of 27 full windows, against 8 for a hard cap
-   and 19 for Agave's plain key. One setting fits 195 of 198 full Harmonic windows over all days. It stays
-   labelled exploratory.
+4. **Harmonic follows a formula outside the usual list:** Agave's key, with the compute-unit limit counted
+   in full only up to a cap. A hard cap, found on day A and fixed on chain before day B, predicted 108 of
+   108 full windows on days B–D on all four Harmonic validators, two of which had no day-A data. A follow-up
+   on 11-02, locked on chain before it ran, predicted that the limit above the cap still counts a little,
+   and it does: a hard cap explains only 8 of its 27 full windows, Agave's plain key 19. Fitted to all the
+   data, the limit counts in full up to about 1,500–1,960 CU and 10–25% above that; that range is a fit,
+   not a prediction. It stays labelled exploratory.
 5. **Waiting and arriving are different regimes.** Transactions already waiting when the leader's window
    opens are sorted everywhere. Arriving ones keep send order on Agave, Jito and Firedancer (a richer
    transaction 4 ms behind does not pass); through BAM and Harmonic it can still pass one sent 12–44 ms

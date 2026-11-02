@@ -159,10 +159,10 @@ def capsweep_table(res):
         out.append(f"| {n} | {p['full_windows']} | {', '.join(f'{o} ×{k}' for o, k in p['orders'].items()) or '—'} |")
     j = c.get("joint")
     if j and j["full_windows"]:
-        out += ["", "Consistency check added after the sweep: one (X, beta) for all fully landed Harmonic K-main windows, "
-                f"every phase. Best: {j['best_matches']} of {j['full_windows']} at X {rng(j['X'])}, beta {rng(j['beta'])} "
-                f"(hard cap {j['hard_cap']}, no cap {j['no_cap (agave_int)']}); after memo #2: "
-                f"{rng(j['after_memo2']['matches_at_best'])} of {j['after_memo2']['full_windows']}.", "",
+        out += ["", "Consistency check added after the sweep (a fit, not a test: X and beta are chosen on these same "
+                "windows): one (X, beta) for all fully landed Harmonic K-main windows, every phase. Best: "
+                f"{j['best_matches']} of {j['full_windows']} at X {rng(j['X'])}, beta {rng(j['beta'])} "
+                f"(hard cap {j['hard_cap']}, no cap {j['no_cap (agave_int)']}).", "",
                 "| Phase, panel | Full windows | Matching at the best (X, beta) |", "|---|---|---|"]
         out += [f"| {g} | {v['full_windows']} | {rng(v['matches_at_best'])} |" for g, v in j["groups"].items()]
     return out + [""]

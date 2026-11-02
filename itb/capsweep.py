@@ -146,7 +146,8 @@ def analyze(windows):
 
 def joint(windows, root):
     """Consistency check added after the sweep (not in memo #3): one (X, beta) for every fully landed, stable K-main
-    window on the four Harmonic validators, all phases (calibration, days A-D, sweep), campaign panels P1/P2 included."""
+    window on the four Harmonic validators, all phases (calibration, days A-D, sweep), campaign panels P1/P2 included.
+    A fit, not a test: X and beta are chosen on these same windows."""
     from .orders import full_order
     targets = set(json.loads((root / "design" / "capsweep-targets.json").read_text()))
     pan = json.loads((root / "design" / "panels.json").read_text())["panels"]
@@ -169,12 +170,9 @@ def joint(windows, root):
         PANELS.update(saved)
     total = sum(hits.values()) if hits else np.zeros(len(X), dtype=np.int64)
     top = total == total.max()
-    after = [k for k in hits if k[0] not in ("calibration", "dayA")]          # after memo #2 fixed the formula
     return {"full_windows": sum(sum(c.values()) for c in obs.values()), "best_matches": int(total.max()),
             "X": span(X[top]), "beta": span(B[top]), "hard_cap": int(total[B == 0].max()),
             "no_cap (agave_int)": int(total[B == 1].max()),
-            "after_memo2": {"full_windows": sum(sum(obs[k].values()) for k in after),
-                            "matches_at_best": span(sum(hits[k] for k in after)[top]) if after else None},
             "groups": {f"{ph}|{pa}": {"full_windows": sum(obs[(ph, pa)].values()),
                                      "matches_at_best": span(hits[(ph, pa)][top])} for ph, pa in sorted(obs)}}
 

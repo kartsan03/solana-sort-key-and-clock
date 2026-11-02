@@ -121,15 +121,18 @@ extra CU counted above X pushes them back. The model is cost' = cost − L + min
 
 27 windows landed fully, and every one came out in the same order per panel on all four validators: S1
 `FEDCBA` 8 / 8, S2 `CBAFED` 7 / 7, S3 `CBAFED` 12 / 12. The capped formula matches all 27 at X = 1,500–1,963
-CU and β = 0.10–0.25; the best hard cap matches 8, plain `agave_int` 19. The locked readout's verdict: soft
-cap. The soft cap held; X sits at the low end of the predicted range or just below it (S1 alone puts X at
+CU and β = 0.10–0.25 (X and β are fitted to these 27 windows, so the 27 are not the test); the best hard cap
+matches 8, plain `agave_int` 19. The locked readout's verdict: soft cap. The prediction held; X sits at the low end of the predicted range or just below it (S1 alone puts X at
 or under 2,245; the sweep's grid starts at 1,500). For a 40,000-CU limit this means about 3,600–8,900 of
 the 35,600 CU above a 4,400-CU limit still count.
 
 A consistency check I added after the sweep (not in memo #3) asks whether one (X, β) fits every fully
-landed Harmonic window on every day. It does for 195 of 198, at the same X = 1,500–1,963 and β = 0.10–0.25,
-including 135 of 135 after memo #2 (days B–D and the sweep). The three misses are the calibration and day-A
-windows counted above; a hard cap fits 176, plain `agave_int` 110. Here P1's data set the lower bound of
+landed Harmonic window on every day. It does for 195 of 198, at the same X = 1,500–1,963 and β = 0.10–0.25;
+the three misses are the calibration and day-A windows counted above, a hard cap fits 176, plain
+`agave_int` 110. This is a fit, not a test: X and β were chosen using these same windows. It shows that one
+formula can explain every Harmonic order I saw, both on the panels where memo #2's hard cap held and on the
+follow-up panels where it failed. The tests fixed in advance are memo #2's hard cap on days B–D (108 / 108)
+and memo #3's soft-cap prediction (held). Here P1's data set the lower bound of
 1,500 CU. What this does not show: the mechanism (a builder-side cost estimate is one reading), and whether
 X and β stay fixed under other load. Tables: [data/derived/tables.md](data/derived/tables.md).
 

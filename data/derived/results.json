@@ -1090,13 +1090,6 @@
     1500,
     1963
    ],
-   "after_memo2": {
-    "full_windows": 135,
-    "matches_at_best": [
-     135,
-     135
-    ]
-   },
    "best_matches": 195,
    "beta": [
     0.103,

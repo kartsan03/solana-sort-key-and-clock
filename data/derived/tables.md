@@ -368,7 +368,7 @@ Verdict: **soft cap: the limit above X still counts, at a reduced slope**. Fully
 | S2 | 7 | CBAFED ×7 |
 | S3 | 12 | CBAFED ×12 |
 
-Consistency check added after the sweep: one (X, beta) for all fully landed Harmonic K-main windows, every phase. Best: 195 of 198 at X 1500–1963, beta 0.103–0.25 (hard cap 176, no cap 110); after memo #2: 135 of 135.
+Consistency check added after the sweep (a fit, not a test: X and beta are chosen on these same windows): one (X, beta) for all fully landed Harmonic K-main windows, every phase. Best: 195 of 198 at X 1500–1963, beta 0.103–0.25 (hard cap 176, no cap 110).
 
 | Phase, panel | Full windows | Matching at the best (X, beta) |
 |---|---|---|
