@@ -39,8 +39,10 @@ probes all landed in one block; the number is how many came out in the exact ord
    opens are sorted everywhere. Arriving ones keep send order on Agave, Jito and Firedancer (a richer
    transaction 4 ms behind does not pass); through BAM and Harmonic it can still pass one sent 12–44 ms
    earlier.
-6. **Held out.** Day A's picks were hashed on chain before day B. Outside Harmonic, 17 of 18 key
-   predictions held on days B and C; the miss is the total-fee Jito validator above.
+6. **Held out.** Day A's picks were hashed on chain before day B. Outside Harmonic, on days B–D, 13 key
+   predictions passed, 1 failed (the total-fee Jito validator above) and 7 are "insufficient data": fewer
+   than 15 usable panels that day, the registered minimum. Those seven still had all 76 of their full
+   windows in the predicted order, but that is a count, not a pass.
 
 Labels: *registered* = a pre-registered test; *exploratory* = a pattern found in the data and checked on
 later days, not confirmed; *descriptive* = a count with no test behind it (the exact-order column).

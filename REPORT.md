@@ -72,17 +72,17 @@ claims (7 full windows on days A–C). Tables: [data/derived/tables.md](data/der
 
 ### 3.1 Which key orders queued probes
 
-| Client | Validators | Key | Full windows in exact key order, days A–C | Held out (days B, C) |
+| Client | Validators | Key | Full windows in exact key order, days A–C | Held out (days B–D) |
 |---|---|---|---|---|
-| Agave | `7QQGNm3p`, `5Us18hLZ` | `agave_int` | 89 / 89 | passed (source-code key) |
-| JitoLabs | `E1r4Psq8` | `agave_int` | 47 / 47 | passed (source-code key) |
+| Agave | `7QQGNm3p`, `5Us18hLZ` | `agave_int` | 89 / 89 | 2 passed, 1 too few panels (source-code key) |
+| JitoLabs | `E1r4Psq8` | `agave_int` | 47 / 47 | 2 passed, 1 too few panels (source-code key) |
 | JitoLabs | `C8Bey3LK` | `total_fee` | 14 / 15 (day C only) | failed: predicted `agave_int` from source |
-| AgaveBam | `Fc6NNdS2`, `5EhGYUyQ` | `agave_int` | 58 / 58 | passed |
-| FireBAM | `SSmBEooM`, `PRGNnb8D` | `agave_int` | 61 / 61 | passed |
-| Rakurai | `ana2y2Yv`, `E3mDbFMr` | `agave_int` | 100 / 100 | passed |
-| Firedancer | `JD549Hsb`, `DNVZMSqe` | `fd_exact` | 71 / 77 | passed (source-code key) |
-| HarmonicAgave | `EkvdKhUL`, `BtsmiEEv` | none of the eight | no single key fits | failed (both picks) |
-| HarmonicFiredancer | `87CcUxpy`, `CQdLgwkm` | none of the eight | no single key fits | failed (both picks) |
+| AgaveBam | `Fc6NNdS2`, `5EhGYUyQ` | `agave_int` | 58 / 58 | 2 passed, 2 too few panels |
+| FireBAM | `SSmBEooM`, `PRGNnb8D` | `agave_int` | 61 / 61 | 3 passed, 1 too few panels |
+| Rakurai | `ana2y2Yv`, `E3mDbFMr` | `agave_int` | 100 / 100 | 2 passed, 1 too few panels |
+| Firedancer | `JD549Hsb`, `DNVZMSqe` | `fd_exact` | 71 / 77 | 2 passed, 1 too few panels (source-code key) |
+| HarmonicAgave | `EkvdKhUL`, `BtsmiEEv` | none of the eight | no single key fits | 2 failed, 1 too few panels |
+| HarmonicFiredancer | `87CcUxpy`, `CQdLgwkm` | none of the eight | no single key fits | 3 failed, 1 too few panels |
 
 What the table says:
 
@@ -116,13 +116,18 @@ CAPSWEEP_PLACEHOLDER
 
 ### 3.3 Held-out test (registered)
 
-| Day | Keys accepted | Horizons inside the day's interval | Misses |
-|---|---|---|---|
-| B (10-30) | 6 of 8 | 4 of 5 | keys: both Harmonic picks; horizon: `SSmBEooM` predicted 44 ms, day B 24 ms |
-| C (10-31) | 11 of 16 | 5 of 6 | keys: the four Harmonic validators and `C8Bey3LK`; horizon: `87CcUxpy` predicted 20 ms, day C 24 ms |
+A validator-day counts only with at least 15 evaluable K-main panels and 5 informative windows against
+every rival (PREREG); below that it is "insufficient data", whatever the test says.
 
-Outside Harmonic, 17 of 18 key predictions held. The one miss, `C8Bey3LK`, was a Tier-2 Jito validator
-predicted from Jito's source code; it is the total-fee result above.
+| Day | Keys: passed / failed / too few panels | Horizons inside the day's interval | Misses |
+|---|---|---|---|
+| B (10-30) | 5 / 2 / 1 | 4 of 5 | keys: both Harmonic picks; too few: `Fc6NNdS2` (9); horizon: `SSmBEooM` predicted 44 ms, day B 24 ms |
+| C (10-31) | 5 / 3 / 8 | 5 of 6 | keys: `EkvdKhUL`, `87CcUxpy`, `C8Bey3LK`; too few: seven Tier-2 validators and `E1r4Psq8` (6–13); horizon: `87CcUxpy` predicted 20 ms, day C 24 ms |
+| D (11-01) | 3 / 1 / 0 | 1 of 3 | keys: `87CcUxpy`; horizons: `87CcUxpy` and `SSmBEooM` |
+
+Outside Harmonic: 13 passed, 1 failed, 7 too few panels. The failure, `C8Bey3LK`, was a Tier-2 Jito
+validator predicted from Jito's source code; it is the total-fee result above. The seven short
+validator-days had 76 full windows between them, all in the predicted order: consistent, but not a test.
 
 ### 3.4 How strictly in time
 
@@ -176,6 +181,10 @@ DAYD_PLACEHOLDER
   acknowledged: the endpoint closed the connection with code 1 ("dropped") as the probes arrived (day B 16 of
   56 BAM windows, day C 13 of 91). Those probes never landed and cost nothing, but `Fc6NNdS2` lost 13 of 30
   windows on day B and is "insufficient data" for that day.
+- **Tier-2 quotas below the data minimum.** I sized the day-C Tier-2 quotas (16–24 windows) for 12
+  informative windows, under the 15 evaluable panels PREREG requires for a call. Seven of the eight Tier-2
+  validators came out "insufficient data" on their only held-out day. Outside Harmonic their full windows
+  all agree with the predicted key, but they replicate nothing in the registered sense.
 - **Five windows could not connect.** `C-1031-b0-0045` to `C-1031-b0-0048` and `D-1101-b4-0000` could not
   open a QUIC connection, so nothing was sent or spent; 5 of more than 1,000 campaign windows.
 - **Stale slot clock.** Five windows (three on day A, two on day B) were skipped because the slot stream had
@@ -196,6 +205,9 @@ DAYD_PLACEHOLDER
 - **Harmonic cap sweep (addition).** Not in PREREG. Designed after days A–C to measure the cap in the
   exploratory Harmonic formula, locked on chain by memo #3 before its first probe
   ([design/capsweep.json](design/capsweep.json)), and reported apart: it changes no registered call.
+- **Held-out data gate (correction, 11-02).** My first held-out tables counted validator-days with fewer
+  than 15 evaluable panels as passes (`holdout()` skipped the registered minimum), and the README said "17
+  of 18 held". The code now applies the gate; the tables above are the corrected ones.
 - **Exact-order counts (addition).** The "full windows in exact key order" columns are descriptive, added
   after the campaign as a plain-language check; the calls rest on the registered tests.
 
