@@ -104,6 +104,10 @@ counts are descriptive. Tables: [data/derived/tables.md](data/derived/tables.md)
   192 of 195 same-block pairs (both validators, days A–C). No other client has a tie rule this clear: the
   share of pairs in send order runs from 0.25 (FireBAM) to 0.72 (Jito)
   ([tables](data/derived/tables.md), "Send order vs block order").
+- **Block load does not change the key (pre-registered sensitivity).** Within thirds of block load per
+  day, the best key's pairwise agreement stays at 1.00 on Agave, Jito, AgaveBam, FireBAM and Rakurai,
+  0.99–1.00 on Firedancer and 0.90–0.94 on Harmonic in light, middle and heavy blocks alike
+  ([tables](data/derived/tables.md), "by block load").
 
 ### 3.2 Harmonic: an explanation that fits and holds on later days
 
