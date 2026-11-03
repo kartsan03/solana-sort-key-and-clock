@@ -43,7 +43,7 @@ one to seven trains per day, and 44 ms is the longest gap my 4 ms trains can sho
 4. **Waiting versus arriving.** Queued probes sort everywhere. During the window, a richer probe sent
    4 ms later does not pass on Agave, Jito or Firedancer; through BAM and Harmonic it can pass one sent
    12–44 ms earlier. These horizons are rough: few trains, and the registered falling-fee control trains
-   were never sent (a planning bug, REPORT §5); 4 of 14 horizon predictions missed.
+   were never sent (a planning bug, REPORT §5); of 14 horizon predictions, 3 missed and 1 was inconclusive.
 5. **Held out.** Outside Harmonic, days B–D gave 13 passed key predictions, 1 failed (total-fee Jito) and
    7 below the registered data minimum (15 usable panels), whose 76 full windows all matched: descriptive,
    not a pass.
@@ -90,7 +90,8 @@ has the full results, dates, deviations and what went wrong.
 - **Window-level tests.** Within-block pairs are dependent. A key must beat every rival in a majority of
   windows (exact binomial tests, Holm across eight main validators). I report strictness separately;
   "no rule detected" is valid.
-- **Held-out checks.** Day-A picks are fixed on chain before day B and tested on days B–D.
+- **Held-out checks.** Day-A picks are fixed on chain before day B and tested on days B–D. Day A chooses
+  among eight keys without adjusting for that choice; the fixed-key held-out tests are the confirmatory ones.
 - **Horizon.** Batching and stalled queues can look alike; the measurement avoids claiming a mechanism.
 - **Direct QUIC.** RPC `sendTransaction` obscures send time and target, retries and forwards to multiple
   leaders.
@@ -114,22 +115,24 @@ has the full results, dates, deviations and what went wrong.
 ## Reproduce
 
 ```sh
-docker compose up                                        # offline: recompute every number, diff with data/derived
+docker compose up --build --exit-code-from analyze       # offline: recompute every number, diff with data/derived
 docker compose run --rm verify                           # online: re-fetch a sample of claimed blocks (VERIFY_ALL=1 for all)
 docker compose run --rm test                             # unit tests
 docker compose run --rm dryrun                           # plan the next 15 min of real leader windows, send nothing
 ```
 
-If any recomputed number differs, `analyze` prints MISMATCH and exits 1; `docker compose up
---exit-code-from analyze` passes that exit code to the shell. `verify` checks signatures at recorded
-indices, payers, fees, decoded limits, the block's fee-reward recipient, and `getSlotLeaders` for all four
-window slots (one validator, `PRGNnb8D`, sends its fees to another account; the schedule names it).
-`ITB_RPC_URL` picks the RPC. Send times, intended targets and client labels depend on logs and snapshots.
+If any recomputed number differs, `analyze` prints MISMATCH and exits 1, and the first command exits 1 too;
+`--build` rebuilds the image from your checkout. `verify` checks signatures at recorded indices, payers, fees,
+decoded limits, the block's fee-reward recipient, and `getSlotLeaders` for all four window slots (one
+validator, `PRGNnb8D`, sends its fees to another account; the schedule names it). A block the RPC cannot
+serve fails the check; a skipped slot does not. `ITB_RPC_URL` picks the RPC. Send times, intended targets
+and client labels depend on logs and snapshots.
 
 Live sending needs `--live`, `ITB_LIVE=1`, `--max-spend-sol` and the key directory (mounted read-only);
-funding, memo and sweep need `ITB_LIVE=1` too. Each send reserves its worst-case fee; the code caps total
-spend at 0.05 SOL and releases reservations only after checking the loaded key's wallet balances and the
-chain's landed fees.
+funding, memo and sweep need `ITB_LIVE=1` too. The sweep sends only to the address whose SHA-256 is
+`SWEEP_TARGET_SHA256` in [itb/ops.py](itb/ops.py) (my funding wallet); change it to sweep elsewhere. Each
+send reserves its worst-case fee; the code caps total spend at 0.05 SOL and releases reservations only after
+checking the loaded key's wallet balances and the chain's landed fees.
 
 ## Listing requirements → where
 
@@ -138,7 +141,7 @@ chain's landed fees.
 | ≥6 validators, ≥3 clients, own mainnet transactions after Alpenglow | [design/candidates.json](design/candidates.json), `data/raw/*/probes.jsonl.gz` (all slots ≥ 459,653,000, checked in code) |
 | Ordering rule, how strictly, or no rule, per validator | Findings above, [REPORT.md](REPORT.md) §3, [data/derived/tables.md](data/derived/tables.md) |
 | All raw data: signatures, slots, blocks | `data/raw/<run>/` (probes, outcomes, blocks, windows, snapshots, SHA256SUMS) |
-| One-command reproduction | `docker compose up`; CI runs it on amd64 and arm64 |
+| One-command reproduction | `docker compose up --build --exit-code-from analyze`; CI runs it on amd64 and arm64 |
 | Dry run by default, live behind a flag, spend cap in code | `itb run` (dry unless `--live` + `ITB_LIVE=1`), [itb/ledger.py](itb/ledger.py) |
 | Keys via env or volume, never in the repo | `ITB_KEYS_DIR` volume, read-only; pre-commit check in [.githooks/](.githooks/) |
 | Why this design / what it does NOT separate | the two sections above |

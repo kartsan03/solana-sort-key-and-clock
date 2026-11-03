@@ -75,10 +75,11 @@ def train_table(res, phase):
     for r in sorted(rows, key=lambda r: r["family"]):
         inc, dec = r["increasing"], r["decreasing"]
         ci = inc["horizon_ci"]
+        ge = "≥" if inc.get("censored") else ""       # at the longest gap the trains could show
         if inc["trains"] < 2:          # one train: a bootstrap interval says nothing
-            h = f"{fmt(inc['horizon_ms'], 0)} (one train, no interval)" if inc["trains"] else "—"
+            h = f"{ge}{fmt(inc['horizon_ms'], 0)} (one train, no interval)" if inc["trains"] else "—"
         else:
-            h = f"{fmt(inc['horizon_ms'], 0)} [{fmt(ci[0], 0)}, {fmt(ci[1], 0)}]"
+            h = f"{ge}{fmt(inc['horizon_ms'], 0)} [{fmt(ci[0], 0)}, {fmt(ci[1], 0)}]"
         out.append(f"| `{short(r['validator'])}` | {r['family']} | {r['trains']} ({r['evaluable']}) | {h} | {dec['trains']} |")
     return out + [""]
 
@@ -336,6 +337,9 @@ def claims_md(res, evidence):
             claim = (f"`{short(v)}` consistent with `{r['key']}` (insufficient data; not a call)"
                      if r["verdict"] == "insufficient data" else
                      f"`{short(v)}` orders queued probes by `{r['key']}` ({r['verdict']}; min win rate {fmt(r['min_rate'])})")
+            hold = res.get("holdout", {}).get(ph, {}).get(v, {})
+            if hold.get("status") == "failed":
+                claim += f"; exploratory: the registered prediction (`{hold['predicted']}`) failed"
             lines.append(f"| {n} | {claim} | `{v}` | {ph} | {ev.get('windows', 0)} ({r['min_n']}+) | {miss[(v, ph)]} | "
                          f"{ev.get('example', '—')} | {', '.join(ev.get('counter', [])[:5]) or 'none'} |")
     if n == 0:
@@ -391,7 +395,8 @@ def claims_md(res, evidence):
         if r["phase"] == "calibration" or not inc["trains"]:
             continue
         m += 1
-        lines.append(f"| H{m} | `{short(r['validator'])}` overtaking horizon {fmt(inc['horizon_ms'], 0)} ms "
+        lines.append(f"| H{m} | `{short(r['validator'])}` overtaking horizon {'≥' if inc.get('censored') else ''}"
+                     f"{fmt(inc['horizon_ms'], 0)} ms "
                      f"({'one train' if inc['trains'] == 1 else str(inc['trains']) + ' trains'}) | `{r['validator']}` | "
                      f"{r['phase']} | {inc['trains']} evaluable rising-fee train{'s' if inc['trains'] != 1 else ''} | "
                      f"{evidence.get(('train', k), '—')} | — |")

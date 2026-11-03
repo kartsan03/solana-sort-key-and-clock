@@ -10,7 +10,7 @@ import numpy as np
 import pytest
 from solders.keypair import Keypair
 
-from itb import analyze, campaign, cli, ops, report, run, verdicts
+from itb import analyze, campaign, cli, ops, report, run, sim, trains, verdicts
 from itb.design import panels_from_json
 from itb.ledger import CapExceeded, Halted, Ledger
 
@@ -130,3 +130,33 @@ def test_joint_fit_table_keeps_its_columns():
                                   "groups": {"dayB|P1": {"full_windows": 2, "matches_at_best": [2, 2]}}}}}
     rows = [r for r in report.capsweep_table(res) if r.startswith("| dayB")]
     assert rows == ["| dayB / P1 | 2 | 2 |"]
+
+
+def test_simulated_trains_keep_every_planned_probe():
+    rng = np.random.default_rng(3)
+    for spec, n in (("t4", 12), ("t12", 10)):
+        w = sim.sim_train(rng, spec, "fifo", p_land=0.5)
+        assert len(w["probes"]) == n                          # eligibility needs the planned size, not the landed count
+
+
+def test_power_counts_only_eligible_rule_calls(monkeypatch):
+    def fake_run_k(panels, truths, n, eps, p_land, seed):
+        return {v: {"identified": True, "key": t, "verdict": "insufficient data"} for v, t in truths.items()}, {}
+    monkeypatch.setattr(sim, "run_k", fake_run_k)
+    r = sim.power_k({}, 16, 2, 0.0)
+    assert set(r["correct_rule_rate"].values()) == {0.0} and set(r["false_rule_rate"].values()) == {0.0}
+
+
+def test_a_horizon_at_the_longest_gap_is_censored_and_cannot_miss():
+    # one t4 train split 3 + 9 over two blocks, every same-block pair overtaken: longest gap 32 ms
+    probes = [{"label": f"T{i:02d}", "outcome": "target_block", "slot": 100 if i < 3 else 101,
+               "index": 2 - i if i < 3 else 11 - i} for i in range(12)]
+    m = trains.overtaking_curve([{"train": "t4", "probes": probes}], np.random.default_rng(0), reps=50)
+    assert m["horizon_ms"] == 32 and m["max_gap_ms"] == 32 and m["censored"]
+    k = {"V|dayD": {"phase": "dayD", "validator": "V", "evaluable": 0, "best": "agave_int",
+                    "keys": {"agave_int": {"p_iut": 1.0, "min_rate": 0, "min_n": 0}}}}
+    pred = {"V": {"key": "agave_int", "horizon_ms": 44}}
+    h = verdicts.holdout(k, {"V|dayD": {"increasing": m}}, {"V": 1}, pred)["dayD"]["V"]["horizon"]
+    assert h["inside"] is None and h["censored"]
+    h = verdicts.holdout(k, {"V|dayD": {"increasing": m}}, {"V": 1}, {"V": {"key": "agave_int", "horizon_ms": 20}})
+    assert h["dayD"]["V"]["horizon"]["inside"] is False                  # below the bound: still a miss

@@ -77,12 +77,13 @@ def power_k(panels, n_windows, reps, eps, p_land=0.85, seed=1):
         c, _ = run_k(panels, truths, n_windows, eps=eps, p_land=p_land, seed=seed * 100_000 + r)
         for v, t in truths.items():
             got = c.get(v, {})
+            rule = got.get("verdict", "").startswith("rule")    # a call, not "insufficient data"
             if t in correct:
                 seen[t] += 1
-                correct[t] += bool(got.get("identified")) and got.get("key") == t
+                correct[t] += rule and got.get("key") == t
             else:
                 false_seen[t] += 1
-                false_rule[t] += bool(got.get("identified"))
+                false_rule[t] += rule
     return {"n_windows": n_windows, "eps": eps, "p_land": p_land, "reps": reps,
             "correct_rule_rate": {k: correct[k] / seen[k] for k in correct if seen[k]},
             "false_rule_rate": {k: false_rule[k] / false_seen[k] for k in false_rule}}
@@ -111,10 +112,12 @@ def sim_train(rng, spec, mode, T=20.0, jitter_ms=1.0, service_ms=0.5, p_land=0.9
                 waiting.remove(best)
                 order.append(best)
             t += service_ms
-    probes = []
+    probes = []                                # every planned probe, as in real data (eligibility counts them)
     for pos, i in enumerate(order):
         if rng.random() < p_land:
             probes.append({"label": f"T{i:02d}", "outcome": "target_block", "slot": 100, "index": pos})
+        else:
+            probes.append({"label": f"T{i:02d}", "outcome": "expired"})
     return {"study": "M", "arm": "M-inc", "train": spec, "probes": probes, "status": "stable"}
 
 
@@ -123,7 +126,7 @@ def horizon_m(mode, n_trains, reps, T=20.0, seed=2):
     hs = []
     for _ in range(reps):
         trains = [sim_train(rng, spec, mode, T=T) for spec in ("t4", "t12") for _ in range(n_trains // 2)]
-        trains = [w for w in trains if trains_mod.evaluable_train(dict(w, probes=w["probes"] + [{}] * 0))]
+        trains = [w for w in trains if trains_mod.evaluable_train(w)]
         hs.append(trains_mod.overtaking_curve(trains, rng, reps=100)["horizon_ms"])
     hs = [h for h in hs if h is not None]
     return {"mode": mode, "T": T if mode == "rounds" else None, "n_trains": n_trains, "reps": reps,
@@ -131,7 +134,7 @@ def horizon_m(mode, n_trains, reps, T=20.0, seed=2):
             "horizon_p10_p90": [float(np.percentile(hs, 10)), float(np.percentile(hs, 90))] if hs else None}
 
 
-def main(reps=200):
+def main(reps=200, out_name="power.json"):
     panels = panels_from_json(json.loads((ROOT / "design" / "panels.json").read_text())["panels"])
     out = {"k": [], "m": []}
     for n in (16, 22, 28):
@@ -143,4 +146,4 @@ def main(reps=200):
         r = horizon_m(mode, 20, max(20, reps // 5), T=T or 20.0)
         out["m"].append(r)
         print(json.dumps(r))
-    (ROOT / "design" / "power.json").write_text(json.dumps(out, indent=1))
+    (ROOT / "design" / out_name).write_text(json.dumps(out, indent=1))

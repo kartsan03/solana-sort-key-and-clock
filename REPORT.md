@@ -59,10 +59,12 @@ fixed seed for exact reproduction with `docker compose up`.
 The files memo #1 fixed (PREREG.md, design.json and the four design files it hashes) are unchanged since;
 later design files were added, each committed before the probes it governs.
 
-**Power.** In simulation (`itb sim`, [design/power.json](design/power.json)) with 22 informative windows per
-validator-day, the true key is called in at least 99% of runs when 10% of windows are scrambled (73% at
-25%); a random or first-in, first-out (FIFO) scheduler is called a rule in at most 1%. Simulated 20 and
-50 ms rounds give horizons near 8 and 24 ms, so I report horizons, not round lengths.
+**Power.** In simulation (`itb sim`, [design/power-corrected.json](design/power-corrected.json)) with 22
+K-main panels per validator-day (85% of probes landing), the true key is called in at least 99% of runs when
+10% of windows are scrambled (73% at 25%); a random or first-in, first-out (FIFO) scheduler is called a rule
+in at most 1%. With 16 panels a day often falls below the 15-panel minimum, and only about half of the runs
+make a call. Simulated 20 and 50 ms rounds give horizons near 8 and 24 ms, so I report horizons, not round
+lengths.
 
 ## 2. Design decisions
 
@@ -71,14 +73,16 @@ key pair, since pairs within a block are dependent. Before pre-registration I re
 every rival to lose in more than 75% of windows (it failed in simulation with 10% scrambled windows) with
 the registered one: the key must beat every rival in a majority of windows (exact binomial tests, Holm
 across the eight main validators); strictness is reported separately. Day A picks undocumented builders'
-keys and days B–D test them; documented clients face their source-code key from day A. Rounds and stalled
+keys and days B–D test them; documented clients face their source-code key from day A. Day A's pick is
+the best of eight keys, and its p-value is not adjusted for that choice: the fixed-key held-out tests on
+days B–D are the confirmatory ones. Rounds and stalled
 queues can produce similar orders, so I measure timing without claiming a mechanism.
 
 ## 3. Results
 
 A *full window* is a K-main panel whose six probes landed in one block of the target's window. The
 registered tests drop windows whose gossip snapshots around the send show a change of client, ingress or
-TPU address (PREREG); the exact-order counts also drop 7 full windows of days A–C that lack a snapshot within
+TPU address (PREREG); the exact-order counts also drop 10 full windows of days A–D that lack a snapshot within
 60 s on one side. *Registered* means a test fixed before the campaign; *exploratory* means
 found in data and checked later, not confirmed; *descriptive* means a count without a test. Exact-order
 counts are descriptive. Tables: [data/derived/tables.md](data/derived/tables.md).
@@ -97,8 +101,9 @@ counts are descriptive. Tables: [data/derived/tables.md](data/derived/tables.md)
 | HarmonicAgave | `EkvdKhUL`, `BtsmiEEv` | none of the eight | no single key fits | 2 failed, 1 too few panels |
 | HarmonicFiredancer | `87CcUxpy`, `CQdLgwkm` | none of the eight | no single key fits | 3 failed, 1 too few panels |
 
-- **Agave's integer key, exactly, on five client types.** 413 of 413 full windows on Agave, Jito
-  (`E1r4Psq8`), AgaveBam, FireBAM and Rakurai came out in exact `agave_int` order, including every
+- **Agave's R/(C+1) order on five client types.** 413 of 413 full windows on Agave, Jito
+  (`E1r4Psq8`), AgaveBam, FireBAM and Rakurai came out in exact `agave_int` order (the panels cannot see
+  its rounding down, §1), including every
   fingerprint pair (two in P1, three in P2), where Firedancer's exact ratio predicts the opposite.
   `E1r4Psq8` moved from Jito 4.3.2 to 4.4.0 during day C, with no change in its order.
 - **Firedancer uses its own exact ratio.** All five fingerprint pairs went Firedancer's way in every full
@@ -127,9 +132,10 @@ counts are descriptive. Tables: [data/derived/tables.md](data/derived/tables.md)
   day, each validator-day's own best key keeps its pairwise agreement (window-weighted): 1.00 on Agave,
   Jito, AgaveBam, FireBAM and Rakurai, 0.99–1.00 on Firedancer and 0.90–0.94 on Harmonic in light, middle and
   heavy blocks alike ([tables](data/derived/tables.md), "by block load").
-- **The fee does not change whether a probe lands (registered question 3, descriptive).** Trains land or
-  fail as a whole: in 4 ms trains each fee rank landed 76–77 times of 87, the losses being BAM trains on
-  closed connections ([tables](data/derived/tables.md), "by fee rank").
+- **No clear effect of the fee on whether a probe lands (registered question 3, descriptive).** Trains
+  land or fail as a whole: in 4 ms trains each fee rank landed 76–77 times of 87, the losses being BAM
+  trains on closed connections ([tables](data/derived/tables.md), "by fee rank"). Every train rose in fee,
+  so fee rank is also send position; this covers my small fees and this route only.
 
 ### 3.2 Harmonic: an explanation that fits and holds on later days
 
@@ -176,34 +182,37 @@ every rival (PREREG); below that it is "insufficient data", whatever the test sa
 |---|---|---|---|
 | B (10-30) | 5 / 2 / 1 | 4 of 5 | keys: both Harmonic picks; too few: `Fc6NNdS2` (9); horizon: `SSmBEooM` predicted 44 ms, day B 24 ms |
 | C (10-31) | 5 / 3 / 8 | 5 of 6 | keys: `EkvdKhUL`, `87CcUxpy`, `C8Bey3LK`; too few: seven Tier-2 validators and `E1r4Psq8` (6–13); horizon: `87CcUxpy` predicted 20 ms, day C 24 ms |
-| D (11-01) | 3 / 1 / 0 | 1 of 3 | keys: `87CcUxpy`; horizons: `87CcUxpy` and `SSmBEooM` |
+| D (11-01) | 3 / 1 / 0 | 1 of 3, 1 inconclusive | keys: `87CcUxpy`; horizon: `87CcUxpy`; inconclusive: `SSmBEooM` predicted 44 ms, day D ≥36 ms |
 
-A day with one evaluable train has an "interval" of that one value, so its horizon check is weak. Of 14
-horizon predictions, 10 fell inside. Outside Harmonic: 13 passed, 1 failed, 7 too few panels. The failure, `C8Bey3LK`, was a Tier-2 Jito
-validator predicted from Jito's source code; it is the total-fee result above. The seven short
-validator-days had 76 full windows between them, all in the predicted order: consistent, but not a test.
+A day with one evaluable train has an "interval" of that one value, so its horizon check is weak. A horizon
+at the longest same-block gap the day's trains showed is only a lower bound (≥ in the tables); a prediction
+above it cannot miss. Of 14 horizon predictions, 10 fell inside, 3 missed and 1 was inconclusive. Outside
+Harmonic: 13 passed, 1 failed, 7 too few panels. The failure, `C8Bey3LK`, was a Tier-2 Jito validator
+predicted from Jito's source code; it is the total-fee result above. The seven short validator-days had 76
+full windows between them, all in the predicted order: consistent, but not a test.
 
 ### 3.4 How strictly in time
 
 Horizons in ms, with 95% bootstrap intervals over trains and, in brackets, the number of evaluable trains;
-a cell from one train shows only its value. 44 is the longest gap a 4 ms train can show, so 44 means "44 or
-more". Dates follow the day labels in §1.
+a cell from one train shows only its value. With two to seven trains the intervals describe these trains,
+not a population. ≥ marks a horizon at the longest same-block gap the trains showed (44 ms at most for
+4 ms trains): a lower bound. Dates follow the day labels in §1.
 
 | Client | Validator | Day A | Day B | Day C | Day D |
 |---|---|---|---|---|---|
 | Agave | `7QQGNm3p` | 0 [0, 0] (2) | — | — | — |
 | JitoLabs | `E1r4Psq8` | 0 [0, 0] (3) | — | — | — |
 | Firedancer | `JD549Hsb` | 0 [0, 0] (6) | 0 [0, 0] (4) | 0 [0, 0] (4) | — |
-| Rakurai | `ana2y2Yv` | 0 [0, 0] (7) | 0 [0, 0] (3) | 44 [0, 44] (3) | — |
+| Rakurai | `ana2y2Yv` | 0 [0, 0] (7) | 0 [0, 0] (3) | ≥44 [0, 44] (3) | — |
 | AgaveBam | `Fc6NNdS2` | 16 [12, 28] (2) | no evaluable train | 16 [12, 28] (2) | 16 [8, 28] (2) |
-| FireBAM | `SSmBEooM` | 44 [28, 44] (2) | 24 (1) | 44 (1) | 36 (1) |
+| FireBAM | `SSmBEooM` | ≥44 [28, 44] (2) | 24 (1) | ≥44 (1) | ≥36 (1) |
 | HarmonicAgave | `EkvdKhUL` | 16 [16, 20] (7) | 12 [8, 20] (4) | 16 [16, 24] (3) | — |
 | HarmonicFiredancer | `87CcUxpy` | 20 [20, 24] (7) | 16 [16, 24] (4) | 24 [24, 24] (2) | 16 [16, 16] (3) |
 
 Queued probes sort on every client. During the window, probes keep send order on Agave, Jito, Firedancer
 and (on two days of three) Rakurai: a richer probe sent 4 ms later does not pass a cheaper one. Through a
 BAM node or Harmonic endpoint a richer probe can still pass a cheaper one sent 12–44 ms earlier, which
-fits short batching before ordering. The FireBAM horizon moved between days (44, 24, 44, 36 ms) on one or
+fits short batching before ordering. The FireBAM horizon moved between days (≥44, 24, ≥44, ≥36 ms) on one or
 two evaluable trains per day, so I do not read it more precisely than "tens of milliseconds". Without the
 falling-fee control (§5) I cannot fully separate overtaking by fee from a reordering that ignores the fee;
 in the identical-probe panels no client outside Firedancer showed a clear send-order rule. This Firedancer
@@ -246,10 +255,10 @@ their earlier orders (`Fc6NNdS2` 17 / 17, `SSmBEooM` 19 / 19, `E1r4Psq8` 22 / 22
   `D-1101-b4-0000`) could not open a QUIC connection, so nothing was sent or spent.
 - **Stale slot clock.** Five windows (three on day A, two on day B) were skipped because the slot stream had
   fallen behind; the sender does not time a send from a stale clock.
-- **Snapshots that do not bracket a window.** Seven full windows on days A–C had no gossip snapshot of the
-  target within 60 s on one side of the send. The exact-order counts leave them out; the registered tests
-  keep them, since PREREG excludes only windows whose snapshots show a change. Counting them would add 3 to
-  Agave's key and 4 to the Harmonic formula, all in agreement.
+- **Snapshots that do not bracket a window.** Ten full windows (day A 1, B 3, C 3, D 3) had no gossip
+  snapshot of the target within 60 s on one side of the send. The exact-order counts leave them out; the
+  registered tests keep them, since PREREG excludes only windows whose snapshots show a change. Counting
+  them would add 5 to Agave's key and 5 to the Harmonic formula, all in agreement.
 - **The falling-fee trains were never sent.** PREREG draws 20% of trains with falling fees, as a control,
   and the spacing per window. The quota file carried a fixed list of spacings meant for calibration, and the
   plan step, given such a list, also forced every train to rising fees; it alternated the spacing per
@@ -285,6 +294,16 @@ their earlier orders (`Fc6NNdS2` 17 / 17, `SSmBEooM` 19 / 19, `E1r4Psq8` 22 / 22
   at least 0.75. The code took the rival with the lowest win rate, which need not have the lowest bound; it
   now takes the lowest bound. Five bounds moved, no verdict changed: `JD549Hsb` day A 0.839 → 0.832, day B
   0.858 → 0.852, day C 0.824 → 0.815, calibration 0.398 → 0.292; `C8Bey3LK` day C 0.782 → 0.768.
+- **Censored horizons (correction, 11-03).** A horizon at the longest same-block gap a day's trains showed
+  is only a lower bound. FireBAM's day-D train split across two blocks, so its longest same-block gap was
+  36 ms; the held-out check compared the predicted 44 ms with 36 and called it a miss. It is now
+  inconclusive: horizon predictions went from 10 inside and 4 missed to 10 inside, 3 missed, 1 inconclusive.
+- **Power simulation (correction, 11-03).** The simulation counted a correct key as a success even when
+  the day had too few panels for a call, and judged train eligibility on landed instead of planned probes.
+  Rerun after the fix ([design/power-corrected.json](design/power-corrected.json); the original
+  [design/power.json](design/power.json) is kept): at 22 panels per validator-day the worst key's rate went
+  from 1.00 to 0.99 with no scrambling and stayed at 0.99 and 0.73 with 10% and 25%; at 16 panels it fell
+  from 0.79–1.00 to 0.45–0.54; horizons did not change. The quotas were 22 or more, so the design stands.
 - **Randomisation check (addition, 11-03).** The registered test keeps the best key fixed while it permutes.
   For the seven Harmonic validator-days without an identified key I also re-chose the key inside every
   permutation; both versions give p = 0.0005, the smallest possible with 2,000 permutations.

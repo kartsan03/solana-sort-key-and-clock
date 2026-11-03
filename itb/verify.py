@@ -4,14 +4,14 @@ For each checked probe that landed: the block at its slot still holds our signat
 the recorded index, with the recorded fee payer, fee, leader (the block's fee-reward recipient)
 and decoded L/p/D. For each checked window: the leader schedule (getSlotLeaders) assigns all
 four slots to the target, every slot of the window is re-fetched, and no other probe of ours
-appears in it unrecorded.
+appears in it unrecorded. A block the RPC cannot serve is a problem, not a skipped slot.
 """
 import json
 import os
 import random
 
 from . import analyze
-from .chain import Rpc
+from .chain import BlockUnavailable, Rpc
 from .collect import block_leader
 from .probe import decode_budget
 
@@ -25,10 +25,14 @@ async def main(sample=40):
     rpc = Rpc()
     bad, checked, slots_checked = [], 0, 0
     cache = {}
+    UNAVAILABLE = "unavailable"
 
     async def block(slot):
         if slot not in cache:
-            cache[slot] = await rpc.block(slot)
+            try:
+                cache[slot] = await rpc.block(slot, strict=True)
+            except BlockUnavailable:
+                cache[slot] = UNAVAILABLE
         return cache[slot]
 
     for w in pick:
@@ -39,8 +43,8 @@ async def main(sample=40):
                 continue
             b = await block(p["slot"])
             checked += 1
-            if b is None:
-                bad.append((p["sig"], "block missing"))
+            if b is None or b == UNAVAILABLE:
+                bad.append((p["sig"], "block unavailable" if b else "slot skipped"))
                 continue
             t = b["transactions"][p["index"]]
             msg = t["transaction"]["message"]
@@ -64,8 +68,11 @@ async def main(sample=40):
             bad.append((w["window_id"], f"leader schedule gives {sorted(set(sched))}, not the target"))
         for s in range(w["slot0"], w["slot0"] + 4):
             b = await block(s)
+            if b == UNAVAILABLE:
+                bad.append((w["window_id"], f"block {s} unavailable: cannot check it"))
+                continue
             slots_checked += 1
-            if b is None:
+            if b is None:                                # skipped slot: nothing to check
                 continue
             for i, t in enumerate(b["transactions"]):
                 sig = t["transaction"]["signatures"][0]

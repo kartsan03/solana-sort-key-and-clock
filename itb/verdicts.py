@@ -70,8 +70,11 @@ def holdout(k_results, m_results, tiers, predictions):
             m = m_results.get(f"{v}|{ph}", {}).get("increasing", {})
             if p.get("horizon_ms") is not None and m.get("horizon_ci"):
                 lo, hi = m["horizon_ci"]
+                inside = lo <= p["horizon_ms"] <= hi
+                if not inside and m.get("censored") and p["horizon_ms"] > hi:
+                    inside = None             # the day's horizon is only a lower bound: inconclusive, not a miss
                 res.setdefault(v, {})["horizon"] = {"predicted_ms": p["horizon_ms"], "ci": [lo, hi],
-                                                   "inside": lo <= p["horizon_ms"] <= hi}
+                                                   "censored": bool(m.get("censored")), "inside": inside}
         if res:
             out[ph] = res
     return out

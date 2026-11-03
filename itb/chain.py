@@ -24,6 +24,10 @@ class RpcError(Exception):
     pass
 
 
+class BlockUnavailable(RpcError):
+    """The node cannot serve this block (not a skipped slot)."""
+
+
 class Limiter:
     """Sliding-window limiter: global and per-method caps over `window` seconds."""
 
@@ -125,15 +129,20 @@ class Rpc:
     async def vote_accounts(self):
         return await self.call("getVoteAccounts", {"commitment": "confirmed"})
 
-    async def block(self, slot, details="full"):
-        """Full block with v1 support, or None if the slot was skipped / not available."""
+    async def block(self, slot, details="full", strict=False):
+        """Full block with v1 support, or None if the slot was skipped / not available.
+        strict: None only for a skipped slot; a block the node cannot serve raises BlockUnavailable."""
         try:
             return await self.call("getBlock", slot, {
                 "encoding": "json", "transactionDetails": details, "rewards": True,
                 "maxSupportedTransactionVersion": 1, "commitment": "confirmed"})
         except RpcError as e:
             msg = str(e)
-            if any(c in msg for c in ("-32004", "-32007", "-32009", "-32001")):
+            if any(c in msg for c in ("-32007", "-32009")):          # skipped slot
+                return None
+            if any(c in msg for c in ("-32004", "-32001")):          # not available / cleaned up on this node
+                if strict:
+                    raise BlockUnavailable(msg) from e
                 return None
             raise
 

@@ -1,0 +1,230 @@
+{
+ "k": [
+  {
+   "n_windows": 16,
+   "eps": 0.0,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 0.5405405405405406,
+    "fd_exact": 0.6216216216216216,
+    "pf_per_cost": 0.5466666666666666,
+    "fee_per_cost": 0.5921052631578947,
+    "cu_price": 0.5657894736842105,
+    "fee_per_cu": 0.5394736842105263,
+    "total_fee": 0.6133333333333333,
+    "cheapest": 0.7162162162162162
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 16,
+   "eps": 0.1,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 0.6216216216216216,
+    "fd_exact": 0.5675675675675675,
+    "pf_per_cost": 0.52,
+    "fee_per_cost": 0.4473684210526316,
+    "cu_price": 0.5263157894736842,
+    "fee_per_cu": 0.6052631578947368,
+    "total_fee": 0.6933333333333334,
+    "cheapest": 0.5
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 16,
+   "eps": 0.25,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 0.21621621621621623,
+    "fd_exact": 0.17567567567567569,
+    "pf_per_cost": 0.29333333333333333,
+    "fee_per_cost": 0.2631578947368421,
+    "cu_price": 0.27631578947368424,
+    "fee_per_cu": 0.2236842105263158,
+    "total_fee": 0.3333333333333333,
+    "cheapest": 0.36486486486486486
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 22,
+   "eps": 0.0,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 1.0,
+    "fd_exact": 1.0,
+    "pf_per_cost": 1.0,
+    "fee_per_cost": 1.0,
+    "cu_price": 0.9868421052631579,
+    "fee_per_cu": 1.0,
+    "total_fee": 1.0,
+    "cheapest": 1.0
+   },
+   "false_rule_rate": {
+    "random": 0.01,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 22,
+   "eps": 0.1,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 1.0,
+    "fd_exact": 1.0,
+    "pf_per_cost": 0.9866666666666667,
+    "fee_per_cost": 0.9868421052631579,
+    "cu_price": 1.0,
+    "fee_per_cu": 1.0,
+    "total_fee": 0.9866666666666667,
+    "cheapest": 1.0
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 22,
+   "eps": 0.25,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 0.7297297297297297,
+    "fd_exact": 0.7702702702702703,
+    "pf_per_cost": 0.8533333333333334,
+    "fee_per_cost": 0.75,
+    "cu_price": 0.8026315789473685,
+    "fee_per_cu": 0.881578947368421,
+    "total_fee": 0.8133333333333334,
+    "cheapest": 0.8783783783783784
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 28,
+   "eps": 0.0,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 1.0,
+    "fd_exact": 1.0,
+    "pf_per_cost": 1.0,
+    "fee_per_cost": 1.0,
+    "cu_price": 1.0,
+    "fee_per_cu": 1.0,
+    "total_fee": 1.0,
+    "cheapest": 1.0
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 28,
+   "eps": 0.1,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 1.0,
+    "fd_exact": 1.0,
+    "pf_per_cost": 1.0,
+    "fee_per_cost": 1.0,
+    "cu_price": 1.0,
+    "fee_per_cu": 1.0,
+    "total_fee": 1.0,
+    "cheapest": 1.0
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  },
+  {
+   "n_windows": 28,
+   "eps": 0.25,
+   "p_land": 0.85,
+   "reps": 100,
+   "correct_rule_rate": {
+    "agave_int": 0.972972972972973,
+    "fd_exact": 0.9594594594594594,
+    "pf_per_cost": 0.9466666666666667,
+    "fee_per_cost": 0.9605263157894737,
+    "cu_price": 0.9605263157894737,
+    "fee_per_cu": 0.9868421052631579,
+    "total_fee": 1.0,
+    "cheapest": 0.9324324324324325
+   },
+   "false_rule_rate": {
+    "random": 0.0,
+    "fifo": 0.0
+   }
+  }
+ ],
+ "m": [
+  {
+   "mode": "fifo",
+   "T": null,
+   "n_trains": 20,
+   "reps": 20,
+   "horizon_median": 0.0,
+   "horizon_p10_p90": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "mode": "continuous",
+   "T": null,
+   "n_trains": 20,
+   "reps": 20,
+   "horizon_median": 0.0,
+   "horizon_p10_p90": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "mode": "rounds",
+   "T": 20.0,
+   "n_trains": 20,
+   "reps": 20,
+   "horizon_median": 8.0,
+   "horizon_p10_p90": [
+    8.0,
+    8.0
+   ]
+  },
+  {
+   "mode": "rounds",
+   "T": 50.0,
+   "n_trains": 20,
+   "reps": 20,
+   "horizon_median": 24.0,
+   "horizon_p10_p90": [
+    19.6,
+    32.0
+   ]
+  }
+ ]
+}

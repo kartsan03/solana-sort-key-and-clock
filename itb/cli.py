@@ -289,6 +289,7 @@ def build_parser():
     s.add_argument("--sample", type=int, default=40)
     s = sub.add_parser("sim")
     s.add_argument("--reps", type=int, default=200)
+    s.add_argument("--out", default="power.json", help="file name under design/")
     return p
 
 
@@ -333,7 +334,7 @@ def main(argv=None):
         sys.exit(asyncio.run(verify_main(sample=None if a.all else a.sample)))
     elif a.cmd == "sim":
         from .sim import main as sim_main
-        sim_main(a.reps)
+        sim_main(a.reps, a.out)
 
 
 if __name__ == "__main__":

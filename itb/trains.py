@@ -26,7 +26,8 @@ def train_pairs(w):
 def overtaking_curve(trains, rng, reps=1000):
     gaps = sorted({g for w in trains for g, _ in train_pairs(w)})
     if not trains or not gaps:
-        return {"gaps": [], "rate": [], "ci": [], "horizon_ms": None, "horizon_ci": None, "trains": len(trains)}
+        return {"gaps": [], "rate": [], "ci": [], "horizon_ms": None, "horizon_ci": None, "trains": len(trains),
+                "max_gap_ms": None, "censored": False}
     per = [train_pairs(w) for w in trains]
 
     def curve(sample):
@@ -53,8 +54,11 @@ def overtaking_curve(trains, rng, reps=1000):
     arr = np.array(boots, dtype=float)
     ci = [[float(np.nanpercentile(arr[:, i], 2.5)), float(np.nanpercentile(arr[:, i], 97.5))]
           if not np.all(np.isnan(arr[:, i])) else [None, None] for i in range(len(gaps))]
-    return {"gaps": gaps, "rate": rate, "ci": ci, "horizon_ms": horizon(rate),
-            "horizon_ci": [float(np.percentile(hs, 2.5)), float(np.percentile(hs, 97.5))], "trains": len(trains)}
+    h = horizon(rate)
+    # a horizon at the longest same-block gap the trains could show is only a lower bound ("h or more")
+    return {"gaps": gaps, "rate": rate, "ci": ci, "horizon_ms": h,
+            "horizon_ci": [float(np.percentile(hs, 2.5)), float(np.percentile(hs, 97.5))], "trains": len(trains),
+            "max_gap_ms": gaps[-1], "censored": bool(h > 0 and h >= gaps[-1])}
 
 
 def evaluable_train(w):
