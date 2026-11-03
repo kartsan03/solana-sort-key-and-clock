@@ -42,14 +42,12 @@ Send times are corrected by half the QUIC round trip to the target.
 (K-main / K-null / K-free), or train spacing and direction. Analysis uses a fixed seed for exact
 reproduction with `docker compose up`.
 
-**Power.** `itb sim` runs the decision procedure on simulated schedulers
-([design/power.json](design/power.json), 100 repetitions per cell, 85% of probes landing). With 22
-informative windows per validator-day, the true key is called in at least 99% of runs when 10% of windows
-are scrambled at random, and in 73% when 25% are; with 28 windows, in at least 93% even at 25%. A random or
-first-in, first-out (FIFO) scheduler was called a key rule in at most 1% of runs. The day quotas aim at
-28 informative windows on day A and 22 on days B and C. For trains, simulated rounds of 20 ms and 50 ms
-give horizons of about 8 ms and 24 ms (roughly half the round), and FIFO gives 0, which is why I report
-the horizon and not a round length.
+**Power.** `itb sim` runs the decision procedure on simulated schedulers ([design/power.json](design/power.json),
+100 repetitions per cell, 85% of probes landing). With 22 informative windows per validator-day (the day B
+and C target; day A aims at 28), the true key is called in at least 99% of runs when 10% of windows are
+scrambled, 73% when 25% are; a random or first-in, first-out (FIFO) scheduler is called a key rule in at
+most 1%. Simulated rounds of 20 and 50 ms give horizons of about 8 and 24 ms and FIFO gives 0, so I report
+the horizon, not a round length.
 
 ## 2. Design decisions
 
@@ -199,8 +197,13 @@ not their exact value: AgaveBam 16 ms again, FireBAM 36 ms (a fourth value), Har
 - **A stranger's deposit hid 9,374 lamports of fees.** During pilot-1027a an unknown address sent 9,374
   lamports to one of my fee payers ([`2sLiRbYW…`](https://explorer.solana.com/tx/2sLiRbYWEbhjqXfq4KVcNqoxneckPAVqJBXMFYq99EPreqMabLvfeJRBPBdAZkKNQtzBsddWRstuvqiqzC54hQ85)).
   The deposit arrived while fee reservations were open, understating balance-based spend by 9,374
-  lamports. Comparing block fees with balances caught it the next day. I logged the inflow to correct
-  spend; final reconciliation lists incoming transfers to all twelve wallets.
+  lamports. Comparing block fees with balances caught it the next day, and I logged it as an inflow.
+  Seven more unsolicited deposits (54,701 lamports: six within three minutes on 10-29, one on 10-31) did the
+  same and were found only by the final audit (§6).
+- **The main wallet could not empty itself.** On 11-02 I emptied the eleven fee payers first. A fee payer
+  must keep the rent minimum (650,240 lamports) after its 5,000-lamport fee unless it ends at zero, so the
+  main wallet (654,597) could not pay for its own transfer, and no funded wallet was left to pay for it. The
+  sweep code now empties the smallest wallets first and lets a richer one pay their fees.
 - **Unstaked connection closures.** Days A–D: the endpoint closed the connection in 61 of 288 BAM windows
   (21%), 33 of 550 own-IP windows (6%) and 0 of 263 Harmonic windows ([tables](data/derived/tables.md),
   "Delivery by route"). A closed stream does not prove the probe was lost: 84 of the 628 probes on a closed
@@ -221,12 +224,10 @@ not their exact value: AgaveBam 16 ms again, FireBAM 36 ms (a fourth value), Har
 
 ## 5. Deviations from the pre-registration
 
-- **Day D eligibility count.** PREREG lets day D run for a Tier-1 validator that is short of its target
-  "because of low supply or transitions", if the budget allows. I counted fully landed K-main windows
-  against the 22-window target of days B and C (stricter than counting per contrast) and fixed that reading
-  on 10-31 before day C ended. Six validators were short, all with fewer windows planned than their quota
-  (low supply); the remaining budget covered four, so day D took the four largest shortfalls
-  (`Fc6NNdS2`, `E1r4Psq8`, `SSmBEooM`, `87CcUxpy`) with their day-C quotas
+- **Day D eligibility count.** PREREG allows day D for a Tier-1 validator short of its target "because of
+  low supply or transitions". I counted fully landed K-main windows against the 22-window target (stricter
+  than per contrast), fixed on 10-31 before day C ended. Six were short; the budget covered the four largest
+  shortfalls (`Fc6NNdS2`, `E1r4Psq8`, `SSmBEooM`, `87CcUxpy`), with their day-C quotas
   ([design/campaign-dayD.json](design/campaign-dayD.json), committed before its first probe).
 - **Harmonic cap sweep (addition).** Not in PREREG. Designed after days A–C to measure the cap in the
   exploratory Harmonic formula, locked on chain by memo #3 before its first probe
@@ -255,11 +256,17 @@ Fees charged, from the block `meta.fee` of every transaction my wallets signed (
 | Day C | 10-31 | 13,988,910 |
 | Day D | 11-01 | 4,677,654 |
 | Harmonic follow-up | 11-02 | 2,510,921 |
-| Memos and fee-payer funding transfers | 10-27 to 11-02 | 90,299 |
-| **Total** | | **48,063,008 (0.048063 SOL)** |
+| Payer funding (26 transfers) | 10-27 to 11-02 | 130,000 |
+| Memos (3) | 10-28 to 11-02 | 15,000 |
+| Returning the funds (11 transfers) | 11-02 | 55,000 |
+| **Total** | | **48,172,709 (0.048173 SOL)** |
 
-The cap in code is 50,000,000 lamports for everything, operations included. The spend ledger reserves each
-transaction's maximum fee before sending and releases reservations after a balance check of all
-twelve wallets; after every run, the wallet balances, the ledger and the summed block fees agreed, with
-nothing unexplained. The one external deposit (§4) is logged as an inflow. The fee payers' rent and unspent
-float go back to the funding wallet at the end.
+The cap in code is 50,000,000 lamports for everything. The ledger reserves each transaction's maximum fee
+before sending and releases reservations only after a balance check of all twelve wallets. The final audit,
+[data/audit/audit-2026-11-02T093538Z.json](data/audit/audit-2026-11-02T093538Z.json), lists all 40 operations transactions by signature
+and fee, and every transaction that touched my wallets without my signature. `docker compose up` checks
+the total three ways ([tables](data/derived/tables.md), "Cost check"): probe plus operations fees equal the
+audit's on-chain total (48,172,709) and the balance-based spend (48,118,008) plus the seven unsolicited
+deposits (54,701). The deposits made the ledger show 54,701 lamports more headroom than there was; the cap
+held either way. 11 transfers returned 11,236,769 lamports to the funding wallet; 654,597 stay in the main
+wallet (§4).

@@ -119,3 +119,16 @@ def test_sweep_plan_keeps_fee_payers_rent_exempt():
     assert steps == [("burner", "a", 654_597), ("a", "a", 1_000_000 - 2 * fee - fee)]   # a pays the burner's fee
     assert sweep_steps({"burner": 654_597}, ["burner"], fee, rent) == [("burner", None, 643)]
     assert sweep_steps({"x": 700_000}, ["x"], fee, rent) == [("x", "x", 695_000)]
+
+
+def test_spend_check_joins_probe_fees_and_ops(tmp_path):
+    import json
+    from itb.checks import spend
+    (tmp_path / "data" / "audit").mkdir(parents=True)
+    (tmp_path / "data" / "audit" / "audit-x.json").write_text(json.dumps({
+        "fees_on_chain": 25_000, "balance_spent": 24_000, "balance_total": 7,
+        "unknown_transactions": [{"deltas": {"W": 1_000}}],
+        "ops_transactions": [{"kind": "memo", "fee": 5_000}, {"kind": "sweep", "fee": 5_000}]}))
+    ws = [{"probes": [{"fee_charged": 9_000}, {"fee_charged": 6_000}, {}]}]
+    r = spend(ws, tmp_path)
+    assert r["total_fees"] == 25_000 and r["agree"] and r["unsolicited_deposits"] == {"count": 1, "lamports": 1_000}

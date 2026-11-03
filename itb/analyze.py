@@ -297,6 +297,8 @@ def compute():
     from .capsweep import analyze as capsweep, joint
     res["capsweep"] = capsweep(windows_all)
     res["capsweep"]["joint"] = joint(windows_all, ROOT)
+    from .checks import spend
+    res["spend"] = spend(windows_all, ROOT)
     return json.loads(json.dumps(res, sort_keys=True, default=str))
 
 

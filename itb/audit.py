@@ -27,7 +27,7 @@ async def audit(rpc, led):
     raw_fee = {p["sig"]: p["fee_charged"] for w in load() for p in w["probes"] if p.get("fee_charged")}
     st = await rpc.signature_statuses(list(txs))
     runs = defaultdict(lambda: {"txs": 0, "landed": 0, "fees": 0})
-    fees = 0
+    fees, ops = 0, []
     for sig, t in txs.items():
         r = runs[t["run_id"]]
         r["txs"] += 1
@@ -40,6 +40,8 @@ async def audit(rpc, led):
         r["landed"] += 1
         r["fees"] += fee
         fees += fee
+        if t["kind"] != "probe":                             # memos, payer funding, sweep: listed one by one
+            ops.append({"sig": sig, "run_id": t["run_id"], "kind": t["kind"], "slot": s.get("slot"), "fee": fee})
     unknown = []
     ws = set(wallets)
     for w in wallets:
@@ -57,7 +59,8 @@ async def audit(rpc, led):
     out = {"utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "slot": slot,
            "ledger_spent": led.spent(), "ledger_reserved": led.reserved(), "fees_on_chain": fees,
            "balance_spent": base["total"] + led.flows_total() - total, "balance_total": total,
-           "unknown_transactions": unknown, "runs": dict(sorted(runs.items()))}
+           "unknown_transactions": unknown, "runs": dict(sorted(runs.items())),
+           "ops_transactions": sorted(ops, key=lambda o: (o["slot"] or 0, o["sig"]))}
     out["consistent"] = out["ledger_spent"] == out["fees_on_chain"] == out["balance_spent"] and not unknown
     path = ROOT / "data" / "audit" / f"audit-{out['utc'].replace(':', '')}.json"
     path.parent.mkdir(parents=True, exist_ok=True)

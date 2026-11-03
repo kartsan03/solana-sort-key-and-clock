@@ -457,6 +457,10 @@ Consistency check added after the sweep (a fit, not a test: X and beta are chose
 | harmonic | 263 | 263 | 0 | 0 | 263 | 0 / 0 (0) |
 | own | 550 | 515 | 33 | 2 | 516 | 48 / 198 (309,521) |
 
+### Cost check (lamports)
+
+Probe block fees (data/raw): 47,972,709. Operations (audit-2026-11-02T093538Z.json): fund 26 tx / 130,000, memo 3 tx / 15,000, sweep 11 tx / 55,000. Total: **48,172,709** of the 50,000,000 cap. The audit's on-chain fee total is 48,172,709; its balance-based spend is 48,118,008 plus 7 unsolicited deposits of 54,701 = 48,172,709. All three agree: yes. Left in my wallets at the audit: 654,597.
+
 ### Runs (UTC)
 
 | Run | Phase | First send | Last send | Windows | Probes | In target block | Fees charged (lamports) |

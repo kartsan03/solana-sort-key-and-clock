@@ -3550,6 +3550,31 @@
   "dayC": 372,
   "dayD": 126
  },
+ "spend": {
+  "agree": true,
+  "audit_balance_spent": 48118008,
+  "audit_chain_fees": 48172709,
+  "audit_file": "audit-2026-11-02T093538Z.json",
+  "cap": 50000000,
+  "left_in_wallets": 654597,
+  "ops_fees": {
+   "fund": 130000,
+   "memo": 15000,
+   "sweep": 55000
+  },
+  "ops_transactions": {
+   "fund": 26,
+   "memo": 3,
+   "sweep": 11
+  },
+  "probe_fees": 47972709,
+  "total_fees": 48172709,
+  "under_cap": true,
+  "unsolicited_deposits": {
+   "count": 7,
+   "lamports": 54701
+  }
+ },
  "study_k": {
   "2dfgsiSaZ51QYPsECMYMG247PXxyKdwkV9wTHoQb8YEC|calibration": {
    "agreement": {

@@ -1,0 +1,642 @@
+{
+ "utc": "2026-11-02T09:35:38Z",
+ "slot": 464446963,
+ "ledger_spent": 48118008,
+ "ledger_reserved": 0,
+ "fees_on_chain": 48172709,
+ "balance_spent": 48118008,
+ "balance_total": 654597,
+ "unknown_transactions": [
+  {
+   "sig": "9FAg4tokWLm44Swa6mSWUFtahbyMuAu7aJcLtiesD8w8gcuDCGKf9d2bgzaYjpQNqZa1AS93YKGug6rtB9vYRoE",
+   "slot": 463787035,
+   "fee_payer": "6fZVdaV1ce9qJBEcaoigLtZHvJeSG3WQWf3c6M3H1Mw5",
+   "deltas": {
+    "7NXMoQLTFuCuS7h2oB1vUxhzmV37cBRz3joPknH27cCo": 9382
+   }
+  },
+  {
+   "sig": "3Q349XpmYCgFk2By94U6LWeV4MeHTNrqanW9j2wP8Aedxdq4C74YHtngVnFVqJrrngz4PSTJZYyFekKBBWDzEmGP",
+   "slot": 462762776,
+   "fee_payer": "BjxJY4bMMb6fDFnHrReSaHds4UagM5jU78ybtJXYVGJF",
+   "deltas": {
+    "JC3JhYrSEZ5mLyfd99qSipDjV5Xvs6NEpooFMSuCutjy": 2113
+   }
+  },
+  {
+   "sig": "3v6uNREcgqpujyJVEfj4X7bMTpznSraUHLB3DhXcYUttZZha7k1KeVZ5UicX7bospCTLB8RfvwiXyLGN3ziV3MAw",
+   "slot": 462762827,
+   "fee_payer": "56xzX26yAvZuzW9PBeDysYep8J43R7cDWbS2zBmfRg3V",
+   "deltas": {
+    "D3PosMHkVfePscVDskVWqKMpqWgHXVWVY3hGut897wLD": 11334
+   }
+  },
+  {
+   "sig": "2AXiwwmLRnqcfqnjTkCzt7qNU5vTo38X2q1kYpnwoud6CeWoEgx2XXGUoA2iHGAF4Jws6Fj8HD9TQP5jPWs3L5NS",
+   "slot": 462762924,
+   "fee_payer": "8sgrKaD44CWGoMUxQYUduXwBa2mciUrrbi6YAQepmqbQ",
+   "deltas": {
+    "2oeR3mHnt4fF4U5SUKASwAxd6LSyoRouZ7yEauMq27D1": 11866
+   }
+  },
+  {
+   "sig": "RMFUsbbMxPS7fx3jpdwCwkd35EHkJu7PgzdDyrkyMVCYt91ZcE4wLv3CVWHWj9UEZ9ydKq9P2XYvKEa6EnQBEZL",
+   "slot": 462763054,
+   "fee_payer": "GVJCXwpoy4VLPtYzz3uh84kYCSSnsqCM4hG2BGxXezNv",
+   "deltas": {
+    "GRJhKR7uwdeCa3Up32otyCUqAazxLZ9UsfFU9mX6y37F": 6440
+   }
+  },
+  {
+   "sig": "C8cACR1XcASnpfkaoEEDwxoCDrQnAnyr6YLPUZiDQnjdkL4BnGjxayXD9PFkxTnZ2xuXCsMCkUpG41hMGM6uFds",
+   "slot": 462762872,
+   "fee_payer": "51Ffb5BReyzoCrfTF3mNhL66gHuxs5ivsGy434VXECm7",
+   "deltas": {
+    "4jXRe2f8fYG4phiSJYMd9gPqN4ikPAMw2fzUKQ5dPztG": 3483
+   }
+  },
+  {
+   "sig": "3cc64WyAbxEnwu1zm55DrXfP1LH7s8GTnAaoYCk9Pb6tqqHknecEmNm6mAMKRFsKTiKf1pfcap91yoRJCuUTfhBm",
+   "slot": 462762629,
+   "fee_payer": "5MTVEFpXiu1AKNCoFkktPDhkxxjALgVPTBPZE2uVPs3a",
+   "deltas": {
+    "5NFdF56dBcGahYheDHV4TVDsRLyFzU5nDMpx2qbDYq47": 10083
+   }
+  }
+ ],
+ "runs": {
+  "A-1029-b0": {
+   "txs": 388,
+   "landed": 326,
+   "fees": 2065407
+  },
+  "A-1029-b1": {
+   "txs": 370,
+   "landed": 334,
+   "fees": 2118875
+  },
+  "A-1029-b2": {
+   "txs": 394,
+   "landed": 364,
+   "fees": 2316987
+  },
+  "A-1029-b3": {
+   "txs": 370,
+   "landed": 352,
+   "fees": 2233721
+  },
+  "A-1029-b4": {
+   "txs": 434,
+   "landed": 392,
+   "fees": 2468735
+  },
+  "A-1029-b5": {
+   "txs": 344,
+   "landed": 310,
+   "fees": 1980114
+  },
+  "B-1030-b0": {
+   "txs": 258,
+   "landed": 228,
+   "fees": 1449117
+  },
+  "B-1030-b1": {
+   "txs": 270,
+   "landed": 222,
+   "fees": 1427039
+  },
+  "B-1030-b2": {
+   "txs": 288,
+   "landed": 270,
+   "fees": 1716782
+  },
+  "B-1030-b3": {
+   "txs": 306,
+   "landed": 270,
+   "fees": 1729118
+  },
+  "B-1030-b4": {
+   "txs": 288,
+   "landed": 276,
+   "fees": 1769395
+  },
+  "B-1030-b5": {
+   "txs": 288,
+   "landed": 258,
+   "fees": 1636207
+  },
+  "C-1031-b0": {
+   "txs": 348,
+   "landed": 336,
+   "fees": 2162011
+  },
+  "C-1031-b1": {
+   "txs": 402,
+   "landed": 360,
+   "fees": 2296997
+  },
+  "C-1031-b2": {
+   "txs": 408,
+   "landed": 384,
+   "fees": 2457380
+  },
+  "C-1031-b3": {
+   "txs": 396,
+   "landed": 378,
+   "fees": 2428226
+  },
+  "C-1031-b4": {
+   "txs": 408,
+   "landed": 354,
+   "fees": 2255127
+  },
+  "C-1031-b5": {
+   "txs": 384,
+   "landed": 372,
+   "fees": 2389169
+  },
+  "D-1101-b0": {
+   "txs": 138,
+   "landed": 108,
+   "fees": 690934
+  },
+  "D-1101-b1": {
+   "txs": 126,
+   "landed": 120,
+   "fees": 766357
+  },
+  "D-1101-b2": {
+   "txs": 156,
+   "landed": 144,
+   "fees": 914059
+  },
+  "D-1101-b3": {
+   "txs": 132,
+   "landed": 126,
+   "fees": 811528
+  },
+  "D-1101-b4": {
+   "txs": 132,
+   "landed": 114,
+   "fees": 729029
+  },
+  "D-1101-b5": {
+   "txs": 132,
+   "landed": 120,
+   "fees": 765747
+  },
+  "S-1102": {
+   "txs": 270,
+   "landed": 251,
+   "fees": 2510921
+  },
+  "ops-1793112361": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-1793150336": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-1793318269": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-1793577626": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-1793577642": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b0": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b1": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b2": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b3": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b4": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-A-1029-b5": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b0": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b1": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b2": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b3": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b4": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-B-1030-b5": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b0": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b1": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b2": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b3": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b4": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-C-1031-b5": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b0": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b1": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b2": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b3": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b4": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-D-1101-b5": {
+   "txs": 1,
+   "landed": 1,
+   "fees": 5000
+  },
+  "ops-sweep-1793611003": {
+   "txs": 12,
+   "landed": 11,
+   "fees": 55000
+  },
+  "pilot-1027a": {
+   "txs": 556,
+   "landed": 468,
+   "fees": 2929109
+  },
+  "pilot-1027b": {
+   "txs": 144,
+   "landed": 114,
+   "fees": 743425
+  },
+  "smoke-1027a": {
+   "txs": 52,
+   "landed": 34,
+   "fees": 211193
+  }
+ },
+ "ops_transactions": [
+  {
+   "sig": "4nk3qRW5wa6miKfNFTNQggdDB8DUucmPrsuxVZohdZr13S3TRpyFxVLpcbWf7VE71Gyo5EMCCL5eisbTC5h9WL4b",
+   "run_id": "ops-1793112361",
+   "kind": "fund",
+   "slot": 462109363,
+   "fee": 5000
+  },
+  {
+   "sig": "TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd",
+   "run_id": "ops-1793150336",
+   "kind": "memo",
+   "slot": 462287684,
+   "fee": 5000
+  },
+  {
+   "sig": "5wH2N2pip8bXjUZVgggLMph7Z61rx1xUSA466TvQ46pXfUjL2XLojNwpgRNajsFZNSd8iQV65j7CbUaMFSxQTvsf",
+   "run_id": "ops-A-1029-b0",
+   "kind": "fund",
+   "slot": 462670203,
+   "fee": 5000
+  },
+  {
+   "sig": "2m1n9oaq1ACDevKNDRTEBdypbSHjMuhJmJxzxRcCjtspABpZEF99uqZkofAcYyQKfwhuS53jf3b1e2ML9Qm1T3Zp",
+   "run_id": "ops-A-1029-b1",
+   "kind": "fund",
+   "slot": 462737526,
+   "fee": 5000
+  },
+  {
+   "sig": "m1dnxCYGCs7L5n5wRds2up9KJ3P6Vk1S9Q3Mr88kVnpnJdqQ62MKGnMpTViAXfiCE2soFbpSQope6u198ZUhDCp",
+   "run_id": "ops-A-1029-b2",
+   "kind": "fund",
+   "slot": 462804963,
+   "fee": 5000
+  },
+  {
+   "sig": "5LfcKvxfyZVFvtqL8xMJ7ENvaNr1Ezw7MwAtRWgNrsKVQQSQQR2r47UHvSzsadXEjvBo1ZfDeXWSz6NEyeduP7D3",
+   "run_id": "ops-A-1029-b3",
+   "kind": "fund",
+   "slot": 462872388,
+   "fee": 5000
+  },
+  {
+   "sig": "4geuggWrSC93gVQ9sFaUXGYv6X3ECjvhup1SnbzC2an7VQbA18qz2aBaZQJ2qj5cHShQP4do9WgdkxWRttiBJW4X",
+   "run_id": "ops-A-1029-b4",
+   "kind": "fund",
+   "slot": 462939730,
+   "fee": 5000
+  },
+  {
+   "sig": "pdRQ8tiMDezo6Mgq3YkacDRn6fhA5JgKoMyej57bBLXEeipbgxUvxGWNr9BZia7pSLsyaTu739Psi3pQTkcbPGr",
+   "run_id": "ops-A-1029-b5",
+   "kind": "fund",
+   "slot": 463006976,
+   "fee": 5000
+  },
+  {
+   "sig": "mbp3zEGqTFnkJuLZkRndhWu4yFRkdxvwHJNMKZimE4QzbAeBMrT2RhE2N7ve8Z6F9BWkTV4ECBG1LoqwaCWJaNF",
+   "run_id": "ops-1793318269",
+   "kind": "memo",
+   "slot": 463074234,
+   "fee": 5000
+  },
+  {
+   "sig": "4rzzh6niD4tZ5qaEENppHPWX6openCC8VjXG68mXnag4HpWeyTy9hSYa68bHWChJzXMYHTAHZVT1XS9D2BXvrkrc",
+   "run_id": "ops-B-1030-b0",
+   "kind": "fund",
+   "slot": 463074255,
+   "fee": 5000
+  },
+  {
+   "sig": "2AcRjPZZ5cK4cCPH3uZskCpsp7QvRRp2RoM16f2WQrwQ4MED2e1vLQTJZe1JLjxop4PS6q7evpUyrRKUMvKqEyRm",
+   "run_id": "ops-B-1030-b1",
+   "kind": "fund",
+   "slot": 463141596,
+   "fee": 5000
+  },
+  {
+   "sig": "5SBRBWagNxExPrUaspLFcFWuqmEkUaaizduHZYZSqomMVxrkVev5oWCzhDy9FSHmTPaaoWqykKkPreCFcTstq8r7",
+   "run_id": "ops-B-1030-b2",
+   "kind": "fund",
+   "slot": 463209083,
+   "fee": 5000
+  },
+  {
+   "sig": "5hudF569cckeAYWkCKG4UMCgYvt3kLFrXqEMBi4uupEAiiH9sJVawWmWVTWLXAU7j4zaUT8RLDTTqY2y2fVrm3Um",
+   "run_id": "ops-B-1030-b3",
+   "kind": "fund",
+   "slot": 463276530,
+   "fee": 5000
+  },
+  {
+   "sig": "2TfoBCVwbjANRnK6aqGCQVX2dx2ACB2NXsQQkd8wgq9Hr7HNrgrVwjLPEJLLAntR6Lx8kueHtsTTRJE4tqskzTmM",
+   "run_id": "ops-B-1030-b4",
+   "kind": "fund",
+   "slot": 463343944,
+   "fee": 5000
+  },
+  {
+   "sig": "4i2EdE1rb1cC8P3ArGZYiUDU4QpRkfxFRUywTcBkK8MSREFNph3X7dYSRreYsEWJFfuWBHhSh4BHtJog3cRLSdPg",
+   "run_id": "ops-B-1030-b5",
+   "kind": "fund",
+   "slot": 463411100,
+   "fee": 5000
+  },
+  {
+   "sig": "KdZiBfGFNL8VpKca6CNkvMSD97jTrwozUBbpP9AbXMsBBeeV1T6pcU9S39G4msE4YVc6weRXzRh71S1cEYwe1HV",
+   "run_id": "ops-C-1031-b0",
+   "kind": "fund",
+   "slot": 463478242,
+   "fee": 5000
+  },
+  {
+   "sig": "4n67U48j2AKV5pWC9EhGUvo3XV3ep4YRiXg3Vqxo89CxdR1m8BSRxb1KsSdG2EawQjYYrnGSzSYds5FEumcdPMCo",
+   "run_id": "ops-C-1031-b1",
+   "kind": "fund",
+   "slot": 463546632,
+   "fee": 5000
+  },
+  {
+   "sig": "4yNxLtbku4GoyZCj3eJnAUv4dqvmzP1sozvUdjaBoTTseiHmcyGUVdkzReuvU3grFA6UiyCxgTp39KP4DxdVYNUX",
+   "run_id": "ops-C-1031-b2",
+   "kind": "fund",
+   "slot": 463612569,
+   "fee": 5000
+  },
+  {
+   "sig": "3Et388ZeKQnQnvbACANQ1M8dZYkZkUFEQLDWEcz5AJAA3EiYs6ipv8e7PRHNAauZeM27zVswpaUDkGHACgPBFMLZ",
+   "run_id": "ops-C-1031-b3",
+   "kind": "fund",
+   "slot": 463679954,
+   "fee": 5000
+  },
+  {
+   "sig": "4RwR4fPbx39yURM9B5TiTdzZkPnLggAGC1PPjgCspuEqr34QPGdeBStpP27EpWvWdsPXoTpBhjh6hKmvpgAZNjJa",
+   "run_id": "ops-C-1031-b4",
+   "kind": "fund",
+   "slot": 463747207,
+   "fee": 5000
+  },
+  {
+   "sig": "4qDHk3Q1v1Hw7s6yB8h9pxo4eoXmX2xaczs9cHinpUbSvuptPExAP5sPb8Pprejjoa7yqdwkL7DxHX1WS3V2xWSi",
+   "run_id": "ops-C-1031-b5",
+   "kind": "fund",
+   "slot": 463814369,
+   "fee": 5000
+  },
+  {
+   "sig": "4KYKgCCZ2uv3ijgs6Ht9skpTMTzWsdTFJeqDHWcvTqmnVFkEfCDcdjBNCtRqyXcBfqTxyH5bwfqjkMbNK8Wkgn9u",
+   "run_id": "ops-D-1101-b0",
+   "kind": "fund",
+   "slot": 463881683,
+   "fee": 5000
+  },
+  {
+   "sig": "3zxV8KRs2XRbp5mGnYqR8ptpxcGDEWiYN9WT7fLSJv1Z3SX5iodvhKKvUUSEv9gZFckx1KKfUaxE8GCwciqUi5MH",
+   "run_id": "ops-D-1101-b1",
+   "kind": "fund",
+   "slot": 463948924,
+   "fee": 5000
+  },
+  {
+   "sig": "4smmCtSbmFfHJx4Eu71zoKJGDkpVptHBNXH8m2UY92Ek9nhttowhTxfiDn7g6aTmy7WGrDUioNrpdT5WNwYgYYER",
+   "run_id": "ops-D-1101-b2",
+   "kind": "fund",
+   "slot": 464016140,
+   "fee": 5000
+  },
+  {
+   "sig": "4NMjtu16YTQy99QRrFSrAshbNqwmTbFWaaA2xuKATTBB2kjdo8Q2Uh5kiKgYsUKDC1NzioUxnLi1nfTm7pfDGePz",
+   "run_id": "ops-D-1101-b3",
+   "kind": "fund",
+   "slot": 464083512,
+   "fee": 5000
+  },
+  {
+   "sig": "46sVuiH6NinYt5w7SnvbTu8RNr7QsXw1qJto5qAgEz3ku2NCXfRXcBjVre3Niqq6fhyHndmX46oQ2cW2QZ6V6GDL",
+   "run_id": "ops-D-1101-b4",
+   "kind": "fund",
+   "slot": 464150670,
+   "fee": 5000
+  },
+  {
+   "sig": "5JfkYxgEV6h2kVrDd49gaqorH4myw1iDDjhCeAe13qN9sYhGDpKuDj3KthYZyWNiAQ3p5pfUz3sC6kha6WzXzsJ5",
+   "run_id": "ops-D-1101-b5",
+   "kind": "fund",
+   "slot": 464217854,
+   "fee": 5000
+  },
+  {
+   "sig": "4zMGqri3f4ufA5sAFoZsr5VXQM6V4q1YxVpiqHQLgCFwjAtbVLkSTS1yWBK3vRCdXQmgMPP4TynR67CGf41E7HUf",
+   "run_id": "ops-1793577626",
+   "kind": "memo",
+   "slot": 464285847,
+   "fee": 5000
+  },
+  {
+   "sig": "4UgxcxUnFYRaiQeWQef2KkFqhuLYccRmdFC887cihXJbRm6XrEfrx9EpucaUMJ8LsvZKrco15mYQCJtkfZG2PNKW",
+   "run_id": "ops-1793577642",
+   "kind": "fund",
+   "slot": 464285921,
+   "fee": 5000
+  },
+  {
+   "sig": "4LQmyAydwddyxu4deBt2vgzy4fiddL49rBBCxxaTTD8BmWkhe1yUWWBZNSgm2kQtqekyr3yZMHzCKDQPcYGaXjWp",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441675,
+   "fee": 5000
+  },
+  {
+   "sig": "5goXyFQR1m7j6WBpZJ7Wxo76LfAfgmZYq3SKvmHh4m8QeCVzcAFKZKfU9D6dYf9wqtnFxGNVbSGdSRB5Jmr7sEgH",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441686,
+   "fee": 5000
+  },
+  {
+   "sig": "2TTG2e56y91rS7iTMNCoh6bnANRqSdPfGc1ze7ngLm2tqoYHEhg1H9DR4prKBaTKfCd99yrTNVyXmwijvGhSeX6M",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441696,
+   "fee": 5000
+  },
+  {
+   "sig": "5F8xGWAcjmWhAeJ9K9TyxZihxyPSGC5jJxRPZZiVeC4KauhgUsC4qqfsCuXnzygva3UasUvznFfUVmSym7cokUUj",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441708,
+   "fee": 5000
+  },
+  {
+   "sig": "3648wcoQXA5rNSnLPurrqVkpSt5FwM7QEbjuGisHT4t3BkLrbJFYLfHP6NSHNyhXSGqrLamVnVHJS4bwj1iEYcXC",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441719,
+   "fee": 5000
+  },
+  {
+   "sig": "5yJJLnhYbXN7Zy1BrYtfqXC4ueDTJeiEK9qfswmtm9Z3os1hLW5MEEr2QDSa1U1nE5uBy8NG77fwQ3aSBNzyKUqq",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441730,
+   "fee": 5000
+  },
+  {
+   "sig": "44eUat2a4wUbCX7Hw9cDyYLdnrtde4TZUD2B4jg3tbTpUcVZk8566VNXQduNmjLQVeoPjMq4nrGnfrpYiM8gNTfs",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441741,
+   "fee": 5000
+  },
+  {
+   "sig": "2qLP78dc6TwWy4jCBrShUpyTLPb6HDeRjxwBGkHDfXvUEYkACekj3myGotYDkwHLXZxCpB6Wpu7c4p1hEZR2A34W",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441751,
+   "fee": 5000
+  },
+  {
+   "sig": "3R5hcyPqcHVnZ9NUpEndr5Kq46vHyoWmtDXcLYge8Lp6ff9HK6VTSTFkp4xWFPbMgwVhV6LA46t9fzwtbNf97HBR",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441763,
+   "fee": 5000
+  },
+  {
+   "sig": "41JLt3ncF6XgcVJJGKK2fRiF3dcoXHmkG5QcweT2tAkRFKwTvTRCWkszohB2XxPrdgmkK6scbvJiexEx7AbyScL",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441773,
+   "fee": 5000
+  },
+  {
+   "sig": "5jb1SaVvP2N4tSgoUdyP7yUqGX9r2bQN4XxJwtvK8wpMBBk6BwBK34HJVCbKhQz9pQQASs1N55suw8kHQ6LgE1kw",
+   "run_id": "ops-sweep-1793611003",
+   "kind": "sweep",
+   "slot": 464441788,
+   "fee": 5000
+  }
+ ],
+ "consistent": false
+}

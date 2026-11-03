@@ -63,16 +63,14 @@ results, dates, deviations and what went wrong.
   contention.
 - **Trains.** 10–12 probes with equal limits, sent 4 ms or 12 ms apart during the window, with fees rising
   or, as a control, falling. First-in, first-out (FIFO) keeps send order; sorting allows overtaking.
-- **Route.** Unstaked QUIC directly to the TPU address each leader advertises, one transaction per
-  stream, with every send time logged. For BAM and Harmonic validators that address is the
-  block builder, so those results describe the validator *as reached through its advertised ingress*.
-  BAM endpoints closed my connection in 21% of windows (own-IP 6%, Harmonic 0%). Most probes on a closed
-  connection never landed; 84 of 628 still did, and their fees are counted.
-- **Schedule.** Calibration: 2026-10-27 to 10-28. Collection: six 4-hour blocks across all UTC hours on
-  days A–C. Day A (10-29) picks undocumented builders' keys and horizons; B and C (10-30, 10-31) test those
-  picks. Agave, Jito and Firedancer are tested against their source-code key from day A on. Tier 1 is the eight main
-  validators; Tier 2 adds a second per client on day C. Day D (11-01) tops up four shortfalls; 11-02 is the
-  exploratory Harmonic sweep.
+- **Route.** Unstaked QUIC straight to the TPU address each leader advertises, every send time logged.
+  For BAM and Harmonic that address is the block builder, so those results describe the validator *as
+  reached through its advertised ingress*. BAM endpoints closed my connection in 21% of windows (own-IP
+  6%, Harmonic 0%); 84 of the 628 probes on a closed connection still landed.
+- **Schedule.** Calibration 10-27 to 10-28. Days A–C (10-29 to 10-31), six 4-hour blocks each over all
+  UTC hours: day A picks builders' keys and horizons, B and C test them; Agave, Jito and Firedancer face
+  their source-code key throughout. Tier 1 = eight main validators; Tier 2 = a second per client on day C.
+  Day D (11-01) topped up four shortfalls; 11-02 was the Harmonic follow-up.
 - **Pre-registration.** [PREREG.md](PREREG.md) and [design/design.json](design/design.json) fix questions,
   keys, decision rules and quotas before campaign probes. On-chain hashes:
   memo #1 [`TywPFLUz…`](https://explorer.solana.com/tx/TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd)
@@ -142,10 +140,11 @@ code caps total spend at 0.05 SOL and reconciles on-chain balances after every b
 
 ## Cost
 
-0.048063 SOL in fees out of the 0.05 SOL cap, operations included: 0.047973 SOL for probes (calibration
-0.0039, day A 0.0132, day B 0.0097, day C 0.0140, day D 0.0047, Harmonic follow-up 0.0025) and 0.00009 SOL
-for memos and fee-payer funding. Balances, ledger and block fees agreed after every run, with nothing
-unexplained ([REPORT.md](REPORT.md) §6).
+0.048173 SOL in fees out of the 0.05 SOL cap, everything included: 0.047973 SOL of probe block fees
+(calibration 0.0039, day A 0.0132, B 0.0097, C 0.0140, D 0.0047, Harmonic follow-up 0.0025) and 0.0002 SOL
+for 40 operations transactions. `docker compose up` re-adds them from the raw data and the final audit and
+checks the sum against the on-chain total and the wallet balances ([REPORT.md](REPORT.md) §6). 0.011237 SOL
+went back to the funding wallet; 0.00065 SOL is stuck in the main wallet (§4).
 
 ## Repo map
 

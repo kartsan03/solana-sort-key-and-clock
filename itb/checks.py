@@ -1,4 +1,5 @@
-"""Inclusion counts, the per-probe fee check and the pilot gates (calibration runs only)."""
+"""Inclusion counts, the per-probe fee check, the cost check and the pilot gates (calibration runs only)."""
+import json
 from collections import Counter, defaultdict
 
 import numpy as np
@@ -31,6 +32,29 @@ def fee_check(windows):
 
 
 EXEC_COST = 720 + 600 + 7 + 600 + 8      # executed cost of any landed probe (meta.costUnits)
+
+
+def spend(windows, root, cap=50_000_000):
+    """Total cost from committed evidence: the block fee of every probe (data/raw) plus every operations
+    transaction (memos, payer funding, sweep) listed in the newest data/audit file. It must equal the audit's
+    on-chain fee total, and the audit's balance-based spend plus deposits strangers sent to my wallets."""
+    files = sorted((root / "data" / "audit").glob("audit-*.json"))
+    if not files:
+        return None
+    a = json.loads(files[-1].read_text())
+    probe = sum(p.get("fee_charged") or 0 for w in windows for p in w["probes"])
+    fees, count = Counter(), Counter()
+    for o in a.get("ops_transactions", []):
+        fees[o["kind"]] += o["fee"]
+        count[o["kind"]] += 1
+    deposits = [sum(u["deltas"].values()) for u in a["unknown_transactions"]]
+    total = probe + sum(fees.values())
+    return {"audit_file": files[-1].name, "probe_fees": probe, "ops_fees": dict(sorted(fees.items())),
+            "ops_transactions": dict(sorted(count.items())), "total_fees": total,
+            "audit_chain_fees": a["fees_on_chain"], "audit_balance_spent": a["balance_spent"],
+            "unsolicited_deposits": {"count": len(deposits), "lamports": sum(deposits)},
+            "agree": total == a["fees_on_chain"] == a["balance_spent"] + sum(deposits),
+            "cap": cap, "under_cap": total <= cap, "left_in_wallets": a["balance_total"]}
 
 
 def gates(windows, panels):
