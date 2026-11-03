@@ -27,9 +27,17 @@ async def balances(rpc, pubkeys, commitment="finalized"):
 
 
 async def reconcile(rpc, ledger, pubkeys, note=""):
-    bal, slot = await balances(rpc, pubkeys)
+    """Height first, then balances: every reservation released below that height is inside the snapshot.
+    Landed fees of the reservations about to be released are counted from the chain as well, so a deposit
+    that arrives with them cannot hide spend (the ledger halts instead)."""
     height = await rpc.block_height("finalized")
-    return ledger.reconcile(bal, height, slot, note), bal
+    bal, slot = await balances(rpc, pubkeys)
+    due = ledger.txs("released IS NULL AND last_valid < ?", (height,))
+    landed = 0
+    if due:
+        st = await rpc.signature_statuses([t["sig"] for t in due])
+        landed = sum(t["max_fee"] for t in due if st.get(t["sig"]))   # a landed transaction pays its fee, error or not
+    return ledger.reconcile(bal, height, slot, note, landed_fee=landed), bal
 
 
 async def submit(rpc, ledger, tx, kind, run_id, info=None, run_limit=None, log=print):

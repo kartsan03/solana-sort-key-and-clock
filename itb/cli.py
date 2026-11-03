@@ -32,7 +32,17 @@ def payers():
 
 
 def pubkeys():
+    """The study's wallets as recorded in design/wallets.json (read-only status)."""
     return json.loads((ROOT / "design" / "wallets.json").read_text())["pubkeys"]
+
+
+def live_pubkeys(led):
+    """Wallets the spend cap must watch: derived from the loaded key. Refuses when the ledger watches others."""
+    pks = [str(k.pubkey()) for k in payers()]
+    stored = led.get("wallets")
+    if stored is not None and sorted(stored) != sorted(pks):
+        sys.exit("refused: the loaded key's wallets are not the ones this ledger watches (state/ledger.sqlite)")
+    return pks
 
 
 async def cmd_plan(a):
@@ -112,7 +122,8 @@ async def cmd_run(a):
         cur = await rpc.slot("confirmed")
         if min(w["slot0"] for w in windows) < 459_653_000 or cur < 459_653_000:
             sys.exit("refused: slots before Alpenglow consensus")
-        r, _ = await ops.reconcile(rpc, led, pubkeys(), f"pre-run {run_id}")
+        pks = live_pubkeys(led)
+        r, _ = await ops.reconcile(rpc, led, pks, f"pre-run {run_id}")
         if r["halted"]:
             sys.exit(f"live run refused: reconciliation halted: {led.get('halt')}")
         run_limit = led.committed() + max_l
@@ -136,7 +147,7 @@ async def cmd_run(a):
             print("waiting for every blockhash to expire before reconciling ...")
             while await rpc.block_height("finalized") <= last_valid + 2:
                 await asyncio.sleep(5)
-            r, _ = await ops.reconcile(rpc, led, pubkeys(), f"post-run {run_id}")
+            r, _ = await ops.reconcile(rpc, led, pks, f"post-run {run_id}")
             print(f"reconciled: {r}")
             await do_collect(rpc, run_dir)
     await rpc.close()
@@ -175,7 +186,7 @@ async def cmd_ops(a):
     from .wallet import public_info
     rpc = Rpc()
     led = ledger()
-    pks = pubkeys()
+    pks = pubkeys() if a.op in ("keyinfo", "status", "labels", "audit", "unhalt") else live_pubkeys(led)
     if a.op == "keyinfo":
         info = public_info(payers())
         print(json.dumps(info, indent=1))
@@ -232,7 +243,7 @@ async def cmd_ops(a):
     await rpc.close()
 
 
-def main(argv=None):
+def build_parser():
     p = argparse.ArgumentParser(prog="itb")
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("design")
@@ -278,7 +289,11 @@ def main(argv=None):
     s.add_argument("--sample", type=int, default=40)
     s = sub.add_parser("sim")
     s.add_argument("--reps", type=int, default=200)
-    a = p.parse_args(argv)
+    return p
+
+
+def main(argv=None):
+    a = build_parser().parse_args(argv)
     if a.cmd == "design":
         from .design import panel_report, write_design
         panels = write_design(a.seed, ROOT / "design")

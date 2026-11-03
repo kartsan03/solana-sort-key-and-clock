@@ -2,7 +2,7 @@
 
 Timing: the slot clock uses the RPC node's `firstShredReceived` timestamps
 (slotsUpdatesSubscribe). A new leader's first slot shows up late and the next one
-early (first-shred gaps run ~255/150/200/200 ms), so slots are extrapolated with a
+early (median first-shred gaps on days A-D: 270/149/200/200 ms), so slots are extrapolated with a
 median gap per position in the 4-slot window. Send times are corrected by half the
 measured QUIC round trip to the target.
 """
@@ -65,7 +65,8 @@ def sample_windows(schedule, nodes, targets, start_slot, end_slot, ms_per_slot, 
 def plan_probes(w, panels, k_index, force_arm=None, train_spec=None):
     """Draw this window's randomisation (OS randomness, logged) and fix its probes and payers.
 
-    force_arm / train_spec are used only for calibration runs (pilot), never in the campaign."""
+    force_arm fixes the K arm (calibration, cap sweep); train_spec fixes a train's spacing (calibration only:
+    campaign block files carry no train_specs). A train's direction is always drawn (80% rising, PREREG)."""
     from . import design
     rng = secrets.SystemRandom()
     if w["study"] == "K":
@@ -78,7 +79,7 @@ def plan_probes(w, panels, k_index, force_arm=None, train_spec=None):
     else:
         r = design.draw_train_window()
         if train_spec:
-            r.update(train=train_spec, arm="M-inc")
+            r["train"] = train_spec
             r["payer_slots"] = rng.sample(range(TRAIN_SPECS[train_spec][0]), TRAIN_SPECS[train_spec][0])
         qs = [(f"T{i:02d}", q) for i, q in enumerate(train(r["train"], r["arm"] == "M-inc"))]
         payers = rng.sample(range(12), len(qs))

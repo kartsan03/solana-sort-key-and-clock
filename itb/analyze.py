@@ -61,6 +61,7 @@ def load(raw=RAW):
             w["phase"] = phase_of(w["run_id"])
             w["probes"] = sorted(probes.get(w["window_id"], []), key=lambda p: p["label"])
             w["status"] = bracket(w, snaps)
+            w["versions"] = versions(w, snaps)
             slots = Counter(p["slot"] for p in w["probes"] if p.get("outcome") == "target_block")
             w["block_load"] = loads.get(slots.most_common(1)[0][0]) if slots else None
             windows.append(w)
@@ -77,6 +78,16 @@ def bracket(w, snaps, max_ns=60_000_000_000):
     a, b = before[-1]["nodes"][w["target"]], after[0]["nodes"][w["target"]]
     same = all(a.get(k) == b.get(k) for k in ("client", "ingress", "tpuQuic"))
     return "stable" if same else "transition"
+
+
+def versions(w, snaps, max_ns=60_000_000_000):
+    """Client version in the nearest gossip snapshot before and after the send. Descriptive only: the registered
+    transition rule (bracket) compares client, ingress and TPU address."""
+    t = w["planned_ns"][0]
+    b = [s for s in snaps if s["t_ns"] <= t and t - s["t_ns"] <= max_ns and w["target"] in s["nodes"]]
+    a = [s for s in snaps if s["t_ns"] >= t and s["t_ns"] - t <= max_ns and w["target"] in s["nodes"]]
+    return [b[-1]["nodes"][w["target"]].get("version") if b else None,
+            a[0]["nodes"][w["target"]].get("version") if a else None]
 
 
 def family(w):
@@ -191,6 +202,35 @@ def randomisation_null(ws, panels, key, rng):
     return (hits + 1) / (NULL_PERMS + 1)
 
 
+def randomisation_null_select(ws, panels, rng):
+    """Check added after review: as randomisation_null, but the key is re-chosen inside every permutation
+    (the largest agreement rate over the economic keys), so the selection of the best key is accounted for."""
+    blocks = []
+    for w in ws:
+        pan = panels[w["panel"]]
+        labs = sorted(pan)
+        rk = np.array([[ranks(pan, k)[lab] for lab in labs] for k in ECONOMIC_KEYS])
+        for seq in block_orders(w).values():
+            if len(seq) >= 2:
+                i, j = np.triu_indices(len(seq), 1)
+                blocks.append((rk, np.array([labs.index(lab) for lab in seq]), i, j))
+    if not blocks:
+        return None
+    tot = sum((rk[:, s[i]] != rk[:, s[j]]).sum(axis=1) for rk, s, i, j in blocks)
+    ok = tot > 0
+
+    def stat(shuffle):
+        agree = 0
+        for rk, s, i, j in blocks:
+            t = s[rng.permutation(len(s))] if shuffle else s
+            agree = agree + (rk[:, t[i]] > rk[:, t[j]]).sum(axis=1)
+        return (agree[ok] / tot[ok]).max()
+
+    obs = stat(False)
+    hits = sum(stat(True) >= obs for _ in range(NULL_PERMS))
+    return (hits + 1) / (NULL_PERMS + 1)
+
+
 def fifo_stats(ws):
     """For each window: share of same-block pairs whose order matches send order."""
     agree = tot = 0
@@ -297,6 +337,22 @@ def compute():
     from .capsweep import analyze as capsweep, joint
     res["capsweep"] = capsweep(windows_all)
     res["capsweep"]["joint"] = joint(windows_all, ROOT)
+    rng_sel = np.random.default_rng(SEED + 1)        # separate stream: the registered numbers stay as they were
+    res["null_with_selection"] = {}
+    for ph, rows in res["calls"].items():
+        for v, c in sorted(rows.items()):
+            if c["verdict"] in ("order, no single key", "no rule detected"):
+                ws = [w for w in windows if w["target"] == v and w["phase"] == ph and w["study"] == "K"
+                      and w["arm"] == "K-main" and w["status"] != "transition"]
+                res["null_with_selection"][f"{v}|{ph}"] = {"registered_p": c["null_p"],
+                                                           "p_with_selection": randomisation_null_select(ws, panels, rng_sel)}
+    from .checks import inclusion_by_rank, send_precision
+    from .orders import harmonic_panels, non_exact, versions_seen
+    res["inclusion_by_rank"] = inclusion_by_rank(windows)
+    res["send_precision"] = send_precision(windows)
+    res["versions"] = versions_seen(windows)
+    res["harmonic_panels"] = harmonic_panels(ROOT)
+    res["non_exact"] = non_exact(windows, {k: r["best"] for k, r in res["study_k"].items()}, ROOT)
     from .checks import spend
     res["spend"] = spend(windows_all, ROOT)
     return json.loads(json.dumps(res, sort_keys=True, default=str))

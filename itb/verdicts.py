@@ -25,7 +25,9 @@ def calls(k_results, tiers, phase, family_of=None):
         best = r["keys"][r["best"]]
         tier = tiers.get(r["validator"])
         identified = rej.get(name, False) if tier == 1 else best["p_iut"] <= ALPHA
-        weakest = min(best["rivals"].values(), key=lambda x: (x["rate"] if x["rate"] is not None else -1))
+        # strict needs every rival's lower bound >= STRICT, so the weakest rival is the lowest lower bound
+        # (a rival with no informative window counts as weakest); ties keep the first rival in key order
+        weakest = min(best["rivals"].values(), key=lambda x: x["ci"][0] if x["n"] > 0 else -1)
         strict = weakest["n"] > 0 and weakest["ci"][0] >= STRICT
         null_p = r["null_p_best"] if r["null_p_best"] is not None else 1.0
         if r["evaluable"] < MIN_EVALUABLE or best["min_n"] < 5:

@@ -117,8 +117,11 @@ class Ledger:
         row = self.db.execute("SELECT COALESCE(SUM(CASE kind WHEN 'in' THEN amount ELSE -amount END),0) FROM flows").fetchone()
         return row[0]
 
-    def reconcile(self, balances, height, slot, note=""):
-        """Release expired reservations against the on-chain balance total. Halts on anything unexplained."""
+    def reconcile(self, balances, height, slot, note="", landed_fee=0):
+        """Release expired reservations against the on-chain balance total. Halts on anything unexplained.
+
+        landed_fee: chain-reported fees of the reservations released now. The balance-based spend may never
+        fall below the running total of those fees; if it does, an unlogged deposit hid spend and we halt."""
         wallets = self.get("wallets")
         base = self.get("baseline")
         if base is None:
@@ -136,7 +139,9 @@ class Ledger:
                 "SELECT COALESCE(SUM(max_fee),0) FROM txs WHERE released IS NULL AND last_valid >= ?",
                 (height,)).fetchone()[0]
             unexplained = max(0, spent_now - (spent_prev + exp_fee + open_fee))
-            inflow = spent_now < spent_prev
+            landed_total = (self.get("landed_fees") or 0) + landed_fee
+            hidden = max(0, landed_total - spent_now)
+            inflow = spent_now < spent_prev or hidden > 0
             cur.execute("INSERT INTO recon (t_ns, slot, height, total, spent, released_n, released_fee, open_fee, "
                         "unexplained, note) VALUES (?,?,?,?,?,?,?,?,?,?)",
                         (time.time_ns(), slot, height, total, spent_now, exp_n, exp_fee, open_fee,
@@ -144,17 +149,19 @@ class Ledger:
             rid = cur.lastrowid
             if unexplained or inflow:
                 why = (f"unexplained spend {unexplained}" if unexplained
-                       else f"unlogged inflow {spent_prev - spent_now}") + f" at recon {rid}"
+                       else f"unlogged inflow {max(spent_prev - spent_now, hidden)}") + f" at recon {rid}"
                 cur.execute("INSERT OR REPLACE INTO meta VALUES ('halt', ?)", (json.dumps(why),))
             else:
                 cur.execute("UPDATE txs SET released=? WHERE released IS NULL AND last_valid < ?", (rid, height))
                 cur.execute("INSERT OR REPLACE INTO meta VALUES ('spent', ?)", (json.dumps(spent_now),))
+                cur.execute("INSERT OR REPLACE INTO meta VALUES ('landed_fees', ?)", (json.dumps(landed_total),))
             cur.execute("COMMIT")
         except BaseException:
             cur.execute("ROLLBACK")
             raise
         return {"recon": rid, "total": total, "spent": spent_now, "released": exp_n, "released_fee": exp_fee,
-                "open_fee": open_fee, "unexplained": unexplained, "halted": bool(unexplained or inflow)}
+                "open_fee": open_fee, "unexplained": unexplained, "hidden_by_inflow": hidden,
+                "halted": bool(unexplained or inflow)}
 
     def unhalt(self, reason):
         self.put("halt", None)

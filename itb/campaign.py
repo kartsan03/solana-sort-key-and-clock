@@ -1,12 +1,30 @@
 """Collection-day driver (six 4-hour blocks), the design freeze and the day-B predictions."""
-import argparse
 import asyncio
 import json
 import pathlib
 import sys
 import time
 
-from .cli import ROOT, STATE, cmd_plan, cmd_run, ledger, payers, pubkeys
+from .cli import ROOT, STATE, build_parser, cmd_plan, cmd_run, ledger, live_pubkeys, payers
+
+
+def block_targets(quotas, split, b):
+    """One block's target file. Campaign trains draw spacing and direction per window (PREREG), so fixed
+    train_specs in a quota file (a calibration setting) are dropped here."""
+    return {v: {**{k: x for k, x in q.items() if k != "train_specs"}, "K": split[v]["K"][b], "M": split[v]["M"][b]}
+            for v, q in quotas.items()}
+
+
+def plan_args(targets, run_id, hours, lead_min):
+    """cmd_plan arguments, parsed like the command line so no option can go missing."""
+    return build_parser().parse_args(["plan", "--targets", str(targets), "--run-id", run_id,
+                                      "--hours", str(hours), "--start-in-min", str(lead_min)])
+
+
+def run_args(plan, lambda_ms, max_spend_sol=None):
+    """cmd_run arguments; live when a spend limit is given."""
+    extra = ["--live", "--max-spend-sol", str(max_spend_sol)] if max_spend_sol else []
+    return build_parser().parse_args(["run", "--plan", str(plan), "--lambda-ms", str(lambda_ms), *extra])
 
 
 async def cmd_campaign(a):
@@ -37,26 +55,24 @@ async def cmd_campaign(a):
         run_id = ("dry-" if a.dry else "") + f"{a.phase}-{a.date[5:7]}{a.date[8:10]}-b{b}"
         tfile = STATE / "plans" / f"{run_id}.targets.json"
         tfile.parent.mkdir(parents=True, exist_ok=True)
-        tfile.write_text(json.dumps({v: dict(quotas[v], K=split[v]["K"][b], M=split[v]["M"][b]) for v in quotas}, indent=1))
+        tfile.write_text(json.dumps(block_targets(quotas, split, b), indent=1))
         while time.time() < start - 150:
             await asyncio.sleep(10)
         lead_min = max(1.0, (start - time.time()) / 60)
         hours = (start + block_h * 3600 - 600 - time.time()) / 3600 - lead_min / 60
-        await cmd_plan(argparse.Namespace(targets=str(tfile), run_id=run_id, hours=hours, start_in_min=lead_min,
-                                          start_utc=None, ms_per_slot=213.0))
+        await cmd_plan(plan_args(tfile, run_id, hours, lead_min))
         if a.dry:
-            await cmd_run(argparse.Namespace(plan=str(STATE / "plans" / f"{run_id}.json"), live=False,
-                                             max_spend_sol=None, lambda_ms=a.lambda_ms))
+            await cmd_run(run_args(STATE / "plans" / f"{run_id}.json", a.lambda_ms))
             continue
         rpc = Rpc()
         with single_process(STATE / "live.lock"):
-            r, _ = await ops.reconcile(rpc, ledger(), pubkeys(), f"pre-fund {run_id}")
+            led = ledger()
+            r, _ = await ops.reconcile(rpc, led, live_pubkeys(led), f"pre-fund {run_id}")
             if r["halted"]:
                 sys.exit(f"campaign stopped: {ledger().get('halt')}")
             await ops.fund_payers(rpc, ledger(), payers(), a.float_lamports, f"ops-{run_id}")
         await rpc.close()
-        await cmd_run(argparse.Namespace(plan=str(STATE / "plans" / f"{run_id}.json"), live=True,
-                                         max_spend_sol=a.block_max_sol, lambda_ms=a.lambda_ms))
+        await cmd_run(run_args(STATE / "plans" / f"{run_id}.json", a.lambda_ms, a.block_max_sol))
         print(f"block {b} done: {ledger().summary()}")
 
 

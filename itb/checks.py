@@ -17,6 +17,49 @@ def inclusion(windows):
     return {k: dict(v) for k, v in sorted(out.items())}
 
 
+CAMPAIGN = ("dayA", "dayB", "dayC", "dayD")
+
+
+def inclusion_by_rank(windows):
+    """PREREG 'Inclusion', descriptive: in campaign trains (equal L and D, fee rising 140 lamports per step) the
+    share of probes landing in the target block, by fee rank (1 = cheapest), per spacing and ingress kind."""
+    out = {}
+    for w in windows:
+        if w["phase"] not in CAMPAIGN or w["study"] != "M":
+            continue
+        inc = w["arm"] == "M-inc"
+        n = len(w["probes"])
+        for p in w["probes"]:
+            pos = int(p["label"][1:])
+            rank = pos + 1 if inc else n - pos
+            for ing in (w.get("ingress") or "unknown", "all"):
+                c = out.setdefault(w["train"], {}).setdefault(ing, {}).setdefault(str(rank), [0, 0])
+                c[0] += p.get("outcome") == "target_block"
+                c[1] += 1
+    return {sp: {ing: dict(sorted(r.items(), key=lambda kv: int(kv[0]))) for ing, r in sorted(v.items())}
+            for sp, v in sorted(out.items())}
+
+
+def send_precision(windows):
+    """Campaign trains: realised minus planned gap between consecutive sends (sent_ns), per spacing."""
+    out = {}
+    for w in windows:
+        if w["phase"] not in CAMPAIGN or w["study"] != "M":
+            continue
+        step = 4.0 if w["train"] == "t4" else 12.0
+        ts = [p["sent_ns"] for p in sorted(w["probes"], key=lambda p: p["label"]) if p.get("sent_ns")]
+        devs = [abs((b - a) / 1e6 - step) for a, b in zip(ts, ts[1:])]
+        r = out.setdefault(w["train"], {"trains": 0, "gaps": 0, "devs": [], "off_1ms": 0, "trains_off_1ms": 0})
+        r["trains"] += 1
+        r["gaps"] += len(devs)
+        r["devs"] += devs
+        r["off_1ms"] += sum(d > 1 for d in devs)
+        r["trains_off_1ms"] += any(d > 1 for d in devs)
+    return {sp: {"trains": r["trains"], "gaps": r["gaps"], "median_abs_dev_ms": round(float(np.median(r["devs"])), 4)
+                 if r["devs"] else None, "gaps_off_by_more_than_1ms": r["off_1ms"],
+                 "trains_with_such_a_gap": r["trains_off_1ms"]} for sp, r in sorted(out.items())}
+
+
 def fee_check(windows):
     """Every landed probe was charged exactly 5000 + ceil(L*p/1e6)."""
     bad, n = [], 0

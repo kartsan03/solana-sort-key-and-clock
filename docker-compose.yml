@@ -25,6 +25,8 @@ services:
     profiles: ["dryrun"]
     build: .
     network_mode: host
+    environment:
+      - ITB_RPC_URL
     volumes: ["./state:/app/state"]
     # plan the next 15 minutes of the eight Tier-1 leaders' windows (design/dry-demo.json), then run it dry
     entrypoint: ["sh", "-c"]
@@ -36,6 +38,7 @@ services:
     network_mode: host
     environment:
       - ITB_LIVE
+      - ITB_RPC_URL
       - ITB_KEYS_DIR=/run/itb-keys
     volumes:
       - "${ITB_KEYS_DIR:-../keys}:/run/itb-keys:ro"
