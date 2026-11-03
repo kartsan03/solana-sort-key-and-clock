@@ -2,53 +2,57 @@
 
 I sent my own small transactions straight to the leaders of 16 Solana mainnet validators (8 client types)
 after the Alpenglow switch and read where they landed in each block. For each validator I ask which *key*
-(sorting rule) orders its block, and how strictly that holds in time. In short: Agave and Firedancer use two
-different exact rules, FireBAM follows Agave's, one Jito validator sorts by total fee, and Harmonic fits a
-formula outside the usual list.
+(sorting rule) orders my competing transactions in its block, and how strictly that holds in time. In short:
+Agave and Firedancer use two different exact rules, FireBAM follows Agave's, one Jito validator sorted by
+total fee on its one measured day, and Harmonic fits a formula outside the usual list.
 
 ## Findings
 
 Measured 2026-10-29 to 11-01 (UTC), across all hours, plus an exploratory Harmonic test on 11-02.
 A *panel* is six probes sent together. A *full window* means all six landed in one block of the target's
 4-slot leader window. The exact-order column counts matches / full windows. The *overtaking horizon* is
-the largest send gap at which a later, richer probe lands first in at least half of pairs.
+the largest send gap at which a later, richer probe lands first in at least half of pairs; each rests on
+one to seven trains per day, and 44 ms is the longest gap my 4 ms trains can show.
 
 | Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon |
 |---|---|---|---|
 | Agave | Agave's integer priority `agave_int` | 89 / 89 | 0 ms |
 | Jito, `E1r4Psq8` | `agave_int` | 69 / 69 | 0 ms |
-| Jito, `C8Bey3LK` | total fee (5,000 + priority fee) | 14 / 15 | not measured |
+| Jito, `C8Bey3LK` | total fee (5,000 + priority fee); one day, exploratory | 14 / 15 | not measured |
 | AgaveBam | `agave_int` | 75 / 75 | 16 ms |
-| FireBAM | `agave_int`, not Firedancer's rule | 80 / 80 | 24–44 ms |
+| FireBAM | `agave_int`, not Firedancer's rule | 80 / 80 | 24 to ≥44 ms |
 | Rakurai | `agave_int` | 100 / 100 | 0 ms on two days of three |
 | Firedancer | Firedancer's exact ratio `fd_exact` | 71 / 77 | 0 ms |
-| Harmonic (Agave and Firedancer) | none of my eight keys; soft-capped formula fits (exploratory) | 108 / 108 days B–D; 49 / 51 on discovery day A | 12–24 ms |
+| Harmonic (Agave and Firedancer) | none of my eight keys; soft-capped formula fits (exploratory) | 108 / 108 days B–D (48 / 48 on P1, the panel that tells it from `agave_int`); 49 / 51 on discovery day A | 12–24 ms |
 
-1. **Two exact rules.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority fee +
-   2,500; C = scheduling cost). Firedancer uses exact R/C. *Fingerprint pairs* are probe pairs these rules
-   rank oppositely, even when priorities differ by only 0.003%. Every pair went the predicted way in every
-   full window. On equal priority Firedancer takes the later-sent probe first (192 of 195 pairs).
-2. **Builder and client can differ.** FireBAM runs Firedancer but sorts by Agave's key: BAM orders the
-   transactions upstream. The Jito validators also differ: one follows Agave, another total fee.
+1. **Two exact rules.** Agave and four forks or builders divide R by C+1 (R = priority fee + 2,500;
+   C = scheduling cost; Agave's code also rounds down, which my panels cannot see). Firedancer uses exact R/C.
+   *Fingerprint pairs* are probe pairs these rules rank oppositely, even when priorities differ by only
+   0.003%. Every pair went the predicted way in every full window. On equal priority Firedancer takes the
+   later-sent probe first (192 of 195 pairs).
+2. **Builder and client can differ.** FireBAM runs Firedancer but sorts by Agave's key, consistent with BAM
+   ordering transactions upstream as its documentation says. The Jito validators also differ: one follows
+   Agave, another sorted by total fee on its only day, on the same client version.
 3. **Harmonic: Agave's key with the compute-unit (CU) limit capped.** None of my eight keys fits. Day A's
    orders fit Agave's key with the CU limit counted only up to a cap. Memo #2 fixed that hard-cap formula on
-   chain before day B, and it matched 108 / 108 full windows on days B–D on all four Harmonic validators,
-   two without day-A data. Memo #3 predicted, before an 11-02 follow-up, that the limit above the cap still
-   counts a little (a soft cap), and it does: a hard cap matches only 8 of the follow-up's 27 full windows,
-   plain Agave 19. Fitted to all the data, the cap is 1,500–1,963 CU with 10–25% of the limit above it
-   counted; that range is a fit, not a prediction. Exploratory throughout.
+   chain before day B; on days B–D it matched all 108 full windows on four Harmonic validators. On panel P2
+   it predicts plain Agave's order, so the test is P1's 48 / 48. Memo #3 then predicted that the limit above
+   the cap still counts a little (a soft cap), which neither panel can see; an 11-02 follow-up agrees: a hard
+   cap matches 8 of its 27 full windows, plain Agave 19. Fitted to all data: a cap of 1,500–1,963 CU with
+   10–25% of the limit above it counted (a fit; other discounts untested). Exploratory throughout.
 4. **Waiting versus arriving.** Queued probes sort everywhere. During the window, a richer probe sent
    4 ms later does not pass on Agave, Jito or Firedancer; through BAM and Harmonic it can pass one sent
-   12–44 ms earlier.
-5. **Held out.** Outside Harmonic, days B–D yielded 13 passed key predictions, 1 failed (total-fee Jito)
-   and 7 "insufficient data": fewer than the registered minimum of 15 usable panels that day. All 76 full
-   windows from those seven matched, a descriptive count rather than a pass.
+   12–44 ms earlier. These horizons are rough: few trains, and the registered falling-fee control trains
+   were never sent (a planning bug, REPORT §5); 4 of 14 horizon predictions missed.
+5. **Held out.** Outside Harmonic, days B–D gave 13 passed key predictions, 1 failed (total-fee Jito) and
+   7 below the registered data minimum (15 usable panels), whose 76 full windows all matched: descriptive,
+   not a pass.
 
 Labels: *registered* = a test fixed before the campaign; *exploratory* = a pattern found in data and
 checked later, not confirmed; *descriptive* = a count without a test (including the exact-order column).
 
-Every row is traced to slots and signatures in [CLAIMS.md](CLAIMS.md); [REPORT.md](REPORT.md) has the full
-results, dates, deviations and what went wrong.
+Every finding is traced to windows, slots and signatures in [CLAIMS.md](CLAIMS.md); [REPORT.md](REPORT.md)
+has the full results, dates, deviations and what went wrong.
 
 ![How a probe travels from my sender to a position in the block](figures/diagram.svg)
 
@@ -61,29 +65,28 @@ results, dates, deviations and what went wrong.
   I send just before the leader window. Two fixed panels make every candidate-key pair disagree on at
   least two probe pairs. Controls use six identical probes for tie-breaking, or separate locks for no
   contention.
-- **Trains.** 10–12 probes with equal limits, sent 4 ms or 12 ms apart during the window, with fees rising
-  or, as a control, falling. First-in, first-out (FIFO) keeps send order; sorting allows overtaking.
+- **Trains.** 10–12 probes with equal limits, sent 4 ms or 12 ms apart during the window, with fees rising.
+  First-in, first-out (FIFO) keeps send order; sorting allows overtaking.
 - **Route.** Unstaked QUIC straight to the TPU address each leader advertises, every send time logged.
   For BAM and Harmonic that address is the block builder, so those results describe the validator *as
-  reached through its advertised ingress*. BAM endpoints closed my connection in 21% of windows (own-IP
-  6%, Harmonic 0%); 84 of the 628 probes on a closed connection still landed.
-- **Schedule.** Calibration 10-27 to 10-28. Days A–C (10-29 to 10-31), six 4-hour blocks each over all
-  UTC hours: day A picks builders' keys and horizons, B and C test them; Agave, Jito and Firedancer face
-  their source-code key throughout. Tier 1 = eight main validators; Tier 2 = a second per client on day C.
-  Day D (11-01) topped up four shortfalls; 11-02 was the Harmonic follow-up.
+  reached through its advertised ingress*. BAM endpoints closed my unstaked connection in 21% of windows.
+- **Schedule.** Calibration 10-27 to 10-28; days A–C (10-29 to 10-31) in six 4-hour blocks over all UTC
+  hours: day A picks builders' keys and horizons, B and C test them; Agave, Jito and Firedancer face their
+  source-code key throughout. Tier 2 adds a second validator per client on day C. Day D (11-01) topped up
+  four shortfalls; 11-02 was the Harmonic follow-up.
 - **Pre-registration.** [PREREG.md](PREREG.md) and [design/design.json](design/design.json) fix questions,
   keys, decision rules and quotas before campaign probes. On-chain hashes:
   memo #1 [`TywPFLUz…`](https://explorer.solana.com/tx/TywPFLUznyNThfq9hiKp34eikwW8ZHxs3xefwWfABCBsceRaSLJvnAPPk977XyTXSTJWGsMnW6i43cr2NGTwXxd)
   (commit `0bb3ee5`), memo #2 [`mbp3zEGq…`](https://explorer.solana.com/tx/mbp3zEGqTFnkJuLZkRndhWu4yFRkdxvwHJNMKZimE4QzbAeBMrT2RhE2N7ve8Z6F9BWkTV4ECBG1LoqwaCWJaNF)
   (commit `f3f1c52`, the day-A picks, before day B), memo #3 [`4zMGqri3…`](https://explorer.solana.com/tx/4zMGqri3f4ufA5sAFoZsr5VXQM6V4q1YxVpiqHQLgCFwjAtbVLkSTS1yWBK3vRCdXQmgMPP4TynR67CGf41E7HUf)
-  (commit `f705581`, the Harmonic follow-up, before its first probe).
+  (commit `f705581`, the Harmonic follow-up, before its first probe). Each memo names a commit and the SHA-256
+  of the files it fixes; REPORT §1 shows how to check them with `git show` and `sha256sum`.
 
 ## Why this design
 
-- **Known inputs.** My probes give known limits, fees, send times, order and target; the shared lock
-  makes block order interpretable.
-- **Designed disagreements.** Ordinary fee ladders let candidate keys agree. These panels separate
-  concrete rules, including base-fee treatment and the 0.003% Agave/Firedancer difference.
+- **Known inputs, designed disagreements.** I know each probe's limits, fees, send time and target, and the
+  shared lock makes block order readable. Ordinary fee ladders let keys agree; my panels separate concrete
+  rules, including base-fee treatment and the 0.003% Agave/Firedancer difference.
 - **Window-level tests.** Within-block pairs are dependent. A key must beat every rival in a majority of
   windows (exact binomial tests, Holm across eight main validators). I report strictness separately;
   "no rule detected" is valid.
@@ -104,26 +107,29 @@ results, dates, deviations and what went wrong.
 6. High fees and full blocks. My fees are tiny; block load is recorded, not controlled.
 7. Execution order of non-conflicting transactions. Block order is not execution start.
 8. A whole client family from one or two validators, or validators behind one shared builder endpoint
-   from each other.
+   from each other (no two of mine shared one).
 9. Bundles and tips (out of scope). Block-wide context may contain bundles.
 10. Order among probes that did not land. Inclusion is reported separately.
 
 ## Reproduce
 
 ```sh
-docker compose up                                        # offline: recompute every number from data/raw, diff with data/derived
+docker compose up                                        # offline: recompute every number, diff with data/derived
 docker compose run --rm verify                           # online: re-fetch a sample of claimed blocks (VERIFY_ALL=1 for all)
 docker compose run --rm test                             # unit tests
 docker compose run --rm dryrun                           # plan the next 15 min of real leader windows, send nothing
 ```
 
-`docker compose up` fails if recomputed numbers differ. `verify` checks signatures at recorded indices,
-payers, fees, decoded limits, the leader (block fee-reward recipient), and `getSlotLeaders` for all four
-window slots. Send times, intended targets and client labels depend on logs and snapshots.
+If any recomputed number differs, `analyze` prints MISMATCH and exits 1; `docker compose up
+--exit-code-from analyze` passes that exit code to the shell. `verify` checks signatures at recorded
+indices, payers, fees, decoded limits, the block's fee-reward recipient, and `getSlotLeaders` for all four
+window slots (one validator, `PRGNnb8D`, sends its fees to another account; the schedule names it).
+`ITB_RPC_URL` picks the RPC. Send times, intended targets and client labels depend on logs and snapshots.
 
-Live sending requires `--live`, `ITB_LIVE=1`, `--max-spend-sol` and a read-only key-directory volume.
-Funding, memo and sweep commands also require `ITB_LIVE=1`. Each send reserves its worst-case fee;
-code caps total spend at 0.05 SOL and reconciles on-chain balances after every block.
+Live sending needs `--live`, `ITB_LIVE=1`, `--max-spend-sol` and the key directory (mounted read-only);
+funding, memo and sweep need `ITB_LIVE=1` too. Each send reserves its worst-case fee; the code caps total
+spend at 0.05 SOL and releases reservations only after checking the loaded key's wallet balances and the
+chain's landed fees.
 
 ## Listing requirements → where
 
@@ -140,14 +146,12 @@ code caps total spend at 0.05 SOL and reconciles on-chain balances after every b
 
 ## Cost
 
-0.048173 SOL in fees out of the 0.05 SOL cap, everything included: 0.047973 SOL of probe block fees
-(calibration 0.0039, day A 0.0132, B 0.0097, C 0.0140, D 0.0047, Harmonic follow-up 0.0025) and 0.0002 SOL
-for 40 operations transactions. `docker compose up` re-adds them from the raw data and the final audit and
-checks the sum against the on-chain total and the wallet balances ([REPORT.md](REPORT.md) §6). 0.011237 SOL
-went back to the funding wallet; 0.00065 SOL is stuck in the main wallet (§4).
+0.048173 SOL in fees out of the 0.05 SOL cap, everything included (probes 0.047973, 40 operations
+transactions 0.0002); `docker compose up` checks the total against the on-chain fees and the wallet
+balances ([REPORT.md](REPORT.md) §6). 0.011237 SOL went back to the funding wallet; 0.00065 SOL stays in the
+main wallet (§4).
 
 ## Repo map
 
-`itb/`: sender, collector and analysis (`itb --help`). `design/`: panels, candidate keys, prediction
-table, quotas, pre-registration hashes. `data/raw/`: every probe ever signed and every block it landed in.
-`data/derived/`: results and tables recomputed by `docker compose up`. `figures/`: redrawn from the data.
+`itb/` sender, collector and analysis (`itb --help`); `design/` panels, keys, quotas, predictions;
+`data/raw/` every probe signed and every block it landed in; `data/derived/` and `figures/` recomputed.
