@@ -1,0 +1,14 @@
+{
+ "command": "VERIFY_ALL=1 itb verify --all",
+ "code_commit": "8db1184",
+ "run_utc": [
+  "2026-11-03T08:22Z",
+  "2026-11-03T08:49Z"
+ ],
+ "rpc": "a mainnet RPC provider (ITB_RPC_URL)",
+ "windows": 1252,
+ "probes_checked": 7385,
+ "window_slots_checked": 5008,
+ "problems": [],
+ "n_problems": 0
+}

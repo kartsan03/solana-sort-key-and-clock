@@ -14,7 +14,7 @@ A *panel* is six probes sent together. A *full window* means all six landed in o
 the largest send gap at which a later, richer probe lands first in at least half of pairs; each rests on
 one to seven trains per day, and 44 ms is the longest gap my 4 ms trains can show.
 
-| Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon |
+| Client | Key that orders queued transactions | Full windows, exact order | Overtaking horizon (uncontrolled) |
 |---|---|---|---|
 | Agave | Agave's integer priority `agave_int` | 89 / 89 | 0 ms |
 | Jito, `E1r4Psq8` | `agave_int` | 69 / 69 | 0 ms |
@@ -87,14 +87,20 @@ has the full results, dates, deviations and what went wrong.
 - **Known inputs, designed disagreements.** I know each probe's limits, fees, send time and target, and the
   shared lock makes block order readable. Ordinary fee ladders let keys agree; my panels separate concrete
   rules, including base-fee treatment and the 0.003% Agave/Firedancer difference.
-- **Window-level tests.** Within-block pairs are dependent. A key must beat every rival in a majority of
-  windows (exact binomial tests, Holm across eight main validators). I report strictness separately;
-  "no rule detected" is valid.
 - **Held-out checks.** Day-A picks are fixed on chain before day B and tested on days B–D. Day A chooses
   among eight keys without adjusting for that choice; the fixed-key held-out tests are the confirmatory ones.
 - **Horizon.** Batching and stalled queues can look alike; the measurement avoids claiming a mechanism.
-- **Direct QUIC.** RPC `sendTransaction` obscures send time and target, retries and forwards to multiple
-  leaders.
+
+## The listing's considerations
+
+| Consideration | How the design handles it |
+|---|---|
+| Leader schedule and leader types | Windows come from `getLeaderSchedule` per identity. Leader type = gossip client ID × advertised TPU, snapshotted around every window; registered tests drop windows where either changed. `verify` re-checks `getSlotLeaders` for all four slots. |
+| Path from my backend to the executing node | One fixed route: unstaked QUIC to the advertised TPU, every send time logged (median 0.0025 ms from plan). Not RPC `sendTransaction`, which hides send time and target, retries and forwards to several leaders. For BAM and Harmonic the TPU is the builder, so results describe the validator as reached through it. |
+| My own transactions interacting | Six payers per panel, contending only through the designed shared lock; K-free panels give each probe its own lock as the contrast. |
+| Competition inside the block | Order is compared only among my probes within one block. Block load is recorded and the key checked within thirds of load (REPORT §3.1); other traffic is not controlled (item 6 below). |
+| Send order | A fresh random send order and payer assignment per panel, so send order cannot imitate a fee key; FIFO is a candidate key. Trains test arrival against fee directly, without the falling-fee control (REPORT §5). |
+| Noise versus rule | Window-level exact tests against every rival (within-block pairs are dependent), Holm across the eight main validators, a randomisation null, identical-probe panels, held-out days; "no rule detected" is an allowed outcome. |
 
 ## What this design does NOT separate
 
@@ -124,9 +130,10 @@ docker compose run --rm dryrun                           # plan the next 15 min 
 If any recomputed number differs, `analyze` prints MISMATCH and exits 1, and the first command exits 1 too;
 `--build` rebuilds the image from your checkout. `verify` checks signatures at recorded indices, payers, fees,
 decoded limits, the block's fee-reward recipient, and `getSlotLeaders` for all four window slots (one
-validator, `PRGNnb8D`, sends its fees to another account; the schedule names it). A block the RPC cannot
-serve fails the check; a skipped slot does not. `ITB_RPC_URL` picks the RPC. Send times, intended targets
-and client labels depend on logs and snapshots.
+validator, `PRGNnb8D`, sends its fees to another account; the schedule names it). A block the RPC cannot serve
+fails the check; a skipped slot does not. A full run on 11-03 found 0 problems in all 1,252 windows
+([data/verify/](data/verify/verify-all-2026-11-03.json)). `ITB_RPC_URL` picks the RPC. Send times, intended
+targets and client labels depend on logs and snapshots.
 
 Live sending needs `--live`, `ITB_LIVE=1`, `--max-spend-sol` and the key directory (mounted read-only);
 funding, memo and sweep need `ITB_LIVE=1` too. The sweep sends only to the address whose SHA-256 is
@@ -144,7 +151,7 @@ checking the loaded key's wallet balances and the chain's landed fees.
 | One-command reproduction | `docker compose up --build --exit-code-from analyze`; CI runs it on amd64 and arm64 |
 | Dry run by default, live behind a flag, spend cap in code | `itb run` (dry unless `--live` + `ITB_LIVE=1`), [itb/ledger.py](itb/ledger.py) |
 | Keys via env or volume, never in the repo | `ITB_KEYS_DIR` volume, read-only; pre-commit check in [.githooks/](.githooks/) |
-| Why this design / what it does NOT separate | the two sections above |
+| Why this design / each consideration / what it does NOT separate | the three sections above |
 | Date of every measurement, what went wrong | [REPORT.md](REPORT.md) §4–§6, `run.json` in every run folder |
 
 ## Cost
