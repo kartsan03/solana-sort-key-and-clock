@@ -100,6 +100,10 @@ counts are descriptive. Tables: [data/derived/tables.md](data/derived/tables.md)
 - **Harmonic fits none of the eight registered keys.** Day A's picks (`agave_int` for HarmonicAgave,
   `pf_per_cost` for HarmonicFiredancer) failed on days B–D. Yet the Harmonic orders are not noise:
   on days B–D every full window repeated one order per panel, whatever the send order (3.2).
+- **Ties (K-null, descriptive).** With six identical probes, Firedancer put the later-sent probe first in
+  192 of 195 same-block pairs (both validators, days A–C). No other client has a tie rule this clear: the
+  share of pairs in send order runs from 0.25 (FireBAM) to 0.72 (Jito)
+  ([tables](data/derived/tables.md), "Send order vs block order").
 
 ### 3.2 Harmonic: an explanation that fits and holds on later days
 

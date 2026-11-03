@@ -27,7 +27,7 @@ the largest send gap at which a later, richer probe lands first in at least half
 1. **Two exact rules.** Agave and four forks or builders sort by ⌊R·10⁶/(C+1)⌋ (R = priority fee +
    2,500; C = scheduling cost). Firedancer uses exact R/C. *Fingerprint pairs* are probe pairs these rules
    rank oppositely, even when priorities differ by only 0.003%. Every pair went the predicted way in every
-   full window.
+   full window. On equal priority Firedancer takes the later-sent probe first (192 of 195 pairs).
 2. **Builder and client can differ.** FireBAM runs Firedancer but sorts by Agave's key: BAM orders the
    transactions upstream. The Jito validators also differ: one follows Agave, another total fee.
 3. **Harmonic: Agave's key with the compute-unit (CU) limit capped.** None of my eight keys fits. Day A's
