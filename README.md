@@ -54,6 +54,28 @@ checked later, not confirmed; *descriptive* = a count without a test (including 
 Every finding is traced to windows, slots and signatures in [CLAIMS.md](CLAIMS.md); [REPORT.md](REPORT.md)
 has the full results, dates, deviations and what went wrong.
 
+### One fingerprint pair, checked on chain
+
+Panel P1's probes A and B: A has R = 3,954 and C = 3,143, B has R = 3,325 and C = 2,643. Agave's R/(C+1)
+puts A first (1.257633 against 1.257564); Firedancer's R/C puts B first (1.2580337 against 1.2580401).
+This needs only `curl` and `python3`, no clone:
+
+```sh
+pos() {  # slot, signature of A, signature of B
+  curl -s https://api.mainnet-beta.solana.com -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getBlock","params":['"$1"',{"transactionDetails":"signatures","rewards":true,"maxSupportedTransactionVersion":1}]}' |
+  python3 -c 'import json,sys; r=json.load(sys.stdin)["result"]; s=r["signatures"]; print("A at", s.index(sys.argv[1]), " B at", s.index(sys.argv[2]), " leader", [x["pubkey"] for x in r["rewards"] if x["rewardType"] == "Fee"][0])' "$2" "$3"
+}
+pos 462730056 53TwDCb9ij9eQFknD3BNttigrBnnjWfwzVie9LSXLivnaQ5ezfQpfQXdCsCFbKoEgwEkp89Tb9T3arPaQX22QC1y 45z3PjzHK5zXJiduQMXZffa2Gcx1W1JNZAjQgzCnm69wSn2j3tYHEsNwG36xstMYACnwbE4w7BCc4A9Lxdjypr7o
+# A at 7  B at 8  leader 7QQGNm3p... (Agave)
+pos 463836004 63TJRot72LXhFQdMY4woeGv6gUQ9RwUXcoAV14v4Lu2kmbYFTHGRBv6mJijBn4UrQzkAwZxkJGR5c3xCetyaf18q 4cfWX8BTFLQYcBXxn337Uv5c16PcRdf5Wkzm7bmpzwApxsLJTK3SaNZ6Vs2wCLB6MAwXV4apoipPQz2EmCZsSpWH
+# A at 13  B at 12  leader DNVZMSqe... (Firedancer)
+```
+
+The leader is the block's fee-reward recipient. In both blocks the probe that landed first was sent after
+the other (windows `A-1029-b0-0053` and `C-1031-b5-0019`), so arrival order does not explain either. Any
+explorer shows each probe's compute-unit limit, price and loaded-data limit; `verify` decodes them for
+every window.
+
 ![How a probe travels from my sender to a position in the block](figures/diagram.svg)
 
 ## How it works
