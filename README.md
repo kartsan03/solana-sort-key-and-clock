@@ -71,10 +71,11 @@ pos 463836004 63TJRot72LXhFQdMY4woeGv6gUQ9RwUXcoAV14v4Lu2kmbYFTHGRBv6mJijBn4UrQz
 # A at 13  B at 12  leader DNVZMSqe... (Firedancer)
 ```
 
-The leader is the block's fee-reward recipient. In both blocks the probe that landed first was sent after
-the other (windows `A-1029-b0-0053` and `C-1031-b5-0019`), so arrival order does not explain either. Any
-explorer shows each probe's compute-unit limit, price and loaded-data limit; `verify` decodes them for
-every window.
+The leader is the block's fee-reward recipient. Each panel's six probes were sent about 0.2 s and 0.4 s
+before the window was due (windows `A-1029-b0-0053` and `C-1031-b5-0019`), and in both blocks the probe that
+landed first was sent after the other, so send order does not explain either. Send times come from my logs;
+when each probe reached the leader is not observed. Any explorer shows each probe's compute-unit limit,
+price and loaded-data limit; `verify` decodes them for every window.
 
 ![How a probe travels from my sender to a position in the block](figures/diagram.svg)
 
@@ -154,7 +155,7 @@ If any recomputed number differs, `analyze` prints MISMATCH and exits 1, and the
 decoded limits, the block's fee-reward recipient, and `getSlotLeaders` for all four window slots (one
 validator, `PRGNnb8D`, sends its fees to another account; the schedule names it). A block the RPC cannot serve
 fails the check; a skipped slot does not. A full run on 11-03 found 0 problems in all 1,252 windows
-([data/verify/](data/verify/verify-all-2026-11-03.json)). `ITB_RPC_URL` picks the RPC. Send times, intended
+that sent probes (8 more logged windows sent none) ([data/verify/](data/verify/verify-all-2026-11-03.json)). `ITB_RPC_URL` picks the RPC. Send times, intended
 targets and client labels depend on logs and snapshots.
 
 Live sending needs `--live`, `ITB_LIVE=1`, `--max-spend-sol` and the key directory (mounted read-only);
